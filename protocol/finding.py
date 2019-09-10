@@ -58,8 +58,15 @@ class Location:
 
 
 @dataclasses.dataclass
-class Finding:
+class Finding:  # pylint:disable=R0903
+    """Non active findings are presentend to the use cause of lag of
+    quality. There purpose is to improve the platform. A second point
+    for non presenting is a to low confidence of the result.
+    """
+
     index: int = -1
     location: Location = None
     msgid: str = None
     solution: Solution = None
+    confidence: float = None
+    active: bool = False
