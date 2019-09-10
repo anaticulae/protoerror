@@ -32,7 +32,7 @@ class Location:
     shortcut: str = None
     value: int = None
 
-    def raw(self):  # pylint:disable=no-self-use
+    def raw(self) -> str:  # pylint:disable=no-self-use
         value = self.value if self.value else ''
         if self.shortcut == 'p':
             return f'p{self.page}'

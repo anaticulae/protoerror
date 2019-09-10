@@ -26,7 +26,7 @@ import utila
 import yaml
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass  # pylint:disable=R0903
 class MessageStatus:
     """Configurate how and if the user see the message or it will
     support the development only.
