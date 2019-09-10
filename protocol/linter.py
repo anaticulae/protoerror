@@ -16,9 +16,11 @@ information to the user. These are findings which are `active` and
 document. The other type is to give the devloper more information to
 improve the platform.
 
+This class is thread-safe.
 """
 import contextlib
 import os
+import threading
 import typing
 
 import utila
@@ -44,6 +46,7 @@ class Linter:
         self.active = {item.msgid: item for item in active} if active else None
         self.checkers = []
         self.findings = []
+        self.lock = threading.Lock()  # make class thread safe
 
     def add_finding(
             self,
@@ -54,16 +57,17 @@ class Linter:
         # Determine a possible solution
         solution = self.solver.solution(msgid) if self.solver else None
         active = self.is_active(msgid, confidence)
-        finding = Finding(
-            index=len(self.findings),
-            confidence=confidence,
-            location=location,
-            msgid=msgid,
-            solution=solution,
-            active=active,
-        )
 
-        self.findings.append(finding)
+        with self.lock:
+            finding = Finding(
+                index=len(self.findings),
+                confidence=confidence,
+                location=location,
+                msgid=msgid,
+                solution=solution,
+                active=active,
+            )
+            self.findings.append(finding)
 
     def is_active(self, msgid, confidence):
         if not self.active:
@@ -76,11 +80,9 @@ class Linter:
 
     def write(self, path: str):
         assert os.path.isdir(path), str(path)
-        # write to
-        #   user.lint
-        #   developer.lint
-        user = [item for item in self.findings if item.active]
-        developer = [item for item in self.findings if not item.active]
+        with self.lock:
+            user = [item for item in self.findings if item.active]
+            developer = [item for item in self.findings if not item.active]
 
         dumped_user = yaml.dump(user)
         dumped_developer = yaml.dump(developer)
