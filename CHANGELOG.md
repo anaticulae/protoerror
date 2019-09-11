@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* add public API (4036da07413a)
+
 ## v0.1.1
 
 ## v0.1.0
