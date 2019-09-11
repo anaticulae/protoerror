@@ -9,9 +9,9 @@
 
 import os
 
-from protocol.config import MessageStatus
-from protocol.config import load
-from protocol.config import save
+from protocol import MessageStatus
+from protocol import load
+from protocol import save
 
 
 def test_config_dump_and_load_config(testdir):

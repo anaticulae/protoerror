@@ -7,13 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from protocol import Solver
-# pylint:disable=W0611
-from tests import solver
 
-
-def test_solution_solver(solver: Solver):  # pylint:disable=W0621
-    msgid = 'F0001'
-
-    solution = solver.solution(msgid)
-    assert solution
+def test_imports():
+    # pylint:disable=W0611
+    from protocol import ProblemStatus
+    from protocol import Location

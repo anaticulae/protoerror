@@ -9,7 +9,7 @@
 
 import pytest
 
-from protocol.linter import Linter
+from protocol import Linter
 # pylint:disable=W0611
 from tests import solver
 

@@ -8,6 +8,20 @@
 #==============================================================================
 import os
 
+from .checker import Checker
+from .checker import check_messages
+from .config import MessageStatus
+from .config import load
+from .config import save
+from .finding import Finding
+from .finding import Location
+from .linter import Linter
+from .solution import ProblemStatus
+from .solution import Solution
+from .solution import Solver
+from .solution import Text
+from .solution import Web
+
 __version__ = '0.1.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

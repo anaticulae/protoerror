@@ -9,7 +9,7 @@
 
 import pytest
 
-from protocol.finding import Location
+from protocol import Location
 
 
 @pytest.mark.parametrize('location, expected', [

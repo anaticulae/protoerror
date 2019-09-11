@@ -9,10 +9,10 @@
 
 import pytest
 
-from protocol.checker import Checker
-from protocol.checker import check_messages
-from protocol.config import MessageStatus
-from protocol.linter import Linter
+from protocol import Checker
+from protocol import Linter
+from protocol import MessageStatus
+from protocol import check_messages
 # pylint:disable=W0611
 from tests import solver
 
