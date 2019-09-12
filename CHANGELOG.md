@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.2.1
+
+### Feature
+
+* add method to extract linter result without writing to file space (335a76315889)
+* add option to write multiple findings only once (3835ba11279e)
+
 ## v0.2.0
 
 ### Feature
