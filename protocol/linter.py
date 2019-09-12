@@ -86,12 +86,9 @@ class Linter:
             unique(bool): if unique no duplicated user-message are written
         """
         assert os.path.isdir(path), str(path)
-        with self.lock:
-            user = [item for item in self.findings if item.active]
-            developer = [item for item in self.findings if not item.active]
 
-        if unique:
-            user = make_unique(user)
+        # create result
+        user, developer = self.result(unique=unique)
 
         dumped_user = yaml.dump(user)
         dumped_developer = yaml.dump(developer)
@@ -101,6 +98,16 @@ class Linter:
 
         developer_outpath = os.path.join(path, DEVELOPER_FILE)
         utila.file_create(developer_outpath, dumped_developer)
+
+    def result(self, unique: bool = False):
+        """Return current linter result of `user`, `developer`"""
+        with self.lock:
+            user = [item for item in self.findings if item.active]
+            developer = [item for item in self.findings if not item.active]
+
+        if unique:
+            user = make_unique(user)
+        return user, developer
 
     def register_checker(self, checker):
         """Required method to auto register this checker."""
