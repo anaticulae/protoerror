@@ -60,7 +60,7 @@ class Linter:
 
         with self.lock:
             finding = Finding(
-                index=len(self.findings),
+                number=len(self.findings),
                 confidence=confidence,
                 location=location,
                 msgid=msgid,
@@ -78,11 +78,20 @@ class Linter:
             active = msgstatus.active and msgstatus.confidence >= confidence
         return active
 
-    def write(self, path: str):
+    def write(self, path: str, unique: bool = False):
+        """Write linter result to `user` and `developer`-file.
+
+        Args:
+            path(str): directory to write both files
+            unique(bool): if unique no duplicated user-message are written
+        """
         assert os.path.isdir(path), str(path)
         with self.lock:
             user = [item for item in self.findings if item.active]
             developer = [item for item in self.findings if not item.active]
+
+        if unique:
+            user = make_unique(user)
 
         dumped_user = yaml.dump(user)
         dumped_developer = yaml.dump(developer)
@@ -94,8 +103,20 @@ class Linter:
         utila.file_create(developer_outpath, dumped_developer)
 
     def register_checker(self, checker):
-        """required method to auto register this checker """
+        """Required method to auto register this checker."""
         self.checkers.append(checker)
+
+
+def make_unique(items):
+    """Stable remove duplications of container `items`."""
+    written = set()
+    result = []
+    for item in items:
+        if item in written:
+            continue
+        written.add(item)
+        result.append(item)
+    return result
 
 
 # def register(linter):

@@ -57,14 +57,14 @@ class Location:
         return result
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(unsafe_hash=True)
 class Finding:  # pylint:disable=R0903
     """Non active findings are presentend to the use cause of lag of
     quality. There purpose is to improve the platform. A second point
     for non presenting is a to low confidence of the result.
     """
 
-    index: int = -1
+    number: int = dataclasses.field(compare=False, default=-1)
     location: Location = None
     msgid: str = None
     solution: Solution = None

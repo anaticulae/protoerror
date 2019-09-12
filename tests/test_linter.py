@@ -30,3 +30,20 @@ def test_linter_solver(linter):  # pylint:disable=W0621
 def test_linter_write(linter: Linter, testdir):  # pylint:disable=W0621
     root = str(testdir)
     linter.write(root)
+
+
+def test_linter_write_unique(linter: protocol.Linter, testdir):  # pylint:disable=W0621
+    root = str(testdir)
+
+    before = len(linter.findings)
+    # Add size check
+    for _ in range(10):
+        linter.add_finding(location=None, msgid='F0005', confidence=0.5)
+
+    unique_findings = protocol.linter.make_unique(linter.findings)
+    after = len(unique_findings)
+
+    # one element was added by range
+    assert after - before == 1, str(unique_findings)
+
+    linter.write(root, unique=True)

@@ -42,20 +42,20 @@ class ProblemStatus(enum.Enum):
     CLOSED = enum.auto()  # user can not change this state, e.g. pdf read error
 
 
-@dataclasses.dataclass  # pylint:disable=R0903
+@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
 class Solution:
-    index: int = -1
+    number: int = dataclasses.field(compare=False, default=-1)
     msgid: str = None
     status: ProblemStatus = ProblemStatus.OPEN
 
 
-@dataclasses.dataclass  # pylint:disable=R0903
+@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
 class Text(Solution):
     title: str = None
     description: str = None
 
 
-@dataclasses.dataclass  # pylint:disable=R0903
+@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
 class Web(Text):
     hyperlink: str = None
 
