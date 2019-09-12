@@ -9,14 +9,14 @@
 
 import pytest
 
-from protocol import Linter
+import protocol
 # pylint:disable=W0611
 from tests import solver
 
 
 @pytest.fixture
-def linter(solver) -> Linter:  # pylint:disable=W0621
-    result = Linter(solver=solver)
+def linter(solver) -> protocol.Linter:  # pylint:disable=W0621
+    result = protocol.Linter(solver=solver)
     result.add_finding(location=None, msgid='F0001', confidence=1.0)
     result.add_finding(location=None, msgid='F0000', confidence=0.5)
     result.add_finding(location=None, msgid='F1337', confidence=0.3)
@@ -27,7 +27,7 @@ def test_linter_solver(linter):  # pylint:disable=W0621
     assert len(linter.findings) == 3
 
 
-def test_linter_write(linter: Linter, testdir):  # pylint:disable=W0621
+def test_linter_write(linter: protocol.Linter, testdir):  # pylint:disable=W0621
     root = str(testdir)
     linter.write(root)
 

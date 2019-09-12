@@ -13,7 +13,7 @@ from protocol.messages import parse_msgid
 def test_messages_parse_msgid():
     msgid = 'I0300'
 
-    typ, index = parse_msgid(msgid)
+    typ, number = parse_msgid(msgid)
 
     assert typ == 'I', typ
-    assert index == 300, index
+    assert number == 300, number
