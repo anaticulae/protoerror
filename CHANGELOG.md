@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add method to create `Solver` from list of `Solution` (d006e4694226)
+* add method to create Location from via given parameter (ea5ca06bd656)
+* make Location hash able (0688840f810f)
+
+### Documentation
+
+* add todo list to archive further library improvements (f63dc65cc3b2)
+
 ## v0.2.5
 
 ## v0.2.4
