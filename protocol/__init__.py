@@ -6,6 +6,16 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+"""The `protocol` library supports logging errors and giving advices how to
+solve this errors.
+
+# TODO: Add message definition, see checker
+# TODO: Add from-ctors to Location
+# TODO: Add multiple advice
+# TODO: Add selective advice which are platform dependent, for examle give
+# different advice when using MSWord instead of Latex.
+# TODO: Add Solver out of dictory
+"""
 import os
 
 from .checker import Checker
