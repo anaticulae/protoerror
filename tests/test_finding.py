@@ -9,29 +9,29 @@
 
 import pytest
 
-from protocol import Location
+import protocol
 
 
 @pytest.mark.parametrize('location, expected', [
-    ('p10', Location(page=10, shortcut='p')),
-    ('w100p13', Location(page=13, shortcut='w', value=100)),
-    ('sec3p5', Location(page=5, shortcut='sec', value=3)),
+    ('p10', protocol.Location(page=10, shortcut='p')),
+    ('w100p13', protocol.Location(page=13, shortcut='w', value=100)),
+    ('sec3p5', protocol.Location(page=5, shortcut='sec', value=3)),
 ])
 def test_finding_location_fromstr(location, expected):
-    created = Location.fromstr(location)
+    created = protocol.Location.fromstr(location)
     assert created == expected
 
 
 @pytest.mark.parametrize('location', [
-    Location(page=10, shortcut='p'),
-    Location(page=13, shortcut='w', value=100),
-    Location(page=5, shortcut='sec', value=3),
+    protocol.Location(page=10, shortcut='p'),
+    protocol.Location(page=13, shortcut='w', value=100),
+    protocol.Location(page=5, shortcut='sec', value=3),
 ])
 def test_finding_location_fromstr_raw(location):
     raw = location.raw()
     assert raw
 
-    parsed = Location.fromstr(raw)
+    parsed = protocol.Location.fromstr(raw)
     assert parsed == location, str(parsed)
 
 
@@ -40,5 +40,5 @@ def test_finding_location_fromstr_raw(location):
     '',
 ])
 def test_finding_location_fromstr_raw_none(raw):
-    constructed = Location.fromstr(raw)
+    constructed = protocol.Location.fromstr(raw)
     assert constructed is None, constructed
