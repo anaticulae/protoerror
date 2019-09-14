@@ -56,6 +56,17 @@ class Location:
         result = cls(page=page, shortcut=shortcut, value=value)
         return result
 
+    @classmethod
+    def frompage(cls, page: int):
+        assert page >= 0, str(page)
+        return cls.fromstr(f'p{page}')
+
+    @classmethod
+    def fromchapter(cls, chapter: int, page: int):
+        assert page >= 0, str(page)
+        assert chapter >= 0, str(chapter)
+        return cls.fromstr(f'c{chapter}p{page}')
+
 
 @dataclasses.dataclass(unsafe_hash=True)
 class Finding:  # pylint:disable=R0903

@@ -10,7 +10,7 @@
 solve this errors.
 
 # TODO: Add message definition, see checker
-# TODO: Add from-ctors to Location
+# TODO: Add from-ctors to Location [2/8]
 # TODO: Add multiple advice
 # TODO: Add selective advice which are platform dependent, for examle give
 # different advice when using MSWord instead of Latex.

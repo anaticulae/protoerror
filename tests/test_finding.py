@@ -48,3 +48,13 @@ def test_finding_hashing_location():
     location = protocol.Location.fromstr('p10')
     hashed = hash(location)
     assert hashed
+
+
+def test_finding_location_from_ctor():
+    page12 = protocol.Location(page=12, shortcut='p')
+    page12ctor = protocol.Location.frompage(12)
+    assert page12ctor == page12, str(page12ctor)
+
+    chapter4page20 = protocol.Location(page=20, shortcut='c', value=4)
+    chapter4page20ctor = protocol.Location.fromchapter(chapter=4, page=20)
+    assert chapter4page20ctor == chapter4page20, str(chapter4page20ctor)
