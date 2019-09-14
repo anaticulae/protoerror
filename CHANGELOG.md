@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.2
+
+### Fix
+
+* overwrite linter result files instead of returning error (06aa9b4b0515)
+
 ## v0.2.1
 
 ### Feature
