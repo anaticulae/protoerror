@@ -94,10 +94,10 @@ class Linter:
         dumped_developer = yaml.dump(developer)
 
         user_outpath = os.path.join(path, USER_FILE)
-        utila.file_create(user_outpath, dumped_user)
+        utila.file_replace(user_outpath, dumped_user)
 
         developer_outpath = os.path.join(path, DEVELOPER_FILE)
-        utila.file_create(developer_outpath, dumped_developer)
+        utila.file_replace(developer_outpath, dumped_developer)
 
     def result(self, unique: bool = False):
         """Return current linter result of `user`, `developer`"""
