@@ -8,6 +8,7 @@
 # =============================================================================
 
 from protocol import Solver
+from protocol.solution import SOLUTION
 # pylint:disable=W0611
 from tests import solver
 
@@ -17,3 +18,10 @@ def test_solution_solver(solver: Solver):  # pylint:disable=W0621
 
     solution = solver.solution(msgid)
     assert solution
+
+
+def test_solution_create_solver_fromlist():
+    solution = [item for item in SOLUTION.values()]
+
+    result = Solver.fromlist(solution)
+    assert len(result.solutions) == len(solution), str(result.solution)

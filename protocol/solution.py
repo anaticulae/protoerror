@@ -74,6 +74,16 @@ class Solver:
             return self.solutions[msgid]
         return None
 
+    @classmethod
+    def fromlist(cls, solutions: list):
+        assert isinstance(solutions, list), str(solutions)
+
+        result = Solver()
+        for item in solutions:
+            result.add_solution(item.msgid, item)
+
+        return result
+
 
 SOLUTION = [
     Text(
