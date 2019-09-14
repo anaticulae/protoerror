@@ -42,3 +42,9 @@ def test_finding_location_fromstr_raw(location):
 def test_finding_location_fromstr_raw_none(raw):
     constructed = protocol.Location.fromstr(raw)
     assert constructed is None, constructed
+
+
+def test_finding_hashing_location():
+    location = protocol.Location.fromstr('p10')
+    hashed = hash(location)
+    assert hashed

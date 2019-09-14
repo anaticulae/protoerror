@@ -14,7 +14,7 @@ import re
 from protocol.solution import Solution
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(unsafe_hash=True)
 class Location:
     """The location defines the object on which the Finding belongs to.
 
