@@ -12,9 +12,10 @@ solve this errors.
 # TODO: Add message definition, see checker
 # TODO: Add from-ctors to Location [2/8]
 # TODO: Add multiple advice
-# TODO: Add selective advice which are platform dependent, for examle give
+# TODO: Add selective advice which are platform dependent, for example give
 # different advice when using MSWord instead of Latex.
-# TODO: Add Solver out of dictory
+# TODO: Add Solver out of dictionary
+# TODO: Add method to load linter results
 """
 import os
 
