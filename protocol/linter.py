@@ -97,24 +97,12 @@ class Linter:
             developer = [item for item in self.findings if not item.active]
 
         if unique:
-            user = make_unique(user)
+            user = utila.make_unique(user)
         return user, developer
 
     def register_checker(self, checker):
         """Required method to auto register this checker."""
         self.checkers.append(checker)
-
-
-def make_unique(items):
-    """Stable remove duplications of container `items`."""
-    written = set()
-    result = []
-    for item in items:
-        if item in written:
-            continue
-        written.add(item)
-        result.append(item)
-    return result
 
 
 def dump_result(

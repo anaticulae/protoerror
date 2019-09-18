@@ -10,6 +10,7 @@
 import os
 
 import pytest
+import utila
 
 import protocol
 # pylint:disable=W0611
@@ -42,7 +43,7 @@ def test_linter_write_unique(linter: protocol.Linter, testdir):  # pylint:disabl
     for _ in range(10):
         linter.add_finding(location=None, msgid='F0005', confidence=0.5)
 
-    unique_findings = protocol.linter.make_unique(linter.findings)
+    unique_findings = utila.make_unique(linter.findings)
     after = len(unique_findings)
 
     # one element was added by range
