@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* add method to create solver from dict (e873a3fa8b25)
+* add method to dump and load linter results (d0f8a388cb94)
+
+### Documentation
+
+* extend todo list (326dec513bee)
+
 ## v0.3.0
 
 ### Feature
