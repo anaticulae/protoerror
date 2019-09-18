@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import pytest
 
 import protocol
@@ -47,3 +49,14 @@ def test_linter_write_unique(linter: protocol.Linter, testdir):  # pylint:disabl
     assert after - before == 1, str(unique_findings)
 
     linter.write(root, unique=True)
+
+
+def test_linter_linter_load_result(linter: protocol.Linter, testdir):  # pylint:disable=W0621
+    root = str(testdir)
+    linter.write(root, unique=True)
+
+    _, developer = linter.result(unique=True)
+    assert developer  # ensure that developer contain some elements
+
+    loaded = protocol.load_result(os.path.join(root, protocol.DEVELOPER_FILE))
+    assert loaded == developer

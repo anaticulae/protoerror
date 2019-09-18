@@ -88,16 +88,7 @@ class Linter:
         assert os.path.isdir(path), str(path)
 
         # create result
-        user, developer = self.result(unique=unique)
-
-        dumped_user = yaml.dump(user)
-        dumped_developer = yaml.dump(developer)
-
-        user_outpath = os.path.join(path, USER_FILE)
-        utila.file_replace(user_outpath, dumped_user)
-
-        developer_outpath = os.path.join(path, DEVELOPER_FILE)
-        utila.file_replace(developer_outpath, dumped_developer)
+        dump_result(self.result, path, unique=unique)
 
     def result(self, unique: bool = False):
         """Return current linter result of `user`, `developer`"""
@@ -124,6 +115,53 @@ def make_unique(items):
         written.add(item)
         result.append(item)
     return result
+
+
+def dump_result(
+        result: typing.List[Finding],
+        path: str,
+        *,
+        unique: bool = False,
+):
+    """Write linter result to `user` and `developer`-file.
+
+    Args:
+        result(list): list of `Finding`s
+        path(str): directory to write both files unique(bool): if unique
+                   no duplicated user-messages are written
+        unique(bool): remove duplication out of result
+    """
+    assert os.path.isdir(path), str(path)
+
+    # create result
+    user, developer = result(unique=unique)
+
+    dumped_user = yaml.dump(user)
+    dumped_developer = yaml.dump(developer)
+
+    user_outpath = os.path.join(path, USER_FILE)
+    utila.file_replace(user_outpath, dumped_user)
+
+    developer_outpath = os.path.join(path, DEVELOPER_FILE)
+    utila.file_replace(developer_outpath, dumped_developer)
+
+
+def load_result(path: str) -> typing.List[Finding]:
+    """Load list of `Finding`s which was produced by linter
+
+    Args:
+        path(str): path to file with lists of `Finding`
+    Returns:
+        list of Finding
+    Raises:
+        Assertion: if file is corrupt
+    """
+    raw = utila.from_raw_or_path(path)
+    loaded = yaml.load(raw, yaml.FullLoader)
+
+    assert isinstance(loaded, list)
+    assert all([isinstance(item, Finding) for item in loaded])
+    return loaded
 
 
 # def register(linter):

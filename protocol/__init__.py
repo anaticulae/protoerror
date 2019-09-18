@@ -15,7 +15,6 @@ solve this errors.
 # TODO: Add selective advice which are platform dependent, for example give
 # different advice when using MSWord instead of Latex.
 # TODO: Add Solver out of dictionary
-# TODO: Add method to load linter results
 """
 import os
 
@@ -26,7 +25,11 @@ from .config import load
 from .config import save
 from .finding import Finding
 from .finding import Location
+from .linter import DEVELOPER_FILE
+from .linter import USER_FILE
 from .linter import Linter
+from .linter import dump_result
+from .linter import load_result
 from .solution import ProblemStatus
 from .solution import Solution
 from .solution import Solver
