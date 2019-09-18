@@ -25,3 +25,8 @@ def test_solution_create_solver_fromlist():
 
     result = Solver.fromlist(solution)
     assert len(result.solutions) == len(solution), str(result.solution)
+
+
+def test_solution_create_solver_fromdict():
+    result = Solver.fromdict(SOLUTION)
+    assert len(result.solutions) == len(SOLUTION), str(result.solution)

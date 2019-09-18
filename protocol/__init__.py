@@ -14,7 +14,6 @@ solve this errors.
 # TODO: Add multiple advice
 # TODO: Add selective advice which are platform dependent, for example give
 # different advice when using MSWord instead of Latex.
-# TODO: Add Solver out of dictionary
 """
 import os
 

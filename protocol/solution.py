@@ -78,10 +78,18 @@ class Solver:
     def fromlist(cls, solutions: list):
         assert isinstance(solutions, list), str(solutions)
 
-        result = Solver()
+        result = cls()
         for item in solutions:
             result.add_solution(item.msgid, item)
 
+        return result
+
+    @classmethod
+    def fromdict(cls, solutions: dict):
+        assert isinstance(solutions, dict), str(solutions)
+        result = cls()
+        for msgid, solution in solutions.items():
+            result.add_solution(msgid, solution)
         return result
 
 
