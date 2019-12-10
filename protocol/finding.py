@@ -25,6 +25,7 @@ class Location:
         paragraph           pa5    p10
         sentence            s10    p10
         word                w100   p13
+        char                cr137  p4
         whitespace          ws17   p3
         image               i1     p1
         oneline             ol5    p13
@@ -58,12 +59,12 @@ class Location:
         return result
 
     @classmethod
-    def frompage(cls, page: int):
+    def from_page(cls, page: int):
         assert page >= 0, str(page)
         return cls.fromstr(f'p{page}')
 
     @classmethod
-    def fromchapter(cls, chapter: int, page: int):
+    def from_chapter(cls, chapter: int, page: int):
         assert page >= 0, str(page)
         assert chapter >= 0, str(chapter)
         return cls.fromstr(f'c{chapter}p{page}')
