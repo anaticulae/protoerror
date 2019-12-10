@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.8
+
+### Feature
+
+* add method to determine oneline location (65b3ce9b577c)
+
 ## v0.4.7
 
 ## v0.4.6
