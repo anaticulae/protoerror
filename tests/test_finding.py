@@ -58,3 +58,7 @@ def test_finding_location_from_ctor():
     chapter4page20 = protocol.Location(page=20, shortcut='c', value=4)
     chapter4page20ctor = protocol.Location.fromchapter(chapter=4, page=20)
     assert chapter4page20ctor == chapter4page20, str(chapter4page20ctor)
+
+    oneline1page5 = protocol.Location(page=5, shortcut='ol', value=1)
+    oneline1page5ctor = protocol.Location.from_oneline(line=1, page=5)
+    assert oneline1page5ctor == oneline1page5, str(oneline1page5ctor)

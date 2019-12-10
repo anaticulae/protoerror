@@ -27,6 +27,7 @@ class Location:
         word                w100   p13
         whitespace          ws17   p3
         image               i1     p1
+        oneline             ol5    p13
     """
     page: int = -1
     shortcut: str = None
@@ -66,6 +67,12 @@ class Location:
         assert page >= 0, str(page)
         assert chapter >= 0, str(chapter)
         return cls.fromstr(f'c{chapter}p{page}')
+
+    @classmethod
+    def from_oneline(cls, line: int, page: int):
+        assert page >= 0, str(page)
+        assert line >= 0, str(line)
+        return cls.fromstr(f'ol{line}p{page}')
 
 
 @dataclasses.dataclass(unsafe_hash=True)
