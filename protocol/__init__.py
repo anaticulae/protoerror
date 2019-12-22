@@ -23,6 +23,7 @@ from .config import MessageStatus
 from .config import load
 from .config import save
 from .finding import Finding
+from .finding import Findings
 from .finding import Location
 from .linter import DEVELOPER_FILE
 from .linter import USER_FILE

@@ -28,6 +28,7 @@ import yaml
 
 from protocol.config import MessageStatus
 from protocol.finding import Finding
+from protocol.finding import Findings
 from protocol.finding import Location
 from protocol.solution import Solver
 
@@ -106,7 +107,7 @@ class Linter:
 
 
 def dump_result(
-        result: typing.List[Finding],
+        result: Findings,
         path: str,
         *,
         unique: bool = False,
@@ -134,7 +135,7 @@ def dump_result(
     utila.file_replace(developer_outpath, dumped_developer)
 
 
-def load_result(path: str) -> typing.List[Finding]:
+def load_result(path: str) -> Findings:
     """Load list of `Finding`s which was produced by linter
 
     Args:

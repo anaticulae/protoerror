@@ -10,6 +10,7 @@
 import contextlib
 import dataclasses
 import re
+import typing
 
 from protocol.solution import Solution
 
@@ -89,3 +90,6 @@ class Finding:  # pylint:disable=R0903
     solution: Solution = None
     confidence: float = None
     active: bool = False
+
+
+Findings = typing.List[Finding]

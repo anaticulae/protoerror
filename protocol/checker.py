@@ -36,7 +36,7 @@ Extracted data of different sources -> Checker[Judegement] -> Problem
 
 import typing
 
-from protocol.finding import Finding
+from protocol.finding import Findings
 from protocol.finding import Location
 
 
@@ -59,7 +59,7 @@ class Checker:
     def open(self):
         pass
 
-    def judge(self, *args) -> typing.List[Finding]:
+    def judge(self, *args) -> Findings:
         pass
 
     def close(self):
