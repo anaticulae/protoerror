@@ -93,3 +93,21 @@ class Finding:  # pylint:disable=R0903
 
 
 Findings = typing.List[Finding]
+
+
+@dataclasses.dataclass
+class PageFinding:
+    page: int = None
+    content: Findings = dataclasses.field(default_factory=list)
+
+    def __len__(self):
+        return len(self.content)
+
+    def __getitem__(self, index):
+        return self.content[index]  # pylint:disable=E1136
+
+    def append(self, item):
+        self.content.append(item)  # pylint:disable=E1101
+
+
+PageFindings = typing.List[PageFinding]

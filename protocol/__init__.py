@@ -25,6 +25,9 @@ from .config import save
 from .finding import Finding
 from .finding import Findings
 from .finding import Location
+from .finding import PageFinding
+from .finding import PageFindings
+from .group import bylocation
 from .linter import DEVELOPER_FILE
 from .linter import USER_FILE
 from .linter import Linter
