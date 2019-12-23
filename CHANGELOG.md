@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* add method to group findings by page location (45f55a1af656)
+* add `Findings` to replace list of Finding (f8b92f69677f)
+
 ## v0.4.8
 
 ### Feature
