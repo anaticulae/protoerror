@@ -9,11 +9,6 @@
 """The `protocol` library supports logging errors and giving advices how to
 solve this errors.
 
-# TODO: Add message definition, see checker
-# TODO: Add from-ctors to Location [2/8]
-# TODO: Add multiple advice
-# TODO: Add selective advice which are platform dependent, for example give
-# different advice when using MSWord instead of Latex.
 """
 import os
 

@@ -1,0 +1,21 @@
+.. _0_6_0:
+
+RP 0.6.0
+=========
+
+location
+--------
+
+* [ ] create more location constructor for words etc.
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Total coverage: 97.77%
+* Your code has been rated at 9.90/10
+
+after
+~~~~~
