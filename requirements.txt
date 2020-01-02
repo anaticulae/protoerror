@@ -1,4 +1,4 @@
 PyYAML==5.1
 
 # internal requirements
-utila==1.10.0
+utila==1.11.3
