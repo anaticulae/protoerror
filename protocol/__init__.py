@@ -34,6 +34,6 @@ from .solution import Solver
 from .solution import Text
 from .solution import Web
 
-__version__ = '0.5.3'
+__version__ = '0.5.4'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
