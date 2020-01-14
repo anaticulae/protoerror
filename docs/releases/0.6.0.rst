@@ -8,6 +8,15 @@ location
 
 * [ ] create more location constructor for words etc.
 
+* [ ] add location p l t ~p10:12*l8:5*t5:10~ with ranged syntax
+
+template
+--------
+
+* [ ] support to use {% variables %} in solution headline and content
+
+* [ ] add link as documentation for solution
+
 code quality
 ------------
 
