@@ -10,8 +10,11 @@
 was told by checker.
 
 Possible solution:
- - Hint as text block
- - Homepage
+ * Hint as text block
+ * Homepage
+ * Link to internal documentation
+
+.. code-block :: none
 
     Writen over border
     ------------------
@@ -58,7 +61,19 @@ class Text(Solution):
 
 @dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
 class Web(Text):
-    hyperlink: str = None
+
+    hyperlinks: list = dataclasses.field(default=list)
+    """List of hyperlinks to underline the description."""
+
+
+@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
+class Doctails(Text):
+    """Describes link to internal documentation database.
+
+    Example:
+     * `/writing/manuskript/zitate`
+     * `/writing/user`
+    """
 
 
 class Solver:
