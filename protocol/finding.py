@@ -81,6 +81,63 @@ class Location:
 
 
 @dataclasses.dataclass(unsafe_hash=True)
+class RangedLocation:
+    """RangedLocation defines a mark which can include more than one
+    page, line and token definition.
+
+    Examples:
+
+    - ('p10_12~l6_9~t5_19', protocol.RangedLocation(10, 12, 6, 9, 5, 19))
+    - ('p10_12~l6~t5', protocol.RangedLocation(10, 12, line=6, token=5))
+    - ('p10~l6', protocol.RangedLocation(page=10, line=6))
+    - ('p5', protocol.RangedLocation(page=5))
+    - ('p5~t17', protocol.RangedLocation(page=5, token=17))
+    """
+    page: int = None
+    page_end: int = None
+    line: int = None
+    line_end: int = None
+    token: int = None
+    token_end: int = None
+
+    PATTERN = re.compile(r'p(?P<page>\d+)(_(?P<page_end>\d+))?[~]?'
+                         r'(l(?P<line>\d+)(_(?P<line_end>\d+))?[~]?)?'
+                         r'(t(?P<token>\d+)(_(?P<token_end>\d+))?)?')
+
+    @classmethod
+    def fromstr(cls, raw: str):
+        matched = re.match(RangedLocation.PATTERN, raw)
+        if not matched:
+            return None
+        result = RangedLocation()
+        for item in [
+                'page',
+                'page_end',
+                'line',
+                'line_end',
+                'token',
+                'token_end',
+        ]:
+            with contextlib.suppress(TypeError):
+                setattr(result, item, int(matched[item]))
+        return result
+
+    def raw(self) -> str:
+        result = f'p{self.page}'
+        if self.page_end is not None:
+            result += f'_{self.page_end}'
+        if self.line is not None:
+            result += f'~l{self.line}'
+        if self.line_end is not None:
+            result += f'_{self.line_end}'
+        if self.token is not None:
+            result += f'~t{self.token}'
+        if self.token_end is not None:
+            result += f'_{self.token_end}'
+        return result
+
+
+@dataclasses.dataclass(unsafe_hash=True)
 class Finding:  # pylint:disable=R0903
     """Non active findings are not presentend to the user cause of lag
     of quality. There purpose is to improve the platform. A second point

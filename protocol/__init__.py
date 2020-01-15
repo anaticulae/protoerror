@@ -22,6 +22,7 @@ from .finding import Findings
 from .finding import Location
 from .finding import PageFinding
 from .finding import PageFindings
+from .finding import RangedLocation
 from .group import bylocation
 from .linter import DEVELOPER_FILE
 from .linter import USER_FILE

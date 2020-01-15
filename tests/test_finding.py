@@ -62,3 +62,27 @@ def test_finding_location_from_ctor():
     oneline1page5 = protocol.Location(page=5, shortcut='ol', value=1)
     oneline1page5ctor = protocol.Location.from_oneline(line=1, page=5)
     assert oneline1page5ctor == oneline1page5, str(oneline1page5ctor)
+
+
+@pytest.mark.parametrize('location, expected', [
+    ('p10_12~l6_9~t5_19', protocol.RangedLocation(10, 12, 6, 9, 5, 19)),
+    ('p10_12~l6~t5', protocol.RangedLocation(10, 12, line=6, token=5)),
+    ('p10~l6', protocol.RangedLocation(page=10, line=6)),
+    ('p5', protocol.RangedLocation(page=5)),
+    ('p5~t17', protocol.RangedLocation(page=5, token=17)),
+])
+def test_finding_rangedlocation_fromstr(location, expected):
+    location = protocol.RangedLocation.fromstr(location)
+    assert location == expected
+
+
+@pytest.mark.parametrize('location', [
+    'p10_12~l6_9~t5_19',
+    'p10_12~l6~t5',
+    'p10~l6',
+    'p5',
+])
+def test_finding_rangedlocation_str_obj_str(location):
+    parsed = protocol.RangedLocation.fromstr(location)
+    tostring = parsed.raw()
+    assert tostring == location
