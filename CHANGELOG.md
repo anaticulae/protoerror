@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* add RangedLocation to describe ranged locations (d36e1962f199)
+* add internal documentation link (70b5859467e2)
+* add template mechanism to create different linter solution (7d71ea7d96cc)
+
+### Documentation
+
+* fix and extend interface documentation (4d061669eaec)
+* use general documentation structure (09cd53cac03a)
+* fix documentation (9e24c1b65f0f)
+
 ## v0.5.4
 
 ## v0.5.3
