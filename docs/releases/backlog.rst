@@ -7,3 +7,4 @@ backlog
 * Add multiple advice
 * Add selective advice which are platform dependent, for example give
   different advice when using MSWord instead of Latex.
+* create more location constructor for words etc.
