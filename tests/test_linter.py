@@ -15,6 +15,7 @@ import utila
 import protocol
 # pylint:disable=W0611
 from tests import solver
+from tests import template_solver
 
 
 @pytest.fixture
@@ -61,3 +62,30 @@ def test_linter_linter_load_result(linter: protocol.Linter, testdir):  # pylint:
 
     loaded = protocol.load_result(os.path.join(root, protocol.DEVELOPER_FILE))
     assert loaded == developer
+
+
+def test_linter_template_solution(template_solver):  # pylint:disable=W0621
+    result = protocol.Linter(solver=template_solver)
+    result.add_finding(
+        location=None,
+        msgid='1337',
+        confidence=1.0,
+        number=42,
+        text='Hello',
+        double='half')
+    output = result.result()
+    expected = ([], [
+        protocol.Finding(
+            number=0,
+            location=None,
+            msgid='1337',
+            solution=protocol.Text(
+                number=10,
+                msgid='1337',
+                status=protocol.ProblemStatus.OPEN,
+                title='Solution 42 is open.',
+                description='This is just a Hello half.'),
+            confidence=1.0,
+            active=False)
+    ])
+    assert output == expected

@@ -54,9 +54,12 @@ class Linter:
             location: Location = None,
             msgid: str = None,
             confidence: float = None,
+            **kwargs,
     ):
         # Determine a possible solution
-        solution = self.solver.solution(msgid) if self.solver else None
+        solution = None
+        if self.solver:
+            solution = self.solver.solution(msgid=msgid, **kwargs)
         active = self.is_active(msgid, confidence)
 
         with self.lock:

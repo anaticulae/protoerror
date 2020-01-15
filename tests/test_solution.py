@@ -7,15 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+from protocol import ProblemStatus
 from protocol import Solver
+from protocol import Text
 from protocol.solution import SOLUTION
 # pylint:disable=W0611
 from tests import solver
+from tests import template_solver
 
 
 def test_solution_solver(solver: Solver):  # pylint:disable=W0621
     msgid = 'F0001'
-
     solution = solver.solution(msgid)
     assert solution
 
@@ -30,3 +32,21 @@ def test_solution_create_solver_fromlist():
 def test_solution_create_solver_fromdict():
     result = Solver.fromdict(SOLUTION)
     assert len(result.solutions) == len(SOLUTION), str(result.solution)
+
+
+def test_solution_replace_template(template_solver):  # pylint:disable=W0621
+    result = template_solver.solution(
+        '1337',
+        number=30,
+        text='"template replacement"',
+        double='Here comes the Newline\n\nbeep.',
+    )
+    expected = Text(
+        number=10,
+        msgid='1337',
+        status=ProblemStatus.OPEN,
+        title='Solution 30 is open.',
+        description=('This is just a "template replacement" '
+                     'Here comes the Newline\n\nbeep..'),
+    )
+    assert result == expected

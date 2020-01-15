@@ -13,7 +13,7 @@ location
 template
 --------
 
-* [ ] support to use {% variables %} in solution headline and content
+* [x] support to use {% variables %} in solution headline and content
 
 * [ ] add link as documentation for solution
 

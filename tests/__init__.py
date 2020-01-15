@@ -9,6 +9,7 @@
 
 import pytest
 
+from protocol import Text
 from protocol.solution import SOLUTION
 from protocol.solution import Solver
 
@@ -18,4 +19,17 @@ def solver() -> Solver:
     result = Solver()
     for key, value in SOLUTION.items():
         result.add_solution(key, value)
+    return result
+
+
+@pytest.fixture
+def template_solver() -> Solver:
+    result = Solver()
+    result.append(
+        Text(
+            number=10,
+            msgid='1337',
+            title='Solution {%number%} is open.',
+            description='This is just a {%text%} {%double%}.',
+        ))
     return result

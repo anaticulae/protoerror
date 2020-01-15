@@ -18,7 +18,7 @@ Possible solution:
     id:int
     msgid/problem:E0007
     title: Text element hits the autodetected border
-    describtion:
+    description:
     solution:open,hide,disagree,solved
 
     solution:
@@ -30,6 +30,7 @@ Possible solution:
 Enable printing solution list, does we need this?
 """
 import contextlib
+import copy
 import dataclasses
 import enum
 
@@ -69,10 +70,22 @@ class Solver:
         assert msgid, solution
         self.solutions[msgid] = solution
 
-    def solution(self, msgid: str) -> Solution:
-        with contextlib.suppress(KeyError):
-            return self.solutions[msgid]
-        return None
+    def append(self, item: Solution):
+        self.solutions[item.msgid] = item
+
+    def solution(self, msgid: str, **kwargs) -> Solution:
+        try:
+            result = copy.deepcopy(self.solutions[msgid])
+        except KeyError:
+            return None
+        for pattern, value in kwargs.items():
+            value = str(value)
+            pattern = ('{%' f'{pattern}' '%}')
+            with contextlib.suppress(AttributeError):
+                result.title = result.title.replace(pattern, value)
+            with contextlib.suppress(AttributeError):
+                result.description = result.description.replace(pattern, value)
+        return result
 
     @classmethod
     def fromlist(cls, solutions: list):
