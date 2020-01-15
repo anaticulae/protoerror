@@ -19,7 +19,10 @@ from protocol.solution import Solution
 class Location:
     """The location defines the object on which the Finding belongs to.
 
-    Examples for location:
+    .. code-block :: none
+
+        Examples for location:
+
         page                p10
         chapter             c2     p10
         section             sec3   p5
@@ -79,8 +82,8 @@ class Location:
 
 @dataclasses.dataclass(unsafe_hash=True)
 class Finding:  # pylint:disable=R0903
-    """Non active findings are presentend to the use cause of lag of
-    quality. There purpose is to improve the platform. A second point
+    """Non active findings are not presentend to the user cause of lag
+    of quality. There purpose is to improve the platform. A second point
     for non presenting is a to low confidence of the result.
     """
 
