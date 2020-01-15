@@ -6,13 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""
-Configuration
+"""Configuration
+=============
 
-message:
-    id: str
-    active : bool
-    min_confidence: float
+.. code-block:: none
+
+    message:
+        id: str
+        active : bool
+        min_confidence: float
 
 example:
 

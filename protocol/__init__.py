@@ -6,10 +6,8 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
-"""The `protocol` library supports logging errors and giving advices how to
-solve this errors.
-
-"""
+"""The `protocol` library supports logging errors and giving advices how
+to solve this errors."""
 import os
 
 from .checker import Checker

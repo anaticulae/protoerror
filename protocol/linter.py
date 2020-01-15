@@ -6,9 +6,8 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""
-The `Linter` defines an interface to write and separate `Finding`s which
-are produced due the `Checker`s.
+"""The `Linter` defines an interface to write and separate `Finding`s
+which are produced due the `Checker`s.
 
 There are 2 types of Findings. The first finding type is to deliver
 information to the user. These are findings which are `active` and

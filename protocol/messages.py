@@ -40,6 +40,8 @@ MSG definition:
 
 """
 
+import typing
+
 MSGS = {
     'F0000': (
         'Fehler beim Lesen der PDF Datei.',
@@ -63,8 +65,8 @@ MSG_TYPES = {
 }
 
 
-def parse_msgid(msgid: str):
-    """Split `msgid` into `typ` and `number`
+def parse_msgid(msgid: str) -> typing.Tuple[str, int]:
+    """Split `msgid` into `typ` and `number`.
 
     Args:
         msgid(str): define type and number of used message

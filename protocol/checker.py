@@ -6,8 +6,11 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""
+"""Checker
+=======
+
 How does the Checker work
+-------------------------
 
 Extracted data of different sources -> Checker[Judegement] -> Problem
                                                         with possible solution
