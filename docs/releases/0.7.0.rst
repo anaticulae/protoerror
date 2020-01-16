@@ -3,6 +3,20 @@
 RP 0.7.0
 =========
 
+init
+----
+
+* [ ] add method linter_frompath to create linter from python file
+
+* [ ] add method create_linter(SOLUTION, MSG_STATUS)
+
+linter
+------
+
+* [ ] def create_solution(title: str, msgid: str, description: str):
+
+* [ ] add linter.dunp_result to convert linter result to yaml
+
 code quality
 ------------
 
