@@ -24,9 +24,11 @@ from .finding import RangedLocation
 from .group import bylocation
 from .linter import DEVELOPER_FILE
 from .linter import USER_FILE
+from .linter import DumpedLinterResult
 from .linter import Linter
 from .linter import dump_result
 from .linter import load_result
+from .linter import write_result
 from .solution import Doctails
 from .solution import ProblemStatus
 from .solution import Solution

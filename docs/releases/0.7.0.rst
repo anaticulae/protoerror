@@ -15,7 +15,7 @@ linter
 
 * [ ] def create_solution(title: str, msgid: str, description: str):
 
-* [ ] add linter.dunp_result to convert linter result to yaml
+* [x] add linter.dump_result to convert linter result to yaml
 
 code quality
 ------------

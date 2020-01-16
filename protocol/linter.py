@@ -18,6 +18,7 @@ improve the platform.
 This class is thread-safe.
 """
 import contextlib
+import dataclasses
 import os
 import threading
 import typing
@@ -33,6 +34,25 @@ from protocol.solution import Solver
 
 USER_FILE = 'user.lin'
 DEVELOPER_FILE = 'developer.lin'
+
+
+@dataclasses.dataclass
+class DumpedLinterResult:
+    user: str
+    developer: str
+
+    def __getitem__(self, index):
+        """Support tuple-like access.
+
+        Example:
+            user, developer = linter_result
+        """
+
+        if index == 0:
+            return self.user
+        if index == 1:
+            return self.developer
+        raise IndexError(f'index to high {index}')
 
 
 class Linter:
@@ -91,7 +111,7 @@ class Linter:
         assert os.path.isdir(path), str(path)
 
         # create result
-        dump_result(self.result, path, unique=unique)
+        write_result(self.result, path, unique=unique)
 
     def result(self, unique: bool = False):
         """Return current linter result of `user`, `developer`"""
@@ -110,6 +130,29 @@ class Linter:
 
 def dump_result(
         result: Findings,
+        *,
+        unique: bool = False,
+) -> DumpedLinterResult:
+    """Write linter result to `user` and `developer`-file.
+
+    Args:
+        result(list): list of `Finding`s
+        unique(bool): remove duplicated linter findings
+    Returns:
+        Result with dumped user ander developer result in yaml format.
+    """
+    # create result
+    user, developer = result(unique=unique)
+
+    dumped_user = yaml.dump(user)
+    dumped_developer = yaml.dump(developer)
+
+    result = DumpedLinterResult(user=dumped_user, developer=dumped_developer)
+    return result
+
+
+def write_result(
+        result: Findings,
         path: str,
         *,
         unique: bool = False,
@@ -124,11 +167,7 @@ def dump_result(
     """
     assert os.path.isdir(path), str(path)
 
-    # create result
-    user, developer = result(unique=unique)
-
-    dumped_user = yaml.dump(user)
-    dumped_developer = yaml.dump(developer)
+    dumped_user, dumped_developer = dump_result(result, unique=unique)
 
     user_outpath = os.path.join(path, USER_FILE)
     utila.file_replace(user_outpath, dumped_user)
