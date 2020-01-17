@@ -79,6 +79,18 @@ class Linter:
             confidence: float = 1.0,
             **kwargs,
     ):
+        """Add Finding to store linted result.
+
+        Args:
+            location: locate linting in document
+            msgid: use msgid to mark this problem and find a solution.
+            confidence: how confident this linting is in range
+                        lowest(0.0) to highest (1.0). Lower confident
+                        findings are not presented to the user to avoid
+                        bad quality lintings.
+            kwargs: use key words args to replace values in solution
+                    template.
+        """
         # Determine a possible solution
         solution = None
         if self.solver:
