@@ -27,6 +27,7 @@ from .linter import USER_FILE
 from .linter import DumpedLinterResult
 from .linter import Linter
 from .linter import dump_result
+from .linter import from_file
 from .linter import load_result
 from .linter import write_result
 from .solution import Doctails

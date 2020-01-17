@@ -6,7 +6,7 @@ RP 0.7.0
 init
 ----
 
-* [ ] add method linter_frompath to create linter from python file
+* [x] add method linter_frompath to create linter from python file
 
 * [ ] add method create_linter(SOLUTION, MSG_STATUS)
 

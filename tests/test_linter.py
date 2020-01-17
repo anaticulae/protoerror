@@ -89,3 +89,10 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
             active=True)
     ], [])
     assert output == expected
+
+
+def test_linter_from_file():
+    example = os.path.join(protocol.ROOT, 'tests/example/solver.py')
+    created = protocol.from_file(example)
+    assert created.solver is not None
+    assert created.active is not None

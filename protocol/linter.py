@@ -19,6 +19,7 @@ This class is thread-safe.
 """
 import contextlib
 import dataclasses
+import importlib
 import os
 import threading
 import typing
@@ -193,6 +194,30 @@ def load_result(path: str) -> Findings:
     assert isinstance(loaded, list)
     assert all([isinstance(item, Finding) for item in loaded])
     return loaded
+
+
+def from_file(path: str) -> Linter:
+    filename = os.path.basename(path)
+    spec = importlib.util.spec_from_file_location(
+        filename,
+        os.path.join(path),
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    try:
+        solution = module.SOLUTION
+    except AttributeError:
+        raise ValueError(f'could not create solver, no SOLUTION: {path}')
+    try:
+        status = module.STATUS
+    except AttributeError:
+        status = []
+        utila.debug(f'no `STATUS` provided in {path}')
+
+    solver = Solver.fromlist(solution)
+    result = Linter(solver, active=status)
+    return result
 
 
 # def register(linter):
