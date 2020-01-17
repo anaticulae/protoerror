@@ -28,9 +28,11 @@ import utila
 import yaml
 
 from protocol.config import MessageStatus
+from protocol.config import MessageStatuses
 from protocol.finding import Finding
 from protocol.finding import Findings
 from protocol.finding import Location
+from protocol.solution import Solutions
 from protocol.solution import Solver
 
 USER_FILE = 'user.lin'
@@ -214,9 +216,13 @@ def from_file(path: str) -> Linter:
     except AttributeError:
         status = []
         utila.debug(f'no `STATUS` provided in {path}')
+    result = from_solution(solution, status)
+    return result
 
-    solver = Solver.fromlist(solution)
-    result = Linter(solver, active=status)
+
+def from_solution(solutions: Solutions, statuses: MessageStatuses) -> Linter:
+    solver = Solver.fromlist(solutions)
+    result = Linter(solver, active=statuses)
     return result
 
 

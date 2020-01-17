@@ -8,7 +8,7 @@ init
 
 * [x] add method linter_frompath to create linter from python file
 
-* [ ] add method create_linter(SOLUTION, MSG_STATUS)
+* [x] add method create_linter(SOLUTION, MSG_STATUS)
 
 linter
 ------
