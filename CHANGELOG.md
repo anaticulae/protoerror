@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.7.0
+
+### Feature
+
+* use default value confident instead of new method (6072a29c4267)
+* add method to create linter from solution (888dd7009879)
+* add method to create linter from_file (bea7fe7e98fe)
+* extend public API (50bca3b16a6b)
+* set message active as default state (7fb46902043b)
+* specify dump and write of linter result (c246ebd21683)
+
+### Documentation
+
+* extend interface documentation (bce05effd646)
+
 ## v0.6.1
 
 ## v0.6.0
