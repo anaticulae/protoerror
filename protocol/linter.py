@@ -76,7 +76,7 @@ class Linter:
             self,
             location: Location = None,
             msgid: str = None,
-            confidence: float = None,
+            confidence: float = 1.0,
             **kwargs,
     ):
         # Determine a possible solution
