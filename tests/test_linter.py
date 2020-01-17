@@ -96,3 +96,19 @@ def test_linter_from_file():
     created = protocol.from_file(example)
     assert created.solver is not None
     assert created.active is not None
+
+
+def test_linter_from_file_invalid():
+    with pytest.raises(ValueError):
+        protocol.from_file(__file__)
+
+
+def test_linter_from_file_no_status(capsys):
+    example = os.path.join(protocol.ROOT, 'tests/example/solver_nostatus.py')
+    # TODO: REPLACE AFTER UPGRADING UTILA
+    utila.level_setup(utila.Level.DEBUG)
+    created = protocol.from_file(example)
+    assert created.solver is not None
+
+    stdout = capsys.readouterr().out
+    assert 'no `STATUS` provided' in stdout

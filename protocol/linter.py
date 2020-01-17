@@ -226,8 +226,8 @@ def from_file(path: str) -> Linter:
     try:
         status = module.STATUS
     except AttributeError:
-        status = []
         utila.debug(f'no `STATUS` provided in {path}')
+        status = []
     result = from_solution(solution, status)
     return result
 
