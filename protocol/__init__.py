@@ -32,6 +32,7 @@ from .linter import write_result
 from .solution import Doctails
 from .solution import ProblemStatus
 from .solution import Solution
+from .solution import Solutions
 from .solution import Solver
 from .solution import Text
 from .solution import Web

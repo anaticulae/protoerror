@@ -36,6 +36,7 @@ import contextlib
 import copy
 import dataclasses
 import enum
+import typing
 
 
 class ProblemStatus(enum.Enum):
@@ -51,6 +52,9 @@ class Solution:
     number: int = dataclasses.field(compare=False, default=-1)
     msgid: str = None
     status: ProblemStatus = ProblemStatus.OPEN
+
+
+Solutions = typing.List[Solution]
 
 
 @dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
