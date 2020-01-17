@@ -56,6 +56,7 @@ class DumpedLinterResult:
 
 
 class Linter:
+    """Hint: Messages are activate in default."""
 
     def __init__(
             self,
@@ -63,7 +64,7 @@ class Linter:
             active: typing.List[MessageStatus] = None,
     ):
         self.solver = solver
-        self.active = {item.msgid: item for item in active} if active else None
+        self.active = {item.msgid: item for item in active} if active else {}
         self.checkers = []
         self.findings = []
         self.lock = threading.Lock()  # make class thread safe
@@ -94,8 +95,8 @@ class Linter:
 
     def is_active(self, msgid, confidence):
         if not self.active:
-            return False
-        active = False
+            return True
+        active = True
         with contextlib.suppress(KeyError):
             msgstatus = self.active[msgid]
             active = msgstatus.active and msgstatus.confidence >= confidence
