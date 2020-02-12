@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.7.1
+
+### Feature
+
+* add methods to filter Findings (6d74ed97d06f)
+
 ## v0.7.0
 
 ### Feature
