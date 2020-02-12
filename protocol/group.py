@@ -26,3 +26,28 @@ def bylocation(items: Findings) -> PageFindings:
         for page in sorted(pages.keys())
     ]
     return result
+
+
+def filter_mark(items: Findings, shortcut: str) -> Findings:
+    """Filter `Findings` by shortcut and sort them by `location.value`
+    afterwards.
+
+    Args:
+        items(protocol.Findings): list of findings
+        shortcut(str): shortcut of finding.location, w word, p page,
+                       ol oneline, etc.
+    Returns:
+        filtered, sorted list of `Findings`
+    """
+    assert all([item.location for item in items]), f'require location: {items}'
+    items = [item for item in items if item.location.shortcut == shortcut]
+    items = sorted(items, key=lambda x: x.location.value)
+    return items
+
+
+def words(items: Findings) -> Findings:
+    return filter_mark(items, shortcut='w')
+
+
+def lines(items: Findings) -> Findings:
+    return filter_mark(items, shortcut='ol')

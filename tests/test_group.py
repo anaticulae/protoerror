@@ -27,12 +27,12 @@ def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
         confidence=0.5,
     )
     result.add_finding(
-        location=protocol.Location(page=5),
+        location=protocol.Location(page=5, shortcut='w'),
         msgid='F1337',
         confidence=0.3,
     )
     result.add_finding(
-        location=protocol.Location(page=5),
+        location=protocol.Location(page=5, shortcut='ol'),
         msgid='F1338',
         confidence=0.3,
     )
@@ -51,3 +51,15 @@ def test_group_bylocation(linter_withlocation):  # pylint:disable=W0621
 
     pages = [item.page for item in result]
     assert pages == [0, 2, 5], str(pages)
+
+
+def test_group_filter_words(linter_withlocation):  # pylint:disable=W0621
+    todo = linter_withlocation.findings
+    words = protocol.words(todo)
+    assert len(words) == 1
+
+
+def test_group_filter_lines(linter_withlocation):  # pylint:disable=W0621
+    todo = linter_withlocation.findings
+    words = protocol.lines(todo)
+    assert len(words) == 1

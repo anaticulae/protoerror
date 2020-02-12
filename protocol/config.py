@@ -45,7 +45,9 @@ class MessageStatus:
     # The `confidence` of 0.0 means that the message always occurs.
     confidence: float = 1.0
 
+
 MessageStatuses = typing.List[MessageStatus]
+
 
 def load(path: str) -> typing.List[MessageStatus]:
     content = utila.from_raw_or_path(path, ftype='yaml')
