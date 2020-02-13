@@ -57,7 +57,7 @@ def test_linter_linter_load_result(linter: protocol.Linter, testdir):  # pylint:
     root = str(testdir)
     linter.write(root, unique=True)
 
-    user, _ = linter.result(unique=True)
+    user = linter.result(unique=True)
     assert user  # ensure that developer contain some elements
 
     loaded = protocol.load_result(os.path.join(root, protocol.USER_FILE))
@@ -74,7 +74,7 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
         text='Hello',
         double='half')
     output = result.result()
-    expected = ([
+    expected = [
         protocol.Finding(
             number=0,
             location=None,
@@ -87,7 +87,7 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
                 description='This is just a Hello half.'),
             confidence=1.0,
             active=True)
-    ], [])
+    ]
     assert output == expected
 
 

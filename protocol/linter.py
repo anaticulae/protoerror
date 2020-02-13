@@ -127,17 +127,16 @@ class Linter:
         assert os.path.isdir(path), str(path)
 
         # create result
-        write_result(self.result, path, unique=unique)
+        result = self.result(unique=unique)
+        write_result(result, path, unique=unique)
 
     def result(self, unique: bool = False):
         """Return current linter result of `user`, `developer`"""
         with self.lock:
-            user = [item for item in self.findings if item.active]
-            developer = [item for item in self.findings if not item.active]
-
+            result = self.findings[:]
         if unique:
-            user = utila.make_unique(user)
-        return user, developer
+            result = utila.make_unique(result)
+        return result
 
     def register_checker(self, checker):
         """Required method to auto register this checker."""
@@ -145,20 +144,23 @@ class Linter:
 
 
 def dump_result(
-        result: Findings,
+        items: Findings,
         *,
         unique: bool = False,
 ) -> DumpedLinterResult:
     """Write linter result to `user` and `developer`-file.
 
     Args:
-        result(list): list of `Finding`s
+        items(list): list of `Finding`s
         unique(bool): remove duplicated linter findings
     Returns:
         Result with dumped user ander developer result in yaml format.
     """
-    # create result
-    user, developer = result(unique=unique)
+    if unique:
+        items = utila.make_unique(items)
+
+    user = [item for item in items if item.active]
+    developer = [item for item in items if not item.active]
 
     dumped_user = yaml.dump(user)
     dumped_developer = yaml.dump(developer)

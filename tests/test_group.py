@@ -44,8 +44,8 @@ def test_group_bylocation_empty():
 
 
 def test_group_bylocation(linter_withlocation):  # pylint:disable=W0621
-    user, _ = linter_withlocation.result()
-    result = protocol.bylocation(user)
+    findings = linter_withlocation.result()
+    result = protocol.bylocation(findings)
     assert len(result) == 3
     assert len(result[2]) == 2
 
