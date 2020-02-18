@@ -39,7 +39,12 @@ import contextlib
 import copy
 import dataclasses
 import enum
+import re
 import typing
+
+import utila
+
+import protocol.utils
 
 
 class ProblemStatus(enum.Enum):
@@ -58,6 +63,7 @@ class Solution:
 
 
 Solutions = typing.List[Solution]
+Validators = typing.List[callable]
 
 
 @dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
@@ -126,6 +132,79 @@ class Solver:
         for msgid, solution in solutions.items():
             result.add_solution(msgid, solution)
         return result
+
+
+SOLUTION_PATTERN = r'^SOLUTION_(?P<type>[A-Z]{0,1})(?P<number>\d{2,5})$'
+
+
+def parse_solutions(module) -> Solutions:
+    if isinstance(module, str):
+        module = protocol.utils.module_fromname(module)
+    result = []
+    for name, value in vars(module).items():
+        matched = re.match(SOLUTION_PATTERN, name)
+        if not matched:
+            continue
+        typ, number = matched['type'], int(matched['number'])  # pylint:disable=W0612
+        try:
+            title, message = value.split('\n\n', maxsplit=1)
+        except ValueError:
+            utila.error(f'{name} requires newline between headline and content')
+            raise
+        item = protocol.Text(title=title, msgid=number, description=message)
+        result.append(item)
+    return result
+
+
+def parse_checkers(module) -> Validators:
+    """Parse def check_{number}_{name} methods out of a module."""
+    if isinstance(module, str):
+        module = protocol.utils.module_fromname(module)
+    result = []
+    for name, value in vars(module).items():
+        parsed = parse_msgid(name)
+        if not parsed:
+            continue
+        parsed = int(parsed)
+        value.msgid = parsed
+        if not hasattr(value, 'confidence'):
+            # enable on default
+            value.confidence = 1.0
+        result.append(value)
+    return result
+
+
+VALIDATOR_PATTERN = r'^check_(?P<number>\d{2,5})_'
+
+
+def parse_msgid(name) -> int:
+    """Parse the message id of a checker method.
+
+    Expected pattern:
+
+    .. code-block :: python
+
+        def check_1337_this_is_an_error_checker():
+            pass
+    """
+    matched = re.match(VALIDATOR_PATTERN, name)
+    if not matched:
+        return None
+    result = int(matched['number'])
+    return result
+
+
+def confidence(value=1.0):
+    """Decorator to define confidence a confidence level for a checker
+    method. The default confidence of a checker is 1.0, that means it is
+    enabled for the user. To pipe linting results as developer results,
+    a lower confidence must be defined."""
+
+    def decorating_function(user_function):
+        user_function.confidence = value
+        return user_function
+
+    return decorating_function
 
 
 SOLUTION = [

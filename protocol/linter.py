@@ -27,6 +27,7 @@ import typing
 import utila
 import yaml
 
+import protocol.utils
 from protocol.config import MessageStatus
 from protocol.config import MessageStatuses
 from protocol.finding import Finding
@@ -34,6 +35,8 @@ from protocol.finding import Findings
 from protocol.finding import Location
 from protocol.solution import Solutions
 from protocol.solution import Solver
+from protocol.solution import parse_checkers
+from protocol.solution import parse_msgid
 
 USER_FILE = 'user.lin'
 DEVELOPER_FILE = 'developer.lin'
@@ -66,6 +69,7 @@ class Linter:
             solver: Solver = None,
             active: typing.List[MessageStatus] = None,
     ):
+        # TODO: USE CHECKER DIRECTLY TO REDUCE AMOUT OF CODE
         self.solver = solver
         self.active = {item.msgid: item for item in active} if active else {}
         self.checkers = []
@@ -237,6 +241,29 @@ def from_file(path: str) -> Linter:
 def from_solution(solutions: Solutions, statuses: MessageStatuses) -> Linter:
     solver = Solver.fromlist(solutions)
     result = Linter(solver, active=statuses)
+    return result
+
+
+def from_module(name: str) -> Linter:
+    with contextlib.suppress(AttributeError):
+        # support module type, ensure that module name is str
+        name = name.__name__
+    module = protocol.utils.module_fromname(name)
+    solution = protocol.solution.parse_solutions(module)
+    status = parse_active(module)
+    result = protocol.from_solution(solution, status)
+    return result
+
+
+def parse_active(module):
+    checkers = parse_checkers(module)
+    result = [
+        protocol.MessageStatus(
+            msgid=parse_msgid(item.__name__),
+            active=item.confidence > 0.0,
+            confidence=item.confidence,
+        ) for item in checkers
+    ]
     return result
 
 

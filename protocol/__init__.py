@@ -15,6 +15,8 @@ to solve this errors.
 
 import os
 
+from protocol.utils import driver
+
 from .checker import Checker
 from .checker import check_messages
 from .config import MessageStatus
@@ -37,6 +39,7 @@ from .linter import DumpedLinterResult
 from .linter import Linter
 from .linter import dump_result
 from .linter import from_file
+from .linter import from_module
 from .linter import from_solution
 from .linter import load_result
 from .linter import write_result
@@ -46,7 +49,13 @@ from .solution import Solution
 from .solution import Solutions
 from .solution import Solver
 from .solution import Text
+from .solution import Validators
 from .solution import Web
+from .solution import confidence
+from .solution import parse_checkers
+from .solution import parse_msgid
+from .solution import parse_solutions
+from .utils import driver
 
 __version__ = '0.7.2'
 

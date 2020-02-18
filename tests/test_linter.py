@@ -13,6 +13,7 @@ import pytest
 import utila
 
 import protocol
+import tests.example.solver_with_error
 # pylint:disable=W0611
 from tests import solver
 from tests import template_solver
@@ -111,3 +112,14 @@ def test_linter_from_file_no_status(capsys):
 
     stdout = capsys.readouterr().out
     assert 'no `STATUS` provided' in stdout
+
+
+def test_linter_from_module():
+    linter_ = protocol.from_module('tests.example.solver_smart')
+    assert linter_
+    assert linter_.solver
+
+
+def test_linter_from_module_with_error():
+    with pytest.raises(ValueError):
+        protocol.from_module(tests.example.solver_with_error)
