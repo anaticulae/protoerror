@@ -6,8 +6,11 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""Solution describes a possible fix for the user to solve an error which
-was told by checker.
+"""Solution
+========
+
+Solution describes a possible fix for the user to solve an error
+which was told by checker.
 
 Possible solution:
  * Hint as text block
