@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v0.8.0
+
+### Feature
+
+* add methods to parse linter and solution automatically (0a94d1873a25)
+* add BoundingLocation to describe rectangle bounding (5a95f9af171f)
+* ease using interface (111a114cda2e)
+
+### Fix
+
+* define error message on assertion error (e557dcde89c0)
+
+### Documentation
+
+* extend module documentation (82259e23369a)
+
 ## v0.7.2
 
 ## v0.7.1
