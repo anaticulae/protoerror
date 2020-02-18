@@ -15,47 +15,45 @@ to solve this errors.
 
 import os
 
+from protocol.checker import Checker
+from protocol.checker import check_messages
+from protocol.config import MessageStatus
+from protocol.config import load
+from protocol.config import save
+from protocol.finding import BoundingLocation
+from protocol.finding import Finding
+from protocol.finding import Findings
+from protocol.finding import Location
+from protocol.finding import PageFinding
+from protocol.finding import PageFindings
+from protocol.finding import RangedLocation
+from protocol.group import bylocation
+from protocol.group import filter_mark
+from protocol.group import lines
+from protocol.group import words
+from protocol.linter import DEVELOPER_FILE
+from protocol.linter import USER_FILE
+from protocol.linter import DumpedLinterResult
+from protocol.linter import Linter
+from protocol.linter import dump_result
+from protocol.linter import from_file
+from protocol.linter import from_module
+from protocol.linter import from_solution
+from protocol.linter import load_result
+from protocol.linter import write_result
+from protocol.solution import Doctails
+from protocol.solution import ProblemStatus
+from protocol.solution import Solution
+from protocol.solution import Solutions
+from protocol.solution import Solver
+from protocol.solution import Text
+from protocol.solution import Validators
+from protocol.solution import Web
+from protocol.solution import confidence
+from protocol.solution import parse_checkers
+from protocol.solution import parse_msgid
+from protocol.solution import parse_solutions
 from protocol.utils import driver
-
-from .checker import Checker
-from .checker import check_messages
-from .config import MessageStatus
-from .config import load
-from .config import save
-from .finding import BoundingLocation
-from .finding import Finding
-from .finding import Findings
-from .finding import Location
-from .finding import PageFinding
-from .finding import PageFindings
-from .finding import RangedLocation
-from .group import bylocation
-from .group import filter_mark
-from .group import lines
-from .group import words
-from .linter import DEVELOPER_FILE
-from .linter import USER_FILE
-from .linter import DumpedLinterResult
-from .linter import Linter
-from .linter import dump_result
-from .linter import from_file
-from .linter import from_module
-from .linter import from_solution
-from .linter import load_result
-from .linter import write_result
-from .solution import Doctails
-from .solution import ProblemStatus
-from .solution import Solution
-from .solution import Solutions
-from .solution import Solver
-from .solution import Text
-from .solution import Validators
-from .solution import Web
-from .solution import confidence
-from .solution import parse_checkers
-from .solution import parse_msgid
-from .solution import parse_solutions
-from .utils import driver
 
 __version__ = '0.7.2'
 
