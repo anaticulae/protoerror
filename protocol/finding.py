@@ -12,6 +12,8 @@ import dataclasses
 import re
 import typing
 
+import utila
+
 from protocol.solution import Solution
 
 
@@ -135,6 +137,49 @@ class RangedLocation:
         if self.token_end is not None:
             result += f'_{self.token_end}'
         return result
+
+
+@dataclasses.dataclass(unsafe_hash=True)
+class BoundingLocation:
+    """The location defines the object on which the Finding belongs to.
+    Defines rectangle which can be highlighted in further presentation
+    steps. The rectangle is the simplest highlighting method.
+
+    .. code-block :: none
+
+        Examples for location:
+
+        bounding    b(137.0;145.0;123.0;232.0)p5
+    """
+    page: int = -1
+    shortcut: str = None
+    value: tuple = None
+
+    PATTERN = r'(?P<shortcut>b)\((?P<tuple>((\d+\.\d+;{0,1}){4}))\)p(?P<page>\d+)'
+
+    def __str__(self) -> str:
+        joined = ';'.join([str(item) for item in self.value])  # pylint:disable=E1133
+        raw = f'b({joined})p{self.page}'
+        return raw
+
+    @classmethod
+    def fromstr(cls, raw: str):
+        assert raw, 'require input'
+        matched = re.match(BoundingLocation.PATTERN, raw)
+        if not matched:
+            return None
+
+        page, shortcut, value = int(matched['page']), 'b', None
+        value = matched['tuple'].split(';')
+        value = utila.roundme([float(item) for item in value])
+        value = tuple(value)
+        shortcut = matched['shortcut']
+        result = cls(page=page, shortcut=shortcut, value=value)
+        return result
+
+    @classmethod
+    def fromtuple(cls, bounding: tuple, page: int):
+        return cls(shortcut='b', page=page, value=bounding)
 
 
 @dataclasses.dataclass(unsafe_hash=True)

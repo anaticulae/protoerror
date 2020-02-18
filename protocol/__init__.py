@@ -20,6 +20,7 @@ from .checker import check_messages
 from .config import MessageStatus
 from .config import load
 from .config import save
+from .finding import BoundingLocation
 from .finding import Finding
 from .finding import Findings
 from .finding import Location
