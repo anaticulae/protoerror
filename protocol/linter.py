@@ -207,8 +207,8 @@ def load_result(path: str) -> Findings:
     raw = utila.from_raw_or_path(path)
     loaded = yaml.load(raw, yaml.FullLoader)
 
-    assert isinstance(loaded, list)
-    assert all([isinstance(item, Finding) for item in loaded])
+    assert isinstance(loaded, list), type(loaded)
+    assert all([isinstance(item, Finding) for item in loaded]), str(loaded)
     return loaded
 
 
