@@ -28,6 +28,17 @@ def bylocation(items: Findings) -> PageFindings:
     return result
 
 
+def bypage(items: Findings) -> dict:
+    # TODO: use itertools.groupby()?
+    collected = collections.defaultdict(list)
+    for item in items:
+        collected[item.location.page].append(item)
+
+    # convert to normal dict to have KeyError's
+    result = dict(collected)
+    return result
+
+
 def filter_mark(items: Findings, shortcut: str) -> Findings:
     """Filter `Findings` by shortcut and sort them by `location.value`
     afterwards.

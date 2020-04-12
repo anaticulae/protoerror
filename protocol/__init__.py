@@ -28,6 +28,7 @@ from protocol.finding import PageFinding
 from protocol.finding import PageFindings
 from protocol.finding import RangedLocation
 from protocol.group import bylocation
+from protocol.group import bypage
 from protocol.group import filter_mark
 from protocol.group import lines
 from protocol.group import words
