@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.15
+
+### Feature
+
+* add groupby-page method (163bcac5dd6e)
+
 ## v0.8.14
 
 ## v0.8.13
