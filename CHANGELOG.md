@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.9.0
+
+### Feature
+
+* add method to update solution status (d1b7b437ffbb)
+* add method to update finding status (df11f8440f89)
+* add method to make finding number unique (f2623ec14b05)
+* add method to collect findings from path (2a7df32eb523)
+* add parameter to write_result to control linter result writing (90fb67176f69)
+* add method to create sentence location (82b5b8c75ccd)
+
 ## v0.8.17
 
 ## v0.8.16
