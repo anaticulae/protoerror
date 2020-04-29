@@ -15,7 +15,6 @@ import typing
 import utila
 import yaml
 
-import protocol
 from protocol.solution import Solution
 
 

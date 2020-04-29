@@ -6,44 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-import pytest
 
 import protocol
-from tests import solver  # pylint:disable=W0611
-
-
-@pytest.fixture
-def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
-    result = protocol.Linter(solver=solver)
-
-    result.add_finding(
-        location=protocol.Location(page=2),
-        msgid='F0001',
-        confidence=1.0,
-    )
-    result.add_finding(
-        location=protocol.Location(page=0),
-        msgid='F0000',
-        confidence=0.5,
-    )
-    result.add_finding(
-        location=protocol.Location(page=5, shortcut='w'),
-        msgid='F1337',
-        confidence=0.3,
-    )
-    result.add_finding(
-        location=protocol.Location(page=5, shortcut='ol'),
-        msgid='F1338',
-        confidence=0.3,
-    )
-    return result
 
 
 def test_group_bypage_empty():
     assert protocol.bypage([]) == []
 
 
-def test_group_bypage(linter_withlocation):  # pylint:disable=W0621
+def test_group_bypage(linter_withlocation):
     findings = linter_withlocation.result()
     result = protocol.bypage(findings)
     assert len(result) == 3
@@ -53,13 +24,13 @@ def test_group_bypage(linter_withlocation):  # pylint:disable=W0621
     assert pages == [0, 2, 5], str(pages)
 
 
-def test_group_filter_words(linter_withlocation):  # pylint:disable=W0621
+def test_group_filter_words(linter_withlocation):
     todo = linter_withlocation.findings
     words = protocol.words(todo)
     assert len(words) == 1
 
 
-def test_group_filter_lines(linter_withlocation):  # pylint:disable=W0621
+def test_group_filter_lines(linter_withlocation):
     todo = linter_withlocation.findings
     words = protocol.lines(todo)
     assert len(words) == 1

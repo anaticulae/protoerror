@@ -14,9 +14,6 @@ import utila
 
 import protocol
 import tests.example.solver_with_error
-# pylint:disable=W0611
-from tests import solver
-from tests import template_solver
 
 
 @pytest.fixture

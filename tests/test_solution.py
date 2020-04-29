@@ -11,9 +11,6 @@ from protocol import ProblemStatus
 from protocol import Solver
 from protocol import Text
 from protocol.solution import SOLUTION
-# pylint:disable=W0611
-from tests import solver
-from tests import template_solver
 
 
 def test_solution_solver(solver: Solver):  # pylint:disable=W0621
