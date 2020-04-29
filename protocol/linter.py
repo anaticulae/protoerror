@@ -178,6 +178,8 @@ def write_result(
         path: str,
         *,
         unique: bool = False,
+        user_file=USER_FILE,
+        dev_file=DEVELOPER_FILE,
 ):
     """Write linter result to `user` and `developer`-file.
 
@@ -186,16 +188,21 @@ def write_result(
         path(str): directory to write both files unique(bool): if unique
                    no duplicated user-messages are written
         unique(bool): remove duplication out of result
+        user_file(str): filename of user linting file. If None, write
+                        nothing
+        dev_file(str): filename of developer linting file. If None,
+                        write nothing
     """
     assert os.path.isdir(path), str(path)
 
     dumped_user, dumped_developer = dump_result(result, unique=unique)
+    if user_file:
+        user_outpath = os.path.join(path, user_file)
+        utila.file_replace(user_outpath, dumped_user)
 
-    user_outpath = os.path.join(path, USER_FILE)
-    utila.file_replace(user_outpath, dumped_user)
-
-    developer_outpath = os.path.join(path, DEVELOPER_FILE)
-    utila.file_replace(developer_outpath, dumped_developer)
+    if dev_file:
+        developer_outpath = os.path.join(path, dev_file)
+        utila.file_replace(developer_outpath, dumped_developer)
 
 
 def from_file(path: str) -> Linter:
