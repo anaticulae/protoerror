@@ -8,6 +8,7 @@
 # =============================================================================
 
 import pytest
+import utila
 
 import protocol
 
@@ -98,3 +99,26 @@ def test_finding_from_path(linter_withlocation, testdir):
     )
     loaded = protocol.findings_from_path(root)
     assert len(loaded) == 3
+
+
+def test_finding_number_make_unique(linter_withlocation, testdir):
+    root = testdir.tmpdir
+    negative_default = -1
+    for item in ['first_user.yaml', 'second_user.yaml', 'third_user.yaml']:
+        findings = linter_withlocation.result()
+        for single in findings:
+            single.number = negative_default
+        protocol.write_result(
+            result=findings,
+            path=root,
+            user_file=item,
+            dev_file=None,
+        )
+    protocol.make_finding_number_unique(root)
+
+    loaded = protocol.findings_from_path(root)
+    assert len(loaded) == 3
+
+    flat = utila.flatten([item.content for item in loaded])
+    for item in flat:
+        assert item.number != negative_default, item

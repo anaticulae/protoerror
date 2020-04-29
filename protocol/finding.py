@@ -265,3 +265,51 @@ def dump_findings(findings: list) -> str:
     # TODO: MOVE TO SERIALIZERAW AND REPLACE WITH HAND MADE DUMPING
     dumped = yaml.dump(findings)
     return dumped
+
+
+def iter_findings(path: str):
+    files = utila.file_list(path, include='yaml', recursive=True)
+    files = [item for item in files if utila.file_name(item).endswith('_user')]
+    for item in files:
+        location = os.path.join(path, item)
+        findings = load_result(location)
+
+        yield location, findings
+
+
+def make_finding_number_unique(path: str) -> bool:
+    """Collect all findings from path and replace with unqiue finding
+    number.
+
+    Note: Remove lintings with equal hash cause there seem/must to be
+          equal.
+
+    Args:
+        path(str): location where files wither user linter are located
+    Returns:
+        True if some file was located and replace.
+        False if no user file is in `path`.
+    """
+    assert os.path.isdir(path), str(path)
+
+    def hashnumber(item):
+        return hash(item)
+
+    done = set()
+    replaced = False
+    for location, findings in iter_findings(path):
+        for finding in findings:
+            hashed = hashnumber(finding)
+            if hashed in done:
+                utila.error(f'duplicated finding: {finding}')
+                finding.number = None
+                continue
+            finding.number = hashed
+            done.add(hashed)
+
+        findings = [item for item in findings if item.number is not None]
+        # TODO: REFACTOR LATER
+        dumped = dump_findings(findings)
+        utila.file_replace(location, dumped)
+        replaced = True
+    return replaced
