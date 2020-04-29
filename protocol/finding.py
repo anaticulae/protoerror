@@ -316,19 +316,37 @@ def make_finding_number_unique(path: str) -> bool:
     return replaced
 
 
-def update_finding_status(
+def finding_status_update(
         path: str,
         number: int,
         status: ProblemStatus,
 ) -> bool:
+    assert os.path.isdir(path), str(path)
     assert isinstance(status, ProblemStatus), type(status)
     # TODO: IMPROVE SPEED LATER? MAY USE A BUFFERED OBJECT ORIENTED APPROACH
     for location, findings in iter_findings(path):
         for finding in findings:
             if finding.number != number:
                 continue
-            finding.status = status
+            if finding.solution is None:
+                utila.error(f'could not update status: {finding}')
+                return False
+            finding.solution.status = status
             dumped = dump_findings(findings)
             utila.file_replace(location, dumped)
             return True
     return False
+
+
+def finding_status(path: str, number: int) -> ProblemStatus:
+    assert os.path.isdir(path), str(path)
+    assert isinstance(number, int), type(number)
+    for _, findings in iter_findings(path):
+        for finding in findings:
+            if finding.number != number:
+                continue
+            if finding.solution is None:
+                utila.error(f'could not get status: {finding}')
+                return None
+            return finding.solution.status
+    return None

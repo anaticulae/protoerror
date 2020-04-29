@@ -114,7 +114,7 @@ def test_finding_number_make_unique(linter_withlocation, testdir):
             user_file=item,
             dev_file=None,
         )
-    protocol.make_finding_number_unique(root)
+    assert protocol.make_finding_number_unique(root)
 
     loaded = protocol.findings_from_path(root)
     assert len(loaded) == 3
@@ -122,3 +122,23 @@ def test_finding_number_make_unique(linter_withlocation, testdir):
     flat = utila.flatten([item.content for item in loaded])
     for item in flat:
         assert item.number != negative_default, item
+
+
+def test_finding_update_status(linter_withlocation, testdir):
+    root = testdir.tmpdir
+    protocol.write_result(
+        result=linter_withlocation.result(),
+        path=root,
+        user_file='first_user.yaml',
+        dev_file=None,
+    )
+    number = 1
+    current = protocol.finding_status(root, number)
+    assert current != protocol.ProblemStatus.SOLVED
+    assert protocol.finding_status_update(
+        root,
+        number,
+        protocol.ProblemStatus.SOLVED,
+    )
+    current = protocol.finding_status(root, number)
+    assert current == protocol.ProblemStatus.SOLVED
