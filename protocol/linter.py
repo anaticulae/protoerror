@@ -25,8 +25,8 @@ import threading
 import typing
 
 import utila
-import yaml
 
+import protocol.finding
 import protocol.utils
 from protocol.config import MessageStatus
 from protocol.config import MessageStatusList
@@ -53,7 +53,6 @@ class DumpedLinterResult:
         Example:
             user, developer = linter_result
         """
-
         if index == 0:
             return self.user
         if index == 1:
@@ -129,7 +128,6 @@ class Linter:
             unique(bool): if unique no duplicated user-message are written
         """
         assert os.path.isdir(path), str(path)
-
         # create result
         result = self.result(unique=unique)
         write_result(result, path, unique=unique)
@@ -166,8 +164,8 @@ def dump_result(
     user = [item for item in items if item.active]
     developer = [item for item in items if not item.active]
 
-    dumped_user = yaml.dump(user)
-    dumped_developer = yaml.dump(developer)
+    dumped_user = protocol.finding.dump_findings(user)
+    dumped_developer = protocol.finding.dump_findings(developer)
 
     result = DumpedLinterResult(user=dumped_user, developer=dumped_developer)
     return result

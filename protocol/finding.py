@@ -258,3 +258,10 @@ def findings_from_path(path: str) -> PageFindings:
         findings.extend(loaded)
     result = protocol.bypage(findings)
     return result
+
+
+def dump_findings(findings: list) -> str:
+    assert isinstance(findings, list), type(findings)
+    # TODO: MOVE TO SERIALIZERAW AND REPLACE WITH HAND MADE DUMPING
+    dumped = yaml.dump(findings)
+    return dumped
