@@ -13,9 +13,9 @@ from .finding import PageFinding
 from .finding import PageFindings
 
 
-def bylocation(items: Findings) -> PageFindings:
-    """Group `items` by location of `Finding`. Sort the groups ascending
-    by page number."""
+def bypage(items: Findings) -> PageFindings:
+    """Group `items` by location.page of `Finding`. Sort the groups
+    ascending by page number."""
     pages = collections.defaultdict(list)
     for item in items:
         assert item.location, 'require location'
@@ -25,17 +25,6 @@ def bylocation(items: Findings) -> PageFindings:
         PageFinding(page=page, content=pages[page])
         for page in sorted(pages.keys())
     ]
-    return result
-
-
-def bypage(items: Findings) -> dict:
-    # TODO: use itertools.groupby()?
-    collected = collections.defaultdict(list)
-    for item in items:
-        collected[item.location.page].append(item)
-
-    # convert to normal dict to have KeyError's
-    result = dict(collected)
     return result
 
 

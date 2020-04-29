@@ -39,13 +39,13 @@ def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
     return result
 
 
-def test_group_bylocation_empty():
-    assert protocol.bylocation([]) == []
+def test_group_bypage_empty():
+    assert protocol.bypage([]) == []
 
 
-def test_group_bylocation(linter_withlocation):  # pylint:disable=W0621
+def test_group_bypage(linter_withlocation):  # pylint:disable=W0621
     findings = linter_withlocation.result()
-    result = protocol.bylocation(findings)
+    result = protocol.bypage(findings)
     assert len(result) == 3
     assert len(result[2]) == 2
 
