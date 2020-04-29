@@ -198,24 +198,6 @@ def write_result(
     utila.file_replace(developer_outpath, dumped_developer)
 
 
-def load_result(path: str) -> Findings:
-    """Load list of `Finding`s which was produced by linter
-
-    Args:
-        path(str): path to file with lists of `Finding`
-    Returns:
-        list of Finding
-    Raises:
-        Assertion: if file is corrupt
-    """
-    raw = utila.from_raw_or_path(path)
-    loaded = yaml.load(raw, yaml.FullLoader)
-
-    assert isinstance(loaded, list), type(loaded)
-    assert all([isinstance(item, Finding) for item in loaded]), str(loaded)
-    return loaded
-
-
 def from_file(path: str) -> Linter:
     filename = os.path.basename(path)
     spec = importlib.util.spec_from_file_location(

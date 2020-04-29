@@ -27,6 +27,7 @@ from protocol.finding import Location
 from protocol.finding import PageFinding
 from protocol.finding import PageFindings
 from protocol.finding import RangedLocation
+from protocol.finding import load_result
 from protocol.group import bypage
 from protocol.group import filter_mark
 from protocol.group import lines
@@ -39,7 +40,6 @@ from protocol.linter import dump_result
 from protocol.linter import from_file
 from protocol.linter import from_module
 from protocol.linter import from_solution
-from protocol.linter import load_result
 from protocol.linter import write_result
 from protocol.solution import Doctails
 from protocol.solution import ProblemStatus
