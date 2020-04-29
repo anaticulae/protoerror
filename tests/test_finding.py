@@ -86,3 +86,15 @@ def test_finding_rangedlocation_str_obj_str(location):
     parsed = protocol.RangedLocation.fromstr(location)
     tostring = parsed.raw()
     assert tostring == location
+
+
+def test_finding_from_path(linter_withlocation, testdir):
+    root = testdir.tmpdir
+    protocol.write_result(
+        linter_withlocation.result(),
+        root,
+        user_file='first_user.yaml',
+        dev_file=None,
+    )
+    loaded = protocol.findings_from_path(root)
+    assert len(loaded) == 3

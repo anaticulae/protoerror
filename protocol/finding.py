@@ -9,12 +9,14 @@
 
 import contextlib
 import dataclasses
+import os
 import re
 import typing
 
 import utila
 import yaml
 
+import protocol
 from protocol.solution import Solution
 
 
@@ -241,3 +243,18 @@ def load_result(path: str) -> Findings:
     assert isinstance(loaded, list), type(loaded)
     assert all([isinstance(item, Finding) for item in loaded]), str(loaded)
     return loaded
+
+
+def findings_from_path(path: str) -> PageFindings:
+    """Load Findings from `path` directory and group them by page as
+    `PageFindings`."""
+    assert os.path.isdir(path), str(path)
+    files = utila.file_list(path, include='yaml', recursive=True)
+    files = [item for item in files if utila.file_name(item).endswith('_user')]
+    findings = []
+    for item in files:
+        location = os.path.join(path, item)
+        loaded = load_result(location)
+        findings.extend(loaded)
+    result = protocol.bypage(findings)
+    return result

@@ -27,6 +27,7 @@ from protocol.finding import Location
 from protocol.finding import PageFinding
 from protocol.finding import PageFindings
 from protocol.finding import RangedLocation
+from protocol.finding import findings_from_path
 from protocol.finding import load_result
 from protocol.group import bypage
 from protocol.group import filter_mark
