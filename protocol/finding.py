@@ -70,6 +70,12 @@ class Location:
         return cls.fromstr(f'p{page}')
 
     @classmethod
+    def from_sentence(cls, sentence: int, page: int):
+        assert page >= 0, str(page)
+        assert sentence >= 0, str(sentence)
+        return cls.fromstr(f's{sentence}p{page}')
+
+    @classmethod
     def from_chapter(cls, chapter: int, page: int):
         assert page >= 0, str(page)
         assert chapter >= 0, str(chapter)
