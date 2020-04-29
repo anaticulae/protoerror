@@ -70,7 +70,8 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
         confidence=1.0,
         number=42,
         text='Hello',
-        double='half')
+        double='half',
+    )
     output = result.result()
     expected = [
         protocol.Finding(
@@ -84,7 +85,8 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
                 title='Solution 42 is open.',
                 description='This is just a Hello half.'),
             confidence=1.0,
-            active=True)
+            active=True,
+        )
     ]
     assert output == expected
 
