@@ -17,6 +17,7 @@ import utila
 import yaml
 
 import protocol
+from protocol.solution import ProblemStatus
 from protocol.solution import Solution
 
 
@@ -313,3 +314,21 @@ def make_finding_number_unique(path: str) -> bool:
         utila.file_replace(location, dumped)
         replaced = True
     return replaced
+
+
+def update_finding_status(
+        path: str,
+        number: int,
+        status: ProblemStatus,
+) -> bool:
+    assert isinstance(status, ProblemStatus), type(status)
+    # TODO: IMPROVE SPEED LATER? MAY USE A BUFFERED OBJECT ORIENTED APPROACH
+    for location, findings in iter_findings(path):
+        for finding in findings:
+            if finding.number != number:
+                continue
+            finding.status = status
+            dumped = dump_findings(findings)
+            utila.file_replace(location, dumped)
+            return True
+    return False

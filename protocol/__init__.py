@@ -30,6 +30,7 @@ from protocol.finding import RangedLocation
 from protocol.finding import findings_from_path
 from protocol.finding import load_result
 from protocol.finding import make_finding_number_unique
+from protocol.finding import update_finding_status
 from protocol.group import bypage
 from protocol.group import filter_mark
 from protocol.group import lines
