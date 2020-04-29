@@ -46,10 +46,10 @@ class MessageStatus:
     confidence: float = 1.0
 
 
-MessageStatuses = typing.List[MessageStatus]
+MessageStatusList = typing.List[MessageStatus]
 
 
-def load(path: str) -> typing.List[MessageStatus]:
+def load(path: str) -> MessageStatusList:
     content = utila.from_raw_or_path(path, ftype='yaml')
     loaded = yaml.load(content, Loader=yaml.FullLoader)
     result = []
@@ -66,7 +66,7 @@ def load(path: str) -> typing.List[MessageStatus]:
     return result
 
 
-def save(messages: typing.List[MessageStatus], path: str):
+def save(messages: MessageStatusList, path: str):
     result = []
     for item in messages:
         raw = {'msgid': item.msgid}

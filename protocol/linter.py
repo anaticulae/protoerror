@@ -29,7 +29,7 @@ import yaml
 
 import protocol.utils
 from protocol.config import MessageStatus
-from protocol.config import MessageStatuses
+from protocol.config import MessageStatusList
 from protocol.finding import Finding
 from protocol.finding import Findings
 from protocol.finding import Location
@@ -227,7 +227,7 @@ def from_file(path: str) -> Linter:
     return result
 
 
-def from_solution(solutions: Solutions, statuses: MessageStatuses) -> Linter:
+def from_solution(solutions: Solutions, statuses: MessageStatusList) -> Linter:
     solver = Solver.fromlist(solutions)
     result = Linter(solver, active=statuses)
     return result
