@@ -33,6 +33,7 @@ from protocol.config import MessageStatusList
 from protocol.finding import Finding
 from protocol.finding import Findings
 from protocol.finding import Location
+from protocol.finding import hash_finding
 from protocol.solution import Solutions
 from protocol.solution import Solver
 from protocol.solution import parse_checkers
@@ -102,13 +103,13 @@ class Linter:
 
         with self.lock:
             finding = Finding(
-                number=len(self.findings),
                 confidence=confidence,
                 location=location,
                 msgid=msgid,
                 solution=solution,
                 active=active,
             )
+            finding.number = hash_finding(finding)
             self.findings.append(finding)
 
     def is_active(self, msgid, confidence):

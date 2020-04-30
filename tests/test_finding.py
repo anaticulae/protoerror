@@ -126,13 +126,15 @@ def test_finding_number_make_unique(linter_withlocation, testdir):
 
 def test_finding_update_status(linter_withlocation, testdir):
     root = testdir.tmpdir
+    result = linter_withlocation.result()
     protocol.write_result(
-        result=linter_withlocation.result(),
+        result=result,
         path=root,
         user_file='first_user.yaml',
         dev_file=None,
     )
-    number = 1
+    # position zero may change when hashing or dataclass `Finding` changes.
+    number = result[0].number
     current = protocol.finding_status(root, number)
     assert current != protocol.ProblemStatus.SOLVED
     assert protocol.finding_status_update(

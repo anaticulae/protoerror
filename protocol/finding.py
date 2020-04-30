@@ -199,7 +199,7 @@ class Finding:  # pylint:disable=R0903
     for non presenting is a to low confidence of the result.
     """
 
-    number: int = dataclasses.field(compare=False, default=-1)
+    number: int = dataclasses.field(compare=False, hash=False, default=-1)
     location: Location = None
     msgid: str = None
     solution: Solution = None
@@ -278,6 +278,10 @@ def iter_findings(path: str):
         yield location, findings
 
 
+def hash_finding(item):
+    return hash(item)
+
+
 def make_finding_number_unique(path: str) -> bool:
     """Collect all findings from path and replace with unqiue finding
     number.
@@ -293,17 +297,14 @@ def make_finding_number_unique(path: str) -> bool:
     """
     assert os.path.isdir(path), str(path)
 
-    def hashnumber(item):
-        return hash(item)
-
     done = set()
     replaced = False
     for location, findings in iter_findings(path):
         for finding in findings:
-            hashed = hashnumber(finding)
+            hashed = hash_finding(finding)
             if hashed in done:
                 utila.error(f'duplicated finding: {finding}')
-                finding.number = None
+                finding.number = None  # None -> do not dump this finding
                 continue
             finding.number = hashed
             done.add(hashed)
