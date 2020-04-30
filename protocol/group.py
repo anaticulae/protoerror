@@ -51,3 +51,7 @@ def words(items: Findings) -> Findings:
 
 def lines(items: Findings) -> Findings:
     return filter_mark(items, shortcut='ol')
+
+
+def sentences(items: Findings) -> Findings:
+    return filter_mark(items, shortcut='s')

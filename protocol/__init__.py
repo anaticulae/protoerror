@@ -35,6 +35,7 @@ from protocol.finding import make_finding_number_unique
 from protocol.group import bypage
 from protocol.group import filter_mark
 from protocol.group import lines
+from protocol.group import sentences
 from protocol.group import words
 from protocol.linter import DEVELOPER_FILE
 from protocol.linter import USER_FILE
