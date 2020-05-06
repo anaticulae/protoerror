@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.9.1
+
+### Feature
+
+* create unique hash number on finding creation (de2bbab84ac0)
+* add method filter sentences findings (d1bd159debff)
+
 ## v0.9.0
 
 ### Feature
