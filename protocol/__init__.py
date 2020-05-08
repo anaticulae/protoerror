@@ -20,6 +20,7 @@ from protocol.checker import check_messages
 from protocol.config import MessageStatus
 from protocol.config import load
 from protocol.config import save
+from protocol.finding import SUMMARY_LOCATION
 from protocol.finding import BoundingLocation
 from protocol.finding import Finding
 from protocol.finding import Findings

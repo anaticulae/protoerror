@@ -20,6 +20,8 @@ import protocol
 from protocol.solution import ProblemStatus
 from protocol.solution import Solution
 
+SUMMARY = -1
+
 
 @dataclasses.dataclass(unsafe_hash=True)
 class Location:
@@ -70,26 +72,29 @@ class Location:
 
     @classmethod
     def from_page(cls, page: int):
-        assert page >= 0, str(page)
+        assert page >= SUMMARY, str(page)
         return cls.fromstr(f'p{page}')
 
     @classmethod
     def from_sentence(cls, sentence: int, page: int):
-        assert page >= 0, str(page)
+        assert page >= SUMMARY, str(page)
         assert sentence >= 0, str(sentence)
         return cls.fromstr(f's{sentence}p{page}')
 
     @classmethod
     def from_chapter(cls, chapter: int, page: int):
-        assert page >= 0, str(page)
+        assert page >= SUMMARY, str(page)
         assert chapter >= 0, str(chapter)
         return cls.fromstr(f'c{chapter}p{page}')
 
     @classmethod
     def from_oneline(cls, line: int, page: int):
-        assert page >= 0, str(page)
+        assert page >= SUMMARY, str(page)
         assert line >= 0, str(line)
         return cls.fromstr(f'ol{line}p{page}')
+
+
+SUMMARY_LOCATION = Location.from_page(SUMMARY)
 
 
 @dataclasses.dataclass(unsafe_hash=True)
