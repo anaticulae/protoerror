@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.9.2
+
+### Feature
+
+* clarify documentation of RangedLocation syntax (5ff1bd02357d)
+* enable use location before start as summary page (46dbfc42f7c2)
+
 ## v0.9.1
 
 ### Feature
