@@ -159,6 +159,10 @@ class RangedLocation:
         values = ', '.join(values)
         return f'RangedLocation({values})'
 
+    @property
+    def shortcut(self):
+        return 'r'
+
 
 @dataclasses.dataclass(unsafe_hash=True)
 class BoundingLocation:
