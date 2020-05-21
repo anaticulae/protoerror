@@ -6,7 +6,9 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import collections
+import contextlib
 
 from .finding import Findings
 from .finding import PageFinding
@@ -40,8 +42,12 @@ def filter_mark(items: Findings, shortcut: str) -> Findings:
         filtered, sorted list of `Findings`
     """
     assert all([item.location for item in items]), f'require location: {items}'
-    items = [item for item in items if item.location.shortcut == shortcut]
-    items = sorted(items, key=lambda x: x.location.value)
+    selected = []
+    for item in items:
+        with contextlib.suppress(AttributeError):
+            if item.location.shortcut == shortcut:
+                selected.append(item)
+    items = sorted(selected, key=lambda x: x.location.value)
     return items
 
 
