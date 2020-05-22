@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.9.3
+
+### Feature
+
+* add shortcut to RangedLocation (f1df0074a1f0)
+
+### Fix
+
+* ensure to handle findings without shortcut correctly (02a3ce9af0cd)
+
 ## v0.9.2
 
 ### Feature
