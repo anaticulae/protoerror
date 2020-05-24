@@ -61,3 +61,7 @@ def lines(items: Findings) -> Findings:
 
 def sentences(items: Findings) -> Findings:
     return filter_mark(items, shortcut='s')
+
+
+def select_findings(findings, msgid: int):
+    return [item for item in findings if item.msgid == msgid]
