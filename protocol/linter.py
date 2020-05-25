@@ -232,12 +232,16 @@ def from_solution(solutions: Solutions, statuses: MessageStatusList) -> Linter:
     return result
 
 
-def from_module(name: str) -> Linter:
+def from_module(name: str, tests: set = None, skips: set = None) -> Linter:
     with contextlib.suppress(AttributeError):
         # support module type, ensure that module name is str
         name = name.__name__
     module = protocol.utils.module_fromname(name)
-    solution = protocol.solution.parse_solutions(module)
+    solution = protocol.solution.parse_solutions(
+        module,
+        tests=tests,
+        skips=skips,
+    )
     status = parse_active(module)
     result = protocol.from_solution(solution, status)
     return result

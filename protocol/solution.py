@@ -137,7 +137,7 @@ class Solver:
 SOLUTION_PATTERN = r'^SOLUTION_(?P<type>[A-Z]{0,1})(?P<number>\d{2,5})$'
 
 
-def parse_solutions(module) -> Solutions:
+def parse_solutions(module, tests: set = None, skips: set = None) -> Solutions:
     if isinstance(module, str):
         module = protocol.utils.module_fromname(module)
     result = []
@@ -146,6 +146,9 @@ def parse_solutions(module) -> Solutions:
         if not matched:
             continue
         typ, number = matched['type'], int(matched['number'])  # pylint:disable=W0612
+
+        if should_skip(number, tests, skips):
+            continue
         try:
             title, message = value.split('\n\n', maxsplit=1)
         except ValueError:
@@ -154,6 +157,29 @@ def parse_solutions(module) -> Solutions:
         item = protocol.Text(title=title, msgid=number, description=message)
         result.append(item)
     return result
+
+
+def should_skip(number: int, tests: set = None, skips: set = None) -> bool:
+    """\
+    >>> should_skip(5, tests={1,2,3,4,5})
+    select: 5
+    False
+    >>> should_skip(5, skips={1,2,3,4,5})
+    skips: 5
+    True
+    >>> should_skip(5, tests={1,2,})
+    True
+    """
+    tests = tests if tests is not None else {}
+    skips = skips if skips is not None else {}
+    if number in skips:
+        utila.log(f'skips: {number}')
+        return True
+    if tests:
+        if number not in tests:
+            return True
+        utila.log(f'select: {number}')
+    return False
 
 
 def parse_checkers(module) -> Validators:
