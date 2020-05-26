@@ -10,6 +10,7 @@
 import collections
 import contextlib
 
+from .finding import Finding
 from .finding import Findings
 from .finding import PageFinding
 from .finding import PageFindings
@@ -63,5 +64,13 @@ def sentences(items: Findings) -> Findings:
     return filter_mark(items, shortcut='s')
 
 
-def select_findings(findings, msgid: int):
-    return [item for item in findings if item.msgid == msgid]
+def select_findings(findings: Findings, msgid: set) -> Findings:
+    """Select `Findings` specified by `msgid`
+
+    >>> select_findings([Finding(msgid=1337), Finding(msgid=1338)], msgid=(1337,1400))
+    [Finding(...msgid=1337...)]
+    """
+    assert all(isinstance(item, Finding) for item in findings), findings
+    if not isinstance(msgid, set):
+        msgid = set(msgid)
+    return [item for item in findings if item.msgid in msgid]
