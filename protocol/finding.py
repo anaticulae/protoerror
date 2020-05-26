@@ -243,11 +243,12 @@ class PageFinding:
 PageFindings = typing.List[PageFinding]
 
 
-def load_result(path: str) -> Findings:
+def load_result(path: str, msgids: set = None) -> Findings:
     """Load list of `Finding`s which was produced by linter
 
     Args:
         path(str): path to file with lists of `Finding`
+        msgids(set): set of selected Findings; if msgids is None, select all
     Returns:
         list of Finding
     Raises:
@@ -258,7 +259,9 @@ def load_result(path: str) -> Findings:
 
     assert isinstance(loaded, list), type(loaded)
     assert all([isinstance(item, Finding) for item in loaded]), str(loaded)
-    return loaded
+
+    result = protocol.select_findings(loaded, msgids)
+    return result
 
 
 def findings_from_path(path: str) -> PageFindings:
