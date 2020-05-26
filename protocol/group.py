@@ -10,13 +10,10 @@
 import collections
 import contextlib
 
-from .finding import Finding
-from .finding import Findings
-from .finding import PageFinding
-from .finding import PageFindings
+import protocol
 
 
-def bypage(items: Findings) -> PageFindings:
+def bypage(items: protocol.Findings) -> protocol.PageFindings:
     """Group `items` by location.page of `Finding`. Sort the groups
     ascending by page number."""
     pages = collections.defaultdict(list)
@@ -25,19 +22,19 @@ def bypage(items: Findings) -> PageFindings:
         pages[item.location.page].append(item)
 
     result = [
-        PageFinding(page=page, content=pages[page])
+        protocol.PageFinding(page=page, content=pages[page])
         for page in sorted(pages.keys())
     ]
     return result
 
 
-def filter_mark(items: Findings, shortcut: str) -> Findings:
+def filter_mark(items: protocol.Findings, shortcut: str) -> protocol.Findings:
     """Filter `Findings` by shortcut and sort them by `location.value`
     afterwards.
 
     Args:
         items(protocol.Findings): list of findings
-        shortcut(str): shortcut of finding.location, w word, p page,
+        shortcut(str): shortcut of protocol.location, w word, p page,
                        ol oneline, etc.
     Returns:
         filtered, sorted list of `Findings`
@@ -52,25 +49,34 @@ def filter_mark(items: Findings, shortcut: str) -> Findings:
     return items
 
 
-def words(items: Findings) -> Findings:
+def words(items: protocol.Findings) -> protocol.Findings:
     return filter_mark(items, shortcut='w')
 
 
-def lines(items: Findings) -> Findings:
+def lines(items: protocol.Findings) -> protocol.Findings:
     return filter_mark(items, shortcut='ol')
 
 
-def sentences(items: Findings) -> Findings:
+def sentences(items: protocol.Findings) -> protocol.Findings:
     return filter_mark(items, shortcut='s')
 
 
-def select_findings(findings: Findings, msgid: set) -> Findings:
+def select_findings(
+        findings: protocol.Findings,
+        msgid: set = None,
+) -> protocol.Findings:
     """Select `Findings` specified by `msgid`
 
-    >>> select_findings([Finding(msgid=1337), Finding(msgid=1338)], msgid=(1337,1400))
+    >>> select_findings([protocol.Finding(msgid=1337), protocol.Finding(msgid=1338)], msgid=(1337,1400))
     [Finding(...msgid=1337...)]
+    >>> select_findings([protocol.Finding(msgid=1337), protocol.Finding(msgid=1338)])
+    [Finding(...msgid=1337...), Finding(...msgid=1338...)]
     """
-    assert all(isinstance(item, Finding) for item in findings), findings
+    assert all(isinstance(item, protocol.Finding) for item in findings)
+
+    if msgid is None:
+        return findings
+
     if not isinstance(msgid, set):
         msgid = set(msgid)
     return [item for item in findings if item.msgid in msgid]
