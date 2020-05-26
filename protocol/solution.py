@@ -182,7 +182,7 @@ def should_skip(number: int, tests: set = None, skips: set = None) -> bool:
     return False
 
 
-def parse_checkers(module) -> Validators:
+def parse_checkers(module, tests: set = None, skips: set = None) -> Validators:
     """Parse def check_{number}_{name} methods out of a module."""
     if isinstance(module, str):
         module = protocol.utils.module_fromname(module)
@@ -192,6 +192,8 @@ def parse_checkers(module) -> Validators:
         if not parsed:
             continue
         parsed = int(parsed)
+        if should_skip(parsed, tests=tests, skips=skips):
+            continue
         value.msgid = parsed
         if not hasattr(value, 'confidence'):
             # enable on default
