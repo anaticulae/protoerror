@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.10.0
+
+### Feature
+
+* add option to skip checker by id (dd33e47f8494)
+* add parameter to load selective findings (0a9aad041116)
+* extend finding selector with multiple ids (52831fd7eae9)
+* add parameter to skip or select evaluation (fbf790efbf80)
+* add method to select findings (d25dd9030191)
+
 ## v0.9.3
 
 ### Feature
