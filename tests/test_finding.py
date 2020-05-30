@@ -144,3 +144,15 @@ def test_finding_update_status(linter_withlocation, testdir):
     )
     current = protocol.finding_status(root, number)
     assert current == protocol.ProblemStatus.SOLVED
+
+
+def test_finding_assert_on_not_fully_replaced():
+    # yapf:disable
+    result = [
+        protocol.Finding(solution=protocol.Text(description='not fully replaced {%')),
+        protocol.Finding(solution=protocol.Text(description='replaced')),
+        protocol.Finding(),
+    ]
+    # yapf:enable
+    with pytest.raises(AssertionError):
+        protocol.dump_result(result)

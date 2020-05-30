@@ -280,8 +280,18 @@ def findings_from_path(path: str) -> PageFindings:
 
 
 def dump_findings(findings: list) -> str:
-    assert isinstance(findings, list), type(findings)
     # TODO: MOVE TO SERIALIZERAW AND REPLACE WITH HAND MADE DUMPING
+    assert isinstance(findings, list), type(findings)
+    for item in findings:
+        if not item.solution:
+            continue
+        try:
+            description = item.solution.description
+        except AttributeError:
+            continue
+        message = f'template is not fully replaced:\n{description}'
+        # ensure that the user could not see any not fully replaced templates
+        assert utila.istemplate_replaced(item.solution.description), message
     dumped = yaml.dump(findings)
     return dumped
 
