@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.10.1
+
+### Feature
+
+* ensure that template is replaced before dumping finding (f9cc35bef71c)
+
 ## v0.10.0
 
 ### Feature
