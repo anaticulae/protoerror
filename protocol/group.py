@@ -73,10 +73,10 @@ def select_findings(
     [Finding(...msgid=1337...), Finding(...msgid=1338...)]
     """
     assert all(isinstance(item, protocol.Finding) for item in findings)
-
     if msgid is None:
         return findings
-
-    if not isinstance(msgid, set):
+    if isinstance(msgid, int):
+        msgid = {msgid}
+    elif isinstance(msgid, list):
         msgid = set(msgid)
     return [item for item in findings if item.msgid in msgid]
