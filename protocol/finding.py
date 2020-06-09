@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import concurrent.futures
 import contextlib
 import dataclasses
 import enum
@@ -15,6 +16,7 @@ import re
 import typing
 
 import utila
+import utila.feature.processor
 import yaml
 
 import protocol
@@ -290,17 +292,27 @@ def load_result(path: str, msgids: set = None) -> Findings:
     return result
 
 
-def findings_from_path(path: str) -> PageFindings:
+def findings_from_path(path: str, worker: int = 10) -> PageFindings:
     """Load Findings from `path` directory and group them by page as
     `PageFindings`."""
     assert os.path.isdir(path), str(path)
     files = utila.file_list(path, include='yaml', recursive=True)
     files = [item for item in files if utila.file_name(item).endswith('_user')]
-    findings = []
-    for item in files:
-        location = os.path.join(path, item)
-        loaded = load_result(location)
-        findings.extend(loaded)
+    paths = [os.path.join(path, item) for item in files]
+
+    # limit worker by max file count
+    worker = utila.mins(worker, len(files))
+    # yaml parsing is cpu bound, therefore we need a process pool instead
+    # of thread pool.
+    executor = utila.feature.processor.select_executor()
+    with executor(max_workers=worker) as executor:
+        todo = {
+            executor.submit(protocol.load_result, path): path for path in paths
+        }
+        findings = []
+        for job in concurrent.futures.as_completed(todo):
+            data = job.result()
+            findings.extend(data)
     result = protocol.bypage(findings)
     return result
 
