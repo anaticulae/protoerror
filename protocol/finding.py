@@ -9,6 +9,7 @@
 
 import contextlib
 import dataclasses
+import enum
 import os
 import re
 import typing
@@ -207,15 +208,40 @@ class BoundingLocation:
         return cls(shortcut='b', page=page, value=bounding)
 
 
+class FindingLevel(enum.Enum):
+    """Define how important an `Finding` is.
+
+    Color:
+        green(1)
+        yellow(2, 3, 6)
+        red(8, 10)
+    """
+    # MESSAGE = 0 ???
+    # advice to use other pattern or style
+    ADVICE = 1
+    # page order
+    CONVENTION = 2
+    # style of paragraph, page
+    REFACTOR = 3
+    # umgangssprache, image black and white problem
+    WARNING = 6
+    # writing over border
+    ERROR = 8
+    # pdf analyzing error
+    FATAL = 10
+    UNDEFINED = -1
+
+
 @dataclasses.dataclass(unsafe_hash=True)
 class Finding:  # pylint:disable=R0903
     """Non active findings are not presentend to the user cause of lag
     of quality. There purpose is to improve the platform. A second point
-    for non presenting is a to low confidence of the result.
-    """
+    for non presenting is a to low confidence of the result."""
 
     number: int = dataclasses.field(compare=False, hash=False, default=-1)
     location: Location = None
+    # how important a level is
+    level: FindingLevel = None
     msgid: str = None
     solution: Solution = None
     confidence: float = None

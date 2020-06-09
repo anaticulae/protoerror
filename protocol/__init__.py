@@ -23,6 +23,7 @@ from protocol.config import save
 from protocol.finding import SUMMARY_LOCATION
 from protocol.finding import BoundingLocation
 from protocol.finding import Finding
+from protocol.finding import FindingLevel
 from protocol.finding import Findings
 from protocol.finding import Location
 from protocol.finding import PageFinding
