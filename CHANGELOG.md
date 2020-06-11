@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.10.3
+
+### Feature
+
+* use multiprocessing to improve loading speed (482c27c193a9)
+* add level to define importance of an finding (b391e3743a0f)
+* extend interface to define msgid as int (b80fa932aded)
+
 ## v0.10.2
 
 ## v0.10.1
