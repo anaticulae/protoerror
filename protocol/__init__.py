@@ -63,6 +63,6 @@ from protocol.solution import parse_msgid
 from protocol.solution import parse_solutions
 from protocol.utils import driver
 
-__version__ = '0.10.3'
+__version__ = '0.10.4'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
