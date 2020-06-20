@@ -15,11 +15,14 @@ to solve this errors.
 
 import os
 
+# checker
 from protocol.checker import Checker
 from protocol.checker import check_messages
+# config
 from protocol.config import MessageStatus
 from protocol.config import load
 from protocol.config import save
+# finding
 from protocol.finding import SUMMARY_LOCATION
 from protocol.finding import BoundingLocation
 from protocol.finding import Finding
@@ -34,12 +37,14 @@ from protocol.finding import finding_status_update
 from protocol.finding import findings_from_path
 from protocol.finding import load_result
 from protocol.finding import make_finding_number_unique
+# group
 from protocol.group import bypage
 from protocol.group import filter_mark
 from protocol.group import lines
 from protocol.group import select_findings
 from protocol.group import sentences
 from protocol.group import words
+# linter
 from protocol.linter import DEVELOPER_FILE
 from protocol.linter import USER_FILE
 from protocol.linter import DumpedLinterResult
@@ -49,6 +54,7 @@ from protocol.linter import from_file
 from protocol.linter import from_module
 from protocol.linter import from_solution
 from protocol.linter import write_result
+# solution
 from protocol.solution import Doctails
 from protocol.solution import ProblemStatus
 from protocol.solution import Solution
@@ -61,6 +67,7 @@ from protocol.solution import confidence
 from protocol.solution import parse_checkers
 from protocol.solution import parse_msgid
 from protocol.solution import parse_solutions
+# utils
 from protocol.utils import driver
 
 __version__ = '0.10.5'
