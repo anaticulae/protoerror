@@ -106,8 +106,8 @@ class Doctails(Text):
     """Describes link to internal documentation database.
 
     Example:
-     * `/writing/manuskript/zitate`
-     * `/writing/user`
+     * `{writing/manuskript/zitate}`
+     * `{writing/user}`
     """
 
 
