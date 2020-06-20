@@ -292,12 +292,19 @@ def load_result(path: str, msgids: set = None) -> Findings:
     return result
 
 
-def findings_from_path(path: str, worker: int = 10) -> PageFindings:
+def findings_from_path(
+        path: str,
+        worker: int = 10,
+        useronly: bool = True,
+) -> PageFindings:
     """Load Findings from `path` directory and group them by page as
     `PageFindings`."""
     assert os.path.isdir(path), str(path)
     files = utila.file_list(path, include='yaml', recursive=True)
-    files = [item for item in files if utila.file_name(item).endswith('_user')]
+    if useronly:
+        files = [
+            item for item in files if utila.file_name(item).endswith('_user')
+        ]
     paths = [os.path.join(path, item) for item in files]
 
     # limit worker by max file count
