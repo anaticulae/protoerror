@@ -362,19 +362,16 @@ def make_finding_number_unique(path: str) -> bool:
         False if no user file is in `path`.
     """
     assert os.path.isdir(path), str(path)
-
-    done = set()
+    single = utila.Single()
     replaced = False
     for location, findings in iter_findings(path):
         for finding in findings:
             hashed = hash_finding(finding)
-            if hashed in done:
+            if single.contains(hashed):
                 utila.error(f'duplicated finding: {finding}')
                 finding.number = None  # None -> do not dump this finding
                 continue
             finding.number = hashed
-            done.add(hashed)
-
         findings = [item for item in findings if item.number is not None]
         # TODO: REFACTOR LATER
         dumped = dump_findings(findings)
