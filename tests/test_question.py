@@ -8,11 +8,11 @@
 # =============================================================================
 
 import protocol
-import tests.example.question
+import tests.example.solver_question
 
 
 def test_question_parser():
-    parsed = protocol.parse_questions(tests.example.question)
+    parsed = protocol.parse_questions(tests.example.solver_question)
     assert len(parsed) == 2
 
     assert parsed[0].msgid == 1337
@@ -20,12 +20,14 @@ def test_question_parser():
 
     assert parsed[0].title
     assert not parsed[0].description
+    assert parsed[0].finding == 10
 
     assert parsed[1].title
     assert parsed[1].description
+    assert parsed[1].finding == 5
 
 
 def test_question_str():
-    parsed = protocol.parse_questions(tests.example.question)
-    from_str = protocol.parse_questions('tests.example.question')
+    parsed = protocol.parse_questions(tests.example.solver_question)
+    from_str = protocol.parse_questions('tests.example.solver_question')
     assert from_str == parsed

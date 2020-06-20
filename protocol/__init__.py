@@ -58,6 +58,8 @@ from protocol.linter import write_result
 from protocol.question import Answer
 from protocol.question import Question
 from protocol.question import Questions
+from protocol.question import documore
+from protocol.question import pagemore
 from protocol.question import parse_questions
 # solution
 from protocol.solution import Doctails

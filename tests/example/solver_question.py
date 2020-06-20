@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import protocol
+
 QUESTION_1337 = """Singe line question?"""
 
 QUESTION_1338 = """\
@@ -14,3 +16,7 @@ Do you want to remove this Item?
 
 Here comes a lot more description.
 """
+
+QUESTION_1337_ENABLE = protocol.documore(10)
+
+QUESTION_1338_ENABLE = protocol.pagemore(5)

@@ -21,7 +21,7 @@ RP 0.11.0
     QUESTION_4500 = """\
     """
 
-* [ ] add enabler to send question
+* [x] add enabler to send question
 
     # enable if more than 10 items on a page occurs
     QUESTION_4550_ENABLE = protocol.pagemore(10)
