@@ -54,6 +54,11 @@ from protocol.linter import from_file
 from protocol.linter import from_module
 from protocol.linter import from_solution
 from protocol.linter import write_result
+# question
+from protocol.question import Answer
+from protocol.question import Question
+from protocol.question import Questions
+from protocol.question import parse_questions
 # solution
 from protocol.solution import Doctails
 from protocol.solution import ProblemStatus

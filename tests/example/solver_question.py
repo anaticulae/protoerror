@@ -6,14 +6,11 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""This is an example to create a linter with solver from source code via:
 
-.. code-block :: python
+QUESTION_1337 = """Singe line question?"""
 
-    linter = protocol.from_file(__file__)
+QUESTION_1338 = """\
+Do you want to remove this Item?
+
+Here comes a lot more description.
 """
-
-import protocol  # pylint:disable=W0611
-
-SOLUTION = []
-STATUS = []
