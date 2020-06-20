@@ -302,6 +302,8 @@ def findings_from_path(path: str, worker: int = 10) -> PageFindings:
 
     # limit worker by max file count
     worker = utila.mins(worker, len(files))
+    # ensure to have at least one worker when collection now file
+    worker = utila.maxs(1, worker)
     # yaml parsing is cpu bound, therefore we need a process pool instead
     # of thread pool.
     executor = utila.feature.processor.select_executor()
