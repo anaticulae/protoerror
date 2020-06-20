@@ -69,41 +69,11 @@ Every noteable change is logged here.
 
 ## v0.8.17
 
-## v0.8.16
-
 ## v0.8.15
 
 ### Feature
 
 * add groupby-page method (163bcac5dd6e)
-
-## v0.8.14
-
-## v0.8.13
-
-## v0.8.12
-
-## v0.8.11
-
-## v0.8.10
-
-## v0.8.9
-
-## v0.8.8
-
-## v0.8.7
-
-## v0.8.6
-
-## v0.8.5
-
-## v0.8.4
-
-## v0.8.3
-
-## v0.8.2
-
-## v0.8.1
 
 ## v0.8.0
 
@@ -162,10 +132,6 @@ Every noteable change is logged here.
 
 ## v0.5.4
 
-## v0.5.3
-
-## v0.5.2
-
 ## v0.5.1
 
 ### Documentation
@@ -186,18 +152,6 @@ Every noteable change is logged here.
 * add method to determine oneline location (65b3ce9b577c)
 
 ## v0.4.7
-
-## v0.4.6
-
-## v0.4.5
-
-## v0.4.4
-
-## v0.4.3
-
-## v0.4.2
-
-## v0.4.1
 
 ## v0.4.0
 
@@ -223,10 +177,6 @@ Every noteable change is logged here.
 * add todo list to archive further library improvements (f63dc65cc3b2)
 
 ## v0.2.5
-
-## v0.2.4
-
-## v0.2.3
 
 ## v0.2.2
 
