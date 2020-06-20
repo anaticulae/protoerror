@@ -5,11 +5,11 @@ RP 0.11.0
 
 * [ ] add checker to ensure that no templates are provided to the user
 
-* [ ] introduce optional number pattern
+* [x] introduce optional number pattern
 
 .. code-block:: python
 
-    4500 = """\
+    S4500 = """\
     SOLUTION MESSAGE
     """
 

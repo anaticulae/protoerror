@@ -33,8 +33,30 @@ Possible solution:
       disagree
       solved
 
-Enable printing solution list, does we need this?
+Pattern
+-------
+
+Define a solution message in short pattern:
+
+.. code-block:: python
+
+    S2000=\"""
+    TITLE
+
+    MESSAGE\"""
+
+Define a solution message:
+
+.. code-block:: python
+
+    SOLUTION_2000=\"""
+    TITLE
+
+    MESSAGE\"""
+
+.. todo:: Enable printing solution list, does we need this?
 """
+
 import contextlib
 import copy
 import dataclasses
@@ -135,6 +157,7 @@ class Solver:
 
 
 SOLUTION_PATTERN = r'^SOLUTION_(?P<type>[A-Z]{0,1})(?P<number>\d{2,5})$'
+SOLUTION_PATTERN_SIMPLE = r'^S(?P<number>\d{2,5})$'
 
 
 def parse_solutions(module, tests: set = None, skips: set = None) -> Solutions:
@@ -142,13 +165,18 @@ def parse_solutions(module, tests: set = None, skips: set = None) -> Solutions:
         module = protocol.utils.module_fromname(module)
     result = []
     for name, value in vars(module).items():
-        matched = re.match(SOLUTION_PATTERN, name)
+        # try different pattern to find solution, presented to the user
+        for pattern in [SOLUTION_PATTERN_SIMPLE, SOLUTION_PATTERN]:
+            matched = re.match(pattern, name)
+            if matched:
+                break
         if not matched:
             continue
-        typ, number = matched['type'], int(matched['number'])  # pylint:disable=W0612
 
+        number = int(matched['number'])
         if should_skip(number, tests, skips):
             continue
+
         try:
             title, message = value.split('\n\n', maxsplit=1)
         except ValueError:

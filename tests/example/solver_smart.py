@@ -10,10 +10,15 @@
 import protocol
 
 SOLUTION_1230 = """\
-Titleseite enthaelt keinen Pruefer
+Titleseite enthält keinen Prüfer
 
-Fuegen Sie die Namen und die akademischen Gerade der Pruefer auf der
+Fügen Sie die Namen und die akademischen Grade der Prüfer auf der
 Titelseite hinzu.
+"""
+
+S1235 = """Short Confidence
+
+Message.
 """
 
 
