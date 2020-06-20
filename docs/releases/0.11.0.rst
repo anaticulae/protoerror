@@ -1,0 +1,43 @@
+.. _0_11_0:
+
+RP 0.11.0
+=========
+
+* [ ] add checker to ensure that no templates are provided to the user
+
+* [ ] introduce optional number pattern
+
+.. code-block:: python
+
+    4500 = """\
+    SOLUTION MESSAGE
+    """
+
+* [ ] add SOLUTION_NUMBER_QUESTION; NUMBER_MESSAGE
+
+.. code-block:: python
+
+    # send question to user if finding was hit
+    QUESTION_4500 = """\
+    """
+
+* [ ] add enabler to send question
+
+    # enable if more than 10 items on a page occurs
+    QUESTION_4550_ENABLE = protocol.pagemore(10)
+
+    # enable one times if finding occurs more than `10` times in the whole
+    # document
+    QUESTION_4550_ENABLE = protocol.documore(10)
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Total coverage: 93.74%
+* Your code has been rated at 10.00/10
+
+after
+~~~~~
