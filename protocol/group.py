@@ -28,6 +28,15 @@ def bypage(items: protocol.Findings) -> protocol.PageFindings:
     return result
 
 
+def byid(items: protocol.Findings) -> dict:
+    """Group findings by `finding.msgid`."""
+    grouped = collections.defaultdict(list)
+    for item in items:
+        grouped[item.msgid].append(item)
+    result = dict(grouped)
+    return result
+
+
 def filter_mark(items: protocol.Findings, shortcut: str) -> protocol.Findings:
     """Filter `Findings` by shortcut and sort them by `location.value`
     afterwards.

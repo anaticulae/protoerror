@@ -38,6 +38,7 @@ from protocol.finding import findings_from_path
 from protocol.finding import load_result
 from protocol.finding import make_finding_number_unique
 # group
+from protocol.group import byid
 from protocol.group import bypage
 from protocol.group import filter_mark
 from protocol.group import lines
