@@ -1,6 +1,6 @@
-.. _0_11_0:
+.. _1_0_0:
 
-RP 0.11.0
+RP 1.0.0
 =========
 
 * [ ] add checker to ensure that no templates are provided to the user
@@ -41,3 +41,6 @@ before
 
 after
 ~~~~~
+
+* Total coverage: 92.92%
+* Your code has been rated at 10.00/10
