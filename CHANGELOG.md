@@ -2,6 +2,26 @@
 
 Every noteable change is logged here.
 
+## v1.0.0
+
+### Feature
+
+* add method to answer list of questions (8892f8e1ddf8)
+* add option to disable user filter (36ea8ebc2644)
+* write to yaml, not .lin files (6f9557d85576)
+* add method to group finding by message id (dbe201e67ba1)
+* add question enabler pattern (bc99b64c1a1d)
+* add question parser (a79b2fa3de81)
+* introduce short solution pattern (9d597a824162)
+
+### Fix
+
+* handle loading no files correctly (daa32bfd23a9)
+
+### Documentation
+
+* fix web solution doc pattern (c9b0071d4aae)
+
 ## v0.10.5
 
 ## v0.10.4
