@@ -12,7 +12,10 @@ import enum
 import re
 import typing
 
+import utila
+
 import protocol
+from protocol.solution import Solution
 
 QUESTION_PATTERN = r'^QUESTION_(?P<number>\d{2,5})$'
 
@@ -30,7 +33,7 @@ class Action(enum.Enum):
 
 
 @dataclasses.dataclass(unsafe_hash=True)
-class Question:
+class Question(Solution):
     msgid: str = None
     title: str = None
     description: str = None
@@ -54,7 +57,7 @@ def parse_questions(module) -> Questions:
         matched = re.match(QUESTION_PATTERN, name)
         if not matched:
             continue
-        number = int(matched['number'])
+        number = matched['number']
         try:
             title, message = value.split('\n\n', maxsplit=1)
         except ValueError:
@@ -89,14 +92,48 @@ def parse_enabler(module) -> int:
         matched = re.match(ENABLE_PATTERN, name)
         if not matched:
             continue
-        number = int(matched['number'])
+        number = matched['number']
         result[number] = value
     return result
 
 
-def pagemore(finding_count: int, yes: callable = None, no: callable = None):  # pylint:disable=C0103
+def pagemore(finding_count: int, yes: callable = None, no: callable = None):
     return (Action.PAGE, finding_count, yes, no)
 
 
-def documore(finding_count: int, yes: callable = None, no: callable = None):  # pylint:disable=C0103
+def documore(finding_count: int, yes: callable = None, no: callable = None):
     return (Action.DOCU, finding_count, yes, no)
+
+
+def answer_questions(path: str, questions: Questions) -> protocol.Findings:
+    findings = [item.content for item in protocol.findings_from_path(path)]
+    findings = utila.flatten(findings)
+    grouped = protocol.byid(findings)
+    result = []
+    for question in questions:
+        try:
+            selected = grouped[question.msgid]
+        except KeyError:
+            # no potential message available
+            continue
+        if question.action == Action.PAGE:
+            bypage = protocol.bypage(selected)
+            for paged in bypage:
+                if len(paged.content) < question.finding:
+                    continue
+                solution = protocol.Finding(
+                    location=protocol.Location.from_page(paged.page),
+                    msgid=question.msgid,
+                    solution=question,
+                )
+                result.append(solution)
+        elif question.action == Action.DOCU:
+            if len(selected) < question.finding:
+                continue
+            solution = protocol.Finding(
+                location=protocol.Location.from_page(-1),  # TODO: HOLY VALUE
+                msgid=question.msgid,
+                solution=question,
+            )
+            result.append(solution)
+    return result

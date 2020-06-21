@@ -10,6 +10,8 @@
 import collections
 import contextlib
 
+import utila
+
 import protocol
 
 
@@ -54,7 +56,10 @@ def filter_mark(items: protocol.Findings, shortcut: str) -> protocol.Findings:
         with contextlib.suppress(AttributeError):
             if item.location.shortcut == shortcut:
                 selected.append(item)
-    items = sorted(selected, key=lambda x: x.location.value)
+    items = sorted(
+        selected,
+        key=lambda x: x.location.value
+        if x.location.value is not None else utila.INF)
     return items
 
 

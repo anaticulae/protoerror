@@ -18,7 +18,7 @@ def test_group_bypage(linter_withlocation):
     findings = linter_withlocation.result()
     result = protocol.bypage(findings)
     assert len(result) == 3
-    assert len(result[2]) == 2
+    assert len(result[2]) == 4
 
     pages = [item.page for item in result]
     assert pages == [0, 2, 5], str(pages)
@@ -33,4 +33,4 @@ def test_group_filter_words(linter_withlocation):
 def test_group_filter_lines(linter_withlocation):
     todo = linter_withlocation.findings
     words = protocol.lines(todo)
-    assert len(words) == 1
+    assert len(words) == 3

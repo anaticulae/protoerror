@@ -57,4 +57,14 @@ def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
         msgid='F1338',
         confidence=0.3,
     )
+    result.add_finding(
+        location=protocol.Location(page=5, shortcut='ol'),
+        msgid='1337',
+        confidence=0.3,
+    )
+    result.add_finding(
+        location=protocol.Location(page=5, shortcut='ol'),
+        msgid='1337',
+        confidence=0.3,
+    )
     return result

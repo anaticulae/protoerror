@@ -17,6 +17,6 @@ Do you want to remove this Item?
 Here comes a lot more description.
 """
 
-QUESTION_1337_ENABLE = protocol.documore(10)
+QUESTION_1337_ENABLE = protocol.documore(1)
 
 QUESTION_1338_ENABLE = protocol.pagemore(5)
