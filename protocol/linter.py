@@ -39,8 +39,8 @@ from protocol.solution import Solver
 from protocol.solution import parse_checkers
 from protocol.solution import parse_msgid
 
-USER_FILE = 'user.lin'
-DEVELOPER_FILE = 'developer.lin'
+USER_FILE = 'user_user.yaml'
+DEVELOPER_FILE = 'developer_developer.yaml'
 
 
 @dataclasses.dataclass
