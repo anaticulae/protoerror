@@ -23,6 +23,8 @@ import dataclasses
 import enum
 import re
 
+import utila
+
 
 class DocType(enum.Enum):
     HOMEWORK = enum.auto()
@@ -45,8 +47,49 @@ class Document:
     generator: Generator = None
 
 
-def filter_solutions(items, document: Document):
-    pass
+def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=R0912,R1260
+    assert document.pages is not None, str(document)
+    small = document.pages < 35  # TODO: HOLY VALUE
+    medium = 35 <= document.pages < 220
+    large = 220 <= document.pages < utila.INF
+
+    result = []
+    for item in items:
+        decorated = decorators(item)
+        if 'skip' in decorated:
+            continue
+        if 'nosmall' in decorated and small:
+            continue
+        if 'nomedium' in decorated and medium:
+            continue
+        if 'nolarge' in decorated and large:
+            continue
+
+        _home, _bachelor, _master, _diss, _book = (
+            'homework' in decorated,
+            'bachelor' in decorated,
+            'master' in decorated,
+            'dissertation' in decorated,
+            'book' in decorated,
+        )
+
+        if document.doctype == DocType.HOMEWORK:
+            if not _home and any((_bachelor, _master, _diss, _book)):
+                continue
+        if document.doctype == DocType.BACHELOR:
+            if not _bachelor and any((_home, _master, _diss, _book)):
+                continue
+        if document.doctype == DocType.MASTER:
+            if not _master and any((_home, _bachelor, _diss, book)):
+                continue
+        if document.doctype == DocType.DISS:
+            if not _diss and any((_home, _bachelor, _master, _book)):
+                continue
+        if document.doctype == DocType.BOOK:
+            if not _book and any((_home, _bachelor, _master, _diss)):
+                continue
+        result.append(item)
+    return result
 
 
 def decorateme(method, value):

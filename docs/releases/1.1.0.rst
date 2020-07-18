@@ -26,7 +26,7 @@ Furhtermore hints for using Latex while using MSWord is useless.
     {%BASE_END%}
 
 
-* [ ] add decorator to exclude linter step for current work
+* [x] add decorator to exclude linter step for current work
 
 Disable linter step:
 
@@ -36,7 +36,7 @@ Disable linter step:
     def check_1282_title_page():
         pass
 
-* [ ] Skip linter step for special type of work:
+* [x] Skip linter step for special type of work:
 
 .. code-block:: python
 
@@ -47,7 +47,7 @@ Disable linter step:
 
 Supported Decorators: @nosmall, @nomedium, @nolarge
 
-* [ ] Run linter for a special step only:
+* [x] Run linter for a special step only:
 
 .. code-block:: python
 
