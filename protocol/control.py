@@ -6,7 +6,19 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Control the checker
+===================
 
+>>> @homework
+... @nolarge
+... def check_1234(items):
+...    pass
+
+>>> decorators(check_1234)
+{'nolarge', 'homework'}
+"""
+
+import contextlib
 import dataclasses
 import enum
 import re
@@ -29,8 +41,41 @@ class Generator(enum.Enum):
 @dataclasses.dataclass
 class Document:
     pages: int = None
-    doctype = DocType = None
+    doctype: DocType = None
     generator: Generator = None
+
+
+def filter_solutions(items, document: Document):
+    pass
+
+
+def decorateme(method, value):
+    try:
+        method.__control__.add(value)
+    except AttributeError:
+        setattr(method, '__control__', {value})
+    return method
+
+
+def decorators(method) -> set:
+    assert method, str(method)
+    with contextlib.suppress(AttributeError):
+        return method.__control__
+    return {}
+
+
+# pylint:disable=C0103
+homework = lambda x: decorateme(x, 'homework')
+bachelor = lambda x: decorateme(x, 'bachelor')
+master = lambda x: decorateme(x, 'master')
+dissertation = lambda x: decorateme(x, 'dissertation')
+book = lambda x: decorateme(x, 'book')
+
+nosmall = lambda x: decorateme(x, 'nosmall')
+nomedium = lambda x: decorateme(x, 'nomedium')
+nolarge = lambda x: decorateme(x, 'nolarge')
+
+skip = lambda x: decorateme(x, 'skip')
 
 
 def render_template(content: str, generator: Generator) -> str:

@@ -26,6 +26,15 @@ from protocol.config import save
 from protocol.control import DocType
 from protocol.control import Document
 from protocol.control import Generator
+from protocol.control import bachelor
+from protocol.control import book
+from protocol.control import decorators
+from protocol.control import dissertation
+from protocol.control import homework
+from protocol.control import master
+from protocol.control import nolarge
+from protocol.control import nomedium
+from protocol.control import nosmall
 # finding
 from protocol.finding import SUMMARY_LOCATION
 from protocol.finding import BoundingLocation
