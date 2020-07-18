@@ -20,6 +20,7 @@ Note: This class is thread-safe.
 
 import contextlib
 import dataclasses
+import functools
 import importlib
 import os
 import threading
@@ -69,8 +70,8 @@ class Linter:
         self.active = {item.msgid: item for item in active} if active else {}
         self.checkers = [] if not checkers else checkers
         self.findings = []
-        self.lock = threading.Lock()  # make class thread safe
         self.document = document
+        self.lock = threading.Lock()  # make class thread safe
 
     def add_finding(
             self,
@@ -137,6 +138,19 @@ class Linter:
         # create result
         result = self.result(unique=unique)
         write_result(result, path, unique=unique)
+
+    def run(self, driver=None):
+        self.findings = []
+        # select document dependend checkers
+        checkers = self.checkers
+        if self.document:
+            checkers = protocol.filter_checkers(self.checkers, self.document)
+        for checker in checkers:
+            call = functools.partial(
+                self.add_finding,
+                msgid=checker.msgid,
+            )
+            checker(call, driver)
 
     def result(self, unique: bool = False):
         """Return current linter result of `user`, `developer`"""

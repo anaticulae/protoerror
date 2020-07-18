@@ -122,3 +122,10 @@ def test_linter_from_module():
 def test_linter_from_module_with_error():
     with pytest.raises(ValueError):
         protocol.from_module(tests.example.solver_with_error)
+
+
+def test_linter_with_decorators_run():
+    source = 'tests.example.solver_with_decorator'
+    linter_ = protocol.from_module(source)
+
+    linter_.run(driver=None)
