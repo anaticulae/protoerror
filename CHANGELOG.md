@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v1.1.0
+
+### Feature
+
+* add method to run registered checkers (d7a965e9e7fb)
+* load checkers with loading linter (bcde4e8b2df0)
+* add filter_solutions to skip non selected linter by doc type (e3df4d4d350e)
+* add decorators to control which checker is selected (9d55f27fb629)
+* add data structure to describe document type (3050da50569f)
+* add method to replace editor dependent strings (e2ca188e0bc1)
+
+### Documentation
+
+* add general module documentation (414a5bc3742d)
+
 ## v1.0.5
 
 ## v1.0.4
