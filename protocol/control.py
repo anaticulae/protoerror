@@ -7,14 +7,30 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import dataclasses
 import enum
 import re
+
+
+class DocType(enum.Enum):
+    HOMEWORK = enum.auto()
+    BACHELOR = enum.auto()
+    MASTER = enum.auto()
+    DISS = enum.auto()
+    BOOK = enum.auto()
 
 
 class Generator(enum.Enum):
     BASE = enum.auto()
     LATEX = enum.auto()
     MSWORD = enum.auto()
+
+
+@dataclasses.dataclass
+class Document:
+    pages: int = None
+    doctype = DocType = None
+    generator: Generator = None
 
 
 def render_template(content: str, generator: Generator) -> str:

@@ -22,6 +22,10 @@ from protocol.checker import check_messages
 from protocol.config import MessageStatus
 from protocol.config import load
 from protocol.config import save
+# control
+from protocol.control import DocType
+from protocol.control import Document
+from protocol.control import Generator
 # finding
 from protocol.finding import SUMMARY_LOCATION
 from protocol.finding import BoundingLocation
