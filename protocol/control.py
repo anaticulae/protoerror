@@ -9,13 +9,68 @@
 """Control the checker
 ===================
 
+Use decorators to exclude linter step cause the step has a problem or
+implementation is not finished yet:
+
+.. code-block:: python
+
+    @skip
+    def check_1282_skip_step():
+        pass
+
+Skip linter step for special document length:
+
+.. code-block:: python
+
+    @nosmall
+    @nomedium
+    def check_1290_long_page_check():
+        pass
+
+Supported Decorators: @nosmall, @nomedium, @nolarge
+
+Run linter for a special document type:
+
+.. code-block:: python
+
+    @book
+    def check_1291_page_border():
+        pass
+
+Supported Decorators: @homework, @bachelor, @master, @dissertation, @book
+
+Examples
+--------
+
 >>> @homework
 ... @nolarge
 ... def check_1234(items):
 ...    pass
 
+Get list of decorators for a linter step:
+
 >>> decorators(check_1234)
 {'nolarge', 'homework'}
+
+Templates: Doctype based replacement
+====================================
+
+Add selective advice which are platform dependent, for example give
+different advice when using MSWord instead of Latex:
+
+.. code-block:: python
+
+    {%MSWORD%}
+    ...
+    {%MSWORD_END%}
+
+    {%LATEX%}
+    ...
+    {%LATEX_END%}
+
+    {%BASE%}
+    ...
+    {%BASE_END%}
 """
 
 import contextlib
