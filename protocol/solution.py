@@ -54,7 +54,7 @@ Define a solution message:
 
     MESSAGE\"""
 
-.. todo:: Enable printing solution list, does we need this?
+.. todo:: Enable printing solution list, do we need this?
 """
 
 import contextlib
