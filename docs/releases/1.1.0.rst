@@ -8,7 +8,7 @@ small homework does not need every check like a huge book. For example
 chapter length checking is not very suitable on a ten page homework.
 Furhtermore hints for using Latex while using MSWord is useless.
 
-* [ ] Add selective advice which are platform dependent, for example give
+* [x] Add selective advice which are platform dependent, for example give
       different advice when using MSWord instead of Latex.
 
 .. code-block:: python

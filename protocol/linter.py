@@ -26,6 +26,7 @@ import typing
 
 import utila
 
+import protocol.control
 import protocol.finding
 import protocol.utils
 from protocol.config import MessageStatus
@@ -68,6 +69,7 @@ class Linter:
             self,
             solver: Solver = None,
             active: typing.List[MessageStatus] = None,
+            document: protocol.control.Document = None,
     ):
         # TODO: USE CHECKER DIRECTLY TO REDUCE AMOUT OF CODE
         self.solver = solver
@@ -75,6 +77,7 @@ class Linter:
         self.checkers = []
         self.findings = []
         self.lock = threading.Lock()  # make class thread safe
+        self.document = document
 
     def add_finding(
             self,
@@ -99,6 +102,14 @@ class Linter:
         solution = None
         if self.solver:
             solution = self.solver.solution(msgid=msgid, **kwargs)
+        if solution and self.document:
+            # Replace generator dependent templates
+            # TODO: not every solution has a description?
+            solution.description = protocol.control.render_template(
+                solution.description,
+                self.document.generator,
+            )
+
         active = self.is_active(msgid, confidence)
 
         with self.lock:
