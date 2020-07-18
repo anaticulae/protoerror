@@ -1,0 +1,67 @@
+.. _1_1_0:
+
+RP 1.1.0
+=========
+
+This release aims to make linting editor and document type dependet. A
+small homework does not need every check like a huge book. For example
+chapter length checking is not very suitable on a ten page homework.
+Furhtermore hints for using Latex while using MSWord is useless.
+
+* [ ] Add selective advice which are platform dependent, for example give
+      different advice when using MSWord instead of Latex.
+
+.. code-block:: python
+
+    {%MSWORD%}
+    ...
+    {%MSWORD_END%}
+
+    {%LATEX%}
+    ...
+    {%LATEX_END%}
+
+    {%BASE%}
+    ...
+    {%BASE_END%}
+
+
+* [ ] add decorator to exclude linter step for current work
+
+Disable linter step:
+
+.. code-block:: python
+
+    @skip
+    def check_1282_title_page():
+        pass
+
+* [ ] Skip linter step for special type of work:
+
+.. code-block:: python
+
+    @nosmall
+    @nomedium
+    def check_1290_long_page_check():
+        pass
+
+Supported Decorators: @nosmall, @nomedium, @nolarge
+
+* [ ] Run linter for a special step only:
+
+.. code-block:: python
+
+    @book
+    def check_1291_page_border_check():
+        pass
+
+Supported Decorators: @homework, @bachelor, @master, @dissertation, @book
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Total coverage: 92.92%
+* Your code has been rated at 10.00/10
