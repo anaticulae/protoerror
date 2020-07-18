@@ -69,12 +69,13 @@ class Linter:
             self,
             solver: Solver = None,
             active: typing.List[MessageStatus] = None,
+            checkers: list = None,
             document: protocol.control.Document = None,
     ):
         # TODO: USE CHECKER DIRECTLY TO REDUCE AMOUT OF CODE
         self.solver = solver
         self.active = {item.msgid: item for item in active} if active else {}
-        self.checkers = []
+        self.checkers = [] if not checkers else checkers
         self.findings = []
         self.lock = threading.Lock()  # make class thread safe
         self.document = document
@@ -237,9 +238,13 @@ def from_file(path: str) -> Linter:
     return result
 
 
-def from_solution(solutions: Solutions, statuses: MessageStatusList) -> Linter:
+def from_solution(
+        solutions: Solutions,
+        statuses: MessageStatusList,
+        checkers: list = None,
+) -> Linter:
     solver = Solver.fromlist(solutions)
-    result = Linter(solver, active=statuses)
+    result = Linter(solver, active=statuses, checkers=checkers)
     return result
 
 
@@ -254,7 +259,8 @@ def from_module(name: str, tests: set = None, skips: set = None) -> Linter:
         skips=skips,
     )
     status = parse_active(module)
-    result = protocol.from_solution(solution, status)
+    checkers = protocol.parse_checkers(module, tests=tests, skips=skips)
+    result = protocol.from_solution(solution, status, checkers=checkers)
     return result
 
 
