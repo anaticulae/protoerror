@@ -15,30 +15,22 @@ information to the user. These are findings which are `active` and
 document. The other type is to give the devloper more information to
 improve the platform.
 
-This class is thread-safe.
+Note: This class is thread-safe.
 """
+
 import contextlib
 import dataclasses
 import importlib
 import os
 import threading
-import typing
 
 import utila
 
+import protocol.config
 import protocol.control
 import protocol.finding
+import protocol.solution
 import protocol.utils
-from protocol.config import MessageStatus
-from protocol.config import MessageStatusList
-from protocol.finding import Finding
-from protocol.finding import Findings
-from protocol.finding import Location
-from protocol.finding import hash_finding
-from protocol.solution import Solutions
-from protocol.solution import Solver
-from protocol.solution import parse_checkers
-from protocol.solution import parse_msgid
 
 USER_FILE = 'user_user.yaml'
 DEVELOPER_FILE = 'developer_developer.yaml'
@@ -67,8 +59,8 @@ class Linter:
 
     def __init__(
             self,
-            solver: Solver = None,
-            active: typing.List[MessageStatus] = None,
+            solver: protocol.solution.Solver = None,
+            active: protocol.config.MessageStatusList = None,
             checkers: list = None,
             document: protocol.control.Document = None,
     ):
@@ -82,7 +74,7 @@ class Linter:
 
     def add_finding(
             self,
-            location: Location = None,
+            location: protocol.finding.Location = None,
             msgid: str = None,
             confidence: float = 1.0,
             **kwargs,
@@ -103,6 +95,7 @@ class Linter:
         solution = None
         if self.solver:
             solution = self.solver.solution(msgid=msgid, **kwargs)
+
         if solution and self.document:
             # Replace generator dependent templates
             # TODO: not every solution has a description?
@@ -114,14 +107,14 @@ class Linter:
         active = self.is_active(msgid, confidence)
 
         with self.lock:
-            finding = Finding(
+            finding = protocol.finding.Finding(
                 confidence=confidence,
                 location=location,
                 msgid=msgid,
                 solution=solution,
                 active=active,
             )
-            finding.number = hash_finding(finding)
+            finding.number = protocol.finding.hash_finding(finding)
             self.findings.append(finding)
 
     def is_active(self, msgid, confidence):
@@ -159,7 +152,7 @@ class Linter:
 
 
 def dump_result(
-        items: Findings,
+        items: protocol.finding.Findings,
         *,
         unique: bool = False,
 ) -> DumpedLinterResult:
@@ -185,7 +178,7 @@ def dump_result(
 
 
 def write_result(
-        result: Findings,
+        result: protocol.finding.Findings,
         path: str,
         *,
         unique: bool = False,
@@ -239,11 +232,11 @@ def from_file(path: str) -> Linter:
 
 
 def from_solution(
-        solutions: Solutions,
-        statuses: MessageStatusList,
+        solutions: protocol.solution.Solutions,
+        statuses: protocol.config.MessageStatusList,
         checkers: list = None,
 ) -> Linter:
-    solver = Solver.fromlist(solutions)
+    solver = protocol.solution.Solver.fromlist(solutions)
     result = Linter(solver, active=statuses, checkers=checkers)
     return result
 
@@ -265,10 +258,10 @@ def from_module(name: str, tests: set = None, skips: set = None) -> Linter:
 
 
 def parse_active(module):
-    checkers = parse_checkers(module)
+    checkers = protocol.solution.parse_checkers(module)
     result = [
         protocol.MessageStatus(
-            msgid=parse_msgid(item.__name__),
+            msgid=protocol.solution.parse_msgid(item.__name__),
             active=item.confidence > 0.0,
             confidence=item.confidence,
         ) for item in checkers
