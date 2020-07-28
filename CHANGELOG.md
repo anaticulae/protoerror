@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.2.0
+
+### Feature
+
+* extend ranged location with chars as minimal unit (218af1b17628)
+
 ## v1.1.0
 
 ### Feature
