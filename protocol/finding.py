@@ -116,7 +116,7 @@ class RangedLocation:
     >>> RangedLocation.fromstr('p5~t17')
     RangedLocation(page=5, token=17)
     >>> RangedLocation.fromstr('c5_10')
-    RangedLocation(chars=5, chars_end=10)
+    RangedLocation(char=5, char_end=10)
     """
 
     page: int = None
@@ -125,17 +125,17 @@ class RangedLocation:
     line_end: int = None
     token: int = None
     token_end: int = None
-    chars: int = None
-    chars_end: int = None
+    char: int = None
+    char_end: int = None
 
     PATTERN = re.compile(r'(p(?P<page>\d+)(_(?P<page_end>\d+))?[~]?)?'
                          r'(l(?P<line>\d+)(_(?P<line_end>\d+))?[~]?)?'
                          r'(t(?P<token>\d+)(_(?P<token_end>\d+))?[~]?)?'
-                         r'(c(?P<chars>\d+)(_(?P<chars_end>\d+))?)?')
+                         r'(c(?P<char>\d+)(_(?P<char_end>\d+))?)?')
 
     KEYS = [
-        'page', 'page_end', 'line', 'line_end', 'token', 'token_end', 'chars',
-        'chars_end'
+        'page', 'page_end', 'line', 'line_end', 'token', 'token_end', 'char',
+        'char_end'
     ]
 
     @classmethod
@@ -161,10 +161,10 @@ class RangedLocation:
             result += f'~t{self.token}'
         if self.token_end is not None:
             result += f'_{self.token_end}'
-        if self.chars is not None:
-            result += f'~c{self.chars}'
-        if self.chars_end is not None:
-            result += f'_{self.chars_end}'
+        if self.char is not None:
+            result += f'~c{self.char}'
+        if self.char_end is not None:
+            result += f'_{self.char_end}'
         return result
 
     def __repr__(self):
