@@ -59,7 +59,8 @@ def filter_mark(items: protocol.Findings, shortcut: str) -> protocol.Findings:
     items = sorted(
         selected,
         key=lambda x: x.location.value
-        if x.location.value is not None else utila.INF)
+        if x.location.value is not None else utila.INF,
+    )
     return items
 
 
