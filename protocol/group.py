@@ -75,6 +75,10 @@ def sentences(items: protocol.Findings) -> protocol.Findings:
     return filter_mark(items, shortcut='s')
 
 
+def ranged(items: protocol.Findings) -> protocol.Findings:
+    return protocol.filter_mark(items, shortcut='r')
+
+
 def select_findings(
         findings: protocol.Findings,
         msgid: set = None,
