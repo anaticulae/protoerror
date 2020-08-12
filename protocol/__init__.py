@@ -49,6 +49,7 @@ from protocol.finding import RangedLocation
 from protocol.finding import finding_status
 from protocol.finding import finding_status_update
 from protocol.finding import findings_from_path
+from protocol.finding import hash_finding
 from protocol.finding import load_result
 from protocol.finding import make_finding_number_unique
 # group
