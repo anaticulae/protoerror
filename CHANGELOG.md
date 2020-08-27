@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v1.3.0
+
+### Feature
+
+* add debug information about changing finding status (8f41376ba798)
+* add method to hash finding to public interface (8f7888299f3e)
+* add method to filter ranged findings (8083a8a7e408)
+
+### Fix
+
+* rename internal variable (02c9fdee27be)
+
 ## v1.2.1
 
 ## v1.2.0
