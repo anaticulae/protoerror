@@ -419,6 +419,8 @@ def finding_status_update(
                 return False
             finding.solution.status = status
             dumped = dump_findings(findings)
+            utila.debug(f'number: {number}; status: {status};\n'
+                        f'update: {location}')
             utila.file_replace(location, dumped)
             return True
     return False
