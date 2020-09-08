@@ -6,8 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import pytest
 
+import iamraw
 import protocol
 import protocol.solution
 
@@ -24,7 +26,7 @@ def solver() -> protocol.Solver:
 def template_solver() -> protocol.Solver:
     result = protocol.Solver()
     result.append(
-        protocol.Text(
+        iamraw.Text(
             number=10,
             msgid='1337',
             title='Solution {%number%} is open.',
@@ -38,32 +40,32 @@ def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
     result = protocol.Linter(solver=solver)
 
     result.add_finding(
-        location=protocol.Location(page=2),
+        location=iamraw.Location(page=2),
         msgid='F0001',
         confidence=1.0,
     )
     result.add_finding(
-        location=protocol.Location(page=0),
+        location=iamraw.Location(page=0),
         msgid='F0000',
         confidence=0.5,
     )
     result.add_finding(
-        location=protocol.Location(page=5, shortcut='w'),
+        location=iamraw.Location(page=5, shortcut='w'),
         msgid='F1337',
         confidence=0.3,
     )
     result.add_finding(
-        location=protocol.Location(page=5, shortcut='ol'),
+        location=iamraw.Location(page=5, shortcut='ol'),
         msgid='F1338',
         confidence=0.3,
     )
     result.add_finding(
-        location=protocol.Location(page=5, shortcut='ol'),
+        location=iamraw.Location(page=5, shortcut='ol'),
         msgid='1337',
         confidence=0.3,
     )
     result.add_finding(
-        location=protocol.Location(page=5, shortcut='ol'),
+        location=iamraw.Location(page=5, shortcut='ol'),
         msgid='1337',
         confidence=0.3,
     )

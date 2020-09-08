@@ -7,9 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from protocol import ProblemStatus
+import iamraw
 from protocol import Solver
-from protocol import Text
 from protocol.solution import SOLUTION
 
 
@@ -38,10 +37,10 @@ def test_solution_replace_template(template_solver):  # pylint:disable=W0621
         text='"template replacement"',
         double='Here comes the Newline\n\nbeep.',
     )
-    expected = Text(
+    expected = iamraw.Text(
         number=10,
         msgid='1337',
-        status=ProblemStatus.OPEN,
+        status=iamraw.ProblemStatus.OPEN,
         title='Solution 30 is open.',
         description=('This is just a "template replacement" '
                      'Here comes the Newline\n\nbeep..'),

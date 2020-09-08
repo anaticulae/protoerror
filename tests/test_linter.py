@@ -10,8 +10,10 @@
 import os
 
 import pytest
+import serializeraw
 import utila
 
+import iamraw
 import protocol
 import tests.example.solver_with_error
 
@@ -58,7 +60,7 @@ def test_linter_linter_load_result(linter: protocol.Linter, testdir):  # pylint:
     user = linter.result(unique=True)
     assert user  # ensure that developer contain some elements
 
-    loaded = protocol.load_result(os.path.join(root, protocol.USER_FILE))
+    loaded = serializeraw.load_findings(os.path.join(root, protocol.USER_FILE))
     assert loaded == user
 
 
@@ -74,14 +76,14 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
     )
     output = result.result()
     expected = [
-        protocol.Finding(
+        iamraw.Finding(
             number=0,
             location=None,
             msgid='1337',
-            solution=protocol.Text(
+            solution=iamraw.Text(
                 number=10,
                 msgid='1337',
-                status=protocol.ProblemStatus.OPEN,
+                status=iamraw.ProblemStatus.OPEN,
                 title='Solution 42 is open.',
                 description='This is just a Hello half.'),
             confidence=1.0,
