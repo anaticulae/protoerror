@@ -12,10 +12,11 @@ import contextlib
 
 import utila
 
+import iamraw
 import protocol
 
 
-def bypage(items: protocol.Findings) -> protocol.PageFindings:
+def bypage(items: iamraw.Findings) -> iamraw.PageFindings:
     """Group `items` by location.page of `Finding`. Sort the groups
     ascending by page number."""
     pages = collections.defaultdict(list)
@@ -24,13 +25,13 @@ def bypage(items: protocol.Findings) -> protocol.PageFindings:
         pages[item.location.page].append(item)
 
     result = [
-        protocol.PageFinding(page=page, content=pages[page])
+        iamraw.PageFinding(page=page, content=pages[page])
         for page in sorted(pages.keys())
     ]
     return result
 
 
-def byid(items: protocol.Findings) -> dict:
+def byid(items: iamraw.Findings) -> dict:
     """Group findings by `finding.msgid`."""
     grouped = collections.defaultdict(list)
     for item in items:
@@ -39,12 +40,12 @@ def byid(items: protocol.Findings) -> dict:
     return result
 
 
-def filter_mark(items: protocol.Findings, shortcut: str) -> protocol.Findings:
+def filter_mark(items: iamraw.Findings, shortcut: str) -> iamraw.Findings:
     """Filter `Findings` by shortcut and sort them by `location.value`
     afterwards.
 
     Args:
-        items(protocol.Findings): list of findings
+        items(iamraw.Findings): list of findings
         shortcut(str): shortcut of protocol.location, w word, p page,
                        ol oneline, etc.
     Returns:
@@ -64,34 +65,34 @@ def filter_mark(items: protocol.Findings, shortcut: str) -> protocol.Findings:
     return items
 
 
-def words(items: protocol.Findings) -> protocol.Findings:
+def words(items: iamraw.Findings) -> iamraw.Findings:
     return filter_mark(items, shortcut='w')
 
 
-def lines(items: protocol.Findings) -> protocol.Findings:
+def lines(items: iamraw.Findings) -> iamraw.Findings:
     return filter_mark(items, shortcut='ol')
 
 
-def sentences(items: protocol.Findings) -> protocol.Findings:
+def sentences(items: iamraw.Findings) -> iamraw.Findings:
     return filter_mark(items, shortcut='s')
 
 
-def ranged(items: protocol.Findings) -> protocol.Findings:
+def ranged(items: iamraw.Findings) -> iamraw.Findings:
     return protocol.filter_mark(items, shortcut='r')
 
 
 def select_findings(
-        findings: protocol.Findings,
+        findings: iamraw.Findings,
         msgid: set = None,
-) -> protocol.Findings:
+) -> iamraw.Findings:
     """Select `Findings` specified by `msgid`
 
-    >>> select_findings([protocol.Finding(msgid=1337), protocol.Finding(msgid=1338)], msgid=(1337,1400))
+    >>> select_findings([iamraw.Finding(msgid=1337), iamraw.Finding(msgid=1338)], msgid=(1337,1400))
     [Finding(...msgid=1337...)]
-    >>> select_findings([protocol.Finding(msgid=1337), protocol.Finding(msgid=1338)])
+    >>> select_findings([iamraw.Finding(msgid=1337), iamraw.Finding(msgid=1338)])
     [Finding(...msgid=1337...), Finding(...msgid=1338...)]
     """
-    assert all(isinstance(item, protocol.Finding) for item in findings)
+    assert all(isinstance(item, iamraw.Finding) for item in findings)
     if msgid is None:
         return findings
     if isinstance(msgid, int):

@@ -14,8 +14,8 @@ import typing
 
 import utila
 
+import iamraw
 import protocol
-from protocol.solution import Solution
 
 QUESTION_PATTERN = r'^QUESTION_(?P<number>\d{2,5})$'
 
@@ -33,7 +33,7 @@ class Action(enum.Enum):
 
 
 @dataclasses.dataclass(unsafe_hash=True)
-class Question(Solution):
+class Question(iamraw.Solution):
     msgid: str = None
     title: str = None
     description: str = None
@@ -105,7 +105,7 @@ def documore(finding_count: int, yes: callable = None, no: callable = None):
     return (Action.DOCU, finding_count, yes, no)
 
 
-def answer_questions(path: str, questions: Questions) -> protocol.Findings:
+def answer_questions(path: str, questions: Questions) -> iamraw.Findings:
     findings = [item.content for item in protocol.findings_from_path(path)]
     findings = utila.flatten(findings)
     grouped = protocol.byid(findings)
@@ -121,8 +121,8 @@ def answer_questions(path: str, questions: Questions) -> protocol.Findings:
             for paged in bypage:
                 if len(paged.content) < question.finding:
                     continue
-                solution = protocol.Finding(
-                    location=protocol.Location.from_page(paged.page),
+                solution = iamraw.Finding(
+                    location=iamraw.Location.from_page(paged.page),
                     msgid=question.msgid,
                     solution=question,
                 )
@@ -130,8 +130,8 @@ def answer_questions(path: str, questions: Questions) -> protocol.Findings:
         elif question.action == Action.DOCU:
             if len(selected) < question.finding:
                 continue
-            solution = protocol.Finding(
-                location=protocol.Location.from_page(-1),  # TODO: HOLY VALUE
+            solution = iamraw.Finding(
+                location=iamraw.Location.from_page(-1),  # TODO: HOLY VALUE
                 msgid=question.msgid,
                 solution=question,
             )

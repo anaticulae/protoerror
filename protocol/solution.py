@@ -59,56 +59,15 @@ Define a solution message:
 
 import contextlib
 import copy
-import dataclasses
-import enum
 import re
 import typing
 
 import utila
 
+import iamraw
 import protocol.utils
 
-
-class ProblemStatus(enum.Enum):
-    OPEN = enum.auto()  # default status when non-CLOSED problem appears
-    HIDDEN = enum.auto()  # user don't want to see this message
-    DISAGREE = enum.auto()  # false alarm or user does agree with judgement
-    SOLVED = enum.auto()  # user solved this issue in there document
-    CLOSED = enum.auto()  # user can not change this state, e.g. pdf read error
-
-
-@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
-class Solution:
-    number: int = dataclasses.field(compare=False, default=-1)
-    msgid: str = None
-    status: ProblemStatus = ProblemStatus.OPEN
-
-
-Solutions = typing.List[Solution]
 Validators = typing.List[callable]
-
-
-@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
-class Text(Solution):
-    title: str = None
-    description: str = None
-
-
-@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
-class Web(Text):
-
-    hyperlinks: list = dataclasses.field(default=list)
-    """List of hyperlinks to underline the description."""
-
-
-@dataclasses.dataclass(unsafe_hash=True)  # pylint:disable=R0903
-class Doctails(Text):
-    """Describes link to internal documentation database.
-
-    Example:
-     * `{writing/manuskript/zitate}`
-     * `{writing/user}`
-    """
 
 
 class Solver:
@@ -116,14 +75,14 @@ class Solver:
     def __init__(self):
         self.solutions = {}
 
-    def add_solution(self, msgid: str, solution: Solution):
+    def add_solution(self, msgid: str, solution: iamraw.Solution):
         assert msgid, solution
         self.solutions[msgid] = solution
 
-    def append(self, item: Solution):
+    def append(self, item: iamraw.Solution):
         self.solutions[item.msgid] = item
 
-    def solution(self, msgid: str, **kwargs) -> Solution:
+    def solution(self, msgid: str, **kwargs) -> iamraw.Solution:
         try:
             result = copy.deepcopy(self.solutions[msgid])
         except KeyError:
@@ -160,7 +119,11 @@ SOLUTION_PATTERN = r'^SOLUTION_(?P<type>[A-Z]{0,1})(?P<number>\d{2,5})$'
 SOLUTION_PATTERN_SIMPLE = r'^S(?P<number>\d{2,5})$'
 
 
-def parse_solutions(module, tests: set = None, skips: set = None) -> Solutions:
+def parse_solutions(
+        module,
+        tests: set = None,
+        skips: set = None,
+) -> iamraw.Solutions:
     if isinstance(module, str):
         module = protocol.utils.module_fromname(module)
     result = []
@@ -182,7 +145,7 @@ def parse_solutions(module, tests: set = None, skips: set = None) -> Solutions:
         except ValueError:
             utila.error(f'{name} requires newline between headline and content')
             raise
-        item = protocol.Text(title=title, msgid=number, description=message)
+        item = iamraw.Text(title=title, msgid=number, description=message)
         result.append(item)
     return result
 
@@ -264,7 +227,7 @@ def confidence(value=1.0):
 
 
 SOLUTION = [
-    Text(
+    iamraw.Text(
         title='Interner Fehler: Dokument konnte nicht gelesen werden',
         description=(
             'Das Dokument konnte nicht eingelesen werden.\n\n'
@@ -272,16 +235,16 @@ SOLUTION = [
             'ist durch einen technischen Fehler der `checkitweg`-Plattform '
             'entstanden.\n\n'
             'Ein Techniker arbeitet an der Loesung dieses Problems.'),
-        status=ProblemStatus.CLOSED,
+        status=iamraw.ProblemStatus.CLOSED,
         msgid='F0000',
     ),
-    Text(
+    iamraw.Text(
         title='Interner Fehler: Dokument konnte verarbeitet werden',
         description=('Das Dokument konnte nicht verarbeitet werden.\n\n'
                      'Dieser Fehler ist durch einen technischen Fehler der '
                      '`checkitweg`-Plattform verursacht worden.\n\n'
                      'Ein Techniker arbeitet an der Loesung dieses Problems.'),
-        status=ProblemStatus.CLOSED,
+        status=iamraw.ProblemStatus.CLOSED,
         msgid='F0001',
     ),
 ]

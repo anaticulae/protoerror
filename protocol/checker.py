@@ -39,8 +39,7 @@ Extracted data of different sources -> Checker[Judegement] -> Problem
 
 import typing
 
-from protocol.finding import Findings
-from protocol.finding import Location
+import iamraw
 
 
 class Checker:
@@ -53,7 +52,7 @@ class Checker:
 
     def add_finding(
             self,
-            location: Location = None,
+            location: iamraw.Location = None,
             msgid: str = None,
             confidence: float = None,
     ):
@@ -62,7 +61,7 @@ class Checker:
     def open(self):
         pass
 
-    def judge(self, *args) -> Findings:
+    def judge(self, *args) -> iamraw.Findings:
         pass
 
     def close(self):

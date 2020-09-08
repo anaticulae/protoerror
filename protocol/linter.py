@@ -25,8 +25,10 @@ import importlib
 import os
 import threading
 
+import serializeraw
 import utila
 
+import iamraw
 import protocol.config
 import protocol.control
 import protocol.finding
@@ -75,7 +77,7 @@ class Linter:
 
     def add_finding(
             self,
-            location: protocol.finding.Location = None,
+            location: iamraw.Location = None,
             msgid: str = None,
             confidence: float = 1.0,
             **kwargs,
@@ -108,7 +110,7 @@ class Linter:
         active = self.is_active(msgid, confidence)
 
         with self.lock:
-            finding = protocol.finding.Finding(
+            finding = iamraw.Finding(
                 confidence=confidence,
                 location=location,
                 msgid=msgid,
@@ -166,7 +168,7 @@ class Linter:
 
 
 def dump_result(
-        items: protocol.finding.Findings,
+        items: iamraw.Findings,
         *,
         unique: bool = False,
 ) -> DumpedLinterResult:
@@ -184,15 +186,15 @@ def dump_result(
     user = [item for item in items if item.active]
     developer = [item for item in items if not item.active]
 
-    dumped_user = protocol.finding.dump_findings(user)
-    dumped_developer = protocol.finding.dump_findings(developer)
+    dumped_user = serializeraw.dump_findings(user)
+    dumped_developer = serializeraw.dump_findings(developer)
 
     result = DumpedLinterResult(user=dumped_user, developer=dumped_developer)
     return result
 
 
 def write_result(
-        result: protocol.finding.Findings,
+        result: iamraw.Findings,
         path: str,
         *,
         unique: bool = False,
@@ -246,7 +248,7 @@ def from_file(path: str) -> Linter:
 
 
 def from_solution(
-        solutions: protocol.solution.Solutions,
+        solutions: iamraw.Solutions,
         statuses: protocol.config.MessageStatusList,
         checkers: list = None,
 ) -> Linter:

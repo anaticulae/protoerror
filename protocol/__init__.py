@@ -37,20 +37,10 @@ from protocol.control import nolarge
 from protocol.control import nomedium
 from protocol.control import nosmall
 # finding
-from protocol.finding import SUMMARY_LOCATION
-from protocol.finding import BoundingLocation
-from protocol.finding import Finding
-from protocol.finding import FindingLevel
-from protocol.finding import Findings
-from protocol.finding import Location
-from protocol.finding import PageFinding
-from protocol.finding import PageFindings
-from protocol.finding import RangedLocation
 from protocol.finding import finding_status
 from protocol.finding import finding_status_update
 from protocol.finding import findings_from_path
 from protocol.finding import hash_finding
-from protocol.finding import load_result
 from protocol.finding import make_finding_number_unique
 # group
 from protocol.group import byid
@@ -80,14 +70,8 @@ from protocol.question import documore
 from protocol.question import pagemore
 from protocol.question import parse_questions
 # solution
-from protocol.solution import Doctails
-from protocol.solution import ProblemStatus
-from protocol.solution import Solution
-from protocol.solution import Solutions
 from protocol.solution import Solver
-from protocol.solution import Text
 from protocol.solution import Validators
-from protocol.solution import Web
 from protocol.solution import confidence
 from protocol.solution import parse_checkers
 from protocol.solution import parse_msgid
