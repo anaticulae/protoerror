@@ -10,9 +10,9 @@
 import collections
 import contextlib
 
+import iamraw
 import utila
 
-import iamraw
 import protocol
 
 

@@ -25,10 +25,10 @@ import importlib
 import os
 import threading
 
+import iamraw
 import serializeraw
 import utila
 
-import iamraw
 import protocol.config
 import protocol.control
 import protocol.finding

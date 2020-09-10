@@ -9,11 +9,11 @@
 
 import os
 
+import iamraw
 import pytest
 import serializeraw
 import utila
 
-import iamraw
 import protocol
 import tests.example.solver_with_error
 

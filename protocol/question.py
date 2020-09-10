@@ -12,9 +12,9 @@ import enum
 import re
 import typing
 
+import iamraw
 import utila
 
-import iamraw
 import protocol
 
 QUESTION_PATTERN = r'^QUESTION_(?P<number>\d{2,5})$'

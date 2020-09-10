@@ -10,10 +10,10 @@
 import concurrent.futures
 import os
 
+import iamraw
 import serializeraw
 import utila
 
-import iamraw
 import protocol
 
 

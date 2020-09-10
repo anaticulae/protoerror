@@ -8,6 +8,7 @@
 # =============================================================================
 
 import iamraw
+
 from protocol import Solver
 from protocol.solution import SOLUTION
 

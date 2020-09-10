@@ -62,9 +62,9 @@ import copy
 import re
 import typing
 
+import iamraw
 import utila
 
-import iamraw
 import protocol.utils
 
 Validators = typing.List[callable]
