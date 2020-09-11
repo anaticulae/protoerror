@@ -258,18 +258,7 @@ def from_solution(
 
 
 def from_module(name: str, tests: set = None, skips: set = None) -> Linter:
-    with contextlib.suppress(AttributeError):
-        # support module type, ensure that module name is str
-        name = name.__name__
-    module = protocol.utils.module_fromname(name)
-    solution = protocol.solution.parse_solutions(
-        module,
-        tests=tests,
-        skips=skips,
-    )
-    status = parse_active(module)
-    checkers = protocol.parse_checkers(module, tests=tests, skips=skips)
-    result = protocol.from_solution(solution, status, checkers=checkers)
+    result = from_modules([name], tests=tests, skips=skips)
     return result
 
 
