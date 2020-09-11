@@ -59,6 +59,7 @@ from protocol.linter import Linter
 from protocol.linter import dump_result
 from protocol.linter import from_file
 from protocol.linter import from_module
+from protocol.linter import from_modules
 from protocol.linter import from_solution
 from protocol.linter import write_result
 # question

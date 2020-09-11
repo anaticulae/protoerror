@@ -273,6 +273,36 @@ def from_module(name: str, tests: set = None, skips: set = None) -> Linter:
     return result
 
 
+def from_modules(
+        modules: utila.Strings,
+        tests: set = None,
+        skips: set = None,
+) -> Linter:
+    status = []
+    checkers = []
+    solutions = []
+    for name in modules:
+        with contextlib.suppress(AttributeError):
+            # support module type, ensure that module name is str
+            name = name.__name__
+        module = protocol.utils.module_fromname(name)
+        solutions.extend(
+            protocol.solution.parse_solutions(
+                module,
+                tests=tests,
+                skips=skips,
+            ))
+        status.extend(parse_active(module))
+        checkers.extend(
+            protocol.parse_checkers(
+                module,
+                tests=tests,
+                skips=skips,
+            ))
+    result = protocol.from_solution(solutions, status, checkers=checkers)
+    return result
+
+
 def parse_active(module):
     checkers = protocol.solution.parse_checkers(module)
     result = [
