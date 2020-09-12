@@ -78,7 +78,11 @@ import dataclasses
 import enum
 import re
 
+import configo
 import utila
+
+MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(35).value
+MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(35).value
 
 
 class DocType(enum.Enum):
@@ -104,9 +108,9 @@ class Document:
 
 def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=R0912,R1260
     assert document.pages is not None, str(document)
-    small = document.pages < 35  # TODO: HOLY VALUE
-    medium = 35 <= document.pages < 220
-    large = 220 <= document.pages < utila.INF
+    small = document.pages < MAX_SMALL_PAGE_LENGTH
+    medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
+    large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
 
     result = []
     for item in items:
