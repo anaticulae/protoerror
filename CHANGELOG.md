@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v2.1.0
+
+### Feature
+
+* add method to create linter from multiple modules (fc3a5d760afb)
+
+### Fix
+
+* ensure to group zero pages correctly (0018015223b2)
+
 ## v2.0.0
 
 ## v1.3.1
