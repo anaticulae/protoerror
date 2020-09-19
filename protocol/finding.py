@@ -103,6 +103,7 @@ def finding_status_update(
         status: iamraw.ProblemStatus,
 ) -> bool:
     assert os.path.isdir(path), str(path)
+    assert isinstance(number, int), type(number)
     assert isinstance(status, iamraw.ProblemStatus), type(status)
     # TODO: IMPROVE SPEED LATER? MAY USE A BUFFERED OBJECT ORIENTED APPROACH
     for location, findings in iter_findings(path):
