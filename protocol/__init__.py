@@ -80,6 +80,6 @@ from protocol.solution import parse_solutions
 # utils
 from protocol.utils import driver
 
-__version__ = '2.1.0'
+__version__ = '2.1.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v2.1.1
+
+### Feature
+
+* add assertion to ensure correct data type (4f88444f8bdb)
+
 ## v2.1.0
 
 ### Feature
