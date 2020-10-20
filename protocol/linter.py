@@ -107,7 +107,7 @@ class Linter:
                 self.document.generator,
             )
 
-        active = self.is_active(msgid, confidence)
+        active = self.isactive(msgid, confidence)
 
         with self.lock:
             finding = iamraw.Finding(
@@ -120,7 +120,7 @@ class Linter:
             finding.number = protocol.finding.hash_finding(finding)
             self.findings.append(finding)
 
-    def is_active(self, msgid, confidence):
+    def isactive(self, msgid, confidence):
         if not self.active:
             return True
         active = True
