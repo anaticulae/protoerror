@@ -63,6 +63,9 @@ from protocol.linter import from_module
 from protocol.linter import from_modules
 from protocol.linter import from_solution
 from protocol.linter import write_result
+# paged
+from protocol.paged import load_grouped
+from protocol.paged import write_grouped
 # question
 from protocol.question import Answer
 from protocol.question import Question
