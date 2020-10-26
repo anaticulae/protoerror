@@ -15,6 +15,7 @@ to solve this errors.
 
 import os
 
+import protocol.__patch__
 # checker
 from protocol.checker import Checker
 from protocol.checker import check_messages
