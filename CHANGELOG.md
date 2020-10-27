@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v3.0.0
+
+### Feature
+
+* change to jinja2 template engine (6b844e70d227)
+* add method to dump and load findings by page number (7e82c6ca4a05)
+
 ## v2.1.4
 
 ## v2.1.3
