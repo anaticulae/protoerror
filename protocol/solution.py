@@ -57,12 +57,12 @@ Define a solution message:
 .. todo:: Enable printing solution list, do we need this?
 """
 
-import contextlib
 import copy
 import re
 import typing
 
 import iamraw
+import jinja2
 import utila
 
 import protocol.utils
@@ -87,13 +87,8 @@ class Solver:
             result = copy.deepcopy(self.solutions[msgid])
         except KeyError:
             return None
-        for pattern, value in kwargs.items():
-            value = str(value)
-            pattern = ('{%' f'{pattern}' '%}')
-            with contextlib.suppress(AttributeError):
-                result.title = result.title.replace(pattern, value)
-            with contextlib.suppress(AttributeError):
-                result.description = result.description.replace(pattern, value)
+        result.title = render_template(result.title, **kwargs)
+        result.description = render_template(result.description, **kwargs)
         return result
 
     @classmethod
@@ -113,6 +108,19 @@ class Solver:
         for msgid, solution in solutions.items():
             result.add_solution(msgid, solution)
         return result
+
+
+def render_template(raw: str, **kwargs) -> str:
+    template = jinja2.Template(
+        raw,
+        lstrip_blocks=True,
+        trim_blocks=True,
+        keep_trailing_newline=False,
+    )
+    rendered = template.render(**kwargs)
+    # strip final line
+    rendered = rendered.strip()
+    return rendered
 
 
 SOLUTION_PATTERN = r'^SOLUTION_(?P<type>[A-Z]{0,1})(?P<number>\d{2,5})$'

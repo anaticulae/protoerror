@@ -7,26 +7,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import protocol.control
+import protocol.solution
 
 TEMPLATE = """\
-{%MSWORD%}
+{%if MSWORD %}
 Erstellen Sie das Inhaltsverzeichnis indem Sie die Reiter
 Start->Programme->Generator klicken. Danach klicken sie doppelt auf Los.
-{%MSWORD_END%}
-{%LATEX%}
+{% endif %}
+{%if LATEX %}
 Include \\toc to generate a beautyfull table of content
-{%LATEX_END%}
-{%BASE%}
+{% endif %}
+{%if BASE %}
 Hier spricht Helm
-{%BASE_END%}
+{% endif %}
 """
 
 
 def test_render_template():
-    latex = protocol.control.render_template(
+    latex = protocol.solution.render_template(
         TEMPLATE,
-        protocol.control.Generator.LATEX,
+        LATEX=True,
     )
-    expected = 'Include \\toc to generate a beautyfull table of content\n'
+    expected = 'Include \\toc to generate a beautyfull table of content'
     assert expected == latex

@@ -60,23 +60,22 @@ different advice when using MSWord instead of Latex:
 
 .. code-block:: python
 
-    {%MSWORD%}
+    {% if MSWORD %}
     ...
-    {%MSWORD_END%}
+    {% endif %}
 
-    {%LATEX%}
+    {% if LATEX %}
     ...
-    {%LATEX_END%}
+    {% endif %}
 
-    {%BASE%}
+    {% if BASE %}
     ...
-    {%BASE_END%}
+    {% endif %}
 """
 
 import contextlib
 import dataclasses
 import enum
-import re
 
 import configo
 import utila
@@ -178,28 +177,3 @@ nomedium = lambda x: decorateme(x, 'nomedium')
 nolarge = lambda x: decorateme(x, 'nolarge')
 
 skip = lambda x: decorateme(x, 'skip')
-
-
-def render_template(content: str, generator: Generator) -> str:
-
-    def start(name: str):
-        return r'\{\%' + name + r'\%\}(\n){0,1}'
-
-    def end(name: str):
-        return r'\{\%' + name + r'_END\%\}(\n){0,1}'
-
-    def remove(content, selected: str):
-        pattern = start(selected)
-        pattern += r'.+'
-        pattern += end(selected)
-        replaced = re.sub(pattern, '', content, flags=re.DOTALL)
-        return replaced
-
-    content = re.sub(start(generator.name), r'', content)
-    content = re.sub(end(generator.name), '', content)
-
-    for item in Generator:
-        if item == generator:
-            continue
-        content = remove(content, item.name)
-    return content

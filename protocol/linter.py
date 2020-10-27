@@ -97,15 +97,13 @@ class Linter:
         # Determine a possible solution
         solution = None
         if self.solver:
+            if self.document == protocol.Generator.MSWORD:
+                kwargs['MSWORD'] = True
+            if self.document == protocol.Generator.LATEX:
+                kwargs['LATEX'] = True
+            if self.document == protocol.Generator.BASE:
+                kwargs['BASE'] = True
             solution = self.solver.solution(msgid=msgid, **kwargs)
-
-        if solution and self.document:
-            # Replace generator dependent templates
-            # TODO: not every solution has a description?
-            solution.description = protocol.control.render_template(
-                solution.description,
-                self.document.generator,
-            )
 
         active = self.isactive(msgid, confidence)
 
