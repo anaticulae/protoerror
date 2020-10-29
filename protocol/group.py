@@ -100,3 +100,17 @@ def select_findings(
     elif isinstance(msgid, list):
         msgid = set(msgid)
     return [item for item in findings if item.msgid in msgid]
+
+
+def select_pages(
+        findings: iamraw.Findings,
+        pages: int,
+) -> iamraw.Findings:
+    if pages is None:
+        return findings
+    pages = {pages} if isinstance(pages, int) else pages
+    findings = [
+        finding for finding in findings
+        if finding.location and finding.location.page in pages
+    ]
+    return findings

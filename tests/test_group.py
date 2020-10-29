@@ -34,3 +34,10 @@ def test_group_filter_lines(linter_withlocation):
     todo = linter_withlocation.findings
     words = protocol.lines(todo)
     assert len(words) == 3
+
+
+def test_group_select_page(linter_withlocation):
+    findings = linter_withlocation.findings
+    assert len(protocol.select_pages(findings, pages={0, 5})) == 5
+    assert len(protocol.select_pages(findings, pages=2)) == 1
+    assert len(protocol.select_pages(findings, pages=None)) == 6
