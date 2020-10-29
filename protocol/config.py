@@ -51,7 +51,7 @@ MessageStatusList = typing.List[MessageStatus]
 
 def load(path: str) -> MessageStatusList:
     content = utila.from_raw_or_path(path, ftype='yaml')
-    loaded = yaml.load(content, Loader=yaml.FullLoader)
+    loaded = yaml.safe_load(content)
     result = []
     for item in loaded:
         msgid = item.get('msgid')
@@ -75,6 +75,6 @@ def save(messages: MessageStatusList, path: str):
         if item.confidence:
             raw['confidence'] = item.confidence
         result.append(raw)
-    dumped = yaml.dump(result)
+    dumped = yaml.safe_dump(result)
 
     utila.file_create(path, dumped)
