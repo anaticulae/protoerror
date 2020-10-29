@@ -83,14 +83,14 @@ def ranged(items: iamraw.Findings) -> iamraw.Findings:
 
 def select_findings(
         findings: iamraw.Findings,
-        msgid: set = None,
+        msgid: set,
 ) -> iamraw.Findings:
     """Select `Findings` specified by `msgid`
 
     >>> select_findings([iamraw.Finding(msgid=1337), iamraw.Finding(msgid=1338)], msgid=(1337,1400))
     [Finding(...msgid=1337...)]
-    >>> select_findings([iamraw.Finding(msgid=1337), iamraw.Finding(msgid=1338)])
-    [Finding(...msgid=1337...), Finding(...msgid=1338...)]
+    >>> select_findings([iamraw.Finding(msgid=1337), iamraw.Finding(msgid=1338)], msgid=1337)
+    [Finding(...msgid=1337...)]
     """
     assert all(isinstance(item, iamraw.Finding) for item in findings)
     if msgid is None:
