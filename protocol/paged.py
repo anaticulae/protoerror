@@ -8,6 +8,7 @@
 # =============================================================================
 
 import concurrent.futures
+import contextlib
 import os
 
 import iamraw
@@ -32,7 +33,11 @@ def write_grouped(findings: iamraw.Findings, dest: str) -> list:
 def load_grouped(source: str, pages: tuple = None, worker=10) -> None:
     if pages is None:
         # load all findings
-        pages = [pagenumber(item) for item in utila.file_list(source)]
+        pages = [
+            pagenumber(item, none=True) for item in utila.file_list(source)
+        ]
+        # remove invalid file names
+        pages = utila.not_none(pages)
     # yaml parsing is cpu bound, therefore we need a process pool instead
     # of thread pool.
     executor = utila.select_executor()
@@ -68,9 +73,14 @@ def fname(page: int) -> str:
     return f'{page}'.zfill(3)
 
 
-def pagenumber(page: str) -> int:
+def pagenumber(page: str, none: bool = True) -> int:
     """\
     >>> pagenumber('010')
     10
     """
-    return int(page)
+    with contextlib.suppress(ValueError):
+        return int(page)
+    if none:
+        # handle error case
+        return None
+    raise ValueError(f'could not convert to int: {page}')
