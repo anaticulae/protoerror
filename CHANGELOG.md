@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v3.1.0
+
+### Feature
+
+* add method to select findings by page number (e1ea11f299c9)
+
+### Fix
+
+* do not load invalid file names (e55663ca7c2d)
+* remove useless default value (ffae7be677d8)
+
 ## v3.0.0
 
 ### Feature
