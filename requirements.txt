@@ -6,4 +6,4 @@ utila==2.14.0
 iamraw==4.4.2
 
 # template engine
-Jinja2==2.10
+Jinja2==2.11.2
