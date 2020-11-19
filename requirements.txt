@@ -1,9 +1,9 @@
 PyYAML==5.1
 
 # internal requirements
-utila==2.13.0
+utila==2.14.0
 
-iamraw==4.4.1
+iamraw==4.4.2
 
 # template engine
 Jinja2==2.10
