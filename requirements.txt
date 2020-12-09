@@ -1,9 +1,11 @@
-PyYAML==5.1
-
 # internal requirements
-utila==2.16.0
+utila>=2.16.0<3.0.0
 
-iamraw==4.6.0
+iamraw>=4.6.0<5.0.0
+
+# external requirements
 
 # template engine
 Jinja2==2.11.2
+# yaml
+PyYAML==5.1
