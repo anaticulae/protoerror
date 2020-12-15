@@ -12,7 +12,10 @@ import importlib
 
 
 def driver(**kwargs):
-    # TODO: THERE MUST BE A BETTER WAY. PYTHONIC WAY.
+    """\
+    >>> driver(name='Helmut', age=33)
+    Driver(name='Helmut', age=33)
+    """
     Driver = collections.namedtuple('Driver', kwargs.keys())
     result = Driver(**kwargs)
     return result
