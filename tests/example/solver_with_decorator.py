@@ -14,6 +14,7 @@ import protocol
 @protocol.bachelor
 @protocol.master
 @protocol.dissertation
+@protocol.diss
 @protocol.book
 def check_1234_many_decorator(linter, _):  # pylint:disable=W0613
     linter()

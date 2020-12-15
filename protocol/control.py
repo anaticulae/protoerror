@@ -37,7 +37,7 @@ Run linter for a special document type:
     def check_1291_page_border():
         pass
 
-Supported Decorators: @homework, @bachelor, @master, @dissertation, @book
+Supported Decorators: @homework, @bachelor, @master, @dissertation, @diss, @book
 
 Examples
 --------
@@ -127,7 +127,7 @@ def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=
             'homework' in decorated,
             'bachelor' in decorated,
             'master' in decorated,
-            'dissertation' in decorated,
+            'dissertation' in decorated or 'diss' in decorated,
             'book' in decorated,
         )
 
@@ -170,6 +170,7 @@ homework = lambda x: decorateme(x, 'homework')
 bachelor = lambda x: decorateme(x, 'bachelor')
 master = lambda x: decorateme(x, 'master')
 dissertation = lambda x: decorateme(x, 'dissertation')
+diss = lambda x: decorateme(x, 'diss')
 book = lambda x: decorateme(x, 'book')
 
 nosmall = lambda x: decorateme(x, 'nosmall')
