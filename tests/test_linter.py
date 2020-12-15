@@ -68,7 +68,7 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
     result = protocol.Linter(solver=template_solver)
     result.add_finding(
         location=None,
-        msgid='1337',
+        msgid='E1337',
         confidence=1.0,
         number=42,
         text='Hello',
@@ -79,10 +79,10 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
         iamraw.Finding(
             number=0,
             location=None,
-            msgid='1337',
+            msgid='E1337',
             solution=iamraw.Text(
                 number=10,
-                msgid='1337',
+                msgid='E1337',
                 status=iamraw.ProblemStatus.OPEN,
                 title='Solution 42 is open.',
                 description='This is just a Hello half.'),

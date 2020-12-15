@@ -65,6 +65,8 @@ import iamraw
 import jinja2
 import utila
 
+import protocol
+import protocol.messages
 import protocol.utils
 
 Validators = typing.List[callable]
@@ -77,12 +79,15 @@ class Solver:
 
     def add_solution(self, msgid: str, solution: iamraw.Solution):
         assert msgid, solution
+        msgid = protocol.messages.parse_msgid(msgid, idonly=True)
         self.solutions[msgid] = solution
 
     def append(self, item: iamraw.Solution):
-        self.solutions[item.msgid] = item
+        msgid = protocol.messages.parse_msgid(item.msgid, idonly=True)
+        self.solutions[msgid] = item
 
     def solution(self, msgid: str, **kwargs) -> iamraw.Solution:
+        msgid = protocol.messages.parse_msgid(msgid, idonly=True)
         try:
             result = copy.deepcopy(self.solutions[msgid])
         except KeyError:
@@ -94,11 +99,9 @@ class Solver:
     @classmethod
     def fromlist(cls, solutions: list):
         assert isinstance(solutions, list), str(solutions)
-
         result = cls()
         for item in solutions:
             result.add_solution(item.msgid, item)
-
         return result
 
     @classmethod
@@ -124,10 +127,10 @@ def render_template(raw: str, **kwargs) -> str:
 
 
 SOLUTION_PATTERN = r'^SOLUTION_(?P<type>[A-Z]{0,1})(?P<number>\d{2,5})$'
-SOLUTION_PATTERN_SIMPLE = r'^S(?P<number>\d{2,5})$'
+SOLUTION_PATTERN_SIMPLE = r'^S(?P<type>[A-Z]){0,1}(?P<number>\d{2,5})$'
 
 
-def parse_solutions(
+def parse_solutions(  # pylint:disable=R1260
         module,
         tests: set = None,
         skips: set = None,
@@ -143,17 +146,22 @@ def parse_solutions(
                 break
         if not matched:
             continue
-
+        # extract solution id
         number = int(matched['number'])
         if should_skip(number, tests, skips):
             continue
-
+        try:
+            typ = matched['type'] or protocol.TYPE_DEFAULT
+        except IndexError:
+            # TODO: ADD DEFAULT LEVEL TO IAMRAW?
+            typ = protocol.TYPE_DEFAULT
         try:
             title, message = value.split('\n\n', maxsplit=1)
         except ValueError:
             utila.error(f'{name} requires newline between headline and content')
             raise
-        item = iamraw.Text(title=title, msgid=number, description=message)
+        label = f'{typ}{number}'
+        item = iamraw.Text(title=title, msgid=label, description=message)
         result.append(item)
     return result
 
@@ -201,7 +209,7 @@ def parse_checkers(module, tests: set = None, skips: set = None) -> Validators:
     return result
 
 
-VALIDATOR_PATTERN = r'^check_(?P<number>\d{2,5})_'
+VALIDATOR_PATTERN = r'^check_(?P<type>[a-zA-Z]{0,1})(?P<number>\d{2,5})_'
 
 
 def parse_msgid(name) -> int:

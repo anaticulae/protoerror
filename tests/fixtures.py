@@ -28,7 +28,7 @@ def template_solver() -> protocol.Solver:
     result.append(
         iamraw.Text(
             number=10,
-            msgid='1337',
+            msgid='E1337',
             title='Solution {{number}} is open.',
             description='This is just a {{text}} {{double}}.',
         ))

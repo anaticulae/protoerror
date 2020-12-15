@@ -40,6 +40,7 @@ MSG definition:
 
 """
 
+import contextlib
 import typing
 
 MSGS = {
@@ -64,19 +65,28 @@ MSG_TYPES = {
     "F": "fatal",  # pdf analyzing error
 }
 
+TYPE_DEFAULT = 'W'
 
-def parse_msgid(msgid: str) -> typing.Tuple[str, int]:
-    """Split `msgid` into `typ` and `number`.
+
+def parse_msgid(msgid: str, idonly: bool = False) -> typing.Tuple[str, int]:
+    """Split `msgid` into `type` and `number`.
 
     Args:
         msgid(str): define type and number of used message
+        idonly(bool): do not return msg type
     Returns:
         typ(str), number(int) of message
     """
-    assert len(msgid) == 5, msgid
-
-    typ, number = msgid[0], int(msgid[1:])
-
-    assert typ in MSG_TYPES, f'invalid msg typ {typ}'
-
-    return typ, number
+    if not msgid:
+        return msgid
+    with contextlib.suppress(ValueError):
+        msgid = int(msgid)
+        if idonly:
+            return msgid
+        return TYPE_DEFAULT, msgid
+    type_, number = msgid[0], int(msgid[1:])
+    type_ = type_.upper()
+    assert type_ in MSG_TYPES, f'invalid msg type: {type_}'
+    if idonly:
+        return number
+    return type_, number

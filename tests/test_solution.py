@@ -33,14 +33,14 @@ def test_solution_create_solver_fromdict():
 
 def test_solution_replace_template(template_solver):  # pylint:disable=W0621
     result = template_solver.solution(
-        '1337',
+        'E1337',
         number=30,
         text='"template replacement"',
         double='Here comes the Newline\n\nbeep.',
     )
     expected = iamraw.Text(
         number=10,
-        msgid='1337',
+        msgid='E1337',
         status=iamraw.ProblemStatus.OPEN,
         title='Solution 30 is open.',
         description=('This is just a "template replacement" '
