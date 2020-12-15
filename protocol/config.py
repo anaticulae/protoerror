@@ -34,15 +34,17 @@ class MessageStatus:
     support the development only.
 
     Example:
-        MessageStatus('F0000', True, 0.0)
+        MessageStatus('F0000', True, 1.0)
 
-    The example above describe the pdf-read-error-message which is used
-    if there is a problem with reading the document.
+    The example above describe the pdf-read-error-message which is
+    raised if there is a problem with reading the document.
     """
     msgid: str
-    # The MessageStatus is active, so it will provided to the user if occurs
+    # The MessageStatus is active, so it will be provided to the user if
+    # it occurs
     active: bool = False
-    # The `confidence` of 0.0 means that the message always occurs.
+    # The `confidence` of 1.0 means that the message always is displayed
+    # if it occurs.
     confidence: float = 1.0
 
 
