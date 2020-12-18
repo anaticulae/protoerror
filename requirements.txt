@@ -1,11 +1,17 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2020 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
 # internal requirements
 utila>=2.16.0<3.0.0
-
 iamraw>=4.6.0<5.0.0
 
 # external requirements
-
 # template engine
 Jinja2==2.11.2
-# yaml
 PyYAML==5.1
