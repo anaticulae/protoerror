@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.2.1
+
+### Feature
+
+* add simple result type (fdaaf44706bb)
+
 ## v3.2.0
 
 ### Feature
