@@ -8,10 +8,14 @@
 # =============================================================================
 
 import functools
+import typing
 
 import iamraw
 
 import protocol
+
+ResultType = typing.Tuple[str, str]
+ResultDefault = ('user', 'developer')
 
 
 def run(modulename, driver=None, location=None):

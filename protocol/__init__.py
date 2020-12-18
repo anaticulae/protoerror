@@ -79,6 +79,8 @@ from protocol.question import documore
 from protocol.question import pagemore
 from protocol.question import parse_questions
 # run
+from protocol.simple import ResultDefault
+from protocol.simple import ResultType
 from protocol.simple import run
 # solution
 from protocol.solution import Solver
