@@ -84,9 +84,9 @@ def parse_msgid(msgid: str, idonly: bool = False) -> typing.Tuple[str, int]:
         if idonly:
             return msgid
         return TYPE_DEFAULT, msgid
-    type_, number = msgid[0], int(msgid[1:])
-    type_ = type_.upper()
-    assert type_ in MSG_TYPES, f'invalid msg type: {type_}'
+    typ, number = msgid[0], int(msgid[1:])
+    typ = typ.upper()
+    assert typ in MSG_TYPES, f'invalid msg type: {typ}'
     if idonly:
         return number
-    return type_, number
+    return typ, number
