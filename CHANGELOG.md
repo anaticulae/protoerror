@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v3.2.0
+
+### Feature
+
+* add `run` method to reduce amount of code (3fb3ebfd3111)
+* introduce message type (4640b2970c1c)
+* shorten dissertation to diss (afe574bd4237)
+
+### Documentation
+
+* clarify documentation (8a665625b0e9)
+* remove pages hierarchy level (13f7dab912f5)
+
 ## v3.1.6
 
 ## v3.1.5
