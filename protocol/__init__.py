@@ -78,6 +78,8 @@ from protocol.question import answer_questions
 from protocol.question import documore
 from protocol.question import pagemore
 from protocol.question import parse_questions
+# run
+from protocol.simple import run
 # solution
 from protocol.solution import Solver
 from protocol.solution import Validators

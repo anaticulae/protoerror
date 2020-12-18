@@ -129,5 +129,12 @@ def test_linter_from_module_with_error():
 def test_linter_with_decorators_run():
     source = 'tests.example.solver_with_decorator'
     linter_ = protocol.from_module(source)
-
     linter_.run(driver=None)
+
+
+def test_linter_run():
+    source = 'tests.example.solver_with_decorator'
+    linted = protocol.run(source)
+    assert isinstance(linted, tuple)
+    user = linted[0]
+    assert len(user) > 100
