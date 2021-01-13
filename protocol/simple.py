@@ -15,7 +15,7 @@ import iamraw
 import protocol
 
 ResultType = typing.Tuple[str, str]
-ResultDefault = ('user', 'developer')
+ResultDefault = ('user', 'developer')  # pylint:disable=C0103
 
 
 def run(modulename, driver=None, location=None):
