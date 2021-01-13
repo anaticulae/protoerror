@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v3.3.0
+
+### Feature
+
+* add method to count findings (4e8a87da22e4)
+* add method to merge neighbor findings (c5f0e004bd86)
+
 ## v3.2.1
 
 ### Feature
