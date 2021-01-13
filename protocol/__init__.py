@@ -65,6 +65,8 @@ from protocol.linter import from_module
 from protocol.linter import from_modules
 from protocol.linter import from_solution
 from protocol.linter import write_result
+# merge
+from protocol.merger import merge_findings
 # messages
 from protocol.messages import TYPE_DEFAULT
 # paged
