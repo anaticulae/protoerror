@@ -15,6 +15,8 @@ to solve this errors.
 
 import os
 
+import iamraw
+
 import protocol.__patch__
 # checker
 from protocol.checker import Checker
@@ -97,3 +99,5 @@ from protocol.utils import driver
 __version__ = '3.2.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+OVERVIEW = iamraw.Location.from_page(-1)

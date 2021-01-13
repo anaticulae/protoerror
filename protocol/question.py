@@ -131,7 +131,7 @@ def answer_questions(path: str, questions: Questions) -> iamraw.Findings:
             if len(selected) < question.finding:
                 continue
             solution = iamraw.Finding(
-                location=iamraw.Location.from_page(-1),  # TODO: HOLY VALUE
+                location=protocol.OVERVIEW,
                 msgid=question.msgid,
                 solution=question,
             )
