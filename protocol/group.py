@@ -102,6 +102,11 @@ def select_findings(
     return [item for item in findings if item.msgid in msgid]
 
 
+def count_findings(findings: iamraw.Findings, msgid: set) -> int:
+    counted = len(select_findings(findings, msgid))
+    return counted
+
+
 def select_pages(
         findings: iamraw.Findings,
         pages: int,

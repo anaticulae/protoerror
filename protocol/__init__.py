@@ -49,6 +49,7 @@ from protocol.finding import make_finding_number_unique
 # group
 from protocol.group import byid
 from protocol.group import bypage
+from protocol.group import count_findings
 from protocol.group import filter_mark
 from protocol.group import lines
 from protocol.group import ranged
