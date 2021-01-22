@@ -14,4 +14,3 @@ iamraw>=4.6.0<5.0.0
 # external requirements
 # template engine
 Jinja2==2.11.2
-PyYAML==5.1
