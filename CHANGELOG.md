@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v3.3.2
+
+### Feature
+
+* select findings by page and msgid (1ca5352502b2)
+* add support to select PageFindings (7d8b0d137208)
+
 ## v3.3.1
 
 ## v3.3.0
