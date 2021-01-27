@@ -114,8 +114,21 @@ def select_pages(
     if pages is None:
         return findings
     pages = {pages} if isinstance(pages, int) else pages
+    findings = flat(findings)
     findings = [
         finding for finding in findings
         if finding.location and finding.location.page in pages
     ]
     return findings
+
+
+def flat(pages: iamraw.PageFinding) -> list:
+    result = []
+    for page in pages:
+        try:
+            # PageFinding
+            result.extend(page.content)
+        except AttributeError:
+            # findings are already flat
+            result.append(page)
+    return result
