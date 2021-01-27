@@ -132,3 +132,13 @@ def flat(pages: iamraw.PageFinding) -> list:
             # findings are already flat
             result.append(page)
     return result
+
+
+def select(
+        findings: iamraw.Findings,
+        pages: int,
+        msgid: set,
+) -> iamraw.Findings:
+    findings = select_pages(findings, pages=pages)
+    findings = select_findings(findings, msgid=msgid)
+    return findings

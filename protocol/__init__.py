@@ -53,6 +53,7 @@ from protocol.group import count_findings
 from protocol.group import filter_mark
 from protocol.group import lines
 from protocol.group import ranged
+from protocol.group import select
 from protocol.group import select_findings
 from protocol.group import select_pages
 from protocol.group import sentences
