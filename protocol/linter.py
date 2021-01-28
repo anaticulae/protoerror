@@ -22,6 +22,7 @@ import contextlib
 import dataclasses
 import functools
 import importlib
+import inspect
 import os
 import threading
 
@@ -305,3 +306,12 @@ def parse_active(module):
 # def register(linter):
 #     """required method to auto register this checker """
 #     linter.register_checker(MisdesignChecker(linter))
+
+
+def skip_check(msg: str = ''):
+    frame = inspect.currentframe()
+    caller = [item.function for item in inspect.getouterframes(frame)[0:5]]
+    caller = [item for item in caller if 'check_' in item]
+    caller = ' '.join(caller)
+    utila.error(f'skip: {caller}')
+    utila.error(msg)
