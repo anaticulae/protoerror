@@ -134,7 +134,7 @@ def integrate_cli(parser):
     sub = parser.add_subparsers(help='show additional linter information')
     show = sub.add_parser('show')
     show.add_argument('show', nargs='?', default='list')
-    show.add_argument('--short', action='store_true')
+    show.add_argument('--short', action='store_true', help='display fewer content') # yapf:disable
 
 
 def parse_features(root: str, features: str):
