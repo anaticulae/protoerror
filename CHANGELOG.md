@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v3.4.0
+
+### Feature
+
+* add report feature to integrate into featurepack cli`s (54a96b131387)
+* add method to skip and log linter step (ce97730020cf)
+
+### Documentation
+
+* Happy New Year! (e6e1c65e832a)
+
 ## v3.3.2
 
 ### Feature
