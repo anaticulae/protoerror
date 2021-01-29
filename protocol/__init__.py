@@ -85,6 +85,8 @@ from protocol.question import answer_questions
 from protocol.question import documore
 from protocol.question import pagemore
 from protocol.question import parse_questions
+# report
+from protocol.report import integrate
 # run
 from protocol.simple import ResultDefault
 from protocol.simple import ResultType
