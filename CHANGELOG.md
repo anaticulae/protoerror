@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.5.0
+
+### Feature
+
+* add report parser (864838e72b02)
+
 ## v3.4.0
 
 ### Feature
