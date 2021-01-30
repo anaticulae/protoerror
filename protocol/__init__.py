@@ -87,6 +87,13 @@ from protocol.question import pagemore
 from protocol.question import parse_questions
 # report
 from protocol.report import integrate
+# report parser
+from protocol.report_parser import Feature
+from protocol.report_parser import Report
+from protocol.report_parser import Reports
+from protocol.report_parser import Step
+from protocol.report_parser import Steps
+from protocol.report_parser import parses
 # run
 from protocol.simple import ResultDefault
 from protocol.simple import ResultType
