@@ -51,6 +51,7 @@ from protocol.group import byid
 from protocol.group import bypage
 from protocol.group import count_findings
 from protocol.group import filter_mark
+from protocol.group import flat
 from protocol.group import lines
 from protocol.group import ranged
 from protocol.group import select
