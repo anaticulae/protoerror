@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
+
 from protocol.messages import parse_msgid
 
 
@@ -17,3 +19,9 @@ def test_messages_parse_msgid():
 
     assert typ == 'I', typ
     assert number == 300, number
+
+
+def test_messages_parse_invalid_msgid():
+    msgid = 'V0300'
+    with pytest.raises(AssertionError, match='invalid msg type:'):
+        parse_msgid(msgid)

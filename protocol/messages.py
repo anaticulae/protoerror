@@ -43,6 +43,8 @@ MSG definition:
 import contextlib
 import typing
 
+import utila
+
 MSGS = {
     'F0000': (
         'Fehler beim Lesen der PDF Datei.',
@@ -86,7 +88,8 @@ def parse_msgid(msgid: str, idonly: bool = False) -> typing.Tuple[str, int]:
         return TYPE_DEFAULT, msgid
     typ, number = msgid[0], int(msgid[1:])
     typ = typ.upper()
-    assert typ in MSG_TYPES, f'invalid msg type: {typ}'
+    assert typ in MSG_TYPES, (f'invalid msg type: {typ}; '
+                              f'use {utila.from_tuple(MSG_TYPES.keys())}')
     if idonly:
         return number
     return typ, number
