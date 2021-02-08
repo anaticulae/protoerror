@@ -69,11 +69,15 @@ def load_findings(source: str, page: int) -> iamraw.PageFinding:
 
 def fname(page: int) -> str:
     """\
+    >>> fname(-5)
+    '_05'
     >>> fname(1)
     '001'
     >>> fname(333)
     '333'
     """
+    if page < 0:
+        return '_' + f'{page*-1}'.zfill(2)
     return f'{page}'.zfill(3)
 
 
@@ -81,7 +85,11 @@ def pagenumber(page: str, none: bool = True) -> int:
     """\
     >>> pagenumber('010')
     10
+    >>> pagenumber(fname(-10))
+    -10
     """
+    if page[0] == '_':
+        page = '-' + page[1:]
     with contextlib.suppress(ValueError):
         return int(page)
     if none:
