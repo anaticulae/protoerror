@@ -30,7 +30,11 @@ def write_grouped(findings: iamraw.Findings, dest: str) -> list:
     return result
 
 
-def load_grouped(source: str, pages: tuple = None, worker=10) -> None:
+def load_grouped(
+        source: str,
+        pages: tuple = None,
+        worker=10,
+) -> iamraw.PageFindings:
     if pages is None:
         # load all findings
         pages = [
