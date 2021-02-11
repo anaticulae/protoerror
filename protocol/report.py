@@ -35,6 +35,7 @@ decider show list [--short]
 """
 
 import functools
+import importlib
 import os
 import textwrap
 
@@ -138,14 +139,35 @@ def integrate_cli(parser):
 
 
 def parse_features(root: str, features: str):
-    collected = utila.feature.collector.find_features(root, features)
-    # features = features.replace('.', '/')
+    if isinstance(features, str):
+        features = [features]
+    collected = [parse_python(root, feature) for feature in features]
+    result = []
+    # TODO: MERGE TOGETHER
+    for collect in collected:
+        for (name, item) in collect:
+            parsed = parse_feature(item.__name__)
+            if parsed is None:
+                continue
+            result.append((name, parsed))
+    return result
+
+
+def parse_python(root: str, feature: str) -> list:
+    """Load python code from path."""
+    # TODO: THERE MUST BE A BETTER WAY
+    collected = [
+        item.replace('.py', '')
+        for item in os.listdir(os.path.join(root, feature.replace('.', '/')))
+        if '__init__' not in item and item.endswith('.py')
+    ]
     result = []
     for item in collected:
-        # path = os.path.join(root, features, f'{item.name}.py')
-        module = f'{features}.{item.name}'
-        parsed = parse_feature(module)
-        result.append((item.name, parsed))
+        current = importlib.import_module(
+            feature + '.' + item,
+            feature,
+        )
+        result.append((item, current))
     return result
 
 
@@ -157,6 +179,8 @@ def parse_feature(path: str):
     solutions = {
         msgid(item.msgid): (item.title, item.description) for item in solutions
     }
+    if not checkers and not solutions:
+        return None
     return checkers, solutions
 
 
