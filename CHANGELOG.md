@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v3.6.0
+
+### Feature
+
+* reduce amount of equal groups (2f955dad21be)
+* enable parsing solutions/checker from different packages (25c2fd93fdb9)
+* add negative page numbers (7e985a22ff87)
+* inform about possible error types (3d7cf783a3c1)
+* extend public API (9ac95bca262f)
+
+### Documentation
+
+* extend interface documentation (24365d92dfa0)
+
 ## v3.5.0
 
 ### Feature
