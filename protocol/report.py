@@ -143,14 +143,27 @@ def parse_features(root: str, features: str):
         features = [features]
     collected = [parse_python(root, feature) for feature in features]
     result = []
-    # TODO: MERGE TOGETHER
     for collect in collected:
         for (name, item) in collect:
             parsed = parse_feature(item.__name__)
             if parsed is None:
                 continue
             result.append((name, parsed))
-    return result
+    result = sorted(result, key=lambda x: x[0])
+    if not result:
+        return result
+    # merge duplicated groups to single group
+    grouped = [result[0]]
+    for name, data in result[1:]:
+        before = grouped[-1]
+        if name == before[0]:
+            # add before
+            before[1][0].extend(data[0])
+            before[1][1].update(data[1])
+        else:
+            # new group
+            grouped.append((name, data))
+    return grouped
 
 
 def parse_python(root: str, feature: str) -> list:
