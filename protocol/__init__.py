@@ -109,7 +109,7 @@ from protocol.solution import parse_solutions
 # utils
 from protocol.utils import driver
 
-__version__ = '3.6.1'
+__version__ = '3.6.2'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 

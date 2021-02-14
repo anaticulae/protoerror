@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.6.2
+
+### Feature
+
+* add optional driver parameter (02981382ba0d)
+
 ## v3.6.1
 
 ### Feature
