@@ -26,7 +26,15 @@ def run(modulename, driver=None, location=None, before_dump: callable = None):
     # run linter
     result = linting(linter, checkers, driver, location)
     if before_dump:
-        result = before_dump(result)
+        # TODO: DIRTY
+        # TODO: INTRODUCE UTILA CONCEPT
+        try:
+            result = before_dump(result=result, driver=driver, linter=linter)
+        except TypeError:
+            try:
+                result = before_dump(result=result, driver=driver)
+            except TypeError:
+                result = before_dump(result=result)
     # dump results
     user, developer = protocol.dump_result(result)
     return user, developer
