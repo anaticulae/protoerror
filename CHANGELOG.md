@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.6.1
+
+### Feature
+
+* add hook to run before dump result (44e2f1d1d494)
+
 ## v3.6.0
 
 ### Feature
