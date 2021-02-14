@@ -18,13 +18,15 @@ ResultType = typing.Tuple[str, str]
 ResultDefault = ('user', 'developer')  # pylint:disable=C0103
 
 
-def run(modulename, driver=None, location=None):
+def run(modulename, driver=None, location=None, before_dump: callable = None):
     location = location if location else iamraw.Location.from_page(0)
     # create linter
     checkers = protocol.parse_checkers(modulename)
     linter = protocol.from_module(modulename)
     # run linter
     result = linting(linter, checkers, driver, location)
+    if before_dump:
+        result = before_dump(result)
     # dump results
     user, developer = protocol.dump_result(result)
     return user, developer
