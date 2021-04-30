@@ -62,7 +62,11 @@ def iter_findings(path: str):
 
 
 def hash_finding(item):
-    return hash(item)
+    try:
+        return hash(item)
+    except TypeError as error:
+        utila.error(f'could not hash finding: {item}')
+        raise error
 
 
 def make_finding_number_unique(path: str) -> bool:
