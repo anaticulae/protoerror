@@ -80,8 +80,8 @@ import enum
 import configo
 import utila
 
-MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(35).value
-MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(35).value
+MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
+MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
 
 
 class DocType(enum.Enum):
