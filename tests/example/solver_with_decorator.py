@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
+
 import protocol
 
 
@@ -28,5 +30,15 @@ def check_1235_more_decorators(linter, _):  # pylint:disable=W0613
 
 
 @protocol.book
+@protocol.disable_perpage(morethan=10)
 def check_1236_book_only_check(linter, _):  # pylint:disable=W0613
     linter()
+
+
+@protocol.disable_perpage(morethan=10)
+def check_1237_more_than(linter, _):  # pylint:disable=W0613
+    for index in range(15):
+        linter(location=iamraw.Location.from_sentence(
+            sentence=index,
+            page=5,
+        ))

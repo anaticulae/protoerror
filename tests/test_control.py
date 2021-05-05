@@ -33,4 +33,4 @@ def test_linter_with_decorators():
             msgid=checker.msgid,
         )
         checker(call, {})
-    assert len(checkers) == 1
+    assert len(checkers) == 2

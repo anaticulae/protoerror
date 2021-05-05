@@ -209,3 +209,32 @@ def enable_perpage(lessthan=None, morethan=None, equal=None):
     if equal is not None:
         values['equal'] = equal
     return lambda x: decorateme(x, {'enable_perpage': values})
+
+
+def get_perpage(methods):
+    result = []
+    for method in methods:
+        decorator = decorators(method)
+        if 'perpage' not in str(decorator):
+            continue
+        result.append(method)
+    return result
+
+
+def is_disabled_perpage(findings, method) -> bool:
+    control = method.__control__
+    for item in control:
+        try:
+            disableperpage = item['disable_perpage']
+        except (TypeError, KeyError):
+            continue
+        with contextlib.suppress(KeyError):
+            if disableperpage['equal'] == len(findings):
+                return True
+        with contextlib.suppress(KeyError):
+            if len(findings) <= disableperpage['lessthan']:
+                return True
+        with contextlib.suppress(KeyError):
+            if len(findings) >= disableperpage['morethan']:
+                return True
+    return False

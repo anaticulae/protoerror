@@ -166,30 +166,60 @@ class Linter:
         self.checkers.append(checker)
 
 
-def split_userdeveloper(items):
-    user, developer = [], []
+def split_userdeveloper(items: list, checkers: list) -> tuple:
+    if not checkers:
+        checkers = []
     user = [item for item in items if item.active]
     developer = [item for item in items if not item.active]
+
+    perpage_disabled = perpage_disable(user, checkers)
+    for item in perpage_disabled:
+        user.remove(item)
+        developer.append(item)
+
     return user, developer
+
+
+def perpage_disable(findings, checkers):
+    findings = [item for item in findings if item.location is not None]
+    grouped = protocol.bypage(findings)
+    # bypage
+    result = []
+    perpage = protocol.control.get_perpage(checkers)
+    for pageitem in grouped:
+        paged = protocol.byid(pageitem.content)
+        for method in perpage:
+            msgid = method.msgid
+            try:
+                findings = paged[msgid]
+            except KeyError:
+                continue
+            if not protocol.is_disabled_perpage(findings, method):
+                continue
+            result.extend(findings)
+            break
+    return result
 
 
 def dump_result(
         items: iamraw.Findings,
         *,
         unique: bool = False,
+        checkers: list = None,
 ) -> DumpedLinterResult:
     """Write linter result to `user` and `developer`-file.
 
     Args:
         items(list): list of `Finding`s
         unique(bool): remove duplicated linter findings
+        checkers(methods): list of user linters
     Returns:
         Result with dumped user ander developer result in yaml format.
     """
     if unique:
         items = utila.make_unique(items)
 
-    user, developer = split_userdeveloper(items)
+    user, developer = split_userdeveloper(items, checkers=checkers)
 
     dumped_user = serializeraw.dump_findings(user)
     dumped_developer = serializeraw.dump_findings(developer)

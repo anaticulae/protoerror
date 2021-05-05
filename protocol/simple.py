@@ -36,7 +36,7 @@ def run(modulename, driver=None, location=None, before_dump: callable = None):
             except TypeError:
                 result = before_dump(result=result)
     # dump results
-    user, developer = protocol.dump_result(result)
+    user, developer = protocol.dump_result(result, checkers=checkers)
     return user, developer
 
 

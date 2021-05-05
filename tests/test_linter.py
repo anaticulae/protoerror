@@ -138,3 +138,8 @@ def test_linter_run():
     assert isinstance(linted, tuple)
     user = linted[0]
     assert len(user) > 100
+    developer = linted[1]
+
+    count_1237 = developer.count('1237')
+    # 15 messages are deactivated and moved to developer and not shown to user
+    assert count_1237 == 15
