@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.7.3
+
+### Feature
+
+* add empty default result (1c040ac06dfe)
+
 ## v3.7.2
 
 ### Feature
