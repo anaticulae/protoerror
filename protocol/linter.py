@@ -166,6 +166,13 @@ class Linter:
         self.checkers.append(checker)
 
 
+def split_userdeveloper(items):
+    user, developer = [], []
+    user = [item for item in items if item.active]
+    developer = [item for item in items if not item.active]
+    return user, developer
+
+
 def dump_result(
         items: iamraw.Findings,
         *,
@@ -182,8 +189,7 @@ def dump_result(
     if unique:
         items = utila.make_unique(items)
 
-    user = [item for item in items if item.active]
-    developer = [item for item in items if not item.active]
+    user, developer = split_userdeveloper(items)
 
     dumped_user = serializeraw.dump_findings(user)
     dumped_developer = serializeraw.dump_findings(developer)
