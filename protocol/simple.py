@@ -21,10 +21,11 @@ ResultDefault = ('user', 'developer')  # pylint:disable=C0103
 def run(modulename, driver=None, location=None, before_dump: callable = None):
     location = location if location else iamraw.Location.from_page(0)
     # create linter
-    checkers = protocol.parse_checkers(modulename)
-    linter = protocol.from_module(modulename)
+    if isinstance(modulename, str):
+        modulename = [modulename]
+    linter = protocol.from_modules(modulename)
     # run linter
-    result = linting(linter, checkers, driver, location)
+    result = linting(linter, linter.checkers, driver, location)
     if before_dump:
         # TODO: DIRTY
         # TODO: INTRODUCE UTILA CONCEPT
@@ -36,7 +37,7 @@ def run(modulename, driver=None, location=None, before_dump: callable = None):
             except TypeError:
                 result = before_dump(result=result)
     # dump results
-    user, developer = protocol.dump_result(result, checkers=checkers)
+    user, developer = protocol.dump_result(result, checkers=linter.checkers)
     return user, developer
 
 
