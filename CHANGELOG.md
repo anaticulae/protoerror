@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.7.2
+
+### Feature
+
+* add option to merge findings before dump (e22120bf07d6)
+
 ## v3.7.1
 
 ### Feature
