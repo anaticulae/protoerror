@@ -18,7 +18,13 @@ ResultType = typing.Tuple[str, str]
 ResultDefault = ('user', 'developer')  # pylint:disable=C0103
 
 
-def run(modulename, driver=None, location=None, before_dump: callable = None):
+def run(
+        modulename,
+        driver=None,
+        location=None,
+        findings_merge: bool = True,
+        before_dump: callable = None,
+):
     location = location if location else iamraw.Location.from_page(0)
     # create linter
     if isinstance(modulename, str):
@@ -26,6 +32,8 @@ def run(modulename, driver=None, location=None, before_dump: callable = None):
     linter = protocol.from_modules(modulename)
     # run linter
     result = linting(linter, linter.checkers, driver, location)
+    if findings_merge:
+        result = protocol.merge_findings(result)
     if before_dump:
         # TODO: DIRTY
         # TODO: INTRODUCE UTILA CONCEPT
