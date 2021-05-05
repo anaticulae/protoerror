@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v3.7.0
+
+### Feature
+
+* add disable decorator (0618529d300a)
+* add option to control linter by occurrence (4b7d7fdcbb8a)
+* signal if hashing does not work properly (aa7181a952db)
+
 ## v3.6.2
 
 ### Feature
