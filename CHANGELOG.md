@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.7.1
+
+### Feature
+
+* add option to run simple from multiple methods (6dd4cc65f2fa)
+
 ## v3.7.0
 
 ### Feature
