@@ -10,6 +10,8 @@
 import collections
 import importlib
 
+RESULT_EMPTY = '[]', '[]'
+
 
 def driver(**kwargs):
     """\

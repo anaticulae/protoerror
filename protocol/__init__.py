@@ -110,6 +110,7 @@ from protocol.solution import parse_checkers
 from protocol.solution import parse_msgid
 from protocol.solution import parse_solutions
 # utils
+from protocol.utils import RESULT_EMPTY
 from protocol.utils import driver
 
 __version__ = '3.7.2'
