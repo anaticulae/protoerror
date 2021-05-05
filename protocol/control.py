@@ -50,7 +50,15 @@ Examples
 Get list of decorators for a linter step:
 
 >>> decorators(check_1234)
-{'nolarge', 'homework'}
+['nolarge', 'homework']
+
+>>> @homework
+... @disable_perpage(morethan=20)
+... def check_touch_too_much():
+...     pass
+
+>>> decorators(check_touch_too_much)
+[{'disable_perpage': {'morethan': 20}}, 'homework']
 
 Templates: Doctype based replacement
 ====================================
@@ -152,9 +160,10 @@ def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=
 
 def decorateme(method, value):
     try:
-        method.__control__.add(value)
+        assert value not in method.__control__, str(method.__control__)
+        method.__control__.append(value)
     except AttributeError:
-        setattr(method, '__control__', {value})
+        setattr(method, '__control__', [value])
     return method
 
 
@@ -162,7 +171,7 @@ def decorators(method) -> set:
     assert method, str(method)
     with contextlib.suppress(AttributeError):
         return method.__control__
-    return {}
+    return []
 
 
 # pylint:disable=C0103
@@ -178,3 +187,25 @@ nomedium = lambda x: decorateme(x, 'nomedium')
 nolarge = lambda x: decorateme(x, 'nolarge')
 
 skip = lambda x: decorateme(x, 'skip')
+
+
+def disable_perpage(lessthan=None, morethan=None, equal=None):
+    values = {}
+    if lessthan is not None:
+        values['lessthan'] = lessthan
+    if morethan is not None:
+        values['morethan'] = morethan
+    if equal is not None:
+        values['equal'] = equal
+    return lambda x: decorateme(x, {'disable_perpage': values})
+
+
+def enable_perpage(lessthan=None, morethan=None, equal=None):
+    values = {}
+    if lessthan is not None:
+        values['lessthan'] = lessthan
+    if morethan is not None:
+        values['morethan'] = morethan
+    if equal is not None:
+        values['equal'] = equal
+    return lambda x: decorateme(x, {'enable_perpage': values})

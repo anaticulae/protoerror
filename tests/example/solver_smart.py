@@ -22,6 +22,7 @@ Message.
 """
 
 
+@protocol.disable_perpage(morethan=10)
 @protocol.confidence(0.9)
 def check_1230_author_matrikel_existence(linter, titlepage):
     if titlepage is None:

@@ -32,8 +32,10 @@ from protocol.control import Generator
 from protocol.control import bachelor
 from protocol.control import book
 from protocol.control import decorators
+from protocol.control import disable_perpage
 from protocol.control import diss
 from protocol.control import dissertation
+from protocol.control import enable_perpage
 from protocol.control import filter_checkers
 from protocol.control import homework
 from protocol.control import master
