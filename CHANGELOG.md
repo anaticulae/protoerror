@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.7.4
+
+### Feature
+
+* add option to overwrite optimized findings (b198b63c6342)
+
 ## v3.7.3
 
 ### Feature
