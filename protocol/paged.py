@@ -18,14 +18,19 @@ import utila
 import protocol
 
 
-def write_grouped(findings: iamraw.Findings, dest: str) -> list:
+def write_grouped(
+        findings: iamraw.Findings,
+        dest: str,
+        overwrite: bool = True,
+) -> list:
     result = []
     grouped = protocol.bypage(findings)
+    writer = utila.file_replace if overwrite else utila.file_create
     for item in grouped:
         page = fname(item.page)
         outpath = os.path.join(dest, page)
         dumped = serializeraw.dump_findings(item.content)
-        utila.file_create(outpath, dumped)
+        writer(outpath, dumped)
         result.append(outpath)
     return result
 
