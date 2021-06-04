@@ -22,6 +22,7 @@ def write_grouped(
     findings: iamraw.Findings,
     dest: str,
     overwrite: bool = True,
+    private: bool = False,
 ) -> list:
     result = []
     grouped = protocol.bypage(findings)
@@ -30,7 +31,7 @@ def write_grouped(
         page = fname(item.page)
         outpath = os.path.join(dest, page)
         dumped = serializeraw.dump_findings(item.content)
-        writer(outpath, dumped)
+        writer(outpath, dumped, private=private)
         result.append(outpath)
     return result
 

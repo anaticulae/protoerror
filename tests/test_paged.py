@@ -7,12 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
+
 import protocol
 
 
-def test_create_group(testdir, linter_withlocation):
+@pytest.mark.parametrize(
+    'private',
+    [
+        True,
+        False,
+    ],
+)
+def test_create_group(private, testdir, linter_withlocation):
     findings = linter_withlocation.findings
-    written = protocol.write_grouped(findings, testdir.tmpdir)
+    written = protocol.write_grouped(findings, testdir.tmpdir, private=private)
     assert len(written) == 3
 
     loaded = protocol.load_grouped(testdir.tmpdir)
