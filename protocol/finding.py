@@ -69,7 +69,7 @@ def hash_finding(item):
         raise error
 
 
-def make_finding_number_unique(path: str) -> bool:
+def make_finding_number_unique(path: str, private: bool = False) -> bool:
     """Collect all findings from path and replace with unqiue finding
     number.
 
@@ -78,6 +78,7 @@ def make_finding_number_unique(path: str) -> bool:
 
     Args:
         path(str): location where files wither user linter are located
+        private(bool): encrypt result
     Returns:
         True if some file was located and replace.
         False if no user file is in `path`.
@@ -96,7 +97,7 @@ def make_finding_number_unique(path: str) -> bool:
         findings = [item for item in findings if item.number is not None]
         # TODO: REFACTOR LATER
         dumped = serializeraw.dump_findings(findings)
-        utila.file_replace(location, dumped)
+        utila.file_replace(location, dumped, private=private)
         replaced = True
     return replaced
 
@@ -105,6 +106,7 @@ def finding_status_update(
     path: str,
     number: int,
     status: iamraw.ProblemStatus,
+    private: bool = False,
 ) -> bool:
     assert os.path.isdir(path), str(path)
     assert isinstance(number, int), type(number)
@@ -121,7 +123,7 @@ def finding_status_update(
             dumped = serializeraw.dump_findings(findings)
             utila.debug(f'number: {number}; status: {status};\n'
                         f'update: {location}')
-            utila.file_replace(location, dumped)
+            utila.file_replace(location, dumped, private=private)
             return True
     return False
 

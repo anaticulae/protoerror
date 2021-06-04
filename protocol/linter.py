@@ -235,6 +235,7 @@ def write_result(
     unique: bool = False,
     user_file=USER_FILE,
     dev_file=DEVELOPER_FILE,
+    private: bool = False,
 ):
     """Write linter result to `user` and `developer`-file.
 
@@ -247,17 +248,17 @@ def write_result(
                         nothing
         dev_file(str): filename of developer linting file. If None,
                         write nothing
+        private(bool): use encryption
     """
     assert os.path.isdir(path), str(path)
 
     dumped_user, dumped_developer = dump_result(result, unique=unique)
     if user_file:
         user_outpath = os.path.join(path, user_file)
-        utila.file_replace(user_outpath, dumped_user)
-
+        utila.file_replace(user_outpath, dumped_user, private=private)
     if dev_file:
         developer_outpath = os.path.join(path, dev_file)
-        utila.file_replace(developer_outpath, dumped_developer)
+        utila.file_replace(developer_outpath, dumped_developer, private=private)
 
 
 def from_file(path: str) -> Linter:
