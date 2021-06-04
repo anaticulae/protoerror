@@ -51,10 +51,10 @@ class Checker:
         """Return list of implemented problems"""
 
     def add_finding(
-            self,
-            location: iamraw.Location = None,
-            msgid: str = None,
-            confidence: float = None,
+        self,
+        location: iamraw.Location = None,
+        msgid: str = None,
+        confidence: float = None,
     ):
         self.linter.add_finding(location, msgid, confidence)
 

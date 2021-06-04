@@ -19,11 +19,11 @@ ResultDefault = ('user', 'developer')  # pylint:disable=C0103
 
 
 def run(
-        modulename,
-        driver=None,
-        location=None,
-        findings_merge: bool = True,
-        before_dump: callable = None,
+    modulename,
+    driver=None,
+    location=None,
+    findings_merge: bool = True,
+    before_dump: callable = None,
 ):
     location = location if location else iamraw.Location.from_page(0)
     # create linter
@@ -50,10 +50,10 @@ def run(
 
 
 def linting(
-        linter: protocol.Linter,
-        checkers: 'protocol.Validators',
-        driver,
-        location: iamraw.Location,
+    linter: protocol.Linter,
+    checkers: 'protocol.Validators',
+    driver,
+    location: iamraw.Location,
 ):
     for checker in checkers:
         call = functools.partial(

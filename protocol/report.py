@@ -91,11 +91,11 @@ def print_features(root, features, choice, short: bool = False):
 
 
 def print_solution(
-        check,
-        solutions,
-        *,
-        short: bool = False,
-        single: bool = False,
+    check,
+    solutions,
+    *,
+    short: bool = False,
+    single: bool = False,
 ):
     indent = '\t' if short and not single else ''
     try:

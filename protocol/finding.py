@@ -18,9 +18,9 @@ import protocol
 
 
 def findings_from_path(
-        path: str,
-        worker: int = 10,
-        useronly: bool = True,
+    path: str,
+    worker: int = 10,
+    useronly: bool = True,
 ) -> iamraw.PageFindings:
     """Load Findings from `path` directory and group them by page as
     `PageFindings`."""
@@ -102,9 +102,9 @@ def make_finding_number_unique(path: str) -> bool:
 
 
 def finding_status_update(
-        path: str,
-        number: int,
-        status: iamraw.ProblemStatus,
+    path: str,
+    number: int,
+    status: iamraw.ProblemStatus,
 ) -> bool:
     assert os.path.isdir(path), str(path)
     assert isinstance(number, int), type(number)

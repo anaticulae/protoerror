@@ -82,8 +82,8 @@ def ranged(items: iamraw.Findings) -> iamraw.Findings:
 
 
 def select_findings(
-        findings: iamraw.Findings,
-        msgid: set,
+    findings: iamraw.Findings,
+    msgid: set,
 ) -> iamraw.Findings:
     """Select `Findings` specified by `msgid`
 
@@ -108,8 +108,8 @@ def count_findings(findings: iamraw.Findings, msgid: set) -> int:
 
 
 def select_pages(
-        findings: iamraw.Findings,
-        pages: int,
+    findings: iamraw.Findings,
+    pages: int,
 ) -> iamraw.Findings:
     if pages is None:
         return findings
@@ -135,9 +135,9 @@ def flat(pages: iamraw.PageFinding) -> list:
 
 
 def select(
-        findings: iamraw.Findings,
-        pages: int,
-        msgid: set,
+    findings: iamraw.Findings,
+    pages: int,
+    msgid: set,
 ) -> iamraw.Findings:
     findings = select_pages(findings, pages=pages)
     findings = select_findings(findings, msgid=msgid)

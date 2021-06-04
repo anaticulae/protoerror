@@ -131,9 +131,9 @@ SOLUTION_PATTERN_SIMPLE = r'^S(?P<type>[A-Z]){0,1}(?P<number>\d{2,5})$'
 
 
 def parse_solutions(  # pylint:disable=R1260
-        module,
-        tests: set = None,
-        skips: set = None,
+    module,
+    tests: set = None,
+    skips: set = None,
 ) -> iamraw.Solutions:
     if isinstance(module, str):
         module = protocol.utils.module_fromname(module)

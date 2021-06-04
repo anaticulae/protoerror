@@ -19,9 +19,9 @@ import protocol
 
 
 def write_grouped(
-        findings: iamraw.Findings,
-        dest: str,
-        overwrite: bool = True,
+    findings: iamraw.Findings,
+    dest: str,
+    overwrite: bool = True,
 ) -> list:
     result = []
     grouped = protocol.bypage(findings)
@@ -36,9 +36,9 @@ def write_grouped(
 
 
 def load_grouped(
-        source: str,
-        pages: tuple = None,
-        worker=10,
+    source: str,
+    pages: tuple = None,
+    worker=10,
 ) -> iamraw.PageFindings:
     if pages is None:
         # load all findings

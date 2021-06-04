@@ -62,11 +62,11 @@ class Linter:
     """Hint: Messages are activate in default."""
 
     def __init__(
-            self,
-            solver: protocol.solution.Solver = None,
-            active: protocol.config.MessageStatusList = None,
-            checkers: list = None,
-            document: protocol.control.Document = None,
+        self,
+        solver: protocol.solution.Solver = None,
+        active: protocol.config.MessageStatusList = None,
+        checkers: list = None,
+        document: protocol.control.Document = None,
     ):
         # TODO: USE CHECKER DIRECTLY TO REDUCE AMOUT OF CODE
         self.solver = solver
@@ -77,11 +77,11 @@ class Linter:
         self.lock = threading.Lock()  # make class thread safe
 
     def add_finding(
-            self,
-            location: iamraw.Location = None,
-            msgid: str = None,
-            confidence: float = 1.0,
-            **kwargs,
+        self,
+        location: iamraw.Location = None,
+        msgid: str = None,
+        confidence: float = 1.0,
+        **kwargs,
     ):
         """Add Finding to store linted result.
 
@@ -202,10 +202,10 @@ def perpage_disable(findings, checkers):
 
 
 def dump_result(
-        items: iamraw.Findings,
-        *,
-        unique: bool = False,
-        checkers: list = None,
+    items: iamraw.Findings,
+    *,
+    unique: bool = False,
+    checkers: list = None,
 ) -> DumpedLinterResult:
     """Write linter result to `user` and `developer`-file.
 
@@ -229,12 +229,12 @@ def dump_result(
 
 
 def write_result(
-        result: iamraw.Findings,
-        path: str,
-        *,
-        unique: bool = False,
-        user_file=USER_FILE,
-        dev_file=DEVELOPER_FILE,
+    result: iamraw.Findings,
+    path: str,
+    *,
+    unique: bool = False,
+    user_file=USER_FILE,
+    dev_file=DEVELOPER_FILE,
 ):
     """Write linter result to `user` and `developer`-file.
 
@@ -283,9 +283,9 @@ def from_file(path: str) -> Linter:
 
 
 def from_solution(
-        solutions: iamraw.Solutions,
-        statuses: protocol.config.MessageStatusList,
-        checkers: list = None,
+    solutions: iamraw.Solutions,
+    statuses: protocol.config.MessageStatusList,
+    checkers: list = None,
 ) -> Linter:
     solver = protocol.solution.Solver.fromlist(solutions)
     result = Linter(solver, active=statuses, checkers=checkers)
@@ -298,9 +298,9 @@ def from_module(name: str, tests: set = None, skips: set = None) -> Linter:
 
 
 def from_modules(
-        modules: utila.Strings,
-        tests: set = None,
-        skips: set = None,
+    modules: utila.Strings,
+    tests: set = None,
+    skips: set = None,
 ) -> Linter:
     status = []
     checkers = []
