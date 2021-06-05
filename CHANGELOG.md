@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v3.8.0
+
+### Feature
+
+* add crypto option to status updater (7aa8c968ed42)
+* add private option to encrypt findings (91304756cd02)
+
 ## v3.7.4
 
 ### Feature
