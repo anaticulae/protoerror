@@ -51,7 +51,7 @@ def filter_mark(items: iamraw.Findings, shortcut: str) -> iamraw.Findings:
     Returns:
         filtered, sorted list of `Findings`
     """
-    assert all([item.location for item in items]), f'require location: {items}'
+    assert all(item.location for item in items), f'require location: {items}'
     selected = []
     for item in items:
         with contextlib.suppress(AttributeError):

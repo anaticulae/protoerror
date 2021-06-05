@@ -37,6 +37,7 @@ decider show list [--short]
 import functools
 import importlib
 import os
+import sys
 import textwrap
 
 import utila
@@ -87,7 +88,7 @@ def print_features(root, features, choice, short: bool = False):
         utila.log()
     if not hit:
         utila.error(f'could not find feature: {choice}')
-        exit(utila.FAILURE)
+        sys.exit(utila.FAILURE)
 
 
 def print_solution(
@@ -128,7 +129,7 @@ def run(args, root, features):
         show_solution(root, features, choice, short=short)
     else:
         show_feature(root, features, choice)
-    exit(utila.SUCCESS)
+    sys.exit(utila.SUCCESS)
 
 
 def integrate_cli(parser):

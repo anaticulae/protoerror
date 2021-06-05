@@ -270,8 +270,9 @@ def from_file(path: str) -> Linter:
     spec.loader.exec_module(module)
     try:
         solution = module.SOLUTION
-    except AttributeError:
-        raise ValueError(f'could not create solver, no SOLUTION: {path}')
+    except AttributeError as error:
+        msg = f'could not create solver, no SOLUTION: {path}'
+        raise ValueError(msg) from error
     try:
         status = module.STATUS
     except AttributeError:

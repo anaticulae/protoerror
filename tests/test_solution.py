@@ -20,8 +20,7 @@ def test_solution_solver(solver: Solver):  # pylint:disable=W0621
 
 
 def test_solution_create_solver_fromlist():
-    solution = [item for item in SOLUTION.values()]
-
+    solution = list(SOLUTION.values())
     result = Solver.fromlist(solution)
     assert len(result.solutions) == len(solution), str(result.solution)
 
