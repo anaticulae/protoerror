@@ -31,7 +31,6 @@ def findings_from_path(
             item for item in files if utila.file_name(item).endswith('_user')
         ]
     paths = [os.path.join(path, item) for item in files]
-
     # limit worker by max file count
     worker = utila.mins(worker, len(files))
     # ensure to have at least one worker when collection now file

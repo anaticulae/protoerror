@@ -251,7 +251,6 @@ def write_result(
         private(bool): use encryption
     """
     assert os.path.isdir(path), str(path)
-
     dumped_user, dumped_developer = dump_result(result, unique=unique)
     if user_file:
         user_outpath = os.path.join(path, user_file)
@@ -269,7 +268,6 @@ def from_file(path: str) -> Linter:
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-
     try:
         solution = module.SOLUTION
     except AttributeError:
