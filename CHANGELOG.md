@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v3.8.1
+
+### Feature
+
+* add document parameter to use decorator to create linter's (ddfaef35ce81)
+
+### Fix
+
+* always filter checker if document is available (5c3a629a6e6f)
+
 ## v3.8.0
 
 ### Feature
