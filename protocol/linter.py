@@ -71,7 +71,7 @@ class Linter:
         # TODO: USE CHECKER DIRECTLY TO REDUCE AMOUT OF CODE
         self.solver = solver
         self.active = {item.msgid: item for item in active} if active else {}
-        self.checkers = [] if not checkers else checkers
+        self.checkerlist = [] if not checkers else checkers
         self.findings = []
         self.document = document
         self.lock = threading.Lock()  # make class thread safe
@@ -119,6 +119,13 @@ class Linter:
             finding.number = protocol.finding.hash_finding(finding)
             self.findings.append(finding)
 
+    @property
+    def checkers(self):
+        result = self.checkerlist
+        if self.document:
+            result = protocol.filter_checkers(result, self.document)
+        return result
+
     def isactive(self, msgid, confidence):
         if not self.active:
             return True
@@ -143,10 +150,7 @@ class Linter:
     def run(self, driver=None):
         self.findings = []
         # select document dependend checkers
-        checkers = self.checkers
-        if self.document:
-            checkers = protocol.filter_checkers(self.checkers, self.document)
-        for checker in checkers:
+        for checker in self.checkers:
             call = functools.partial(
                 self.add_finding,
                 msgid=checker.msgid,
