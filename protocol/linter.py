@@ -260,7 +260,7 @@ def write_result(
         utila.file_replace(developer_outpath, dumped_developer, private=private)
 
 
-def from_file(path: str) -> Linter:
+def from_file(path: str, document: 'Document' = None) -> Linter:
     filename = os.path.basename(path)
     spec = importlib.util.spec_from_file_location(
         filename,
@@ -278,7 +278,11 @@ def from_file(path: str) -> Linter:
     except AttributeError:
         utila.debug(f'no `STATUS` provided in {path}')
         status = []
-    result = from_solution(solution, status)
+    result = from_solution(
+        solution,
+        status,
+        document=document,
+    )
     return result
 
 
@@ -286,14 +290,30 @@ def from_solution(
     solutions: iamraw.Solutions,
     statuses: protocol.config.MessageStatusList,
     checkers: list = None,
+    document: 'Document' = None,
 ) -> Linter:
     solver = protocol.solution.Solver.fromlist(solutions)
-    result = Linter(solver, active=statuses, checkers=checkers)
+    result = Linter(
+        solver,
+        active=statuses,
+        checkers=checkers,
+        document=document,
+    )
     return result
 
 
-def from_module(name: str, tests: set = None, skips: set = None) -> Linter:
-    result = from_modules([name], tests=tests, skips=skips)
+def from_module(
+    name: str,
+    tests: set = None,
+    skips: set = None,
+    document: 'Document' = None,
+) -> Linter:
+    result = from_modules(
+        [name],
+        tests=tests,
+        skips=skips,
+        document=document,
+    )
     return result
 
 
@@ -301,6 +321,7 @@ def from_modules(
     modules: utila.Strings,
     tests: set = None,
     skips: set = None,
+    document: 'Document' = None,
 ) -> Linter:
     status = []
     checkers = []
@@ -323,7 +344,12 @@ def from_modules(
                 tests=tests,
                 skips=skips,
             ))
-    result = protocol.from_solution(solutions, status, checkers=checkers)
+    result = protocol.from_solution(
+        solutions,
+        status,
+        checkers=checkers,
+        document=document,
+    )
     return result
 
 

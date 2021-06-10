@@ -22,6 +22,7 @@ def run(
     modulename,
     driver=None,
     location=None,
+    document: 'Document' = None,
     findings_merge: bool = True,
     before_dump: callable = None,
 ):
@@ -29,7 +30,7 @@ def run(
     # create linter
     if isinstance(modulename, str):
         modulename = [modulename]
-    linter = protocol.from_modules(modulename)
+    linter = protocol.from_modules(modulename, document=document)
     # run linter
     result = linting(linter, linter.checkers, driver, location)
     if findings_merge:
