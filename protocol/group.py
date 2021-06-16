@@ -55,14 +55,25 @@ def filter_mark(items: iamraw.Findings, shortcut: str) -> iamraw.Findings:
     selected = []
     for item in items:
         with contextlib.suppress(AttributeError):
+            if not isinstance(value(item.location), int):
+                utila.debug(f'invalid location: {item.location}, require int.')
+                continue
             if item.location.shortcut == shortcut:
                 selected.append(item)
-    items = sorted(
-        selected,
-        key=lambda x: x.location.value
-        if x.location.value is not None else utila.INF,
-    )
-    return items
+    selected.sort(key=lambda x: value(x.location))
+    return selected
+
+
+def value(location) -> int:
+    with contextlib.suppress(AttributeError):
+        if location.value is not None:
+            return location.value
+    with contextlib.suppress(AttributeError):
+        if location.line is not None:
+            return location.line
+    if location.page is not None:
+        return location.page
+    return utila.INF
 
 
 def words(items: iamraw.Findings) -> iamraw.Findings:
