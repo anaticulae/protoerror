@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.8.2
+
+### Fix
+
+* ensure that location is number (bc176c4e9c1b)
+
 ## v3.8.1
 
 ### Feature
