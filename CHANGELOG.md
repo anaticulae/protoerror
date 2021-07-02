@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.8.4
+
+### Feature
+
+* add option to filter findings by msgid (df54f8410f56)
+
 ## v3.8.3
 
 ## v3.8.2
