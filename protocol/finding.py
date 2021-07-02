@@ -21,6 +21,7 @@ def findings_from_path(
     path: str,
     worker: int = 10,
     useronly: bool = True,
+    msgid: set = None,
 ) -> iamraw.PageFindings:
     """Load Findings from `path` directory and group them by page as
     `PageFindings`."""
@@ -47,6 +48,9 @@ def findings_from_path(
         for job in concurrent.futures.as_completed(todo):
             data = job.result()
             findings.extend(data)
+    if msgid:
+        # select findings by msgid
+        findings = protocol.select_findings(findings, msgid=msgid)
     result = protocol.bypage(findings)
     return result
 
