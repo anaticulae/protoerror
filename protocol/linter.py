@@ -119,6 +119,11 @@ class Linter:
             finding.number = protocol.finding.hash_finding(finding)
             self.findings.append(finding)
 
+    def check_findings(self, check: callable):
+        """Run method to rewrite current `findings`."""
+        with self.lock:
+            self.findings = check(self.findings)
+
     @property
     def checkers(self):
         result = self.checkerlist
