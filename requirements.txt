@@ -8,8 +8,8 @@
 # =============================================================================
 
 # internal requirements
-utila>=2.37.0<3.0.0
-iamraw>=4.19.0<5.0.0
+utila>=2.45.0<3.0.0
+iamraw>=4.25.3<5.0.0
 
 # external requirements
 # template engine
