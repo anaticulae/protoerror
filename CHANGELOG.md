@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.8.5
+
+### Feature
+
+* add method to rewrite current findings (f3d961ad1074)
+
 ## v3.8.4
 
 ### Feature
