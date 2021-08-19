@@ -178,18 +178,20 @@ class Linter:
 def split_userdeveloper(items: list, checkers: list) -> tuple:
     if not checkers:
         checkers = []
-    user = [item for item in items if item.active]
-    developer = [item for item in items if not item.active]
-
+    # move inactive findings to developer
+    user, developer = utila.partition(items=items, key=lambda item: item.active)
     perpage_disabled = perpage_disable(user, checkers)
+    # move disabled findings to developer findings, do not show it to the
+    # user.
     for item in perpage_disabled:
         user.remove(item)
         developer.append(item)
-
     return user, developer
 
 
 def perpage_disable(findings, checkers):
+    """Determine list of findings which are disabled by
+    @disable-decorator."""
     findings = [item for item in findings if item.location is not None]
     grouped = protocol.bypage(findings)
     # bypage
@@ -204,9 +206,9 @@ def perpage_disable(findings, checkers):
             except KeyError:
                 continue
             if not protocol.is_disabled_perpage(findings, method):
+                # content is not disabled
                 continue
             result.extend(findings)
-            break
     return result
 
 
