@@ -21,7 +21,7 @@ ResultDefault = ('user', 'developer')  # pylint:disable=C0103
 def run(
     modulename,
     driver=None,
-    location=None,
+    location: iamraw.Location = None,
     document: 'Document' = None,
     findings_merge: bool = True,
     before_dump: callable = None,
