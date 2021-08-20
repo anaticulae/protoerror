@@ -120,6 +120,10 @@ def render_template(raw: str, **kwargs) -> str:
         trim_blocks=True,
         keep_trailing_newline=False,
     )
+    kwargs = {
+        key: escape(value) if isinstance(value, str) else value
+        for key, value in kwargs.items()
+    }
     rendered = template.render(**kwargs)
     # strip final line
     rendered = rendered.strip()
@@ -240,6 +244,27 @@ def confidence(value=1.0):
         return user_function
 
     return decorating_function
+
+
+# Pay attention to the order to avoid internal replacements of html chars.
+REPLACE = r'#*${}<>:=[]?!()@%'
+
+
+def escape(text: str) -> str:
+    """Convert chars to html code to avoid processing problems in
+    Markdown-Replacement.
+
+    >>> escape('*')
+    '&#42;'
+    >>> escape('*#$')
+    '&#42;&#35;&#36;'
+
+    Ensure that all characters are replaced
+    >>> assert escape(REPLACE).count('#') == len(REPLACE)
+    """
+    for char in REPLACE:
+        text = text.replace(char, f'&#{ord(char)};')
+    return text
 
 
 SOLUTION = [
