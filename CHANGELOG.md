@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.9.0
+
+### Feature
+
+* escape character to avoid markdown problems (5407c668b05a)
+
 ## v3.8.6
 
 ### Fix
