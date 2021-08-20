@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v3.8.6
+
+### Fix
+
+* adjust invalid finding selector (19f260334e10)
+
+### Documentation
+
+* extend interface documentation (baf0ae527b22)
+
 ## v3.8.5
 
 ### Feature
