@@ -40,8 +40,14 @@ from protocol.control import filter_checkers
 from protocol.control import homework
 from protocol.control import is_disabled_perpage
 from protocol.control import master
+from protocol.control import nobachelor
+from protocol.control import nobook
+from protocol.control import nodiss
+from protocol.control import nohome
 from protocol.control import nolarge
+from protocol.control import nomaster
 from protocol.control import nomedium
+from protocol.control import nopaper
 from protocol.control import nosmall
 # finding
 from protocol.finding import finding_status

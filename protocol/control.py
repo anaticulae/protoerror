@@ -142,17 +142,27 @@ def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=
         if document.doctype == DocType.HOMEWORK:
             if not _home and any((_bachelor, _master, _diss, _book)):
                 continue
+            if 'nohome' in decorated:
+                continue
         if document.doctype == DocType.BACHELOR:
             if not _bachelor and any((_home, _master, _diss, _book)):
+                continue
+            if 'nobachelor' in decorated:
                 continue
         if document.doctype == DocType.MASTER:
             if not _master and any((_home, _bachelor, _diss, book)):
                 continue
+            if 'nomaster' in decorated:
+                continue
         if document.doctype == DocType.DISS:
             if not _diss and any((_home, _bachelor, _master, _book)):
                 continue
+            if 'nodiss' in decorated:
+                continue
         if document.doctype == DocType.BOOK:
             if not _book and any((_home, _bachelor, _master, _diss)):
+                continue
+            if 'nobook' in decorated:
                 continue
         result.append(item)
     return result
@@ -181,10 +191,18 @@ master = lambda x: decorateme(x, 'master')
 diss = lambda x: decorateme(x, 'diss')
 dissertation = diss
 book = lambda x: decorateme(x, 'book')
-
+paper = lambda x: decorateme(x, 'paper')
+# exluce length of document
 nosmall = lambda x: decorateme(x, 'nosmall')
 nomedium = lambda x: decorateme(x, 'nomedium')
 nolarge = lambda x: decorateme(x, 'nolarge')
+# exclude types of document
+nohome = lambda x: decorateme(x, 'nohome')
+nobachelor = lambda x: decorateme(x, 'nobachelor')
+nomaster = lambda x: decorateme(x, 'nomaster')
+nodiss = lambda x: decorateme(x, 'nodiss')
+nobook = lambda x: decorateme(x, 'nobook')
+nopaper = lambda x: decorateme(x, 'nopaper')
 
 skip = lambda x: decorateme(x, 'skip')
 
