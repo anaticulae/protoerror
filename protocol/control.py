@@ -117,7 +117,7 @@ class Document:
 DOCTYPES = [item.name.lower() for item in DocType]
 
 
-def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=R0912,R1260
+def filter_checkers(items: list, document: Document) -> list:
     assert document.pages is not None, str(document)
     current = document.doctype.name.lower()
     small = document.pages < MAX_SMALL_PAGE_LENGTH
