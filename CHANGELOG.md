@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v3.10.0
+
+### Feature
+
+* add paper doc type (427810629af7)
+* add option to skip doc types (ab75f3d4db15)
+
 ## v3.9.0
 
 ### Feature
