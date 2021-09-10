@@ -135,7 +135,7 @@ def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=
             'homework' in decorated,
             'bachelor' in decorated,
             'master' in decorated,
-            'dissertation' in decorated or 'diss' in decorated,
+            'diss' in decorated,
             'book' in decorated,
         )
 
@@ -178,8 +178,8 @@ def decorators(method) -> set:
 homework = lambda x: decorateme(x, 'homework')
 bachelor = lambda x: decorateme(x, 'bachelor')
 master = lambda x: decorateme(x, 'master')
-dissertation = lambda x: decorateme(x, 'dissertation')
 diss = lambda x: decorateme(x, 'diss')
+dissertation = diss
 book = lambda x: decorateme(x, 'book')
 
 nosmall = lambda x: decorateme(x, 'nosmall')
