@@ -98,6 +98,7 @@ class DocType(enum.Enum):
     MASTER = enum.auto()
     DISS = enum.auto()
     BOOK = enum.auto()
+    PAPER = enum.auto()
 
 
 class Generator(enum.Enum):
@@ -131,38 +132,44 @@ def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=
         if 'nolarge' in decorated and large:
             continue
 
-        _home, _bachelor, _master, _diss, _book = (
+        _home, _bachelor, _master, _diss, _book, _paper = (
             'homework' in decorated,
             'bachelor' in decorated,
             'master' in decorated,
             'diss' in decorated,
             'book' in decorated,
+            'paper' in decorated,
         )
 
         if document.doctype == DocType.HOMEWORK:
-            if not _home and any((_bachelor, _master, _diss, _book)):
+            if not _home and any((_bachelor, _master, _diss, _book, _paper)):
                 continue
             if 'nohome' in decorated:
                 continue
         if document.doctype == DocType.BACHELOR:
-            if not _bachelor and any((_home, _master, _diss, _book)):
+            if not _bachelor and any((_home, _master, _diss, _book, _paper)):
                 continue
             if 'nobachelor' in decorated:
                 continue
         if document.doctype == DocType.MASTER:
-            if not _master and any((_home, _bachelor, _diss, book)):
+            if not _master and any((_home, _bachelor, _diss, book, _paper)):
                 continue
             if 'nomaster' in decorated:
                 continue
         if document.doctype == DocType.DISS:
-            if not _diss and any((_home, _bachelor, _master, _book)):
+            if not _diss and any((_home, _bachelor, _master, _book, _paper)):
                 continue
             if 'nodiss' in decorated:
                 continue
         if document.doctype == DocType.BOOK:
-            if not _book and any((_home, _bachelor, _master, _diss)):
+            if not _book and any((_home, _bachelor, _master, _diss, _paper)):
                 continue
             if 'nobook' in decorated:
+                continue
+        if document.doctype == DocType.PAPER:
+            if not _paper and any((_home, _bachelor, _master, _diss, _book)):
+                continue
+            if 'nopaper' in decorated:
                 continue
         result.append(item)
     return result
