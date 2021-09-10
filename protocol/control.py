@@ -114,62 +114,40 @@ class Document:
     generator: Generator = None
 
 
+DOCTYPES = [item.name.lower() for item in DocType]
+
+
 def filter_checkers(items: list, document: Document) -> list:  # pylint:disable=R0912,R1260
     assert document.pages is not None, str(document)
+    current = document.doctype.name.lower()
     small = document.pages < MAX_SMALL_PAGE_LENGTH
     medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
     large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
-
     result = []
     for item in items:
         decorated = decorators(item)
+        # deactivated method
         if 'skip' in decorated:
             continue
+        # verify document length
         if 'nosmall' in decorated and small:
             continue
         if 'nomedium' in decorated and medium:
             continue
         if 'nolarge' in decorated and large:
             continue
-
-        _home, _bachelor, _master, _diss, _book, _paper = (
-            'homework' in decorated,
-            'bachelor' in decorated,
-            'master' in decorated,
-            'diss' in decorated,
-            'book' in decorated,
-            'paper' in decorated,
-        )
-
-        if document.doctype == DocType.HOMEWORK:
-            if not _home and any((_bachelor, _master, _diss, _book, _paper)):
-                continue
-            if 'nohome' in decorated:
-                continue
-        if document.doctype == DocType.BACHELOR:
-            if not _bachelor and any((_home, _master, _diss, _book, _paper)):
-                continue
-            if 'nobachelor' in decorated:
-                continue
-        if document.doctype == DocType.MASTER:
-            if not _master and any((_home, _bachelor, _diss, book, _paper)):
-                continue
-            if 'nomaster' in decorated:
-                continue
-        if document.doctype == DocType.DISS:
-            if not _diss and any((_home, _bachelor, _master, _book, _paper)):
-                continue
-            if 'nodiss' in decorated:
-                continue
-        if document.doctype == DocType.BOOK:
-            if not _book and any((_home, _bachelor, _master, _diss, _paper)):
-                continue
-            if 'nobook' in decorated:
-                continue
-        if document.doctype == DocType.PAPER:
-            if not _paper and any((_home, _bachelor, _master, _diss, _book)):
-                continue
-            if 'nopaper' in decorated:
+        # skipped document type
+        if f'no{current}' in decorated:
+            # nohome nobachelor etc.
+            continue
+        # is check decorated for a special doctype
+        some = any(item in decorated for item in DOCTYPES)
+        if some:
+            if current not in decorated:
+                # current document is not selected by decorators, but
+                # others are. Therefore we have to skip this ckeck,
+                # because this check was not made for current document
+                # type.
                 continue
         result.append(item)
     return result
@@ -204,7 +182,7 @@ nosmall = lambda x: decorateme(x, 'nosmall')
 nomedium = lambda x: decorateme(x, 'nomedium')
 nolarge = lambda x: decorateme(x, 'nolarge')
 # exclude types of document
-nohome = lambda x: decorateme(x, 'nohome')
+nohome = lambda x: decorateme(x, 'nohomework')
 nobachelor = lambda x: decorateme(x, 'nobachelor')
 nomaster = lambda x: decorateme(x, 'nomaster')
 nodiss = lambda x: decorateme(x, 'nodiss')

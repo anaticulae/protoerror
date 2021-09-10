@@ -17,13 +17,12 @@ def test_linter_with_decorators():
     linter_ = protocol.from_module(source)
     assert linter_
     assert linter_.solver
-
     document = protocol.Document(
         pages=122,
         doctype=protocol.DocType.DISS,
         generator=protocol.Generator.MSWORD,
     )
-
+    # parse checkers
     checkers = protocol.parse_checkers(source)
     checkers = protocol.filter_checkers(checkers, document)
 
