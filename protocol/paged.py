@@ -39,6 +39,7 @@ def write_grouped(
 def load_grouped(
     source: str,
     pages: tuple = None,
+    sort: bool = True,
     worker=10,
 ) -> iamraw.PageFindings:
     if pages is None:
@@ -61,6 +62,8 @@ def load_grouped(
             if not data:
                 continue
             result.append(data)
+    if sort:
+        result.sort(key=lambda x: x.page)
     return result
 
 
