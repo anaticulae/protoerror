@@ -86,19 +86,11 @@ import dataclasses
 import enum
 
 import configo
+import iamraw
 import utila
 
 MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
 MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
-
-
-class DocType(enum.Enum):
-    HOMEWORK = enum.auto()
-    BACHELOR = enum.auto()
-    MASTER = enum.auto()
-    DISS = enum.auto()
-    BOOK = enum.auto()
-    PAPER = enum.auto()
 
 
 class Generator(enum.Enum):
@@ -110,11 +102,11 @@ class Generator(enum.Enum):
 @dataclasses.dataclass
 class Document:
     pages: int = None
-    doctype: DocType = None
+    doctype: iamraw.DocumentType = None
     generator: Generator = None
 
 
-DOCTYPES = [item.name.lower() for item in DocType]
+DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
 
 
 def filter_checkers(items: list, document: Document) -> list:

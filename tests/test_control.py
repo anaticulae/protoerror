@@ -9,6 +9,8 @@
 
 import functools
 
+import iamraw
+
 import protocol
 
 
@@ -19,13 +21,12 @@ def test_linter_with_decorators():
     assert linter_.solver
     document = protocol.Document(
         pages=122,
-        doctype=protocol.DocType.DISS,
+        doctype=iamraw.DocumentType.DISS,
         generator=protocol.Generator.MSWORD,
     )
     # parse checkers
     checkers = protocol.parse_checkers(source)
     checkers = protocol.filter_checkers(checkers, document)
-
     for checker in checkers:
         call = functools.partial(
             linter_.add_finding,
