@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.11.0
+
+### Feature
+
+* add option to sort page findings by page (3fc1f632ded0)
+
 ## v3.10.0
 
 ### Feature
