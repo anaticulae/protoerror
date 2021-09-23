@@ -136,13 +136,12 @@ def filter_checkers(items: list, document: Document) -> list:
             continue
         # is check decorated for a special doctype
         some = any(item in decorated for item in DOCTYPES)
-        if some:
-            if current not in decorated:
-                # current document is not selected by decorators, but
-                # others are. Therefore we have to skip this ckeck,
-                # because this check was not made for current document
-                # type.
-                continue
+        if some and current not in decorated:
+            # current document is not selected by decorators, but
+            # others are. Therefore we have to skip this ckeck,
+            # because this check was not made for current document
+            # type.
+            continue
         result.append(item)
     return result
 
