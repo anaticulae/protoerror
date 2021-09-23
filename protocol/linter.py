@@ -107,16 +107,17 @@ class Linter:
             solution = self.solver.solution(msgid=msgid, **kwargs)
 
         active = self.isactive(msgid, confidence)
-
+        # create finding
+        finding = iamraw.Finding(
+            confidence=confidence,
+            location=location,
+            msgid=msgid,
+            solution=solution,
+            active=active,
+        )
+        finding.number = protocol.finding.hash_finding(finding)
+        # store finding
         with self.lock:
-            finding = iamraw.Finding(
-                confidence=confidence,
-                location=location,
-                msgid=msgid,
-                solution=solution,
-                active=active,
-            )
-            finding.number = protocol.finding.hash_finding(finding)
             self.findings.append(finding)
 
     def check_findings(self, check: callable):
