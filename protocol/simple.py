@@ -11,6 +11,7 @@ import functools
 import typing
 
 import iamraw
+import utila
 
 import protocol
 
@@ -36,15 +37,12 @@ def run(
     if findings_merge:
         result = protocol.merge_findings(result)
     if before_dump:
-        # TODO: DIRTY
-        # TODO: INTRODUCE UTILA CONCEPT
-        try:
-            result = before_dump(result=result, driver=driver, linter=linter)
-        except TypeError:
-            try:
-                result = before_dump(result=result, driver=driver)
-            except TypeError:
-                result = before_dump(result=result)
+        result = utila.pass_required(
+            before_dump,
+            result=result,
+            driver=driver,
+            linter=linter,
+        )
     # dump results
     user, developer = protocol.dump_result(result, checkers=linter.checkers)
     return user, developer
