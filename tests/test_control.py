@@ -20,10 +20,10 @@ def test_linter_with_decorators():
     linter_ = protocol.from_module(source)
     assert linter_
     assert linter_.solver
-    document = protocol.Document(
+    document = iamraw.DocInfo(
         pages=122,
         doctype=iamraw.DocumentType.DISS,
-        generator=protocol.Generator.MSWORD,
+        generator=iamraw.Generator.MSWORD,
     )
     # parse checkers
     checkers = protocol.parse_checkers(source)
@@ -54,7 +54,7 @@ def test_linter_section_only(finding_location, expected):
                 return False
         return True
 
-    document = protocol.Document(pages=122, sections=sections)
+    document = iamraw.DocInfo(pages=122, sections=sections)
     linters = protocol.from_module(source, document=document)
     assert linters.solver
     checkers = linters.checkerlist

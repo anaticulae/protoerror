@@ -23,7 +23,7 @@ def run(
     modulename,
     driver=None,
     location: iamraw.Location = None,
-    document: 'Document' = None,
+    document: iamraw.DocInfo = None,
     findings_merge: bool = True,
     before_dump: callable = None,
 ):

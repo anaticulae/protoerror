@@ -82,8 +82,6 @@ different advice when using MSWord instead of Latex:
 """
 
 import contextlib
-import dataclasses
-import enum
 
 import configo
 import iamraw
@@ -92,26 +90,10 @@ import utila
 MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
 MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
 
-
-class Generator(enum.Enum):
-    BASE = enum.auto()
-    LATEX = enum.auto()
-    MSWORD = enum.auto()
-
-
-@dataclasses.dataclass
-class Document:
-    pages: int = None
-    doctype: iamraw.DocumentType = None
-    generator: Generator = None
-    sections: callable = None
-    """Skip findings which do not pass sections check."""
-
-
 DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
 
 
-def filter_checkers(items: list, document: Document) -> list:
+def filter_checkers(items: list, document: iamraw.DocInfo) -> list:
     assert document.pages is not None, str(document)
     current = document.doctype.name.lower() if document.doctype else None
     small = document.pages < MAX_SMALL_PAGE_LENGTH

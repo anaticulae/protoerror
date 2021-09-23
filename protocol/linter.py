@@ -67,7 +67,7 @@ class Linter:
         solver: protocol.solution.Solver = None,
         active: protocol.config.MessageStatusList = None,
         checkers: list = None,
-        document: protocol.control.Document = None,
+        document: iamraw.DocInfo = None,
     ):
         # TODO: USE CHECKER DIRECTLY TO REDUCE AMOUT OF CODE
         self.solver = solver
@@ -110,12 +110,12 @@ class Linter:
         # Determine a possible solution
         solution = None
         if self.solver:
-            if self.document == protocol.Generator.MSWORD:
+            if self.document == iamraw.Generator.MSWORD:
                 kwargs['MSWORD'] = True
-            if self.document == protocol.Generator.LATEX:
+            if self.document == iamraw.Generator.LATEX:
                 kwargs['LATEX'] = True
-            if self.document == protocol.Generator.BASE:
-                kwargs['BASE'] = True
+            if self.document == iamraw.Generator.UNDEFINED:
+                kwargs['UNDEFINED'] = True
             solution = self.solver.solution(msgid=msgid, **kwargs)
 
         active = self.isactive(msgid, confidence)
@@ -297,7 +297,7 @@ def write_result(
         utila.file_replace(developer_outpath, dumped_developer, private=private)
 
 
-def from_file(path: str, document: 'Document' = None) -> Linter:
+def from_file(path: str, document: iamraw.DocInfo = None) -> Linter:
     filename = os.path.basename(path)
     spec = importlib.util.spec_from_file_location(
         filename,
@@ -327,7 +327,7 @@ def from_solution(
     solutions: iamraw.Solutions,
     statuses: protocol.config.MessageStatusList,
     checkers: list = None,
-    document: 'Document' = None,
+    document: iamraw.DocInfo = None,
 ) -> Linter:
     solver = protocol.solution.Solver.fromlist(solutions)
     result = Linter(
@@ -343,7 +343,7 @@ def from_module(
     name: str,
     tests: set = None,
     skips: set = None,
-    document: 'Document' = None,
+    document: iamraw.DocInfo = None,
 ) -> Linter:
     result = from_modules(
         [name],
@@ -358,7 +358,7 @@ def from_modules(
     modules: utila.Strings,
     tests: set = None,
     skips: set = None,
-    document: 'Document' = None,
+    document: iamraw.DocInfo = None,
 ) -> Linter:
     status = []
     checkers = []
