@@ -113,7 +113,7 @@ DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
 
 def filter_checkers(items: list, document: Document) -> list:
     assert document.pages is not None, str(document)
-    current = document.doctype.name.lower()
+    current = document.doctype.name.lower() if document.doctype else None
     small = document.pages < MAX_SMALL_PAGE_LENGTH
     medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
     large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
@@ -130,18 +130,19 @@ def filter_checkers(items: list, document: Document) -> list:
             continue
         if 'nolarge' in decorated and large:
             continue
-        # skipped document type
-        if f'no{current}' in decorated:
-            # nohome nobachelor etc.
-            continue
-        # is check decorated for a special doctype
-        some = any(item in decorated for item in DOCTYPES)
-        if some and current not in decorated:
-            # current document is not selected by decorators, but
-            # others are. Therefore we have to skip this ckeck,
-            # because this check was not made for current document
-            # type.
-            continue
+        if current:
+            # skipped document type
+            if f'no{current}' in decorated:
+                # nohome nobachelor etc.
+                continue
+            # is check decorated for a special doctype
+            some = any(item in decorated for item in DOCTYPES)
+            if some and current not in decorated:
+                # current document is not selected by decorators, but
+                # others are. Therefore we have to skip this ckeck,
+                # because this check was not made for current document
+                # type.
+                continue
         result.append(item)
     return result
 
