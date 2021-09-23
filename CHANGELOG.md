@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v3.12.0
+
+### Feature
+
+* replace with iamraw code (49da27e63c7a)
+* skip finding depending on location (b8b7b5c9bd0b)
+* add sections check to skip findings outside defined sections (700c820b15e5)
+* reduce amount of time in locked finding state (14dd21755ef7)
+* add section skip decorator (1d6575bbc641)
+
+### Fix
+
+* skip document check if no doc type is given (68d5a85eefcf)
+* make checker list unchangeable from outside (21f5e7dcc8c4)
+
 ## v3.11.0
 
 ### Feature
