@@ -184,6 +184,14 @@ nopaper = lambda x: decorateme(x, 'nopaper')
 skip = lambda x: decorateme(x, 'skip')
 
 
+def section_skip(sections: iamraw.PartOfDocMixin = None):
+    return lambda x: decorateme(x, {'section_skip': sections})
+
+
+def section_only(sections: iamraw.PartOfDocMixin = None):
+    return lambda x: decorateme(x, {'section_only': sections})
+
+
 def disable_perpage(lessthan=None, morethan=None, equal=None):
     values = {}
     if lessthan is not None:

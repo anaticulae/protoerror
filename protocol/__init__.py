@@ -48,6 +48,8 @@ from protocol.control import nomaster
 from protocol.control import nomedium
 from protocol.control import nopaper
 from protocol.control import nosmall
+from protocol.control import section_only
+from protocol.control import section_skip
 # finding
 from protocol.finding import finding_status
 from protocol.finding import finding_status_update
