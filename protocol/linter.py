@@ -95,6 +95,11 @@ class Linter:
             kwargs: use key words args to replace values in solution
                     template.
         """
+        if self.document and self.document.sections:
+            if not self.document.sections(location):
+                utila.debug(f'skip finding in section: {msgid}, {location}')
+                # do not add this finding
+                return
         # Determine a possible solution
         solution = None
         if self.solver:

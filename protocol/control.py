@@ -104,6 +104,8 @@ class Document:
     pages: int = None
     doctype: iamraw.DocumentType = None
     generator: Generator = None
+    sections: callable = None
+    """Skip findings which do not pass sections check."""
 
 
 DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
