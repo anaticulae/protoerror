@@ -10,6 +10,7 @@
 import functools
 
 import iamraw
+import pytest
 
 import protocol
 
@@ -34,3 +35,35 @@ def test_linter_with_decorators():
         )
         checker(call, {})
     assert len(checkers) == 2
+
+
+@pytest.mark.parametrize(
+    'finding_location, expected',
+    [
+        pytest.param(iamraw.Location.from_page(0), 2, id='include_title'),
+        pytest.param(iamraw.Location.from_page(1), 1, id='skip_title'),
+    ],
+)
+def test_linter_section_only(finding_location, expected):
+    """Skip finding depending on section decorator."""
+    source = 'tests.example.solver_section_skip'
+
+    def sections(location, only, skip):  # pylint:disable=W0613
+        if iamraw.sections.TitlePage.__class__ in only:
+            if location.page != 0:  # pylint:disable=C2001
+                return False
+        return True
+
+    document = protocol.Document(pages=122, sections=sections)
+    linters = protocol.from_module(source, document=document)
+    assert linters.solver
+    checkers = linters.checkerlist
+    assert len(checkers) == 2
+    for checker in checkers:
+        call = functools.partial(
+            linters.add_finding,
+            msgid=checker.msgid,
+            location=finding_location,
+        )
+        checker(call, {})
+    assert len(linters.result()) == expected
