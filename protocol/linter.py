@@ -71,7 +71,7 @@ class Linter:
         # TODO: USE CHECKER DIRECTLY TO REDUCE AMOUT OF CODE
         self.solver = solver
         self.active = {item.msgid: item for item in active} if active else {}
-        self.checkerlist = [] if not checkers else checkers
+        self.checkerlist = list(checkers) if checkers else []
         self.findings = []
         self.document = document
         self.lock = threading.Lock()  # make class thread safe
