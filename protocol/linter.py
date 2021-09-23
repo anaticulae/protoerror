@@ -18,6 +18,7 @@ improve the platform.
 Note: This class is thread-safe.
 """
 
+import collections
 import contextlib
 import dataclasses
 import functools
@@ -51,7 +52,7 @@ class DumpedLinterResult:
         Example:
             user, developer = linter_result
         """
-        if index == 0:
+        if index == 0:  # pylint:disable=C2001
             return self.user
         if index == 1:
             return self.developer
@@ -72,6 +73,7 @@ class Linter:
         self.solver = solver
         self.active = {item.msgid: item for item in active} if active else {}
         self.checkerlist = list(checkers) if checkers else []
+        self.only, self.skip = only_skip(self.checkerlist)
         self.findings = []
         self.document = document
         self.lock = threading.Lock()  # make class thread safe
@@ -96,7 +98,12 @@ class Linter:
                     template.
         """
         if self.document and self.document.sections:
-            if not self.document.sections(location):
+            only, skip = set(), set()
+            with contextlib.suppress(KeyError):
+                only = self.only[msgid]
+            with contextlib.suppress(KeyError):
+                skip = self.skip[msgid]
+            if not self.document.sections(location=location, only=only, skip=skip):  # yapf:disable
                 utila.debug(f'skip finding in section: {msgid}, {location}')
                 # do not add this finding
                 return
@@ -216,6 +223,19 @@ def perpage_disable(findings, checkers):
                 continue
             result.extend(findings)
     return result
+
+
+def only_skip(checkers):
+    only = collections.defaultdict(set)
+    skip = collections.defaultdict(set)
+    for item in checkers:
+        msgid = item.msgid
+        item_only, item_skip = protocol.control.only_skip(item)
+        only[msgid] |= item_only
+        skip[msgid] |= item_skip
+    only: dict = dict(only)
+    skip: dict = dict(skip)
+    return only, skip
 
 
 def dump_result(

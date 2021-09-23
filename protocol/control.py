@@ -194,6 +194,20 @@ def section_only(sections: iamraw.PartOfDocMixin = None):
     return lambda x: decorateme(x, {'section_only': sections})
 
 
+def only_skip(method):
+    only, skips = set(), set()
+    try:
+        control = method.__control__
+    except AttributeError:
+        return only, skips
+    for item in control:
+        if 'section_only' in item:
+            only.add(item['section_only'].__class__)
+        if 'section_skip' in item:
+            skips.add(item['section_skip'].__class__)
+    return only, skips
+
+
 def disable_perpage(lessthan=None, morethan=None, equal=None):
     values = {}
     if lessthan is not None:
