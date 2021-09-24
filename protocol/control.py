@@ -184,9 +184,9 @@ def only_skip(method):
         return only, skips
     for item in control:
         if 'section_only' in item:
-            only.add(item['section_only'].__class__)
+            only.add(item['section_only'])
         if 'section_skip' in item:
-            skips.add(item['section_skip'].__class__)
+            skips.add(item['section_skip'])
     return only, skips
 
 

@@ -12,7 +12,7 @@ import iamraw
 import protocol
 
 
-@protocol.section_only(iamraw.TitlePage)
+@protocol.section_only(iamraw.sections.TitlePage)
 def check_1240_title_check(linter, _):  # pylint:disable=W0613
     linter()
 

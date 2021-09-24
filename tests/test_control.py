@@ -49,7 +49,7 @@ def test_linter_section_only(finding_location, expected):
     source = 'tests.example.solver_section_skip'
 
     def sections(location, only, skip):  # pylint:disable=W0613
-        if iamraw.sections.TitlePage.__class__ in only:
+        if iamraw.sections.TitlePage in only:
             if location.page != 0:  # pylint:disable=C2001
                 return False
         return True
