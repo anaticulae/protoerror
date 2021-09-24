@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.12.1
+
+### Fix
+
+* use correct class (490fe1d38b68)
+
 ## v3.12.0
 
 ### Feature
