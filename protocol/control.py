@@ -94,11 +94,13 @@ DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
 
 
 def filter_checkers(items: list, document: iamraw.DocInfo) -> list:
-    assert document.pages is not None, str(document)
     current = document.doctype.name.lower() if document.doctype else None
-    small = document.pages < MAX_SMALL_PAGE_LENGTH
-    medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
-    large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
+    if document.pages is not None:
+        small = document.pages < MAX_SMALL_PAGE_LENGTH
+        medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
+        large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
+    else:
+        small, medium, large = False, False, False
     result = []
     for item in items:
         decorated = decorators(item)
@@ -106,11 +108,11 @@ def filter_checkers(items: list, document: iamraw.DocInfo) -> list:
         if 'skip' in decorated:
             continue
         # verify document length
-        if 'nosmall' in decorated and small:
+        if small and 'nosmall' in decorated:
             continue
-        if 'nomedium' in decorated and medium:
+        if medium and 'nomedium' in decorated:
             continue
-        if 'nolarge' in decorated and large:
+        if large and 'nolarge' in decorated:
             continue
         if current:
             # skipped document type
