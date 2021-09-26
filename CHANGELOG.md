@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.12.2
+
+### Fix
+
+* skip check if pages is not given (5c5e11525b5e)
+
 ## v3.12.1
 
 ### Fix
