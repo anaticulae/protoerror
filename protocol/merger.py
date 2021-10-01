@@ -36,7 +36,15 @@ def merge_findings(findings):
 def merge_equal_findingid(findings):
     if not findings:
         return []
-    findings = sorted(findings, key=lambda x: x.location.line)
+    # remove findings without lines, cause we carn't merge them
+    locations, nolines = utila.partition(
+        lambda x: x.location.line is not None,
+        findings,
+    )
+    if not locations:
+        # no findings with lines
+        return findings
+    findings = sorted(locations, key=lambda x: x.location.line)
     result = [findings[0]]
     for item in findings[1:]:
         before = result[-1]
@@ -56,4 +64,6 @@ def merge_equal_findingid(findings):
     # update finding number
     for finding in result:
         finding.number = protocol.finding.hash_finding(finding)
+    # append no lines
+    findings.extend(nolines)
     return result
