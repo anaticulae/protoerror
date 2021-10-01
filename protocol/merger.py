@@ -23,9 +23,7 @@ def merge_findings(findings):
         key=lambda x: x.location.shortcut == 'r',
         items=findings,
     )
-    result = []
-    result.extend(notranged)
-
+    result = list(notranged)
     paged = protocol.bypage(ranged)
     for page in paged:
         msgid = protocol.byid(page)
