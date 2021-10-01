@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.12.3
+
+### Fix
+
+* do not try to merge findings without line number (6440996538d4)
+
 ## v3.12.2
 
 ### Fix
