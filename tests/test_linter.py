@@ -80,11 +80,13 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
             number=0,
             location=None,
             msgid='E1337',
-            solution=iamraw.Text(number=10,
-                                 msgid='E1337',
-                                 status=iamraw.ProblemStatus.OPEN,
-                                 title='Solution 42 is open.',
-                                 description='This is just a Hello half.'),
+            solution=iamraw.Text(
+                number=10,
+                msgid='E1337',
+                status=iamraw.ProblemStatus.OPEN,
+                title='Solution 42 is open.',
+                description='This is just a Hello half.',
+            ),
             confidence=1.0,
             active=True,
         )

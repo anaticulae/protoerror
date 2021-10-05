@@ -103,7 +103,11 @@ class Linter:
                 only = self.only[msgid]
             with contextlib.suppress(KeyError):
                 skip = self.skip[msgid]
-            if not self.document.sections(location=location, only=only, skip=skip):  # yapf:disable
+            if not self.document.sections(
+                    location=location,
+                    only=only,
+                    skip=skip,
+            ):
                 utila.debug(f'skip finding in section: {msgid}, {location}')
                 # do not add this finding
                 return
