@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.13.0
+
+### Feature
+
+* add method to count findings by msgid (9dfdc3f4c261)
+
 ## v3.12.3
 
 ### Fix
