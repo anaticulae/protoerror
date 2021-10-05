@@ -136,6 +136,11 @@ class Linter:
         with self.lock:
             self.findings.append(finding)
 
+    def count_findings(self, msgid: str):
+        with self.lock:
+            counted = utila.counts(self.findings, lambda x: x.msgid == msgid)
+        return counted
+
     def check_findings(self, check: callable):
         """Run method to rewrite current `findings`."""
         with self.lock:

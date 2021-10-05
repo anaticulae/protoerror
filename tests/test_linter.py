@@ -94,6 +94,11 @@ def test_linter_template_solution(template_solver):  # pylint:disable=W0621
     assert output == expected
 
 
+def test_linter_count_findings(linter):  # pylint:disable=W0621
+    assert linter.count_findings(msgid='F1337') == 1
+    assert not linter.count_findings(msgid='F0005')
+
+
 def test_linter_from_file():
     example = os.path.join(protocol.ROOT, 'tests/example/solver.py')
     created = protocol.from_file(example)
