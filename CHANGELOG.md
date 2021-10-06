@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.14.0
+
+### Feature
+
+* add option to skip non selected solutions (d88fe1655700)
+
 ## v3.13.0
 
 ### Feature
