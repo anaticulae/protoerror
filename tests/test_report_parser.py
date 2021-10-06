@@ -23,6 +23,13 @@ def test_parses(capsys):
     assert len(parsed.features[1].solutions) == 2
 
 
+def test_parses_active(capsys):
+    raw = tests.test_report.run_report('list', capsys)
+    assert raw
+    parsed = protocol.parses(raw, active={1240})
+    assert len(parsed.features) == 1
+
+
 RAW = """\
 ~1235:ABC~
 Messages Messages Messages

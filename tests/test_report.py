@@ -17,7 +17,7 @@ import protocol
 
 def run_report(cmd: str, capsys):
     root = os.path.join(protocol.ROOT)
-    _, run = protocol.integrate(root=root, features='tests.report')
+    run = protocol.integrate(root=root, features='tests.report')[1]
     args = dict(show=cmd)
     with pytest.raises(SystemExit):
         run(args)
@@ -46,6 +46,5 @@ def test_report_empty_cmd(capsys):
     stdout = run_report('list', capsys)
     empty = run_report('', capsys)
     assert empty == stdout
-
     wrong = run_report('wrong', capsys)
     assert wrong != empty

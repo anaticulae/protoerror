@@ -21,23 +21,28 @@ TITLE = re.compile(r'^<<(?P<title>.+)>>\n', re.MULTILINE)
 HEADLINE = re.compile(r'~(?P<id>\d{2,6}):(?P<headline>.+?)~\n')
 
 
-def parses(content: str, name: str = '') -> Report:
+def parses(content: str, name: str = '', active: set = None) -> Report:
     splitted = TITLE.split(content)
     splitted = [item for item in splitted if item]
     features = []
     for title, area in xsome(splitted, count=2):
-        solutions = parse_steps(area.strip())
+        solutions = parse_steps(area.strip(), active=active)
+        if not solutions:
+            continue
         features.append(Feature(title=title, solutions=solutions))
     result = Report(name=name, features=features)
     return result
 
 
-def parse_steps(content: str) -> Steps:
+def parse_steps(content: str, active: set = None) -> Steps:
     splitted = HEADLINE.split(content)
     splitted = [item for item in splitted if item]
     result = []
     for msgid, headline, description in xsome(splitted, count=3):
         msgid = int(msgid)
+        if active and msgid not in active:
+            # skip solution if solution is not selected
+            continue
         description = description.strip()
         result.append(Step(msgid, headline, description))
     return result
