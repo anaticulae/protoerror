@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.15.0
+
+### Feature
+
+* add cli to run optimize step (d6e023a039d8)
+
 ## v3.14.0
 
 ### Feature
