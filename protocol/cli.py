@@ -35,16 +35,13 @@ def main():
 def optimize(srcs: str, dest: str, pages: tuple = None, msgid: set = None):
     findings = []
     for src in srcs:
-        utila.log(
-            f'load findings from: {src}',
-            preserve_newlines=False,
-        )
-        # TODO: ADD PAGES LATER
-        loaded = serializeraw.findings_from_path(
-            src,
-            msgid=msgid,
-        )
-        findings.extend(utila.flatten_content(loaded))
+        utila.log(f'load findings from: {src}', preserve_newlines=False)
+    findings = serializeraw.findings_from_path(
+        path=srcs,
+        msgid=msgid,
+        pages=pages,
+    )
+    findings = utila.flatten_content(findings)
     dest = os.path.join(dest, '__optimized__')
     os.makedirs(dest, exist_ok=True)
     utila.log(
