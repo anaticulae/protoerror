@@ -70,3 +70,9 @@ def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
         confidence=0.3,
     )
     return result
+
+
+@pytest.fixture
+def dumped_findings(linter_withlocation, testdir):  # pylint:disable=W0621
+    linter_withlocation.write(testdir.tmpdir)
+    return testdir.tmpdir

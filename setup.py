@@ -43,4 +43,9 @@ if __name__ == "__main__":
         packages=[
             'protocol',
         ],
+        entry_points={
+            'console_scripts': [
+                'findings = protocol.cli:main',
+            ],
+        },
     )

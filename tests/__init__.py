@@ -6,3 +6,24 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+
+import functools
+
+import utilatest
+
+import protocol.cli
+
+#pylint: disable=invalid-name
+run = functools.partial(
+    utilatest.run_command,
+    main=protocol.cli.main,
+    process='findings',
+    success=True,
+)
+
+failure = functools.partial(
+    utilatest.run_command,
+    main=protocol.cli.main,
+    process='findings',
+    success=False,
+)
