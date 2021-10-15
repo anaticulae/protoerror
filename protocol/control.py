@@ -87,8 +87,8 @@ import configo
 import iamraw
 import utila
 
-MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
-MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(default=35).value
+MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(default=35)
+MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(default=35)
 
 DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
 
