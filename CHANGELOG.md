@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.15.1
+
+### Fix
+
+* adjust unit test (25140b9289db)
+
 ## v3.15.0
 
 ### Feature
