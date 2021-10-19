@@ -74,7 +74,7 @@ def test_finding_update_status(linter_withlocation, testdir):
 def test_finding_assert_on_not_fully_replaced():
     # yapf:disable
     result = [
-        iamraw.Finding(solution=iamraw.Text(description='not fully replaced {%')),
+        iamraw.Finding(solution=iamraw.Text(description='not replaced {{noname}}')),
         iamraw.Finding(solution=iamraw.Text(description='replaced')),
         iamraw.Finding(),
     ]
