@@ -44,8 +44,6 @@ if __name__ == "__main__":
             'protocol',
         ],
         entry_points={
-            'console_scripts': [
-                'findings = protocol.cli:main',
-            ],
+            'console_scripts': ['findings = protocol.cli:main'],
         },
     )
