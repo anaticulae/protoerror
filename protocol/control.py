@@ -241,3 +241,49 @@ def is_disabled_perpage(findings, method) -> bool:
             if len(findings) >= disableperpage['morethan']:
                 return True
     return False
+
+
+DOCINFO_PATTERN = utila.compiles(r"""
+    ^
+    (?P<typ>homework|bachelor|master|diss|habil|book|paper)?
+    (?P<pages>\d{1,4})?
+    (?P<lang>ger|eng|fre)?
+    $
+""")
+
+
+def parse_docinfo(docinfo) -> iamraw.DocInfo:
+    """\
+    >>> parse_docinfo('diss215eng')
+    DocInfo(pages=215, doctype=...DISS...lang=...ENGLISH...)
+    >>> parse_docinfo('15GER')
+    DocInfo(pages=15...NONE...lang=<Language.GERMAN...)
+    >>> assert parse_docinfo(None) is None
+    """
+    if not docinfo:
+        return None
+    parsed = DOCINFO_PATTERN.match(docinfo)
+    if not parsed:
+        return None
+    typ = iamraw.DocumentType.NONE
+    pages = 256
+    lang = iamraw.Language.GERMAN
+    with contextlib.suppress(KeyError):
+        pages = int(parsed['pages'])
+    with contextlib.suppress(KeyError, AttributeError):
+        typ = iamraw.DocumentType[parsed['typ'].upper()]
+    with contextlib.suppress(KeyError):
+        lang = parsed['lang'].lower()
+        # TODO: REPLACE WITH PARSER CODE
+        if lang == 'ger':
+            lang = iamraw.Language.GERMAN
+        elif lang == 'eng':
+            lang = iamraw.Language.ENGLISH
+        elif lang == 'fre':
+            lang = iamraw.Language.FRENCH
+    result = iamraw.DocInfo(
+        pages=pages,
+        doctype=typ,
+        lang=lang,
+    )
+    return result
