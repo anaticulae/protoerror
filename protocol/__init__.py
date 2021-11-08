@@ -26,6 +26,7 @@ from protocol.config import MessageStatus
 from protocol.config import load
 from protocol.config import save
 # control
+from protocol.control import DOCINFO
 from protocol.control import bachelor
 from protocol.control import book
 from protocol.control import decorators

@@ -251,6 +251,8 @@ DOCINFO_PATTERN = utila.compiles(r"""
     $
 """)
 
+DOCINFO = 'bachelor64ger'
+
 
 def parse_docinfo(docinfo) -> iamraw.DocInfo:
     """\
