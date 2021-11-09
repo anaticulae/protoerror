@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v3.16.0
+
+### Feature
+
+* provide hook to integrate docinfo evaluation (c102b723acf0)
+* add default docinfo (4f8a22a86294)
+* add method to parse doc info from cli (eae9ba53afa4)
+
 ## v3.15.1
 
 ### Fix

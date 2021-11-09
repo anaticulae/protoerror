@@ -121,7 +121,7 @@ from protocol.solution import parse_solutions
 from protocol.utils import RESULT_EMPTY
 from protocol.utils import driver
 
-__version__ = '3.15.1'
+__version__ = '3.16.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
