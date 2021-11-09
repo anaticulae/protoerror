@@ -267,28 +267,32 @@ def parse_docinfo(docinfo) -> iamraw.DocInfo:
     parsed = DOCINFO_PATTERN.match(docinfo)
     if not parsed:
         return None
-    typ = iamraw.DocumentType.NONE
+    doctype = iamraw.DocumentType.NONE
     pages = 256
     lang = iamraw.Language.GERMAN
     with contextlib.suppress(KeyError):
         pages = int(parsed['pages'])
     with contextlib.suppress(KeyError, AttributeError):
-        typ = iamraw.DocumentType[parsed['typ'].upper()]
+        doctype = iamraw.DocumentType[parsed['typ'].upper()]
     with contextlib.suppress(KeyError):
-        lang = parsed['lang'].lower()
-        # TODO: REPLACE WITH PARSER CODE
-        if lang == 'ger':
-            lang = iamraw.Language.GERMAN
-        elif lang == 'eng':
-            lang = iamraw.Language.ENGLISH
-        elif lang == 'fre':
-            lang = iamraw.Language.FRENCH
+        lang = parse_lang(parsed['lang'])
     result = iamraw.DocInfo(
         pages=pages,
-        doctype=typ,
+        doctype=doctype,
         lang=lang,
     )
     return result
+
+
+def parse_lang(lang: str) -> iamraw.Language:
+    lang = lang.lower()
+    if lang == 'ger':
+        return iamraw.Language.GERMAN
+    if lang == 'eng':
+        return iamraw.Language.ENGLISH
+    if lang == 'fre':
+        return iamraw.Language.FRENCH
+    return iamraw.Language.UNKNOWN
 
 
 def integrate_docinfo():
