@@ -289,3 +289,24 @@ def parse_docinfo(docinfo) -> iamraw.DocInfo:
         lang=lang,
     )
     return result
+
+
+def integrate_docinfo():
+    hook = integrate_cli
+    run = evaluate_userchoice
+    return hook, run
+
+
+def evaluate_userchoice(argv):
+    docinfo = argv.get('docinfo', None)
+    parsed = parse_docinfo(docinfo)
+    if parsed is None:
+        parsed = iamraw.DocInfo()
+    return dict(docinfo=parsed)
+
+
+def integrate_cli(parser):
+    parser.add_argument(
+        '--docinfo',
+        help='define docinfo to tell document type, length and language',
+    )

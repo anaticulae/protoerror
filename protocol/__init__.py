@@ -36,6 +36,7 @@ from protocol.control import dissertation
 from protocol.control import enable_perpage
 from protocol.control import filter_checkers
 from protocol.control import homework
+from protocol.control import integrate_docinfo
 from protocol.control import is_disabled_perpage
 from protocol.control import master
 from protocol.control import nobachelor
