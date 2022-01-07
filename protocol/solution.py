@@ -264,6 +264,10 @@ def escape(text: str) -> str:
     """
     for char in REPLACE:
         text = text.replace(char, f'&#{ord(char)};')
+    # allow basic html styling
+    for char in 'i u b del'.split():
+        text = text.replace(f'&#60;{char}&#62;', f'<{char}>')
+        text = text.replace(f'&#60;&#47;{char}&#62;', f'</{char}>')
     return text
 
 
