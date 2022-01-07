@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v3.16.2
+
+### Feature
+
+* allow simple html styling (8f62aebada84)
+* escape slash as html entity (92910a9de4c9)
+
+### Documentation
+
+* Happy New Year! (6a569179b2b5)
+
 ## v3.16.1
 
 ## v3.16.0
