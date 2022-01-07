@@ -247,7 +247,7 @@ def confidence(value=1.0):
 
 
 # Pay attention to the order to avoid internal replacements of html chars.
-REPLACE = r'#*${}<>:=[]?!()@%'
+REPLACE = r'#*${}<>:=[]?!()@%/'
 
 
 def escape(text: str) -> str:
