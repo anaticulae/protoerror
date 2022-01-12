@@ -34,7 +34,9 @@ from protocol.control import disable_perpage
 from protocol.control import diss
 from protocol.control import dissertation
 from protocol.control import enable_perpage
+from protocol.control import english
 from protocol.control import filter_checkers
+from protocol.control import german
 from protocol.control import homework
 from protocol.control import integrate_docinfo
 from protocol.control import is_disabled_perpage

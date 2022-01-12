@@ -167,6 +167,9 @@ nodiss = lambda x: decorateme(x, 'nodiss')
 nobook = lambda x: decorateme(x, 'nobook')
 nopaper = lambda x: decorateme(x, 'nopaper')
 
+german = lambda x: decorateme(x, 'german')
+english = lambda x: decorateme(x, 'english')
+
 skip = lambda x: decorateme(x, 'skip')
 
 
