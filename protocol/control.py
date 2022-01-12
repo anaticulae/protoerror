@@ -114,6 +114,9 @@ def filter_checkers(items: list, document: iamraw.DocInfo) -> list:
             continue
         if large and 'nolarge' in decorated:
             continue
+        if 'german' in decorated and 'english' not in decorated:
+            if document.lang and document.lang != iamraw.Language.GERMAN:
+                continue
         if current:
             # skipped document type
             if f'no{current}' in decorated:
