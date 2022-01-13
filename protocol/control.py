@@ -259,7 +259,7 @@ DOCINFO_PATTERN = utila.compiles(r"""
     ^
     (?P<typ>homework|bachelor|master|diss|habil|book|paper)?
     (?P<pages>\d{1,4})?
-    (?P<lang>ger|eng|fre)?
+    (?P<lang>ger|eng|fre|german|english|french)?
     $
 """)
 
@@ -281,13 +281,15 @@ def parse_docinfo(docinfo) -> iamraw.DocInfo:
         return None
     doctype = iamraw.DocumentType.NONE
     pages = 256
-    lang = iamraw.Language.GERMAN
+    lang = iamraw.Language.GERMAN  # default lang
     with contextlib.suppress(KeyError):
-        pages = int(parsed['pages'])
+        if parsed['pages']:
+            pages = int(parsed['pages'])
     with contextlib.suppress(KeyError, AttributeError):
         doctype = iamraw.DocumentType[parsed['typ'].upper()]
     with contextlib.suppress(KeyError):
-        lang = parse_lang(parsed['lang'])
+        if parsed['lang']:
+            lang = parse_lang(parsed['lang'])
     result = iamraw.DocInfo(
         pages=pages,
         doctype=doctype,
@@ -298,11 +300,11 @@ def parse_docinfo(docinfo) -> iamraw.DocInfo:
 
 def parse_lang(lang: str) -> iamraw.Language:
     lang = lang.lower()
-    if lang == 'ger':
+    if lang in 'german':
         return iamraw.Language.GERMAN
-    if lang == 'eng':
+    if lang in 'english':
         return iamraw.Language.ENGLISH
-    if lang == 'fre':
+    if lang in 'french':
         return iamraw.Language.FRENCH
     return iamraw.Language.UNKNOWN
 
