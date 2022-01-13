@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.17.1
+
+### Feature
+
+* make control parser more robust (fd5ed43f0319)
+
 ## v3.17.0
 
 ### Feature
