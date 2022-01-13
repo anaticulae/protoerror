@@ -95,28 +95,11 @@ DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
 
 def filter_checkers(items: list, document: iamraw.DocInfo) -> list:
     current = document.doctype.name.lower() if document.doctype else None
-    if document.pages is not None:
-        small = document.pages < MAX_SMALL_PAGE_LENGTH
-        medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
-        large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
-    else:
-        small, medium, large = False, False, False
     result = []
     for item in items:
         decorated = decorators(item)
-        # deactivated method
-        if 'skip' in decorated:
+        if should_skip(decorated, document):
             continue
-        # verify document length
-        if small and 'nosmall' in decorated:
-            continue
-        if medium and 'nomedium' in decorated:
-            continue
-        if large and 'nolarge' in decorated:
-            continue
-        if 'german' in decorated and 'english' not in decorated:
-            if document.lang and document.lang != iamraw.Language.GERMAN:
-                continue
         if current:
             # skipped document type
             if f'no{current}' in decorated:
@@ -132,6 +115,29 @@ def filter_checkers(items: list, document: iamraw.DocInfo) -> list:
                 continue
         result.append(item)
     return result
+
+
+def should_skip(decorated, document) -> bool:
+    if document.pages is not None:
+        small = document.pages < MAX_SMALL_PAGE_LENGTH
+        medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
+        large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
+    else:
+        small, medium, large = False, False, False
+    # deactivated method
+    if 'skip' in decorated:
+        return True
+    # verify document length
+    if small and 'nosmall' in decorated:
+        return True
+    if medium and 'nomedium' in decorated:
+        return True
+    if large and 'nolarge' in decorated:
+        return True
+    if 'german' in decorated and 'english' not in decorated:
+        if document.lang and document.lang != iamraw.Language.GERMAN:
+            return True
+    return False
 
 
 def decorateme(method, value):
