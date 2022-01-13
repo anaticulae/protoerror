@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v3.17.0
+
+### Feature
+
+* use language decorator to skip analysis (4b53099899c2)
+* add decorator to make linter lang decedent (f343a9ac4662)
+
 ## v3.16.2
 
 ### Feature
