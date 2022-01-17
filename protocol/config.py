@@ -25,7 +25,6 @@ import dataclasses
 import typing
 
 import utila
-import yaml
 
 
 @dataclasses.dataclass  # pylint:disable=R0903
@@ -52,8 +51,7 @@ MessageStatusList = typing.List[MessageStatus]
 
 
 def load(path: str) -> MessageStatusList:
-    content = utila.from_raw_or_path(path, ftype='yaml')
-    loaded = yaml.safe_load(content)
+    loaded = utila.yaml_load(path)
     result = []
     for item in loaded:
         msgid = item.get('msgid')
@@ -77,6 +75,5 @@ def save(messages: MessageStatusList, path: str):
         if item.confidence:
             raw['confidence'] = item.confidence
         result.append(raw)
-    dumped = yaml.safe_dump(result)
-
+    dumped = utila.yaml_dump(result)
     utila.file_create(path, dumped)
