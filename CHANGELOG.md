@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v3.18.0
+
+### Feature
+
+* add method to log skipping a method (4bbae309e867)
+
 ## v3.17.1
 
 ### Feature

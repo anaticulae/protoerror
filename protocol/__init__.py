@@ -124,7 +124,7 @@ from protocol.utils import RESULT_EMPTY
 from protocol.utils import driver
 from protocol.utils import skip_method
 
-__version__ = '3.17.1'
+__version__ = '3.18.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
