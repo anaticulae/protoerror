@@ -122,6 +122,7 @@ from protocol.solution import parse_solutions
 # utils
 from protocol.utils import RESULT_EMPTY
 from protocol.utils import driver
+from protocol.utils import skip_method
 
 __version__ = '3.17.1'
 
