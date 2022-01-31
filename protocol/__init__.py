@@ -82,7 +82,6 @@ from protocol.linter import from_file
 from protocol.linter import from_module
 from protocol.linter import from_modules
 from protocol.linter import from_solution
-from protocol.linter import skip_check
 from protocol.linter import write_result
 # merge
 from protocol.merger import merge_findings
@@ -129,3 +128,5 @@ __version__ = '3.18.0'
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 OVERVIEW = iamraw.Location.from_page(-1)
+
+skip_check = skip_method
