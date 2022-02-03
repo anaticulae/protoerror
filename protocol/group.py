@@ -21,9 +21,8 @@ def bypage(items: iamraw.Findings) -> iamraw.PageFindings:
     ascending by page number."""
     pages = collections.defaultdict(list)
     for item in items:
-        assert item.location is not None, f'require location {item.location}'
+        assert item.location is not None, f'require location {item}'
         pages[item.location.page].append(item)
-
     result = [
         iamraw.PageFinding(page=page, content=pages[page])
         for page in sorted(pages.keys())
