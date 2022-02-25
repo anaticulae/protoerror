@@ -130,3 +130,4 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 OVERVIEW = iamraw.Location.from_page(-1)
 
 skip_check = skip_method
+skip = skip_method
