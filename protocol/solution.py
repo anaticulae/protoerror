@@ -261,11 +261,15 @@ def escape(text: str) -> str:
 
     Ensure that all characters are replaced
     >>> assert escape(REPLACE).count('#') == len(REPLACE)
+    >>> escape('{{hn:4:nh}}')
+    '<sup>4</sup>'
     """
+    # TODO: REMOVE LATER
+    text = re.sub(r'\{\{hn\:(\d{1,3})\:nh\}\}', r'<sup>\1</sup>', text)
     for char in REPLACE:
         text = text.replace(char, f'&#{ord(char)};')
     # allow basic html styling
-    for char in 'i u b del'.split():
+    for char in 'i u b del sup'.split():
         text = text.replace(f'&#60;{char}&#62;', f'<{char}>')
         text = text.replace(f'&#60;&#47;{char}&#62;', f'</{char}>')
     return text
