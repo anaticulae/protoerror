@@ -27,7 +27,8 @@ def run(
     findings_merge: bool = True,
     before_dump: callable = None,
 ):
-    location = location if location else iamraw.Location.from_page(0)
+    if not location:
+        location = protocol.OVERVIEW
     # create linter
     if isinstance(modulename, str):
         modulename = [modulename]
