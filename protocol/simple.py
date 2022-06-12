@@ -33,7 +33,12 @@ def run(
         modulename = [modulename]
     linter = protocol.from_modules(modulename, document=document)
     # run linter
-    result = linting(linter, linter.checkers, driver, location)
+    result = linting(
+        linter=linter,
+        checkers=linter.checkers,
+        driver=driver,
+        location=location,
+    )
     if findings_merge:
         result = protocol.merge_findings(result)
     if before_dump:
@@ -44,7 +49,10 @@ def run(
             linter=linter,
         )
     # dump results
-    user, developer = protocol.dump_result(result, checkers=linter.checkers)
+    user, developer = protocol.dump_result(
+        result,
+        checkers=linter.checkers,
+    )
     return user, developer
 
 
