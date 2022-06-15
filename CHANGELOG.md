@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v3.19.0
+
+### Feature
+
+* fail linter later (ff7262549bde)
+* add highnotes (873b473a02c8)
+* shorten skip method (915a2ac039ce)
+
+### Fix
+
+* move default location to overview pagae (0f40335480d0)
+* improve error message (7f4f23d3ded2)
+
 ## v3.18.0
 
 ### Feature
