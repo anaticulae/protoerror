@@ -64,7 +64,7 @@ def linting(
     driver,
     location: iamraw.Location,
 ):
-    failure = 0
+    failure = []
     for checker in checkers:
         call = functools.partial(
             linter.add_finding,
@@ -75,8 +75,9 @@ def linting(
             checker(call, driver)
         except Exception as error:  # pylint:disable=broad-except
             utila.error(error)
-            failure += 1
+            failure.append(error)
     if failure:
-        raise RuntimeError('linter step error')
+        first_failure = failure[0]
+        raise RuntimeError('linter step error') from first_failure
     result = linter.result(unique=True)
     return result
