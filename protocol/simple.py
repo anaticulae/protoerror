@@ -30,9 +30,10 @@ def run(
     if not location:
         location = protocol.OVERVIEW
     # create linter
-    if isinstance(modulename, str):
-        modulename = [modulename]
-    linter = protocol.from_modules(modulename, document=document)
+    linter = protocol.from_modules(
+        modules=modulename,
+        document=document,
+    )
     # run linter
     result = linting(
         linter=linter,

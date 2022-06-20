@@ -368,6 +368,7 @@ def from_modules(
     skips: set = None,
     document: iamraw.DocInfo = None,
 ) -> Linter:
+    modules = module_list(modules)
     status = []
     checkers = []
     solutions = []
@@ -396,6 +397,18 @@ def from_modules(
         document=document,
     )
     return result
+
+
+def module_list(modulename: list) -> list:
+    r"""\
+    >>> import protocol.simple; protocol.simple.run(protocol.simple)
+    ('[]\n', '[]\n')
+    """
+    if isinstance(modulename, str):
+        return [modulename]
+    if type(modulename).__name__ == 'module':
+        return [modulename]
+    return modulename
 
 
 def parse_active(module):
