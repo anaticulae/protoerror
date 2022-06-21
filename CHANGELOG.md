@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v3.19.1
+
+### Feature
+
+* ease simple interface (6f24f9bbbbe6)
+
+### Fix
+
+* do not hide trace back information (5768e06958e2)
+
 ## v3.19.0
 
 ### Feature
