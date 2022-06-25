@@ -42,6 +42,8 @@ def load_grouped(
     sort: bool = True,
     worker=10,
 ) -> iamraw.PageFindings:
+    if isinstance(pages, int):
+        pages = (pages,)
     if pages is None:
         # load all findings
         pages = [
