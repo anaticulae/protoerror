@@ -50,7 +50,11 @@ def filter_mark(items: iamraw.Findings, shortcut: str) -> iamraw.Findings:
     Returns:
         filtered, sorted list of `Findings`
     """
-    assert all(item.location for item in items), f'require location: {items}'
+    for item in items:
+        if item.location:
+            continue
+        utila.error(f'missing location: {item}')
+    items = [finding for finding in items if finding.location]
     selected = []
     for item in items:
         with contextlib.suppress(AttributeError):
