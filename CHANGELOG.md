@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v3.19.2 (2022-09-23)
+
+### Fix
+
+* do not fail on missing location (6bd82f54e186)
+* ensure single page selection (c98232260f2d)
+
+### Chore
+
+* add Jenkinsfile (2c2e31606030)
+* upgrade requirements.txt (992fb340c306)
+
 ## v3.19.1
 
 ### Feature
