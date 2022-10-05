@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v3.19.3 (2022-10-05)
+
+### Chore
+
+* root is not required (134674bfdecc)
+* upgrade Jenkinsfile (3d9a8e20edc0)
+* upgrade requirements.txt (8d64ba6297f6)
+
 ## v3.19.2 (2022-09-23)
 
 ### Fix
