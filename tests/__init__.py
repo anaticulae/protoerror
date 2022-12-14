@@ -18,12 +18,12 @@ run = functools.partial(
     utilatest.run_command,
     main=protocol.cli.main,
     process='findings',
-    success=True,
+    expect=True,
 )
 
 failure = functools.partial(
     utilatest.run_command,
     main=protocol.cli.main,
     process='findings',
-    success=False,
+    expect=False,
 )

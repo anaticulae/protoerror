@@ -10,7 +10,6 @@
 import dataclasses
 import enum
 import re
-import typing
 
 import iamraw
 import utila
@@ -45,7 +44,7 @@ class Question(iamraw.Solution):
     no: callable = None
 
 
-Questions = typing.List[Question]
+Questions = list[Question]
 
 
 def parse_questions(module) -> Questions:
@@ -107,7 +106,7 @@ def documore(finding_count: int, yes: callable = None, no: callable = None):
 
 def answer_questions(path: str, questions: Questions) -> iamraw.Findings:
     findings = [item.content for item in protocol.findings_from_path(path)]
-    findings = utila.flatten(findings)
+    findings = utila.flat(findings)
     grouped = protocol.byid(findings)
     result = []
     for question in questions:

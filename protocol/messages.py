@@ -41,7 +41,6 @@ MSG definition:
 """
 
 import contextlib
-import typing
 
 import utila
 
@@ -70,7 +69,7 @@ MSG_TYPES = {
 TYPE_DEFAULT = 'W'
 
 
-def parse_msgid(msgid: str, idonly: bool = False) -> typing.Tuple[str, int]:
+def parse_msgid(msgid: str, idonly: bool = False) -> tuple[str, int]:
     """Split `msgid` into `type` and `number`.
 
     Args:

@@ -14,8 +14,8 @@ import utila
 import protocol
 
 
-def test_finding_from_path(linter_withlocation, testdir):
-    root = testdir.tmpdir
+def test_finding_from_path(linter_withlocation, td):
+    root = td.tmpdir
     protocol.write_result(
         linter_withlocation.result(),
         root,
@@ -26,8 +26,8 @@ def test_finding_from_path(linter_withlocation, testdir):
     assert len(loaded) == 3
 
 
-def test_finding_number_make_unique(linter_withlocation, testdir):
-    root = testdir.tmpdir
+def test_finding_number_unique(linter_withlocation, td):
+    root = td.tmpdir
     negative_default = -1
     for item in ['first_user.yaml', 'second_user.yaml', 'third_user.yaml']:
         findings = linter_withlocation.result()
@@ -44,13 +44,13 @@ def test_finding_number_make_unique(linter_withlocation, testdir):
     loaded = protocol.findings_from_path(root)
     assert len(loaded) == 3
 
-    flat = utila.flatten([item.content for item in loaded])
+    flat = utila.flat([item.content for item in loaded])
     for item in flat:
         assert item.number != negative_default, item
 
 
-def test_finding_update_status(linter_withlocation, testdir):
-    root = testdir.tmpdir
+def test_finding_update_status(linter_withlocation, td):
+    root = td.tmpdir
     result = linter_withlocation.result()
     protocol.write_result(
         result=result,

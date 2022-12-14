@@ -73,6 +73,6 @@ def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
 
 
 @pytest.fixture
-def dumped_findings(linter_withlocation, testdir):  # pylint:disable=W0621
-    linter_withlocation.write(testdir.tmpdir)
-    return testdir.tmpdir
+def dumped_findings(linter_withlocation, td):  # pylint:disable=W0621
+    linter_withlocation.write(td.tmpdir)
+    return td.tmpdir

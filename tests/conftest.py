@@ -8,6 +8,9 @@
 # =============================================================================
 
 # pylint:disable=W0611
+from utilatest import mp
+from utilatest import td
+
 from tests.fixtures import dumped_findings
 from tests.fixtures import linter_withlocation
 from tests.fixtures import solver

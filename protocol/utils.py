@@ -21,8 +21,8 @@ def driver(**kwargs):
     >>> driver(name='Helmut', age=33)
     Driver(name='Helmut', age=33)
     """
-    Driver = collections.namedtuple('Driver', kwargs.keys())
-    result = Driver(**kwargs)
+    driverx = collections.namedtuple('Driver', kwargs.keys())
+    result = driverx(**kwargs)
     return result
 
 

@@ -22,7 +22,6 @@ example:
 """
 
 import dataclasses
-import typing
 
 import utila
 
@@ -47,7 +46,7 @@ class MessageStatus:
     confidence: float = 1.0
 
 
-MessageStatusList = typing.List[MessageStatus]
+MessageStatusList = list[MessageStatus]
 
 
 def load(path: str) -> MessageStatusList:

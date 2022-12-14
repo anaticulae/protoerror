@@ -9,13 +9,12 @@
 
 import collections
 import re
-import typing
 
 Step = collections.namedtuple('Step', 'msgid title description')
-Steps = typing.List[Step]
+Steps = list[Step]
 Feature = collections.namedtuple('Feature', 'title solutions')
 Report = collections.namedtuple('Report', 'name features')
-Reports = typing.List[Report]
+Reports = list[Report]
 
 TITLE = re.compile(r'^<<(?P<title>.+)>>\n', re.MULTILINE)
 HEADLINE = re.compile(r'~(?P<id>\d{2,6}):(?P<headline>.+?)~\n')

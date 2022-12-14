@@ -19,13 +19,13 @@ import protocol
         False,
     ],
 )
-def test_create_group(private, testdir, linter_withlocation):
+def test_create_group(private, td, linter_withlocation):
     findings = linter_withlocation.findings
-    written = protocol.write_grouped(findings, testdir.tmpdir, private=private)
+    written = protocol.write_grouped(findings, td.tmpdir, private=private)
     assert len(written) == 3
 
-    loaded = protocol.load_grouped(testdir.tmpdir)
+    loaded = protocol.load_grouped(td.tmpdir)
     assert len(loaded) == 3
 
-    loaded = protocol.load_grouped(testdir.tmpdir, pages=(0, 1, 2))
+    loaded = protocol.load_grouped(td.tmpdir, pages=(0, 1, 2))
     assert len(loaded) == 2

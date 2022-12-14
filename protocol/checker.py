@@ -37,7 +37,7 @@ Extracted data of different sources -> Checker[Judegement] -> Problem
     51-99: perhaps used: reserved for external checkers
 """
 
-import typing
+import collections.abc
 
 import iamraw
 
@@ -47,7 +47,7 @@ class Checker:
     def __init__(self, linter):
         self.linter = linter
 
-    def problems(self) -> typing.List[str]:
+    def problems(self) -> list[str]:
         """Return list of implemented problems"""
 
     def add_finding(
@@ -68,7 +68,7 @@ class Checker:
         pass
 
 
-def check_messages(*messages: str) -> typing.Callable:
+def check_messages(*messages: str) -> collections.abc.Callable:
     """decorator to store messages that are handled by a checker method"""
 
     def store_messages(func):

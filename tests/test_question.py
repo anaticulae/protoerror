@@ -33,11 +33,11 @@ def test_question_str():
     assert from_str == parsed
 
 
-def test_answer(testdir, linter_withlocation):
-    linter_withlocation.write(testdir.tmpdir)
+def test_answer(td, linter_withlocation):
+    linter_withlocation.write(td.tmpdir)
     questions = protocol.parse_questions(tests.example.solver_question)
 
-    result = protocol.answer_questions(testdir.tmpdir, questions)
+    result = protocol.answer_questions(td.tmpdir, questions)
     assert len(result) >= 1
 
-    protocol.write_result(result, testdir.tmpdir, user_file='answer.yaml')
+    protocol.write_result(result, td.tmpdir, user_file='answer.yaml')

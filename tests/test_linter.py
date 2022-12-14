@@ -31,20 +31,20 @@ def test_linter_solver(linter):  # pylint:disable=W0621
     assert len(linter.findings) == 3
 
 
-def test_linter_write(linter: protocol.Linter, testdir):  # pylint:disable=W0621
-    root = str(testdir)
+def test_linter_write(linter: protocol.Linter, td):  # pylint:disable=W0621
+    root = str(td)
     linter.write(root)
 
 
-def test_linter_write_unique(linter: protocol.Linter, testdir):  # pylint:disable=W0621
-    root = str(testdir)
+def test_linter_write_unique(linter: protocol.Linter, td):  # pylint:disable=W0621
+    root = str(td)
 
     before = len(linter.findings)
     # Add size check
     for _ in range(10):
         linter.add_finding(location=None, msgid='F0005', confidence=0.5)
 
-    unique_findings = utila.make_unique(linter.findings)
+    unique_findings = utila.unique(linter.findings)
     after = len(unique_findings)
 
     # one element was added by range
@@ -53,8 +53,8 @@ def test_linter_write_unique(linter: protocol.Linter, testdir):  # pylint:disabl
     linter.write(root, unique=True)
 
 
-def test_linter_linter_load_result(linter: protocol.Linter, testdir):  # pylint:disable=W0621
-    root = str(testdir)
+def test_linter_linter_load_result(linter: protocol.Linter, td):  # pylint:disable=W0621
+    root = str(td)
     linter.write(root, unique=True)
 
     user = linter.result(unique=True)
@@ -113,7 +113,7 @@ def test_linter_from_file_invalid():
 
 def test_linter_from_file_no_status(capsys):
     example = os.path.join(protocol.ROOT, 'tests/example/solver_nostatus.py')
-    with utila.level_temp(utila.Level.DEBUG):
+    with utila.level_tmp(utila.Level.DEBUG):
         created = protocol.from_file(example)
     assert created.solver is not None
 

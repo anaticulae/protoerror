@@ -50,7 +50,7 @@ def load_grouped(
             pagenumber(item, none=True) for item in utila.file_list(source)
         ]
         # remove invalid file names
-        pages = utila.not_none(pages)
+        pages = utila.notnone(pages)
     # yaml parsing is cpu bound, therefore we need a process pool instead
     # of thread pool.
     executor = utila.select_executor()

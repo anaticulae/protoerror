@@ -14,10 +14,10 @@ import utila
 import tests
 
 
-def test_cli_optimize(dumped_findings, monkeypatch):
+def test_cli_optimize(dumped_findings, mp):
     optimized = dumped_findings.join('__optimized__')
     assert not os.path.exists(optimized)
     cmd = f'--optimize -i {dumped_findings} -o {dumped_findings}'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
     assert os.path.exists(optimized)
     assert len(utila.file_list(optimized)) == 3

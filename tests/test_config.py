@@ -14,13 +14,13 @@ from protocol import load
 from protocol import save
 
 
-def test_config_dump_and_load_config(testdir):
+def test_config_dump_and_load_config(td):
     config = [
         MessageStatus('F0000', active=True, confidence=0.0),
         MessageStatus('F0001', active=False, confidence=1.0),
     ]
 
-    outpath = os.path.join(str(testdir), 'configuration.ini')
+    outpath = os.path.join(str(td), 'configuration.ini')
     save(config, outpath)
 
     loaded = load(outpath)

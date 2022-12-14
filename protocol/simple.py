@@ -8,14 +8,13 @@
 # =============================================================================
 
 import functools
-import typing
 
 import iamraw
 import utila
 
 import protocol
 
-ResultType = typing.Tuple[str, str]
+ResultType = tuple[str, str]
 ResultDefault = ('user', 'developer')  # pylint:disable=C0103
 
 

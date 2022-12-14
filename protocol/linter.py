@@ -188,7 +188,7 @@ class Linter:
         with self.lock:
             result = self.findings[:]
         if unique:
-            result = utila.make_unique(result)
+            result = utila.unique(result)
         return result
 
     def register_checker(self, checker):
@@ -262,7 +262,7 @@ def dump_result(
         Result with dumped user ander developer result in yaml format.
     """
     if unique:
-        items = utila.make_unique(items)
+        items = utila.unique(items)
 
     user, developer = split_userdeveloper(items, checkers=checkers)
 

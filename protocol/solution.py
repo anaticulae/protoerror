@@ -59,7 +59,6 @@ Define a solution message:
 
 import copy
 import re
-import typing
 
 import iamraw
 import jinja2
@@ -69,7 +68,7 @@ import protocol
 import protocol.messages
 import protocol.utils
 
-Validators = typing.List[callable]
+Validators = list[callable]
 
 
 class Solver:
