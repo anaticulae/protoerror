@@ -65,6 +65,7 @@ def linting(
 ):
     failure = []
     for checker in checkers:
+        utila.debug(checker.__name__)
         call = functools.partial(
             linter.add_finding,
             msgid=checker.msgid,
@@ -75,6 +76,8 @@ def linting(
         except Exception as error:  # pylint:disable=broad-except
             utila.error(error)
             failure.append(error)
+        else:
+            utila.debug('done')
     if failure:
         first_failure = failure[0]
         raise RuntimeError('linter step error') from first_failure
