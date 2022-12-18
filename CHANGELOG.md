@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v3.20.0 (2022-12-18)
+
+### Feature
+
+* debug protocol run (ad3f207f785f)
+
+### Chore
+
+* add rebase step (1e86f9ebd89e)
+* upgrade Jenkinsfile (6cd6609b3b99)
+* upgrade requirements.txt (bd30f79b5470)
+* upgrade pipe library (5c4fc35cbe73)
+
 ## v3.19.4 (2022-12-14)
 
 ### Chore
