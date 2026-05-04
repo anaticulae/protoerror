@@ -11,10 +11,10 @@ authors = [
 dependencies = [
     # internal requirements
     "utilo>=2.107.4,<3.0.0",
-    "iamraw>=4.89.1,<5.0.0",
+    "iamraw>=4.91.4,<5.0.0",
     # external requirements
     # template engine
-    "Jinja2>=3.1.2,<4.0.0",
+    "Jinja2>=3.1.6,<4.0.0",
 ]
 
 # Optional but recommended metadata
@@ -29,8 +29,8 @@ license-files = ["LICENSE"]
 
 [project.optional-dependencies]
 dev = [
-    "utilotest>=0.28.1<1.0.0",
-    "utilosafe>=0.4.3<1.0.0",
+    "utilotest>=1.0.2,<2.0.0",
+    "utilosafe>=1.0.0,<2.0.0",
 ]
 
 [project.urls]
