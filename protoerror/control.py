@@ -320,7 +320,7 @@ def evaluate_userchoice(argv):
     parsed = parse_docinfo(docinfo)
     if parsed is None:
         parsed = iamraw.DocInfo()
-    return dict(docinfo=parsed)
+    return {'docinfo': parsed}
 
 
 def integrate_cli(parser):

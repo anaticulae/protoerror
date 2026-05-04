@@ -143,7 +143,7 @@ def parse_solutions(  # pylint:disable=R1260
     result = []
     for name, value in vars(module).items():
         # try different pattern to find solution, presented to the user
-        for pattern in [SOLUTION_PATTERN_SIMPLE, SOLUTION_PATTERN]:
+        for pattern in (SOLUTION_PATTERN_SIMPLE, SOLUTION_PATTERN):
             matched = re.match(pattern, name)
             if matched:
                 break

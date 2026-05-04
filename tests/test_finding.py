@@ -29,7 +29,7 @@ def test_finding_from_path(linter_withlocation, td):
 def test_finding_number_unique(linter_withlocation, td):
     root = td.tmpdir
     negative_default = -1
-    for item in ['first_user.yaml', 'second_user.yaml', 'third_user.yaml']:
+    for item in ('first_user.yaml', 'second_user.yaml', 'third_user.yaml'):
         findings = linter_withlocation.result()
         for single in findings:
             single.number = negative_default

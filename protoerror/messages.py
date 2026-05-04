@@ -44,6 +44,7 @@ import contextlib
 
 import utilo
 
+# pylint: disable=consider-using-namedtuple-or-dataclass
 MSGS = {
     'F0000': (
         'Fehler beim Lesen der PDF Datei.',

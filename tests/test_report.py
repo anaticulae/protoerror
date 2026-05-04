@@ -18,7 +18,7 @@ import protoerror
 def run_report(cmd: str, capsys):
     root = os.path.join(protoerror.ROOT)
     run = protoerror.integrate(root=root, features='tests.report')[1]
-    args = dict(show=cmd)
+    args = {'show': cmd}
     with pytest.raises(SystemExit):
         run(args)
     stdout = utilotest.stdout(capsys)
