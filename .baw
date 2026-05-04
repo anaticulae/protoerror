@@ -1,5 +1,5 @@
 [project]
-short = protocol
+short = protoerror
 name = show me the problem
 
 [release]
