@@ -1,679 +1,1930 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v3.20.2 (2026-05-04)
+
+### Bug Fixes
+
+- **control**: Adjust package name
+  ([`5f9dabf`](https://github.com/anaticulae/protoerror/commit/5f9dabfd2e6c78a1910ae34f40082472c208733e))
+
+- **naming**: Adjust package name
+  ([`14ef376`](https://github.com/anaticulae/protoerror/commit/14ef376e22b39fd1444391c325f6cac6ad2b16d5))
+
+### Chores
+
+- **baw**: Adjust project name
+  ([`2ccf34f`](https://github.com/anaticulae/protoerror/commit/2ccf34fa62ab1a7dfdaaf2d58492f93d83539d09))
+
+- **ci**: Remove outdated jenkinsfile
+  ([`37339ee`](https://github.com/anaticulae/protoerror/commit/37339ee4fd7f1bb42fb570aba54c883afc13a722))
+
+- **docker**: Add docker ignore
+  ([`74598d6`](https://github.com/anaticulae/protoerror/commit/74598d6c876296be0cb0d3a572f5c7312fadc975))
+
+- **docker**: Add dockerfile
+  ([`703d25d`](https://github.com/anaticulae/protoerror/commit/703d25d742d281dc8ae4b79573179d692cb55519))
+
+- **github**: Add .github
+  ([`d71cfa7`](https://github.com/anaticulae/protoerror/commit/d71cfa76dfb869a2e728a3fbd3be9a74aa8cf848))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`3b83fcb`](https://github.com/anaticulae/protoerror/commit/3b83fcbce1c7a84c71f4b3b80fa41e7ccb6c43c2))
+
+- **Jenkins**: Upgrade pipe library
+  ([`7b22f5b`](https://github.com/anaticulae/protoerror/commit/7b22f5bb58300a5124ba80f4cc77beda7c0de5fc))
+
+- **make**: Add make file
+  ([`d7538b2`](https://github.com/anaticulae/protoerror/commit/d7538b287b31292160217706ec5b0c739a6dc326))
+
+- **markdown**: Rename files
+  ([`3d81800`](https://github.com/anaticulae/protoerror/commit/3d81800a9fef629179c1c62895ae52a18b76dfd0))
+
+- **packages**: Adjust package names
+  ([`e9b2e67`](https://github.com/anaticulae/protoerror/commit/e9b2e676e414f9f6233ba89b55a1ef99ccbe23d4))
+
+- **project**: Add missing requirement
+  ([`5548550`](https://github.com/anaticulae/protoerror/commit/5548550504fbde73b059633ba19fe30353e52706))
+
+- **project**: Adjust requirements
+  ([`30609e0`](https://github.com/anaticulae/protoerror/commit/30609e0ed99521193b62156ec02807889af5a0b6))
+
+- **project**: Rename project
+  ([`19117c9`](https://github.com/anaticulae/protoerror/commit/19117c91a7144b74b38c2a38ee5cea24ff350fec))
+
+- **requirements**: Remove outdated files
+  ([`7d67aa4`](https://github.com/anaticulae/protoerror/commit/7d67aa48f9d5bd6cc9acb67d26b62eadea967e7f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f6c59b1`](https://github.com/anaticulae/protoerror/commit/f6c59b15bba29b7dd42b8c3eb9fbd58276d0c214))
+
+- **setup**: Use modern project setup
+  ([`2882a3b`](https://github.com/anaticulae/protoerror/commit/2882a3bb93a92ebfa8c21c6e55a00196e9374107))
+
+### Refactoring
+
+- **linter**: Solve linter warnings
+  ([`77e4955`](https://github.com/anaticulae/protoerror/commit/77e4955de5a91fbdf1e0506de174c737c90796f4))
+
 
 ## v3.20.1 (2023-01-05)
 
-### Chore
+### Chores
 
-* make requirements less strict (232bc9d97464)
-* upgrade requirements.txt (99e0e55eed75)
-* upgrade pipe library (74618bdec775)
-* upgrade Jenkinsfile (71c48c6cbb2c)
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`71c48c6`](https://github.com/anaticulae/protoerror/commit/71c48c6cbb2cc9488e5a6c58e0691625618a2962))
+
+- **Jenkins**: Upgrade pipe library
+  ([`74618bd`](https://github.com/anaticulae/protoerror/commit/74618bdec7759174e8b29330e205d91d682ae846))
+
+- **requirements**: Make requirements less strict
+  ([`232bc9d`](https://github.com/anaticulae/protoerror/commit/232bc9d974644a6b7949c1a4f6c4526a27ebe86c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`99e0e55`](https://github.com/anaticulae/protoerror/commit/99e0e55eed756e376855eb166ff0ae5f4fbc6b1b))
+
 
 ## v3.20.0 (2022-12-18)
 
-### Feature
+### Chores
 
-* debug protocol run (ad3f207f785f)
+- **Jenkins**: Add rebase step
+  ([`1e86f9e`](https://github.com/anaticulae/protoerror/commit/1e86f9ebd89e782a2af8db9b61b90a37b96605c0))
 
-### Chore
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`6cd6609`](https://github.com/anaticulae/protoerror/commit/6cd6609b3b9912a0ac349ff233d043d929be9a45))
 
-* add rebase step (1e86f9ebd89e)
-* upgrade Jenkinsfile (6cd6609b3b99)
-* upgrade requirements.txt (bd30f79b5470)
-* upgrade pipe library (5c4fc35cbe73)
+- **Jenkins**: Upgrade pipe library
+  ([`5c4fc35`](https://github.com/anaticulae/protoerror/commit/5c4fc35cbe73b7fcd301d0362fb5e28643094528))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bd30f79`](https://github.com/anaticulae/protoerror/commit/bd30f79b54700fe95b41a0e19fb310ec97b368f4))
+
+### Features
+
+- **simple**: Debug protocol run
+  ([`ad3f207`](https://github.com/anaticulae/protoerror/commit/ad3f207f785f0ff0906cccdadaece1e00de14281))
+
 
 ## v3.19.4 (2022-12-14)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (c65db978d0e8)
-* upgrade Pipeline (23a309e0d3c6)
+- **Jenkins**: Upgrade Pipeline
+  ([`23a309e`](https://github.com/anaticulae/protoerror/commit/23a309e0d3c6d825f6fb7fab8986e1244078144a))
+
+- **requirements**: Upgrade requirements.txt
+  ([`c65db97`](https://github.com/anaticulae/protoerror/commit/c65db978d0e8b6ccf01585f90b5c81b45ead4751))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`61d9248`](https://github.com/anaticulae/protoerror/commit/61d924837e7bb07828537532c7290ac56527a5f9))
+
 
 ## v3.19.3 (2022-10-05)
 
-### Chore
+### Chores
 
-* root is not required (134674bfdecc)
-* upgrade Jenkinsfile (3d9a8e20edc0)
-* upgrade requirements.txt (8d64ba6297f6)
+- **Jenkinsfile**: Root is not required
+  ([`134674b`](https://github.com/anaticulae/protoerror/commit/134674bfdecc93cfa62136260b5a07e0e50bd9e2))
+
+- **Jenkinsfile**: Upgrade Jenkinsfile
+  ([`3d9a8e2`](https://github.com/anaticulae/protoerror/commit/3d9a8e20edc0f00376dc97be1d55f77324c5e8f4))
+
+- **requirements**: Upgrade requirements.txt
+  ([`8d64ba6`](https://github.com/anaticulae/protoerror/commit/8d64ba6297f686ae9c66bc3f4848f0890427892e))
+
 
 ## v3.19.2 (2022-09-23)
 
-### Fix
+### Bug Fixes
 
-* do not fail on missing location (6bd82f54e186)
-* ensure single page selection (c98232260f2d)
+- **group**: Do not fail on missing location
+  ([`6bd82f5`](https://github.com/anaticulae/protoerror/commit/6bd82f54e18637e9115fad8185d5b11ae32a33b5))
 
-### Chore
+- **paged**: Ensure single page selection
+  ([`c982322`](https://github.com/anaticulae/protoerror/commit/c98232260f2d9ebae46aef80138881d80f52e5e1))
 
-* add Jenkinsfile (2c2e31606030)
-* upgrade requirements.txt (992fb340c306)
+### Chores
 
-## v3.19.1
+- **ci**: Add Jenkinsfile
+  ([`2c2e316`](https://github.com/anaticulae/protoerror/commit/2c2e31606030aeecf995aacb6a45523f97e147fe))
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`992fb34`](https://github.com/anaticulae/protoerror/commit/992fb340c306f8c9976ee7fe9ccc0c9db3515f63))
 
-* ease simple interface (6f24f9bbbbe6)
 
-### Fix
+## v3.19.1 (2022-06-21)
 
-* do not hide trace back information (5768e06958e2)
+### Bug Fixes
 
-## v3.19.0
+- **simple**: Do not hide trace back information
+  ([`5768e06`](https://github.com/anaticulae/protoerror/commit/5768e06958e24c7ad333b14fd66c05aef2d04bfb))
 
-### Feature
+### Chores
 
-* fail linter later (ff7262549bde)
-* add highnotes (873b473a02c8)
-* shorten skip method (915a2ac039ce)
+- **requirements**: Upgrade requirements.txt
+  ([`7e75b25`](https://github.com/anaticulae/protoerror/commit/7e75b25e71422d5ef12f26bff76ff61ebd652a2c))
 
-### Fix
+### Features
 
-* move default location to overview pagae (0f40335480d0)
-* improve error message (7f4f23d3ded2)
+- **simple**: Ease simple interface
+  ([`6f24f9b`](https://github.com/anaticulae/protoerror/commit/6f24f9bbbbe6e14a8166311c36aae566ba4515e8))
 
-## v3.18.0
 
-### Feature
+## v3.19.0 (2022-06-15)
 
-* add method to log skipping a method (4bbae309e867)
+### Bug Fixes
 
-## v3.17.1
+- **group**: Improve error message
+  ([`7f4f23d`](https://github.com/anaticulae/protoerror/commit/7f4f23d3ded285fcc608177df7bacc09f8504b88))
 
-### Feature
+- **simple**: Move default location to overview pagae
+  ([`0f40335`](https://github.com/anaticulae/protoerror/commit/0f40335480d04f245b4709d3e8dc3d2598d84a2c))
 
-* make control parser more robust (fd5ed43f0319)
+### Chores
 
-## v3.17.0
+- **requirements**: Upgrade requirements.txt
+  ([`b323ec3`](https://github.com/anaticulae/protoerror/commit/b323ec353aa7a7e1a1894fded685e30d098411a5))
 
-### Feature
+### Code Style
 
-* use language decorator to skip analysis (4b53099899c2)
-* add decorator to make linter lang decedent (f343a9ac4662)
+- **simple**: Format code
+  ([`a5e4be5`](https://github.com/anaticulae/protoerror/commit/a5e4be5c3451df27e62378352564c750dd287b8d))
 
-## v3.16.2
+### Features
 
-### Feature
+- **protocol**: Shorten skip method
+  ([`915a2ac`](https://github.com/anaticulae/protoerror/commit/915a2ac039ce64b681d18c430d4e108cf1e12028))
 
-* allow simple html styling (8f62aebada84)
-* escape slash as html entity (92910a9de4c9)
+- **simple**: Fail linter later
+  ([`ff72625`](https://github.com/anaticulae/protoerror/commit/ff7262549bde90f0cb817e34f5c4f61bc10fc9ed))
+
+- **solution**: Add highnotes
+  ([`873b473`](https://github.com/anaticulae/protoerror/commit/873b473a02c8a5f46aa3a23b89879fea348bd61d))
+
+### Refactoring
+
+- **remove**: Remove duplicated method
+  ([`33102f0`](https://github.com/anaticulae/protoerror/commit/33102f07ba37f233618e338dd18d32e5877e6e6d))
+
+
+## v3.18.0 (2022-01-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f628eda`](https://github.com/anaticulae/protoerror/commit/f628edab36c064b3280d14ec01d6b777ee5afe58))
+
+### Features
+
+- **utils**: Add method to log skipping a method
+  ([`4bbae30`](https://github.com/anaticulae/protoerror/commit/4bbae309e867f2a3d0d50d2c0bf02a688f47b2bd))
+
+### Refactoring
+
+- **yaml**: Replace with utila code
+  ([`a71feac`](https://github.com/anaticulae/protoerror/commit/a71feac423bb37fb63f013a241058b9e10606b37))
+
+
+## v3.17.1 (2022-01-13)
+
+### Features
+
+- **control**: Make control parser more robust
+  ([`fd5ed43`](https://github.com/anaticulae/protoerror/commit/fd5ed43f031915b583203fc93e6b2bb83731d5d2))
+
+
+## v3.17.0 (2022-01-13)
+
+### Features
+
+- **control**: Add decorator to make linter lang decedent
+  ([`f343a9a`](https://github.com/anaticulae/protoerror/commit/f343a9ac46627cbc11dcac1bfbb916c4f270f8f7))
+
+- **control**: Use language decorator to skip analysis
+  ([`4b53099`](https://github.com/anaticulae/protoerror/commit/4b53099899c22e32f23f0ab50c40c9ff42060757))
+
+### Refactoring
+
+- **control**: Reduce complexity
+  ([`7286d36`](https://github.com/anaticulae/protoerror/commit/7286d36e66f08f99c4599cc0e878c59e9a7aa6da))
+
+
+## v3.16.2 (2022-01-07)
+
+### Chores
+
+- **project**: Move project config
+  ([`6435b96`](https://github.com/anaticulae/protoerror/commit/6435b969e97cdcf9aac4ae36f1e6e848e44f7b31))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e8f0f79`](https://github.com/anaticulae/protoerror/commit/e8f0f7954fdcc4bca274cfb412aff859f7a62b3a))
 
 ### Documentation
 
-* Happy New Year! (6a569179b2b5)
+- **copyright**: Happy New Year!
+  ([`6a56917`](https://github.com/anaticulae/protoerror/commit/6a569179b2b55f778f7dad4312460f259779ff7b))
 
-## v3.16.1
+### Features
 
-## v3.16.0
+- **protocol**: Escape slash as html entity
+  ([`92910a9`](https://github.com/anaticulae/protoerror/commit/92910a9de4c9ef05697aa6e9fcb69f0de723d026))
 
-### Feature
+- **solution**: Allow simple html styling
+  ([`8f62aeb`](https://github.com/anaticulae/protoerror/commit/8f62aebada845a911424093b8636a511635a8eeb))
 
-* provide hook to integrate docinfo evaluation (c102b723acf0)
-* add default docinfo (4f8a22a86294)
-* add method to parse doc info from cli (eae9ba53afa4)
 
-## v3.15.1
+## v3.16.1 (2021-12-07)
 
-### Fix
+### Chores
 
-* adjust unit test (25140b9289db)
+- **requirements**: Upgrade requirements.txt
+  ([`8d2941f`](https://github.com/anaticulae/protoerror/commit/8d2941f563bc19468ef5caea9ed106656be13b5f))
 
-## v3.15.0
 
-### Feature
+## v3.16.0 (2021-11-09)
 
-* add cli to run optimize step (d6e023a039d8)
+### Chores
 
-## v3.14.0
+- **requirements**: Upgrade requirements.txt
+  ([`319e12e`](https://github.com/anaticulae/protoerror/commit/319e12eab124a61b32cb0d9ca75d65e5ae8ceafa))
 
-### Feature
+### Features
 
-* add option to skip non selected solutions (d88fe1655700)
+- **control**: Add default docinfo
+  ([`4f8a22a`](https://github.com/anaticulae/protoerror/commit/4f8a22a862941b83bd09f09712b1f560534ae145))
 
-## v3.13.0
+- **control**: Add method to parse doc info from cli
+  ([`eae9ba5`](https://github.com/anaticulae/protoerror/commit/eae9ba53afa457e7da736a92a7a56214ac92dd6b))
 
-### Feature
+- **control**: Provide hook to integrate docinfo evaluation
+  ([`c102b72`](https://github.com/anaticulae/protoerror/commit/c102b723acf081c9c90e335929eec392d3df4545))
 
-* add method to count findings by msgid (9dfdc3f4c261)
+### Refactoring
 
-## v3.12.3
+- **control**: Reduce complexity
+  ([`8f501e8`](https://github.com/anaticulae/protoerror/commit/8f501e8d59544db74959c5892c102011f8e4ab46))
 
-### Fix
 
-* do not try to merge findings without line number (6440996538d4)
+## v3.15.1 (2021-10-19)
 
-## v3.12.2
+### Bug Fixes
 
-### Fix
+- **test**: Adjust unit test
+  ([`25140b9`](https://github.com/anaticulae/protoerror/commit/25140b9289db56509b4a8d006d100d5cf0489386))
 
-* skip check if pages is not given (5c5e11525b5e)
+### Chores
 
-## v3.12.1
+- **requirements**: Upgrade requirements.txt
+  ([`5dfaba2`](https://github.com/anaticulae/protoerror/commit/5dfaba25391dfb25f00d4c31833992dcd14448ee))
 
-### Fix
+### Code Style
 
-* use correct class (490fe1d38b68)
+- **format**: Format code
+  ([`86615c7`](https://github.com/anaticulae/protoerror/commit/86615c71edac2ffd609be33ba0bad8d07b3bfbb3))
 
-## v3.12.0
+### Refactoring
 
-### Feature
+- **control**: Enable late evaluation
+  ([`ebefe04`](https://github.com/anaticulae/protoerror/commit/ebefe04a395e221e00949685b37e583a8b3d7f79))
 
-* replace with iamraw code (49da27e63c7a)
-* skip finding depending on location (b8b7b5c9bd0b)
-* add sections check to skip findings outside defined sections (700c820b15e5)
-* reduce amount of time in locked finding state (14dd21755ef7)
-* add section skip decorator (1d6575bbc641)
 
-### Fix
+## v3.15.0 (2021-10-11)
 
-* skip document check if no doc type is given (68d5a85eefcf)
-* make checker list unchangeable from outside (21f5e7dcc8c4)
+### Chores
 
-## v3.11.0
+- **requirements**: Upgrade requirements.txt
+  ([`72eac3f`](https://github.com/anaticulae/protoerror/commit/72eac3f47cdc1a46420a996bed320fed5a945018))
 
-### Feature
+### Features
 
-* add option to sort page findings by page (3fc1f632ded0)
+- **cli**: Add cli to run optimize step
+  ([`d6e023a`](https://github.com/anaticulae/protoerror/commit/d6e023a039d8231c43ef72419c86f16e0fb73088))
 
-## v3.10.0
+### Refactoring
 
-### Feature
+- **cli**: Replace with updated protocol code
+  ([`610b218`](https://github.com/anaticulae/protoerror/commit/610b218df3348dc8b1382dc73410807ccb9f55a4))
 
-* add paper doc type (427810629af7)
-* add option to skip doc types (ab75f3d4db15)
 
-## v3.9.0
+## v3.14.0 (2021-10-06)
 
-### Feature
+### Features
 
-* escape character to avoid markdown problems (5407c668b05a)
+- **parser**: Add option to skip non selected solutions
+  ([`d88fe16`](https://github.com/anaticulae/protoerror/commit/d88fe1655700c8ea846f8156d339e3a6d21320ef))
 
-## v3.8.6
 
-### Fix
+## v3.13.0 (2021-10-05)
 
-* adjust invalid finding selector (19f260334e10)
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`84272d8`](https://github.com/anaticulae/protoerror/commit/84272d812003ff414b8bcfda00a8ee4f1e09e1c6))
+
+### Code Style
+
+- **format**: Format code
+  ([`78f3b8f`](https://github.com/anaticulae/protoerror/commit/78f3b8fe008cfd310bb9ce2b8ff9e6476846d69a))
+
+### Features
+
+- **linter**: Add method to count findings by msgid
+  ([`9dfdc3f`](https://github.com/anaticulae/protoerror/commit/9dfdc3f4c2617c160853d33964efd0197df19815))
+
+
+## v3.12.3 (2021-10-01)
+
+### Bug Fixes
+
+- **merger**: Do not try to merge findings without line number
+  ([`6440996`](https://github.com/anaticulae/protoerror/commit/6440996538d4b708c9173af285525566aade0414))
+
+### Code Style
+
+- **merger**: Improve code style
+  ([`fa82836`](https://github.com/anaticulae/protoerror/commit/fa82836395dfac42d8770415c56a0cc2a1fb7d6f))
+
+
+## v3.12.2 (2021-09-26)
+
+### Bug Fixes
+
+- **control**: Skip check if pages is not given
+  ([`5c5e115`](https://github.com/anaticulae/protoerror/commit/5c5e11525b5e74986f981b06629fd0abdaad940b))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ebfc464`](https://github.com/anaticulae/protoerror/commit/ebfc464cdf0f972f41670ce838abc03a9e517570))
+
+### Testing
+
+- **linter**: Make unit test more robust
+  ([`dddd609`](https://github.com/anaticulae/protoerror/commit/dddd609ec846c93f95f61aec0cf887519742426b))
+
+
+## v3.12.1 (2021-09-24)
+
+### Bug Fixes
+
+- **control**: Use correct class
+  ([`490fe1d`](https://github.com/anaticulae/protoerror/commit/490fe1d38b6859cca86ed12853587ba3bf91fff7))
+
+
+## v3.12.0 (2021-09-23)
+
+### Bug Fixes
+
+- **control**: Skip document check if no doc type is given
+  ([`68d5a85`](https://github.com/anaticulae/protoerror/commit/68d5a85eefcf430c6024c6607830cfe6fed5c0ad))
+
+- **linter**: Make checker list unchangeable from outside
+  ([`21f5e7d`](https://github.com/anaticulae/protoerror/commit/21f5e7dcc8c40b0d5c03b9f4371d35298068eaea))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0f22c23`](https://github.com/anaticulae/protoerror/commit/0f22c239856ae05f275d608c7fa71226ea2b4893))
+
+### Features
+
+- **control**: Add section skip decorator
+  ([`1d6575b`](https://github.com/anaticulae/protoerror/commit/1d6575bbc6415cdd811f7178d6f2e0d0b179bef0))
+
+- **control**: Add sections check to skip findings outside defined sections
+  ([`700c820`](https://github.com/anaticulae/protoerror/commit/700c820b15e55d91ff571ca15a2b644659dfb705))
+
+- **control**: Skip finding depending on location
+  ([`b8b7b5c`](https://github.com/anaticulae/protoerror/commit/b8b7b5c9bd0bfd5ff464287a0fa35f70ca1ef910))
+
+- **linter**: Reduce amount of time in locked finding state
+  ([`14dd217`](https://github.com/anaticulae/protoerror/commit/14dd21755ef791f870ec84e3eaab64c0e469ef0b))
+
+- **protocol**: Replace with iamraw code
+  ([`49da27e`](https://github.com/anaticulae/protoerror/commit/49da27e63c7a25d0f594418e486a3f38fa77ee60))
+
+### Refactoring
+
+- **control**: Shorten code
+  ([`35ae390`](https://github.com/anaticulae/protoerror/commit/35ae390a2f0c9e5bbeefb3b126b19a16b5ce2dd5))
+
+- **simple**: Replace with utila concept
+  ([`d250479`](https://github.com/anaticulae/protoerror/commit/d2504792ea98e848121563f181c27f5a4355a074))
+
+### Testing
+
+- **control**: Verify skip behavior
+  ([`868acf9`](https://github.com/anaticulae/protoerror/commit/868acf92ca1b8bfb5657a103385ee6514f9f158c))
+
+
+## v3.11.0 (2021-09-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`af277d7`](https://github.com/anaticulae/protoerror/commit/af277d78ade2efede8e751e32f1ebfbce1760bba))
+
+### Features
+
+- **paged**: Add option to sort page findings by page
+  ([`3fc1f63`](https://github.com/anaticulae/protoerror/commit/3fc1f632ded0a033026bcd6b4622d89bab85dd37))
+
+### Refactoring
+
+- **replace**: Replace with iamraw code
+  ([`70e40c6`](https://github.com/anaticulae/protoerror/commit/70e40c6e811f70c0d6f87f68491c56db4d64c097))
+
+
+## v3.10.0 (2021-09-10)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e8ccbe7`](https://github.com/anaticulae/protoerror/commit/e8ccbe77cc40968b0523ce230ccd5c999bdf94e8))
+
+### Features
+
+- **control**: Add option to skip doc types
+  ([`ab75f3d`](https://github.com/anaticulae/protoerror/commit/ab75f3d4db150a4681506fbf09f2b2d1c80a1581))
+
+- **control**: Add paper doc type
+  ([`4278106`](https://github.com/anaticulae/protoerror/commit/427810629af7549dee710fd7a7d5cb661eb7e317))
+
+### Refactoring
+
+- **control**: Ease code
+  ([`d496b1c`](https://github.com/anaticulae/protoerror/commit/d496b1c2a36fea45af476b417615d5b45e968aa3))
+
+
+## v3.9.0 (2021-08-20)
+
+### Features
+
+- **solution**: Escape character to avoid markdown problems
+  ([`5407c66`](https://github.com/anaticulae/protoerror/commit/5407c668b05a019d52007554be226278df17be5a))
+
+
+## v3.8.6 (2021-08-20)
+
+### Bug Fixes
+
+- **linter**: Adjust invalid finding selector
+  ([`19f2603`](https://github.com/anaticulae/protoerror/commit/19f260334e104f0d4469b4cf3c63463811233eca))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4327956`](https://github.com/anaticulae/protoerror/commit/4327956556855475446dc8fec30cc5ed50fcdfd6))
 
 ### Documentation
 
-* extend interface documentation (baf0ae527b22)
+- **simple**: Extend interface documentation
+  ([`baf0ae5`](https://github.com/anaticulae/protoerror/commit/baf0ae527b2231c924bfa36f4cd9d7f23f4c9cf4))
 
-## v3.8.5
 
-### Feature
+## v3.8.5 (2021-08-13)
 
-* add method to rewrite current findings (f3d961ad1074)
+### Chores
 
-## v3.8.4
+- **requirements**: Upgrade requirements.txt
+  ([`9a3ac64`](https://github.com/anaticulae/protoerror/commit/9a3ac64a8afcd78732ebd08c90dfa14a654628e0))
 
-### Feature
+### Features
 
-* add option to filter findings by msgid (df54f8410f56)
+- **linter**: Add method to rewrite current findings
+  ([`f3d961a`](https://github.com/anaticulae/protoerror/commit/f3d961ad1074b192b926adf12990bbdff58a31bb))
 
-## v3.8.3
 
-## v3.8.2
+## v3.8.4 (2021-07-02)
 
-### Fix
+### Features
 
-* ensure that location is number (bc176c4e9c1b)
+- **finding**: Add option to filter findings by msgid
+  ([`df54f84`](https://github.com/anaticulae/protoerror/commit/df54f8410f56a96b35d93005d1a26ba101179852))
 
-## v3.8.1
 
-### Feature
+## v3.8.3 (2021-06-29)
 
-* add document parameter to use decorator to create linter's (ddfaef35ce81)
+### Chores
 
-### Fix
+- **requirements**: Add missing dev requirement
+  ([`46103ab`](https://github.com/anaticulae/protoerror/commit/46103ab02febdbe49588959efc0697816d5967b8))
 
-* always filter checker if document is available (5c3a629a6e6f)
+- **requirements**: Upgrade requirements.txt
+  ([`efcfd51`](https://github.com/anaticulae/protoerror/commit/efcfd51f7642669755494b96a0df7b920c7620c3))
 
-## v3.8.0
 
-### Feature
+## v3.8.2 (2021-06-16)
 
-* add crypto option to status updater (7aa8c968ed42)
-* add private option to encrypt findings (91304756cd02)
+### Bug Fixes
 
-## v3.7.4
+- **group**: Ensure that location is number
+  ([`bc176c4`](https://github.com/anaticulae/protoerror/commit/bc176c4e9c1b63e1a28951d893f41e0dd6a337a8))
 
-### Feature
+### Chores
 
-* add option to overwrite optimized findings (b198b63c6342)
+- **requirements**: Upgrade requirements.txt
+  ([`50bf042`](https://github.com/anaticulae/protoerror/commit/50bf042b5d5ea7a76dffbe8adb7fb8e856563359))
 
-## v3.7.3
 
-### Feature
+## v3.8.1 (2021-06-10)
 
-* add empty default result (1c040ac06dfe)
+### Bug Fixes
 
-## v3.7.2
+- **linter**: Always filter checker if document is available
+  ([`5c3a629`](https://github.com/anaticulae/protoerror/commit/5c3a629a6e6f79bb8044abc18808086fd645685f))
 
-### Feature
+### Features
 
-* add option to merge findings before dump (e22120bf07d6)
+- **simple**: Add document parameter to use decorator to create linter's
+  ([`ddfaef3`](https://github.com/anaticulae/protoerror/commit/ddfaef35ce81f05ba6a6c7214e60fed49701a536))
 
-## v3.7.1
 
-### Feature
+## v3.8.0 (2021-06-05)
 
-* add option to run simple from multiple methods (6dd4cc65f2fa)
+### Chores
 
-## v3.7.0
+- **requirements**: Upgrade requirements.txt
+  ([`52edbbb`](https://github.com/anaticulae/protoerror/commit/52edbbb5b5589b84072904e2ec1450c340b01536))
 
-### Feature
+### Code Style
 
-* add disable decorator (0618529d300a)
-* add option to control linter by occurrence (4b7d7fdcbb8a)
-* signal if hashing does not work properly (aa7181a952db)
+- **format**: Format code
+  ([`42d2b39`](https://github.com/anaticulae/protoerror/commit/42d2b39a7c602ea015b1297e32f7f28604557d31))
 
-## v3.6.2
+- **format**: Use improved formatter
+  ([`0a1ec4f`](https://github.com/anaticulae/protoerror/commit/0a1ec4f77bbd81ceaad3a82d404d5679e76b55af))
 
-### Feature
+### Features
 
-* add optional driver parameter (02981382ba0d)
+- **finding**: Add crypto option to status updater
+  ([`7aa8c96`](https://github.com/anaticulae/protoerror/commit/7aa8c968ed428d8c513e61b8cb45babb863d497d))
 
-## v3.6.1
+- **paged**: Add private option to encrypt findings
+  ([`9130475`](https://github.com/anaticulae/protoerror/commit/91304756cd0253e70c488311274891ce07da542a))
 
-### Feature
 
-* add hook to run before dump result (44e2f1d1d494)
+## v3.7.4 (2021-05-15)
 
-## v3.6.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`5b4885b`](https://github.com/anaticulae/protoerror/commit/5b4885be34e9ac0cfb9e940ee91474852d10125d))
 
-* reduce amount of equal groups (2f955dad21be)
-* enable parsing solutions/checker from different packages (25c2fd93fdb9)
-* add negative page numbers (7e985a22ff87)
-* inform about possible error types (3d7cf783a3c1)
-* extend public API (9ac95bca262f)
+### Features
+
+- **paged**: Add option to overwrite optimized findings
+  ([`b198b63`](https://github.com/anaticulae/protoerror/commit/b198b63c634255a73166e7561f6be5e4221bd7e9))
+
+
+## v3.7.3 (2021-05-06)
+
+### Features
+
+- **utils**: Add empty default result
+  ([`1c040ac`](https://github.com/anaticulae/protoerror/commit/1c040ac06dfe782ccae44bf3ddf3d21fb514ec70))
+
+
+## v3.7.2 (2021-05-06)
+
+### Features
+
+- **simple**: Add option to merge findings before dump
+  ([`e22120b`](https://github.com/anaticulae/protoerror/commit/e22120bf07d67af51d35b022082b3609f1ab12f4))
+
+
+## v3.7.1 (2021-05-05)
+
+### Features
+
+- **simple**: Add option to run simple from multiple methods
+  ([`6dd4cc6`](https://github.com/anaticulae/protoerror/commit/6dd4cc65f2fa4ac9cd4fb5f8158e0c17b3355b22))
+
+
+## v3.7.0 (2021-05-05)
+
+### Chores
+
+- **setup**: Cleanup setup file
+  ([`e513fc9`](https://github.com/anaticulae/protoerror/commit/e513fc901a1f9985055f31dab5ab4fc0e1e0da5e))
+
+### Features
+
+- **control**: Add disable decorator
+  ([`0618529`](https://github.com/anaticulae/protoerror/commit/0618529d300a1f6741d01bb749cee34a219049a0))
+
+- **control**: Add option to control linter by occurrence
+  ([`4b7d7fd`](https://github.com/anaticulae/protoerror/commit/4b7d7fdcbb8afa9fd216e0d90a4927814e9dd116))
+
+- **finding**: Signal if hashing does not work properly
+  ([`aa7181a`](https://github.com/anaticulae/protoerror/commit/aa7181a952db4c35f856cf2cafbd8e6dd22030cb))
+
+### Refactoring
+
+- **control**: Make code more explicit
+  ([`fe5a276`](https://github.com/anaticulae/protoerror/commit/fe5a276685a7c79f2284e5d3350577c8fbe7bef6))
+
+- **linter**: Move user/dev-judging to separate method
+  ([`fe2d7f8`](https://github.com/anaticulae/protoerror/commit/fe2d7f8269ea3f82b23e87adfccef304fb2fc2cf))
+
+
+## v3.6.2 (2021-02-14)
+
+### Features
+
+- **simple**: Add optional driver parameter
+  ([`0298138`](https://github.com/anaticulae/protoerror/commit/02981382ba0d11f34a0f026b743a270f1ed22c8d))
+
+
+## v3.6.1 (2021-02-14)
+
+### Features
+
+- **simple**: Add hook to run before dump result
+  ([`44e2f1d`](https://github.com/anaticulae/protoerror/commit/44e2f1d1d494cb57c50e25c4abc10fd368b6783a))
+
+
+## v3.6.0 (2021-02-12)
 
 ### Documentation
 
-* extend interface documentation (24365d92dfa0)
+- **pages**: Extend interface documentation
+  ([`24365d9`](https://github.com/anaticulae/protoerror/commit/24365d92dfa00cb27e4de35b48930018c5dfee50))
 
-## v3.5.0
+### Features
 
-### Feature
+- **API**: Extend public API
+  ([`9ac95bc`](https://github.com/anaticulae/protoerror/commit/9ac95bca262f8660e3def6d1a139f4dfb01007cd))
 
-* add report parser (864838e72b02)
+- **message**: Inform about possible error types
+  ([`3d7cf78`](https://github.com/anaticulae/protoerror/commit/3d7cf783a3c1a42c561ced6966904589c9ffe890))
 
-## v3.4.0
+- **paged**: Add negative page numbers
+  ([`7e985a2`](https://github.com/anaticulae/protoerror/commit/7e985a22ff87d2b09664e0aaaf5491ede380c2ff))
 
-### Feature
+- **report**: Enable parsing solutions/checker from different packages
+  ([`25c2fd9`](https://github.com/anaticulae/protoerror/commit/25c2fd93fdb909aba7154f0655c1ca567e2cb42a))
 
-* add report feature to integrate into featurepack cli`s (54a96b131387)
-* add method to skip and log linter step (ce97730020cf)
+- **report**: Reduce amount of equal groups
+  ([`2f955da`](https://github.com/anaticulae/protoerror/commit/2f955dad21be8b41f6fdeaaaa7c726fe1a727883))
 
-### Documentation
 
-* Happy New Year! (e6e1c65e832a)
+## v3.5.0 (2021-01-30)
 
-## v3.3.2
+### Code Style
 
-### Feature
+- **cli**: Add `show --short` help information
+  ([`7ca11a8`](https://github.com/anaticulae/protoerror/commit/7ca11a8076699151c159bae1c4e09e010ab9860f))
 
-* select findings by page and msgid (1ca5352502b2)
-* add support to select PageFindings (7d8b0d137208)
+### Features
 
-## v3.3.1
+- **report**: Add report parser
+  ([`864838e`](https://github.com/anaticulae/protoerror/commit/864838e72b02705fa0a881b47d18f80c74f4cdea))
 
-## v3.3.0
+### Testing
 
-### Feature
+- **report**: Add tests to verify report parser
+  ([`c3b7568`](https://github.com/anaticulae/protoerror/commit/c3b75686a1458d9c6efc694f13424163139ef8aa))
 
-* add method to count findings (4e8a87da22e4)
-* add method to merge neighbor findings (c5f0e004bd86)
 
-## v3.2.1
+## v3.4.0 (2021-01-29)
 
-### Feature
+### Chores
 
-* add simple result type (fdaaf44706bb)
+- **requirements**: Add utilatest
+  ([`42ceebe`](https://github.com/anaticulae/protoerror/commit/42ceebeac931eace242838b6e1f09d5f40b36f1e))
 
-## v3.2.0
-
-### Feature
-
-* add `run` method to reduce amount of code (3fb3ebfd3111)
-* introduce message type (4640b2970c1c)
-* shorten dissertation to diss (afe574bd4237)
-
-### Documentation
-
-* clarify documentation (8a665625b0e9)
-* remove pages hierarchy level (13f7dab912f5)
-
-## v3.1.6
-
-## v3.1.5
-
-## v3.1.4
-
-## v3.1.3
-
-## v3.1.2
-
-## v3.1.1
-
-## v3.1.0
-
-### Feature
-
-* add method to select findings by page number (e1ea11f299c9)
-
-### Fix
-
-* do not load invalid file names (e55663ca7c2d)
-* remove useless default value (ffae7be677d8)
-
-## v3.0.0
-
-### Feature
-
-* change to jinja2 template engine (6b844e70d227)
-* add method to dump and load findings by page number (7e82c6ca4a05)
-
-## v2.1.4
-
-## v2.1.3
-
-## v2.1.2
-
-## v2.1.1
-
-### Feature
-
-* add assertion to ensure correct data type (4f88444f8bdb)
-
-## v2.1.0
-
-### Feature
-
-* add method to create linter from multiple modules (fc3a5d760afb)
-
-### Fix
-
-* ensure to group zero pages correctly (0018015223b2)
-
-## v2.0.0
-
-## v1.3.1
-
-## v1.3.0
-
-### Feature
-
-* add debug information about changing finding status (8f41376ba798)
-* add method to hash finding to public interface (8f7888299f3e)
-* add method to filter ranged findings (8083a8a7e408)
-
-### Fix
-
-* rename internal variable (02c9fdee27be)
-
-## v1.2.1
-
-## v1.2.0
-
-### Feature
-
-* extend ranged location with chars as minimal unit (218af1b17628)
-
-## v1.1.0
-
-### Feature
-
-* add method to run registered checkers (d7a965e9e7fb)
-* load checkers with loading linter (bcde4e8b2df0)
-* add filter_solutions to skip non selected linter by doc type (e3df4d4d350e)
-* add decorators to control which checker is selected (9d55f27fb629)
-* add data structure to describe document type (3050da50569f)
-* add method to replace editor dependent strings (e2ca188e0bc1)
+- **requirements**: Upgrade requirements.txt
+  ([`acd962e`](https://github.com/anaticulae/protoerror/commit/acd962e2adde7f0e6dcba9062ac3b1c4f68e22c7))
 
 ### Documentation
 
-* add general module documentation (414a5bc3742d)
+- **copyright**: Happy New Year!
+  ([`e6e1c65`](https://github.com/anaticulae/protoerror/commit/e6e1c65e832a857710498fc9d7f3dc5104f3b3bb))
 
-## v1.0.5
+### Features
 
-## v1.0.4
+- **linter**: Add method to skip and log linter step
+  ([`ce97730`](https://github.com/anaticulae/protoerror/commit/ce97730020cf0d93360a58be290235569a7f2d7a))
 
-## v1.0.3
+- **report**: Add report feature to integrate into featurepack cli`s
+  ([`54a96b1`](https://github.com/anaticulae/protoerror/commit/54a96b13138742ace218c9e320afde4c2950d51d))
 
-## v1.0.2
+### Testing
 
-## v1.0.1
+- **report**: Verify test cli invocation
+  ([`2073dbe`](https://github.com/anaticulae/protoerror/commit/2073dbe462cb2eddcc6f851a5f5bc9f9622a7e48))
 
-## v1.0.0
 
-### Feature
+## v3.3.2 (2021-01-27)
 
-* add method to answer list of questions (8892f8e1ddf8)
-* add option to disable user filter (36ea8ebc2644)
-* write to yaml, not .lin files (6f9557d85576)
-* add method to group finding by message id (dbe201e67ba1)
-* add question enabler pattern (bc99b64c1a1d)
-* add question parser (a79b2fa3de81)
-* introduce short solution pattern (9d597a824162)
+### Features
 
-### Fix
+- **group**: Add support to select PageFindings
+  ([`7d8b0d1`](https://github.com/anaticulae/protoerror/commit/7d8b0d137208da44e974d9833d17307861b544e4))
 
-* handle loading no files correctly (daa32bfd23a9)
+- **group**: Select findings by page and msgid
+  ([`1ca5352`](https://github.com/anaticulae/protoerror/commit/1ca5352502b23de78186cb16ef2144fd6cae2faf))
 
-### Documentation
 
-* fix web solution doc pattern (c9b0071d4aae)
+## v3.3.1 (2021-01-23)
 
-## v0.10.5
+### Chores
 
-## v0.10.4
+- **requirements**: Remove pyyaml which is already fixed by iamraw
+  ([`2ab7e54`](https://github.com/anaticulae/protoerror/commit/2ab7e5458c0874fb2bb44f524fd10a37622ec888))
 
-## v0.10.3
+- **requirements**: Upgrade requirements.txt
+  ([`7f12edc`](https://github.com/anaticulae/protoerror/commit/7f12edce80441bc78d65d81a8028b3aace27aac3))
 
-### Feature
 
-* use multiprocessing to improve loading speed (482c27c193a9)
-* add level to define importance of an finding (b391e3743a0f)
-* extend interface to define msgid as int (b80fa932aded)
+## v3.3.0 (2021-01-13)
 
-## v0.10.2
+### Features
 
-## v0.10.1
+- **group**: Add method to count findings
+  ([`4e8a87d`](https://github.com/anaticulae/protoerror/commit/4e8a87da22e476164247195e06a4c32d67a77e5c))
 
-### Feature
+- **merger**: Add method to merge neighbor findings
+  ([`c5f0e00`](https://github.com/anaticulae/protoerror/commit/c5f0e004bd86b5b9ef691c91863f156fe2e4d8b5))
 
-* ensure that template is replaced before dumping finding (f9cc35bef71c)
+### Refactoring
 
-## v0.10.0
+- **replace**: Replace magic number
+  ([`b9d454b`](https://github.com/anaticulae/protoerror/commit/b9d454be7960b956d6f37611430942e5720716c1))
 
-### Feature
 
-* add option to skip checker by id (dd33e47f8494)
-* add parameter to load selective findings (0a9aad041116)
-* extend finding selector with multiple ids (52831fd7eae9)
-* add parameter to skip or select evaluation (fbf790efbf80)
-* add method to select findings (d25dd9030191)
+## v3.2.1 (2020-12-18)
 
-## v0.9.3
+### Features
 
-### Feature
+- **simple**: Add simple result type
+  ([`88deea1`](https://github.com/anaticulae/protoerror/commit/88deea168387022a3867ef098a7c650764df77a1))
 
-* add shortcut to RangedLocation (f1df0074a1f0)
 
-### Fix
+## v3.2.0 (2020-12-18)
 
-* ensure to handle findings without shortcut correctly (02a3ce9af0cd)
+### Chores
 
-## v0.9.2
+- **setup**: Remove useless gitignore
+  ([`1195988`](https://github.com/anaticulae/protoerror/commit/1195988923bc77f155eb38036c2d6884d5f09168))
 
-### Feature
+### Code Style
 
-* clarify documentation of RangedLocation syntax (5ff1bd02357d)
-* enable use location before start as summary page (46dbfc42f7c2)
+- **rename**: Improve var name
+  ([`c4bfe44`](https://github.com/anaticulae/protoerror/commit/c4bfe4444ad5a3234269846dbb7e60ab7d996dad))
 
-## v0.9.1
-
-### Feature
-
-* create unique hash number on finding creation (de2bbab84ac0)
-* add method filter sentences findings (d1bd159debff)
-
-## v0.9.0
-
-### Feature
-
-* add method to update solution status (d1b7b437ffbb)
-* add method to update finding status (df11f8440f89)
-* add method to make finding number unique (f2623ec14b05)
-* add method to collect findings from path (2a7df32eb523)
-* add parameter to write_result to control linter result writing (90fb67176f69)
-* add method to create sentence location (82b5b8c75ccd)
-
-## v0.8.17
-
-## v0.8.15
-
-### Feature
-
-* add groupby-page method (163bcac5dd6e)
-
-## v0.8.0
-
-### Feature
-
-* add methods to parse linter and solution automatically (0a94d1873a25)
-* add BoundingLocation to describe rectangle bounding (5a95f9af171f)
-* ease using interface (111a114cda2e)
-
-### Fix
-
-* define error message on assertion error (e557dcde89c0)
+- **requirements**: Add missing copyright header
+  ([`244d631`](https://github.com/anaticulae/protoerror/commit/244d6318e3e4082c016265f566c5d4e688c5fe48))
 
 ### Documentation
 
-* extend module documentation (82259e23369a)
+- **config**: Clarify documentation
+  ([`8a66562`](https://github.com/anaticulae/protoerror/commit/8a665625b0e97654e5b7d8483a6c6b1676d7b6b2))
 
-## v0.7.2
+- **refactor**: Remove pages hierarchy level
+  ([`13f7dab`](https://github.com/anaticulae/protoerror/commit/13f7dab912f56ec1d91b7830620b6638a73c0731))
 
-## v0.7.1
+### Features
 
-### Feature
+- **decorator**: Shorten dissertation to diss
+  ([`afe574b`](https://github.com/anaticulae/protoerror/commit/afe574bd4237c96bb2e7ae87ce158976acd0b075))
 
-* add methods to filter Findings (6d74ed97d06f)
+- **simple**: Add `run` method to reduce amount of code
+  ([`3fb3ebf`](https://github.com/anaticulae/protoerror/commit/3fb3ebfd3111898acfa8a071f24a95c0ec5a7359))
 
-## v0.7.0
+- **solution**: Introduce message type
+  ([`4640b29`](https://github.com/anaticulae/protoerror/commit/4640b2970c1c68d668d7fe9c0a4f6f06581e2671))
 
-### Feature
+### Testing
 
-* use default value confident instead of new method (6072a29c4267)
-* add method to create linter from solution (888dd7009879)
-* add method to create linter from_file (bea7fe7e98fe)
-* extend public API (50bca3b16a6b)
-* set message active as default state (7fb46902043b)
-* specify dump and write of linter result (c246ebd21683)
+- **utils**: Extend test coverage
+  ([`26333cb`](https://github.com/anaticulae/protoerror/commit/26333cb9c0be68d2163e596e4c12e1eaf742597a))
+
+
+## v3.1.6 (2020-12-09)
+
+### Chores
+
+- **requirements**: Do not update so often
+  ([`a2c8f64`](https://github.com/anaticulae/protoerror/commit/a2c8f642a5163021ddcfd55833df882627a26978))
+
+
+## v3.1.5 (2020-12-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c74cb73`](https://github.com/anaticulae/protoerror/commit/c74cb7362dc5a5961fdfcc9c7b6e343b01f564ce))
+
+
+## v3.1.4 (2020-12-04)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`35a56bc`](https://github.com/anaticulae/protoerror/commit/35a56bcdd5cc0bc22eb0a7d564137b2b2c6c5227))
+
+
+## v3.1.3 (2020-11-19)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`69c82ba`](https://github.com/anaticulae/protoerror/commit/69c82ba20187d78de98967e8c8142159a582af5f))
+
+- **requirements**: Upgrade template engine
+  ([`468f267`](https://github.com/anaticulae/protoerror/commit/468f2670ef1dab139ee56538de84ecf898160eb4))
+
+
+## v3.1.2 (2020-11-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0d73c01`](https://github.com/anaticulae/protoerror/commit/0d73c01b45f46ee4a4a52a40f9cbc872e71dfc5e))
+
+
+## v3.1.1 (2020-11-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`59f8d58`](https://github.com/anaticulae/protoerror/commit/59f8d58b5bab49e2fe08954e417eefa476a56080))
+
+
+## v3.1.0 (2020-10-31)
+
+### Bug Fixes
+
+- **group**: Remove useless default value
+  ([`ffae7be`](https://github.com/anaticulae/protoerror/commit/ffae7be677d8a2bc4668a9ce457b0dc824184c77))
+
+- **pages**: Do not load invalid file names
+  ([`e55663c`](https://github.com/anaticulae/protoerror/commit/e55663ca7c2d7ca519756cde5d08ee06c9dd04fe))
+
+### Features
+
+- **group**: Add method to select findings by page number
+  ([`e1ea11f`](https://github.com/anaticulae/protoerror/commit/e1ea11f299c94aa2aa424e7063a30176af918479))
+
+### Refactoring
+
+- **config**: Use safe yaml dumper and loader
+  ([`6a93342`](https://github.com/anaticulae/protoerror/commit/6a93342df7acb7b4d4cde228b7204dc3e7d9bbda))
+
+
+## v3.0.0 (2020-10-27)
+
+### Chores
+
+- **requirements**: Add jinja2 template engine
+  ([`bd2eabd`](https://github.com/anaticulae/protoerror/commit/bd2eabd5de2d03ed9a602e827df8509e58557f36))
+
+- **requirements**: Upgrade requirements.txt
+  ([`59fa205`](https://github.com/anaticulae/protoerror/commit/59fa2058353ea2735120ef453fdfda21b94540fc))
+
+### Features
+
+- **paged**: Add method to dump and load findings by page number
+  ([`7e82c6c`](https://github.com/anaticulae/protoerror/commit/7e82c6ca4a05f602816d1bea5d61edca3e49bb50))
+
+- **template**: Change to jinja2 template engine
+  ([`6b844e7`](https://github.com/anaticulae/protoerror/commit/6b844e70d2278b39f79bcbe576c89cc5e0116c6f))
+
+### Refactoring
+
+- **rename**: Rename interface
+  ([`1b59310`](https://github.com/anaticulae/protoerror/commit/1b5931059a2fa6a97317b4cea88a4c76d9fe1cd6))
+
+
+## v2.1.4 (2020-10-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`db21e61`](https://github.com/anaticulae/protoerror/commit/db21e61b1e18be0ec34bc742c387b4e8d7439dc5))
+
+
+## v2.1.3 (2020-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7869c77`](https://github.com/anaticulae/protoerror/commit/7869c776c1cc785ee2fdaa742b5748616d5e292d))
+
+
+## v2.1.2 (2020-09-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6fceb19`](https://github.com/anaticulae/protoerror/commit/6fceb19c633224557e61967beb0b6aa37297b86e))
+
+
+## v2.1.1 (2020-09-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4edd4a9`](https://github.com/anaticulae/protoerror/commit/4edd4a9734476fe8b4f6ad66e2f73a24fdbae397))
+
+### Features
+
+- **finding**: Add assertion to ensure correct data type
+  ([`4f88444`](https://github.com/anaticulae/protoerror/commit/4f88444f8bdb0f395847763147b6bdb8844ca4de))
+
+
+## v2.1.0 (2020-09-13)
+
+### Bug Fixes
+
+- **group**: Ensure to group zero pages correctly
+  ([`0018015`](https://github.com/anaticulae/protoerror/commit/0018015223b22af113c9254be6933168558518ef))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`118fd18`](https://github.com/anaticulae/protoerror/commit/118fd18dcfd1522abc736a48f3cfdf790304766b))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`5e5a82f`](https://github.com/anaticulae/protoerror/commit/5e5a82f916f43d5c2263b40a1971ccf5cfcf40b9))
+
+### Features
+
+- **linter**: Add method to create linter from multiple modules
+  ([`fc3a5d7`](https://github.com/anaticulae/protoerror/commit/fc3a5d760afb7388f2a0148d591632a332b3499b))
+
+### Refactoring
+
+- **control**: Use configo holy value concept
+  ([`8dee688`](https://github.com/anaticulae/protoerror/commit/8dee688afb3b2aa59e5781db23449b1038bfb91a))
+
+- **linter**: Use multiple linter to load single linter
+  ([`f359f9b`](https://github.com/anaticulae/protoerror/commit/f359f9b774aa49ee432c8816e2d7739e3c55e1d5))
+
+
+## v2.0.0 (2020-09-08)
+
+### Chores
+
+- **requirements**: Add iamraw dependency
+  ([`d61890c`](https://github.com/anaticulae/protoerror/commit/d61890ce53e4a7f4a977f30a3d4ec7146595fc54))
+
+- **requirements**: Upgrade requirements.txt
+  ([`0942d27`](https://github.com/anaticulae/protoerror/commit/0942d279e926d2096995572d8496ccdf395dace7))
+
+### Refactoring
+
+- **replace**: Replace with iamraw code
+  ([`d1676c6`](https://github.com/anaticulae/protoerror/commit/d1676c6de7dbaf260310206bcf51347f8c1b2b58))
+
+- **test**: Move tests to iamraw package
+  ([`fb26eb1`](https://github.com/anaticulae/protoerror/commit/fb26eb12640c431108e536ff6ecd02aacbfdbf7a))
+
+
+## v1.3.1 (2020-08-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`034deb7`](https://github.com/anaticulae/protoerror/commit/034deb7f9742ff96939e5f79f544e96b66dfaa2b))
+
+
+## v1.3.0 (2020-08-27)
+
+### Bug Fixes
+
+- **finding**: Rename internal variable
+  ([`02c9fde`](https://github.com/anaticulae/protoerror/commit/02c9fdee27be9eba9379890709952288478905dd))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2da7b16`](https://github.com/anaticulae/protoerror/commit/2da7b16330ce53adf21303bac738bb3658d319e2))
+
+### Code Style
+
+- **format**: Format code
+  ([`5812623`](https://github.com/anaticulae/protoerror/commit/58126235a6bad2c08507155f9f93711bf69cca4b))
+
+### Features
+
+- **API**: Add method to hash finding to public interface
+  ([`8f78882`](https://github.com/anaticulae/protoerror/commit/8f7888299f3e48500409b6a7013dc1139715b6ef))
+
+- **finding**: Add debug information about changing finding status
+  ([`8f41376`](https://github.com/anaticulae/protoerror/commit/8f41376ba798c3fb8d9d062750b7da6e09f03958))
+
+- **group**: Add method to filter ranged findings
+  ([`8083a8a`](https://github.com/anaticulae/protoerror/commit/8083a8a7e408698161b30a9d11db2d482f2f1f44))
+
+
+## v1.2.1 (2020-07-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c1d781a`](https://github.com/anaticulae/protoerror/commit/c1d781ade0c5efc43a85933e892fdd3ed519e5e0))
+
+
+## v1.2.0 (2020-07-28)
+
+### Features
+
+- **location**: Extend ranged location with chars as minimal unit
+  ([`218af1b`](https://github.com/anaticulae/protoerror/commit/218af1b17628884ff5afb1fe00f56cecf336c656))
+
+
+## v1.1.0 (2020-07-18)
+
+### Code Style
+
+- **docs**: Fix spelling error
+  ([`f40612d`](https://github.com/anaticulae/protoerror/commit/f40612d64c9d6ce11d723742ba2457fbb2b14b54))
 
 ### Documentation
 
-* extend interface documentation (bce05effd646)
+- **control**: Add general module documentation
+  ([`414a5bc`](https://github.com/anaticulae/protoerror/commit/414a5bc3742d317950046988acf3b26ba2517500))
 
-## v0.6.1
+### Features
 
-## v0.6.0
+- **control**: Add data structure to describe document type
+  ([`3050da5`](https://github.com/anaticulae/protoerror/commit/3050da50569f03cfefce61656f1211438be752ed))
 
-### Feature
+- **control**: Add decorators to control which checker is selected
+  ([`9d55f27`](https://github.com/anaticulae/protoerror/commit/9d55f27fb629aa08090bb55d34e9b3192cd47cb7))
 
-* add RangedLocation to describe ranged locations (d36e1962f199)
-* add internal documentation link (70b5859467e2)
-* add template mechanism to create different linter solution (7d71ea7d96cc)
+- **control**: Add filter_solutions to skip non selected linter by doc type
+  ([`e3df4d4`](https://github.com/anaticulae/protoerror/commit/e3df4d4d350ed2a707ea3d5495aa3b57e56203f9))
+
+- **control**: Add method to replace editor dependent strings
+  ([`e2ca188`](https://github.com/anaticulae/protoerror/commit/e2ca188e0bc134cbec360deb10a0db4daad4fbce))
+
+- **linter**: Add method to run registered checkers
+  ([`d7a965e`](https://github.com/anaticulae/protoerror/commit/d7a965e9e7fbe7c0a97ae4f9566a0a4acd56c125))
+
+- **linter**: Load checkers with loading linter
+  ([`bcde4e8`](https://github.com/anaticulae/protoerror/commit/bcde4e8b2df044747947737e4d182a0d78ae9287))
+
+### Refactoring
+
+- **linter**: Replace interface documentation
+  ([`ecadef9`](https://github.com/anaticulae/protoerror/commit/ecadef90a128fc1ad58cb4eaa1cf7b40b1572d6d))
+
+### Testing
+
+- **control**: Add tests to verify solution decorator
+  ([`8b0f203`](https://github.com/anaticulae/protoerror/commit/8b0f20384214cf4a30c1a3619d8eac4559c2cb73))
+
+
+## v1.0.5 (2020-07-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`cc7fd55`](https://github.com/anaticulae/protoerror/commit/cc7fd559789e4f9c354aa6b5e0ac4c1ab1d545a4))
+
+
+## v1.0.4 (2020-07-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d7929f9`](https://github.com/anaticulae/protoerror/commit/d7929f959f22094f42a6bbae1d3c7baf578ec70a))
+
+
+## v1.0.3 (2020-07-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b3a9685`](https://github.com/anaticulae/protoerror/commit/b3a96854a7a833a641880f027245fcc77f5677f6))
+
+
+## v1.0.2 (2020-06-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`95b01c5`](https://github.com/anaticulae/protoerror/commit/95b01c5a6a00f9f3b68801ef8f2a878dd2d54933))
+
+
+## v1.0.1 (2020-06-25)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c79cb59`](https://github.com/anaticulae/protoerror/commit/c79cb594d10d01fabcce4b127ebe8f9e1930cffc))
+
+
+## v1.0.0 (2020-06-21)
+
+### Bug Fixes
+
+- **finding**: Handle loading no files correctly
+  ([`daa32bf`](https://github.com/anaticulae/protoerror/commit/daa32bfd23a98e67b89f0f0335fed93c1946d148))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`47884df`](https://github.com/anaticulae/protoerror/commit/47884df69a0db57d2f97565e12e119993d6e72d0))
+
+### Code Style
+
+- **imports**: Add comments to increase readability
+  ([`b9f6fc3`](https://github.com/anaticulae/protoerror/commit/b9f6fc3bc9f4326ce0d631b28b810a133bc93da1))
 
 ### Documentation
 
-* fix and extend interface documentation (4d061669eaec)
-* use general documentation structure (09cd53cac03a)
-* fix documentation (9e24c1b65f0f)
+- **fix**: Fix web solution doc pattern
+  ([`c9b0071`](https://github.com/anaticulae/protoerror/commit/c9b0071d4aae2eaba98ff1308856c8ef62dd3be4))
 
-## v0.5.4
+### Features
 
-## v0.5.1
+- **finding**: Add option to disable user filter
+  ([`36ea8eb`](https://github.com/anaticulae/protoerror/commit/36ea8ebc2644ec321f2e72f973c83a1ba410ede7))
+
+- **group**: Add method to group finding by message id
+  ([`dbe201e`](https://github.com/anaticulae/protoerror/commit/dbe201e67ba113d20bdcd510712b7320ffbb853d))
+
+- **linter**: Write to yaml, not .lin files
+  ([`6f9557d`](https://github.com/anaticulae/protoerror/commit/6f9557d855769c0b35b8301fe5daa8255b589e1c))
+
+- **question**: Add method to answer list of questions
+  ([`8892f8e`](https://github.com/anaticulae/protoerror/commit/8892f8e1ddf8fb9ca064865d12fc894c1f70a698))
+
+- **question**: Add question enabler pattern
+  ([`bc99b64`](https://github.com/anaticulae/protoerror/commit/bc99b64c1a1d8a789a91230f91d38a994851a231))
+
+- **question**: Add question parser
+  ([`a79b2fa`](https://github.com/anaticulae/protoerror/commit/a79b2fa3de81944dc6f925b2a3e8fba9dc872a05))
+
+- **solution**: Introduce short solution pattern
+  ([`9d597a8`](https://github.com/anaticulae/protoerror/commit/9d597a8241623f615e4c417807c848fa5b05e4bb))
+
+### Refactoring
+
+- **replace**: Replace with utila code
+  ([`5a49b18`](https://github.com/anaticulae/protoerror/commit/5a49b18d3fb6143b857b9de02afb7b095558d12d))
+
+
+## v0.10.5 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fe933ec`](https://github.com/anaticulae/protoerror/commit/fe933eccd5ccebf98478e42872a18cd77618a4f6))
+
+
+## v0.10.4 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3cdaf12`](https://github.com/anaticulae/protoerror/commit/3cdaf1287053984d970b5c1068a93d0abf7f1e67))
+
+
+## v0.10.3 (2020-06-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3f1692c`](https://github.com/anaticulae/protoerror/commit/3f1692ca0e721be326d52b5c4337719dc410dee7))
+
+### Features
+
+- **finding**: Add level to define importance of an finding
+  ([`b391e37`](https://github.com/anaticulae/protoerror/commit/b391e3743a0ffdb60e51c31813c61882bccc9264))
+
+- **finding**: Use multiprocessing to improve loading speed
+  ([`482c27c`](https://github.com/anaticulae/protoerror/commit/482c27c193a996b4e6011948603790c929f50941))
+
+- **group**: Extend interface to define msgid as int
+  ([`b80fa93`](https://github.com/anaticulae/protoerror/commit/b80fa932adedf7f0380fc7b51681574987c27f6f))
+
+
+## v0.10.2 (2020-06-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d82dd7e`](https://github.com/anaticulae/protoerror/commit/d82dd7e1d5e4b21b15eb3fb5ff4997f0fdcf72cc))
+
+
+## v0.10.1 (2020-05-31)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3c0fd58`](https://github.com/anaticulae/protoerror/commit/3c0fd5859d885daa72f51eca70a6a13637c5e994))
+
+### Features
+
+- **finding**: Ensure that template is replaced before dumping finding
+  ([`f9cc35b`](https://github.com/anaticulae/protoerror/commit/f9cc35bef71c94b90085aafd0397f195be9abaab))
+
+
+## v0.10.0 (2020-05-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`76b295b`](https://github.com/anaticulae/protoerror/commit/76b295b01f740bd190226f5eef9088bc9eb2cc9f))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`8b64677`](https://github.com/anaticulae/protoerror/commit/8b646773ed431c5e18f2e753e035d0ea3c7fad96))
+
+### Features
+
+- **finding**: Add parameter to load selective findings
+  ([`0a9aad0`](https://github.com/anaticulae/protoerror/commit/0a9aad0411163c1e433a141ca5d64696978f4b26))
+
+- **findings**: Add method to select findings
+  ([`d25dd90`](https://github.com/anaticulae/protoerror/commit/d25dd9030191687c339180a3005812f53a5bdfa8))
+
+- **group**: Extend finding selector with multiple ids
+  ([`52831fd`](https://github.com/anaticulae/protoerror/commit/52831fd7eae94c085deef83e7aa325799487d53e))
+
+- **linter**: Add parameter to skip or select evaluation
+  ([`fbf790e`](https://github.com/anaticulae/protoerror/commit/fbf790efbf801dc1fdc4bcb1a86db70af1e2a2d3))
+
+- **solution**: Add option to skip checker by id
+  ([`dd33e47`](https://github.com/anaticulae/protoerror/commit/dd33e47f84945c4a2c4bc4ca6246f0a4dc504c76))
+
+
+## v0.9.3 (2020-05-22)
+
+### Bug Fixes
+
+- **group**: Ensure to handle findings without shortcut correctly
+  ([`02a3ce9`](https://github.com/anaticulae/protoerror/commit/02a3ce9af0cdb0889ba26e343e43aaed73080fdb))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`bc3a7dc`](https://github.com/anaticulae/protoerror/commit/bc3a7dc426fa6ea2352240c623a1753ea56c6af7))
+
+### Features
+
+- **finding**: Add shortcut to RangedLocation
+  ([`f1df007`](https://github.com/anaticulae/protoerror/commit/f1df0074a1f0aeea6e5e7e7b776774ac27371f1c))
+
+
+## v0.9.2 (2020-05-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f0b8e98`](https://github.com/anaticulae/protoerror/commit/f0b8e9843e574b2f29ec90b13468b2ec89fcf15f))
+
+### Features
+
+- **docs**: Clarify documentation of RangedLocation syntax
+  ([`5ff1bd0`](https://github.com/anaticulae/protoerror/commit/5ff1bd02357d9b25cbf19eff1c58f5f71ab1124a))
+
+- **location**: Enable use location before start as summary page
+  ([`46dbfc4`](https://github.com/anaticulae/protoerror/commit/46dbfc42f7c24d493e2e823f4a2f1bb5275a9dc3))
+
+
+## v0.9.1 (2020-05-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`649beb4`](https://github.com/anaticulae/protoerror/commit/649beb44711552c68b373826fdd4aa3d2ffb0fb4))
+
+### Features
+
+- **finding**: Create unique hash number on finding creation
+  ([`de2bbab`](https://github.com/anaticulae/protoerror/commit/de2bbab84ac02c2cabbfd4b2caf3872b5b35a8b9))
+
+- **group**: Add method filter sentences findings
+  ([`d1bd159`](https://github.com/anaticulae/protoerror/commit/d1bd159debffa48e7ea6fcbeb2936817af6884fb))
+
+
+## v0.9.0 (2020-04-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6aece5a`](https://github.com/anaticulae/protoerror/commit/6aece5a4b89cd6f847a8bf71fa4b328e6245133c))
+
+### Code Style
+
+- **test**: Format test code
+  ([`e1ab800`](https://github.com/anaticulae/protoerror/commit/e1ab800da1909966483ec5b2f843bb0e486e4c43))
+
+### Features
+
+- **finding**: Add method to collect findings from path
+  ([`2a7df32`](https://github.com/anaticulae/protoerror/commit/2a7df32eb52338305ac00db183061844858408b0))
+
+- **finding**: Add method to create sentence location
+  ([`82b5b8c`](https://github.com/anaticulae/protoerror/commit/82b5b8c75ccd6a294c37b538788c6d9324205e7f))
+
+- **finding**: Add method to make finding number unique
+  ([`f2623ec`](https://github.com/anaticulae/protoerror/commit/f2623ec14b05a79ce8a695c3ef18cdda5b665a4c))
+
+- **finding**: Add method to update finding status
+  ([`df11f84`](https://github.com/anaticulae/protoerror/commit/df11f8440f89fa942485e8f05d55bf086eca8ec4))
+
+- **finding**: Add method to update solution status
+  ([`d1b7b43`](https://github.com/anaticulae/protoerror/commit/d1b7b437ffbbdcdcd77219b15e9f5afd8c93b7d5))
+
+- **linter**: Add parameter to write_result to control linter result writing
+  ([`90fb671`](https://github.com/anaticulae/protoerror/commit/90fb67176f6987b3302dd9106397a4dab8a55191))
+
+### Refactoring
+
+- **finding**: Use general dump findings function
+  ([`2f18cb0`](https://github.com/anaticulae/protoerror/commit/2f18cb0577953fb660d4c164ce28ff18c292f280))
+
+- **move**: Move load findings method
+  ([`e50cd12`](https://github.com/anaticulae/protoerror/commit/e50cd12e1a231a7db2ccccac7659e4c13fb5b399))
+
+- **remove**: Remove duplicated method
+  ([`9b712a6`](https://github.com/anaticulae/protoerror/commit/9b712a6a6eca048d18e4424d5f50e351e81272d6))
+
+- **rename**: Rename type MessageStatuses
+  ([`74f5b65`](https://github.com/anaticulae/protoerror/commit/74f5b65b4f540116cf97fb85a74ce6d46cbee13c))
+
+### Testing
+
+- **refactor**: Make fixture global accessible
+  ([`b832082`](https://github.com/anaticulae/protoerror/commit/b832082727a770f859db7487f594d3364f7720d0))
+
+
+## v0.8.17 (2020-04-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5785d64`](https://github.com/anaticulae/protoerror/commit/5785d64428bfc49991bfbd074b6bbc2b55f3f92c))
+
+
+## v0.8.16 (2020-04-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1ec7591`](https://github.com/anaticulae/protoerror/commit/1ec75916935d976c2ce237406f3cb667b30e45be))
+
+
+## v0.8.15 (2020-04-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0f76bc3`](https://github.com/anaticulae/protoerror/commit/0f76bc39e3787533a59ef2b47480360b9f02c876))
+
+### Features
+
+- **group**: Add groupby-page method
+  ([`163bcac`](https://github.com/anaticulae/protoerror/commit/163bcac5dd6e928735025bf1d14665b75c1a92a2))
+
+
+## v0.8.14 (2020-04-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`be3d965`](https://github.com/anaticulae/protoerror/commit/be3d9654c829cd8bf757cdd2cae333b50a93fd39))
+
+
+## v0.8.13 (2020-04-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fcb758f`](https://github.com/anaticulae/protoerror/commit/fcb758f8ac7af2384848f1dc39655dbee6902e1d))
+
+
+## v0.8.12 (2020-04-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7873fc4`](https://github.com/anaticulae/protoerror/commit/7873fc4558291ce498196ad6602187ec3538cb7d))
+
+
+## v0.8.11 (2020-04-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`055315c`](https://github.com/anaticulae/protoerror/commit/055315c949e7814789e9fbdc2a58c4153f054311))
+
+
+## v0.8.10 (2020-04-05)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a83454d`](https://github.com/anaticulae/protoerror/commit/a83454dddeac0540305f6a56b35f25bc88ac034b))
+
+
+## v0.8.9 (2020-04-03)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`149f550`](https://github.com/anaticulae/protoerror/commit/149f550a9822381ae13e640939357c0298db44c1))
+
+
+## v0.8.8 (2020-03-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1239954`](https://github.com/anaticulae/protoerror/commit/123995417eaf3120ccf1d7a72d4025b33f3d2170))
+
+
+## v0.8.7 (2020-03-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a57cefb`](https://github.com/anaticulae/protoerror/commit/a57cefbb1ac8270d087b4e37c3ddad4f2a1cec63))
+
+
+## v0.8.6 (2020-03-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`dcc91dd`](https://github.com/anaticulae/protoerror/commit/dcc91dd01c8b60566081aebc73386e80f279859e))
+
+
+## v0.8.5 (2020-03-25)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`976c255`](https://github.com/anaticulae/protoerror/commit/976c255b6d696be4575f3b086eabe4f7150c96e1))
+
+
+## v0.8.4 (2020-03-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`20004bd`](https://github.com/anaticulae/protoerror/commit/20004bdc8475ab5d981e53acdc46fb465fbe31eb))
+
+
+## v0.8.3 (2020-03-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d377ccd`](https://github.com/anaticulae/protoerror/commit/d377ccd0fe9fc436ec39a3937d776029746631b6))
+
+
+## v0.8.2 (2020-03-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1e38ca8`](https://github.com/anaticulae/protoerror/commit/1e38ca85bf47f831675db48f1e2c22ff3b6d2576))
+
+
+## v0.8.1 (2020-03-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5752109`](https://github.com/anaticulae/protoerror/commit/575210942361ca7e0ee66d19ece9b31cd2c7173c))
+
+
+## v0.8.0 (2020-02-18)
+
+### Bug Fixes
+
+- **linter**: Define error message on assertion error
+  ([`e557dcd`](https://github.com/anaticulae/protoerror/commit/e557dcde89c067988163dfaa041b10e1da45a8ca))
+
+### Chores
+
+- **release**: Do not allow findings on release
+  ([`2c3a9a8`](https://github.com/anaticulae/protoerror/commit/2c3a9a8b8cff98e67cdbf74514be690fd6042dcc))
+
+- **requirements**: Upgrade requirements.txt
+  ([`0cd2584`](https://github.com/anaticulae/protoerror/commit/0cd2584ba43376306f840d906206f65b71bf17aa))
+
+### Code Style
+
+- **imports**: Use general import style
+  ([`8be3159`](https://github.com/anaticulae/protoerror/commit/8be315962b2a2134557e16a54b581a951a060685))
 
 ### Documentation
 
-* Happy New Year! (412dec0eb867)
+- **module**: Extend module documentation
+  ([`82259e2`](https://github.com/anaticulae/protoerror/commit/82259e23369ade61628c01c4de216f3c314e7fa7))
 
-## v0.5.0
+### Features
 
-### Feature
+- **interface**: Ease using interface
+  ([`111a114`](https://github.com/anaticulae/protoerror/commit/111a114cda2ebe7a46299b3b69473dfaf1dafaea))
 
-* add method to group findings by page location (45f55a1af656)
-* add `Findings` to replace list of Finding (f8b92f69677f)
+- **linter**: Add methods to parse linter and solution automatically
+  ([`0a94d18`](https://github.com/anaticulae/protoerror/commit/0a94d1873a2572f17cea53e1d2295ea0b4be8a10))
 
-## v0.4.8
+- **location**: Add BoundingLocation to describe rectangle bounding
+  ([`5a95f9a`](https://github.com/anaticulae/protoerror/commit/5a95f9af171f1e9d557f4dbe40f7470ed85f4a62))
 
-### Feature
 
-* add method to determine oneline location (65b3ce9b577c)
+## v0.7.2 (2020-02-12)
 
-## v0.4.7
+### Chores
 
-## v0.4.0
+- **requirements**: Upgrade requirements.txt
+  ([`5e3b12b`](https://github.com/anaticulae/protoerror/commit/5e3b12b5bd32dd1149f4d97bf19635dda5fac848))
 
-### Feature
 
-* add method to create solver from dict (e873a3fa8b25)
-* add method to dump and load linter results (d0f8a388cb94)
+## v0.7.1 (2020-02-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`709c170`](https://github.com/anaticulae/protoerror/commit/709c170e47b9899adb245bae68978e212c639c8f))
+
+### Features
+
+- **group**: Add methods to filter Findings
+  ([`6d74ed9`](https://github.com/anaticulae/protoerror/commit/6d74ed97d06f4a69da4338bdb4cb1685bfe4a356))
+
+
+## v0.7.0 (2020-01-17)
 
 ### Documentation
 
-* extend todo list (326dec513bee)
+- **linter**: Extend interface documentation
+  ([`bce05ef`](https://github.com/anaticulae/protoerror/commit/bce05effd646c8d3563adc9cc5b86e134c113036))
 
-## v0.3.0
+### Features
 
-### Feature
+- **API**: Extend public API
+  ([`50bca3b`](https://github.com/anaticulae/protoerror/commit/50bca3b16a6bce52e48f4c4d2fa34f4395e34dbf))
 
-* add method to create `Solver` from list of `Solution` (d006e4694226)
-* add method to create Location from via given parameter (ea5ca06bd656)
-* make Location hash able (0688840f810f)
+- **dumped**: Specify dump and write of linter result
+  ([`c246ebd`](https://github.com/anaticulae/protoerror/commit/c246ebd2168390782ec23566f222e91db48b241f))
+
+- **linter**: Add method to create linter from solution
+  ([`888dd70`](https://github.com/anaticulae/protoerror/commit/888dd700987927da3a220ec70d62f0a737ea38f1))
+
+- **linter**: Add method to create linter from_file
+  ([`bea7fe7`](https://github.com/anaticulae/protoerror/commit/bea7fe7e98fe0e8d8e9876eb4cf869723c101fd7))
+
+- **linter**: Use default value confident instead of new method
+  ([`6072a29`](https://github.com/anaticulae/protoerror/commit/6072a29c4267446da9ba441665e68faa7d6a9509))
+
+- **message**: Set message active as default state
+  ([`7fb4690`](https://github.com/anaticulae/protoerror/commit/7fb46902043b501d8e6dcac2104717c70f50accf))
+
+### Testing
+
+- **linter**: Extend linter coverage
+  ([`e11074c`](https://github.com/anaticulae/protoerror/commit/e11074c87a1a8d35ddbc269b817483b17b41143b))
+
+
+## v0.6.1 (2020-01-15)
+
+
+## v0.6.0 (2020-01-15)
 
 ### Documentation
 
-* add todo list to archive further library improvements (f63dc65cc3b2)
+- **finding**: Fix documentation
+  ([`9e24c1b`](https://github.com/anaticulae/protoerror/commit/9e24c1b65f0f8d76c2060f707bb5b52e0b4da676))
 
-## v0.2.5
+- **fix**: Fix and extend interface documentation
+  ([`4d06166`](https://github.com/anaticulae/protoerror/commit/4d061669eaec66cbe97515303a85d01fba7792d5))
 
-## v0.2.2
+- **general**: Use general documentation structure
+  ([`09cd53c`](https://github.com/anaticulae/protoerror/commit/09cd53cac03a2a30728014736226e7c651bc4bd2))
 
-### Fix
+### Features
 
-* overwrite linter result files instead of returning error (06aa9b4b0515)
+- **finding**: Add RangedLocation to describe ranged locations
+  ([`d36e196`](https://github.com/anaticulae/protoerror/commit/d36e1962f1999abae1ffbf453065700d78989d4d))
 
-## v0.2.1
+- **linter**: Add template mechanism to create different linter solution
+  ([`7d71ea7`](https://github.com/anaticulae/protoerror/commit/7d71ea7d96cc9f8cde94414315702e3ccf38e53d))
 
-### Feature
+- **solution**: Add internal documentation link
+  ([`70b5859`](https://github.com/anaticulae/protoerror/commit/70b5859467e29ff1fb0cb2768a6ea71f15d27c87))
 
-* add method to extract linter result without writing to file space (335a76315889)
-* add option to write multiple findings only once (3835ba11279e)
 
-## v0.2.0
+## v0.5.4 (2020-01-13)
 
-### Feature
+### Chores
 
-* add public API (4036da07413a)
+- **requirements**: Upgrade requirements.txt
+  ([`ed25c03`](https://github.com/anaticulae/protoerror/commit/ed25c03b3b49dc445c424582029c9be7ecfc5329))
 
-## v0.1.1
 
-## v0.1.0
+## v0.5.3 (2020-01-13)
 
-### Feature
+### Chores
 
-* make linter thread safe (1514ab64730e)
-* add checker, finding and linter (c5fb8ef3a7c7)
-* add active and confidence flag to control presentation mode (5c376f6f5454)
-* add Location to define error location in document (2cc528e841da)
-* add message definition and method to parse msgid's (ec75f61e5a97)
-* add method to load and save MessageStatus (c70ffb99240b)
+- **requirements**: Upgrade requirements.txt
+  ([`f7aa6b4`](https://github.com/anaticulae/protoerror/commit/f7aa6b4a87d0b1d137be0c318908e3091eb1ae4a))
 
-## v0.0.0 Initial release
+
+## v0.5.2 (2020-01-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fc491e7`](https://github.com/anaticulae/protoerror/commit/fc491e74c08afd1a7856fd1649af229d35791ac0))
+
+
+## v0.5.1 (2020-01-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9add6ae`](https://github.com/anaticulae/protoerror/commit/9add6aeaa70cad804ed5ec52367b3ae1b8a71833))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`412dec0`](https://github.com/anaticulae/protoerror/commit/412dec0eb8678e9d4aaed9b753730ba46de38262))
+
+
+## v0.5.0 (2019-12-23)
+
+### Features
+
+- **group**: Add method to group findings by page location
+  ([`45f55a1`](https://github.com/anaticulae/protoerror/commit/45f55a1af656d66830407ee280b366de079135c7))
+
+- **types**: Add `Findings` to replace list of Finding
+  ([`f8b92f6`](https://github.com/anaticulae/protoerror/commit/f8b92f69677f96c86eafee3e816532e288ca44d1))
+
+
+## v0.4.8 (2019-12-10)
+
+### Features
+
+- **finding**: Add method to determine oneline location
+  ([`65b3ce9`](https://github.com/anaticulae/protoerror/commit/65b3ce9b577c41947fbe278749d204b7c4d95175))
+
+### Refactoring
+
+- **finding**: Rename from_ creation method
+  ([`21e469a`](https://github.com/anaticulae/protoerror/commit/21e469afcaade5953b0ff72175bbc503e9d65135))
+
+
+## v0.4.7 (2019-10-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`137e7ee`](https://github.com/anaticulae/protoerror/commit/137e7ee3a7e61f757f3c9306e281e4abe531ca87))
+
+
+## v0.4.6 (2019-10-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6d63ab5`](https://github.com/anaticulae/protoerror/commit/6d63ab51a3d6cb833a22fcf345122950d6c3d698))
+
+
+## v0.4.5 (2019-10-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`61e20c6`](https://github.com/anaticulae/protoerror/commit/61e20c6e60f9b0a93cb10385fb0552cd6dfc133a))
+
+
+## v0.4.4 (2019-10-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`433efb7`](https://github.com/anaticulae/protoerror/commit/433efb7e09e263b8f6c3123678c054fc2953d1bf))
+
+
+## v0.4.3 (2019-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4c80ae3`](https://github.com/anaticulae/protoerror/commit/4c80ae3eae47a69dc18d3b3265d4c6b0e0190747))
+
+
+## v0.4.2 (2019-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`8eb19b2`](https://github.com/anaticulae/protoerror/commit/8eb19b20ae57410003be84ad93249b367ea131c6))
+
+
+## v0.4.1 (2019-09-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5dcbc46`](https://github.com/anaticulae/protoerror/commit/5dcbc46189413ab498262ecd8214c43f76aae91e))
+
+
+## v0.4.0 (2019-09-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`87691a9`](https://github.com/anaticulae/protoerror/commit/87691a918b1ba7d87af27ba13f1ae5433273ecff))
+
+### Code Style
+
+- **linter**: Replace with utila code
+  ([`6437968`](https://github.com/anaticulae/protoerror/commit/64379688a51d34922bf6411cc35a4cf467366eaf))
+
+### Documentation
+
+- **todo**: Extend todo list
+  ([`326dec5`](https://github.com/anaticulae/protoerror/commit/326dec513beee0fa12328e02f7b5bfed519f3bc1))
+
+### Features
+
+- **linter**: Add method to dump and load linter results
+  ([`d0f8a38`](https://github.com/anaticulae/protoerror/commit/d0f8a388cb940c6f5f84ce9213e1881f1d1ad8f9))
+
+- **solution**: Add method to create solver from dict
+  ([`e873a3f`](https://github.com/anaticulae/protoerror/commit/e873a3fa8b25b379944927d35c29f4a46ffd09ee))
+
+
+## v0.3.0 (2019-09-14)
+
+### Documentation
+
+- **todo**: Add todo list to archive further library improvements
+  ([`f63dc65`](https://github.com/anaticulae/protoerror/commit/f63dc65cc3b257c0f5265a1415ba9d7a515cab88))
+
+### Features
+
+- **finding**: Add method to create Location from via given parameter
+  ([`ea5ca06`](https://github.com/anaticulae/protoerror/commit/ea5ca06bd6568bfe838bec203e37223724118101))
+
+- **finding**: Make Location hash able
+  ([`0688840`](https://github.com/anaticulae/protoerror/commit/0688840f810f3cc79691a7f74accb1f47954ef72))
+
+- **solution**: Add method to create `Solver` from list of `Solution`
+  ([`d006e46`](https://github.com/anaticulae/protoerror/commit/d006e46942269ea55396804aa2bb4ac4b58d050f))
+
+### Refactoring
+
+- **imports**: Organize imports
+  ([`4ee00bd`](https://github.com/anaticulae/protoerror/commit/4ee00bdcfebba38b0e2f9f0d81ec87cf3fcaff05))
+
+
+## v0.2.5 (2019-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e0421a6`](https://github.com/anaticulae/protoerror/commit/e0421a6b77765673a1a4d44db74206aa1de4d905))
+
+
+## v0.2.4 (2019-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f283706`](https://github.com/anaticulae/protoerror/commit/f283706339d65a39a04e9209561b28a8c1502559))
+
+
+## v0.2.3 (2019-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0e3490f`](https://github.com/anaticulae/protoerror/commit/0e3490f991a3275025afcad59e92301f4affe216))
+
+
+## v0.2.2 (2019-09-14)
+
+### Bug Fixes
+
+- **linter**: Overwrite linter result files instead of returning error
+  ([`06aa9b4`](https://github.com/anaticulae/protoerror/commit/06aa9b4b051529c70daf63c72a28d25414f1ce1d))
+
+
+## v0.2.1 (2019-09-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`27d81ef`](https://github.com/anaticulae/protoerror/commit/27d81efe73eff6eb3c457a854f45379fa89140d7))
+
+- **test**: Cleanup test code
+  ([`7a958a0`](https://github.com/anaticulae/protoerror/commit/7a958a0e517a88a3b3ffe3371a2a77901bb79162))
+
+### Features
+
+- **linter**: Add method to extract linter result without writing to file space
+  ([`335a763`](https://github.com/anaticulae/protoerror/commit/335a7631588974fc84bee987493b3686595f8d65))
+
+- **linter**: Add option to write multiple findings only once
+  ([`3835ba1`](https://github.com/anaticulae/protoerror/commit/3835ba11279ea0b67c0388baf542eeb71ed8807b))
+
+
+## v0.2.0 (2019-09-11)
+
+### Features
+
+- **core**: Add public API
+  ([`4036da0`](https://github.com/anaticulae/protoerror/commit/4036da07413a3af80eb7997e3c12d692b1f56efa))
+
+
+## v0.1.1 (2019-09-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`8dca520`](https://github.com/anaticulae/protoerror/commit/8dca52030f206172fb872dc469d108ea68510982))
+
+
+## v0.1.0 (2019-09-10)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3c72c0d`](https://github.com/anaticulae/protoerror/commit/3c72c0de97efec35a5904bd14a9e9ceb797f1d5b))
+
+### Features
+
+- **config**: Add method to load and save MessageStatus
+  ([`c70ffb9`](https://github.com/anaticulae/protoerror/commit/c70ffb99240bcea0efdd8d1e15faf792d329d0ad))
+
+- **core**: Add checker, finding and linter
+  ([`c5fb8ef`](https://github.com/anaticulae/protoerror/commit/c5fb8ef3a7c778466060fec15f5f010ea6e249b4))
+
+- **finding**: Add active and confidence flag to control presentation mode
+  ([`5c376f6`](https://github.com/anaticulae/protoerror/commit/5c376f6f5454560b1abbd33846dc20001e0c192d))
+
+- **finding**: Add Location to define error location in document
+  ([`2cc528e`](https://github.com/anaticulae/protoerror/commit/2cc528e841da95a5f226efe129c34b0d8a273f98))
+
+- **linter**: Make linter thread safe
+  ([`1514ab6`](https://github.com/anaticulae/protoerror/commit/1514ab64730eefe31982bc267af674e4fedb7ff7))
+
+- **messages**: Add message definition and method to parse msgid's
+  ([`ec75f61`](https://github.com/anaticulae/protoerror/commit/ec75f61e5a97a0644349d190f6ae28e5aaa64b40))
+
+
+## v0.0.0 (2019-09-09)
+
+- Initial Release
