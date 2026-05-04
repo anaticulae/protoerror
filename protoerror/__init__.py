@@ -9,7 +9,7 @@
 """Protocol
 ========
 
-The `protocol` library supports logging errors and giving advices how
+The `protoerror` library supports logging errors and giving advices how
 to solve this errors.
 """
 

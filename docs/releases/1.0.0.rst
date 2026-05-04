@@ -24,11 +24,11 @@ RP 1.0.0
 * [x] add enabler to send question
 
     # enable if more than 10 items on a page occurs
-    QUESTION_4550_ENABLE = protocol.pagemore(10)
+    QUESTION_4550_ENABLE = protoerror.pagemore(10)
 
     # enable one times if finding occurs more than `10` times in the whole
     # document
-    QUESTION_4550_ENABLE = protocol.documore(10)
+    QUESTION_4550_ENABLE = protoerror.documore(10)
 
 code quality
 ------------

@@ -401,7 +401,7 @@ def from_modules(
 
 def module_list(modulename: list) -> list:
     r"""\
-    >>> import protocol.simple; protocol.simple.run(protocol.simple)
+    >>> import protoerror.simple; protoerror.simple.run(protoerror.simple)
     ('[]\n', '[]\n')
     """
     if isinstance(modulename, str):

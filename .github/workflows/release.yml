@@ -27,7 +27,7 @@ jobs:
         run: |
           git config --global user.name "Helmut Konrad Schewe"
           git config --global user.email "helmutus@outlook.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/anaticulae/protocol.git
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/anaticulae/protoerror.git
 
       - name: Release and Push
         run: |

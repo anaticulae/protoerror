@@ -10,7 +10,7 @@
 
 .. code-block :: python
 
-    linter = protocol.from_file(__file__)
+    linter = protoerror.from_file(__file__)
 """
 
 import protoerror  # pylint:disable=W0611

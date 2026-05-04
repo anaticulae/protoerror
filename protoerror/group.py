@@ -45,7 +45,7 @@ def filter_mark(items: iamraw.Findings, shortcut: str) -> iamraw.Findings:
 
     Args:
         items(iamraw.Findings): list of findings
-        shortcut(str): shortcut of protocol.location, w word, p page,
+        shortcut(str): shortcut of protoerror.location, w word, p page,
                        ol oneline, etc.
     Returns:
         filtered, sorted list of `Findings`
