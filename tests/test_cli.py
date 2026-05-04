@@ -9,7 +9,7 @@
 
 import os
 
-import utila
+import utilo
 
 import tests
 
@@ -20,4 +20,4 @@ def test_cli_optimize(dumped_findings, mp):
     cmd = f'--optimize -i {dumped_findings} -o {dumped_findings}'
     tests.run(cmd, mp=mp)
     assert os.path.exists(optimized)
-    assert len(utila.file_list(optimized)) == 3
+    assert len(utilo.file_list(optimized)) == 3

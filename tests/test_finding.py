@@ -9,7 +9,7 @@
 
 import iamraw
 import pytest
-import utila
+import utilo
 
 import protoerror
 
@@ -44,7 +44,7 @@ def test_finding_number_unique(linter_withlocation, td):
     loaded = protoerror.findings_from_path(root)
     assert len(loaded) == 3
 
-    flat = utila.flat([item.content for item in loaded])
+    flat = utilo.flat([item.content for item in loaded])
     for item in flat:
         assert item.number != negative_default, item
 

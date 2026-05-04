@@ -13,7 +13,7 @@ import os
 
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 import protoerror
 
@@ -26,7 +26,7 @@ def write_grouped(
 ) -> list:
     result = []
     grouped = protoerror.bypage(findings)
-    writer = utila.file_replace if overwrite else utila.file_create
+    writer = utilo.file_replace if overwrite else utilo.file_create
     for item in grouped:
         page = fname(item.page)
         outpath = os.path.join(dest, page)
@@ -47,13 +47,13 @@ def load_grouped(
     if pages is None:
         # load all findings
         pages = [
-            pagenumber(item, none=True) for item in utila.file_list(source)
+            pagenumber(item, none=True) for item in utilo.file_list(source)
         ]
         # remove invalid file names
-        pages = utila.notnone(pages)
+        pages = utilo.notnone(pages)
     # yaml parsing is cpu bound, therefore we need a process pool instead
     # of thread pool.
-    executor = utila.select_executor()
+    executor = utilo.select_executor()
     result = []
     with executor(max_workers=worker) as executor:
         todo = {

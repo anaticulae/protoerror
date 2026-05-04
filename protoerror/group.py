@@ -11,7 +11,7 @@ import collections
 import contextlib
 
 import iamraw
-import utila
+import utilo
 
 import protoerror
 
@@ -53,13 +53,13 @@ def filter_mark(items: iamraw.Findings, shortcut: str) -> iamraw.Findings:
     for item in items:
         if item.location:
             continue
-        utila.error(f'missing location: {item}')
+        utilo.error(f'missing location: {item}')
     items = [finding for finding in items if finding.location]
     selected = []
     for item in items:
         with contextlib.suppress(AttributeError):
             if not isinstance(value(item.location), int):
-                utila.debug(f'invalid location: {item.location}, require int.')
+                utilo.debug(f'invalid location: {item.location}, require int.')
                 continue
             if item.location.shortcut == shortcut:
                 selected.append(item)
@@ -76,7 +76,7 @@ def value(location) -> int:
             return location.line
     if location.page is not None:
         return location.page
-    return utila.INF
+    return utilo.INF
 
 
 def words(items: iamraw.Findings) -> iamraw.Findings:

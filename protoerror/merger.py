@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import protoerror
 
@@ -19,7 +19,7 @@ def merge_findings(findings):
     2. Group by message id
     3. Merge equal neighbors
     """
-    ranged, notranged = utila.partition(
+    ranged, notranged = utilo.partition(
         key=lambda x: x.location.shortcut == 'r',
         items=findings,
     )
@@ -37,7 +37,7 @@ def merge_equal_findingid(findings):
     if not findings:
         return []
     # remove findings without lines, cause we carn't merge them
-    locations, nolines = utila.partition(
+    locations, nolines = utilo.partition(
         lambda x: x.location.line is not None,
         findings,
     )

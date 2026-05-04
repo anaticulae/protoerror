@@ -11,7 +11,7 @@ import collections
 import importlib
 import inspect
 
-import utila
+import utilo
 
 RESULT_EMPTY = '[]', '[]'
 
@@ -35,8 +35,8 @@ def skip_method(msg: str = '', methodstart='check_'):
     """\
     >>> def magic_spell():
     ...     skip_method('No enough mana.', methodstart='magic')
-    >>> import utila
-    >>> with utila.level_tmp(utila.Level.DEBUG):
+    >>> import utilo
+    >>> with utilo.level_tmp(utilo.Level.DEBUG):
     ...     magic_spell()
           No enough mana.
           skip: magic_spell
@@ -45,5 +45,5 @@ def skip_method(msg: str = '', methodstart='check_'):
     caller = [item.function for item in inspect.getouterframes(frame)[0:5]]
     caller = [item for item in caller if methodstart in item]
     caller = ' '.join(caller)
-    utila.debug(msg)
-    utila.debug(f'skip: {caller}')
+    utilo.debug(msg)
+    utilo.debug(f'skip: {caller}')

@@ -12,7 +12,7 @@ import os
 
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 import protoerror
 
@@ -26,19 +26,19 @@ def findings_from_path(
     """Load Findings from `path` directory and group them by page as
     `PageFindings`."""
     assert os.path.isdir(path), str(path)
-    files = utila.file_list(path, include='yaml', recursive=True)
+    files = utilo.file_list(path, include='yaml', recursive=True)
     if useronly:
         files = [
-            item for item in files if utila.file_name(item).endswith('_user')
+            item for item in files if utilo.file_name(item).endswith('_user')
         ]
     paths = [os.path.join(path, item) for item in files]
     # limit worker by max file count
-    worker = utila.mins(worker, len(files))
+    worker = utilo.mins(worker, len(files))
     # ensure to have at least one worker when collection now file
-    worker = utila.maxs(1, worker)
+    worker = utilo.maxs(1, worker)
     # yaml parsing is cpu bound, therefore we need a process pool instead
     # of thread pool.
-    executor = utila.select_executor()
+    executor = utilo.select_executor()
     with executor(max_workers=worker) as executor:
         todo = {
             executor.submit(serializeraw.load_findings, path): path
@@ -56,8 +56,8 @@ def findings_from_path(
 
 
 def iter_findings(path: str):
-    files = utila.file_list(path, include='yaml', recursive=True)
-    files = [item for item in files if utila.file_name(item).endswith('_user')]
+    files = utilo.file_list(path, include='yaml', recursive=True)
+    files = [item for item in files if utilo.file_name(item).endswith('_user')]
     for item in files:
         location = os.path.join(path, item)
         findings = serializeraw.load_findings(location)
@@ -68,7 +68,7 @@ def hash_finding(item):
     try:
         return hash(item)
     except TypeError as error:
-        utila.error(f'could not hash finding: {item}')
+        utilo.error(f'could not hash finding: {item}')
         raise error
 
 
@@ -87,20 +87,20 @@ def make_finding_number_unique(path: str, private: bool = False) -> bool:
         False if no user file is in `path`.
     """
     assert os.path.isdir(path), str(path)
-    single = utila.Single()
+    single = utilo.Single()
     replaced = False
     for location, findings in iter_findings(path):
         for finding in findings:
             hashed = hash_finding(finding)
             if single.contains(hashed):
-                utila.error(f'duplicated finding: {finding}')
+                utilo.error(f'duplicated finding: {finding}')
                 finding.number = None  # None -> do not dump this finding
                 continue
             finding.number = hashed
         findings = [item for item in findings if item.number is not None]
         # TODO: REFACTOR LATER
         dumped = serializeraw.dump_findings(findings)
-        utila.file_replace(location, dumped, private=private)
+        utilo.file_replace(location, dumped, private=private)
         replaced = True
     return replaced
 
@@ -120,13 +120,13 @@ def finding_status_update(
             if finding.number != number:
                 continue
             if finding.solution is None:
-                utila.error(f'could not update status: {finding}')
+                utilo.error(f'could not update status: {finding}')
                 return False
             finding.solution.status = status
             dumped = serializeraw.dump_findings(findings)
-            utila.debug(f'number: {number}; status: {status};\n'
+            utilo.debug(f'number: {number}; status: {status};\n'
                         f'update: {location}')
-            utila.file_replace(location, dumped, private=private)
+            utilo.file_replace(location, dumped, private=private)
             return True
     return False
 
@@ -139,7 +139,7 @@ def finding_status(path: str, number: int) -> iamraw.ProblemStatus:
             if finding.number != number:
                 continue
             if finding.solution is None:
-                utila.error(f'could not get status: {finding}')
+                utilo.error(f'could not get status: {finding}')
                 return None
             return finding.solution.status
     return None

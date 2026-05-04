@@ -62,7 +62,7 @@ import re
 
 import iamraw
 import jinja2
-import utila
+import utilo
 
 import protoerror
 import protoerror.messages
@@ -161,7 +161,7 @@ def parse_solutions(  # pylint:disable=R1260
         try:
             title, message = value.split('\n\n', maxsplit=1)
         except ValueError:
-            utila.error(f'{name} requires newline between headline and content')
+            utilo.error(f'{name} requires newline between headline and content')
             raise
         label = f'{typ}{number}'
         item = iamraw.Text(title=title, msgid=label, description=message)
@@ -183,12 +183,12 @@ def should_skip(number: int, tests: set = None, skips: set = None) -> bool:
     tests = tests if tests is not None else {}
     skips = skips if skips is not None else {}
     if number in skips:
-        utila.log(f'skips: {number}')
+        utilo.log(f'skips: {number}')
         return True
     if tests:
         if number not in tests:
             return True
-        utila.log(f'select: {number}')
+        utilo.log(f'select: {number}')
     return False
 
 

@@ -10,7 +10,7 @@
 import functools
 
 import iamraw
-import utila
+import utilo
 
 import protoerror
 
@@ -43,7 +43,7 @@ def run(
     if findings_merge:
         result = protoerror.merge_findings(result)
     if before_dump:
-        result = utila.pass_required(
+        result = utilo.pass_required(
             before_dump,
             result=result,
             driver=driver,
@@ -65,7 +65,7 @@ def linting(
 ):
     failure = []
     for checker in checkers:
-        utila.debug(checker.__name__)
+        utilo.debug(checker.__name__)
         call = functools.partial(
             linter.add_finding,
             msgid=checker.msgid,
@@ -74,10 +74,10 @@ def linting(
         try:
             checker(call, driver)
         except Exception as error:  # pylint:disable=broad-except
-            utila.error(error)
+            utilo.error(error)
             failure.append(error)
         else:
-            utila.debug('done')
+            utilo.debug('done')
     if failure:
         first_failure = failure[0]
         raise RuntimeError('linter step error') from first_failure

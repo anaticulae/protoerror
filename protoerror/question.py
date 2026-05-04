@@ -12,7 +12,7 @@ import enum
 import re
 
 import iamraw
-import utila
+import utilo
 
 import protoerror
 
@@ -106,7 +106,7 @@ def documore(finding_count: int, yes: callable = None, no: callable = None):
 
 def answer_questions(path: str, questions: Questions) -> iamraw.Findings:
     findings = [item.content for item in protoerror.findings_from_path(path)]
-    findings = utila.flat(findings)
+    findings = utilo.flat(findings)
     grouped = protoerror.byid(findings)
     result = []
     for question in questions:

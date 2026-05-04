@@ -85,7 +85,7 @@ import contextlib
 
 import configo
 import iamraw
-import utila
+import utilo
 
 MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(default=35)
 MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(default=35)
@@ -121,7 +121,7 @@ def should_skip(decorated, document) -> bool:
     if document.pages is not None:
         small = document.pages < MAX_SMALL_PAGE_LENGTH
         medium = MAX_SMALL_PAGE_LENGTH <= document.pages < MAX_MEDIUM_PAGE_LENGTH
-        large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utila.INF
+        large = MAX_MEDIUM_PAGE_LENGTH <= document.pages < utilo.INF
     else:
         small, medium, large = False, False, False
     # deactivated method
@@ -255,7 +255,7 @@ def is_disabled_perpage(findings, method) -> bool:
     return False
 
 
-DOCINFO_PATTERN = utila.compiles(r"""
+DOCINFO_PATTERN = utilo.compiles(r"""
     ^
     (?P<typ>homework|bachelor|master|diss|habil|book|paper)?
     (?P<pages>\d{1,4})?

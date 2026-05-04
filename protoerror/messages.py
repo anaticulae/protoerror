@@ -42,7 +42,7 @@ MSG definition:
 
 import contextlib
 
-import utila
+import utilo
 
 MSGS = {
     'F0000': (
@@ -88,7 +88,7 @@ def parse_msgid(msgid: str, idonly: bool = False) -> tuple[str, int]:
     typ, number = msgid[0], int(msgid[1:])
     typ = typ.upper()
     assert typ in MSG_TYPES, (f'invalid msg type: {typ}; '
-                              f'use {utila.from_tuple(MSG_TYPES.keys())}')
+                              f'use {utilo.from_tuple(MSG_TYPES.keys())}')
     if idonly:
         return number
     return typ, number

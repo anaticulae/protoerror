@@ -12,7 +12,7 @@ import os
 import iamraw
 import pytest
 import serializeraw
-import utila
+import utilo
 
 import protoerror
 import tests.example.solver_with_error
@@ -44,7 +44,7 @@ def test_linter_write_unique(linter: protoerror.Linter, td):  # pylint:disable=W
     for _ in range(10):
         linter.add_finding(location=None, msgid='F0005', confidence=0.5)
 
-    unique_findings = utila.unique(linter.findings)
+    unique_findings = utilo.unique(linter.findings)
     after = len(unique_findings)
 
     # one element was added by range
@@ -60,7 +60,8 @@ def test_linter_linter_load_result(linter: protoerror.Linter, td):  # pylint:dis
     user = linter.result(unique=True)
     assert user  # ensure that developer contain some elements
 
-    loaded = serializeraw.load_findings(os.path.join(root, protoerror.USER_FILE))
+    loaded = serializeraw.load_findings(os.path.join(root,
+                                                     protoerror.USER_FILE))
     assert loaded == user
 
 
@@ -113,7 +114,7 @@ def test_linter_from_file_invalid():
 
 def test_linter_from_file_no_status(capsys):
     example = os.path.join(protoerror.ROOT, 'tests/example/solver_nostatus.py')
-    with utila.level_tmp(utila.Level.DEBUG):
+    with utilo.level_tmp(utilo.Level.DEBUG):
         created = protoerror.from_file(example)
     assert created.solver is not None
 

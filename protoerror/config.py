@@ -23,7 +23,7 @@ example:
 
 import dataclasses
 
-import utila
+import utilo
 
 
 @dataclasses.dataclass  # pylint:disable=R0903
@@ -50,7 +50,7 @@ MessageStatusList = list[MessageStatus]
 
 
 def load(path: str) -> MessageStatusList:
-    loaded = utila.yaml_load(path)
+    loaded = utilo.yaml_load(path)
     result = []
     for item in loaded:
         msgid = item.get('msgid')
@@ -74,5 +74,5 @@ def save(messages: MessageStatusList, path: str):
         if item.confidence:
             raw['confidence'] = item.confidence
         result.append(raw)
-    dumped = utila.yaml_dump(result)
-    utila.file_create(path, dumped)
+    dumped = utilo.yaml_dump(result)
+    utilo.file_create(path, dumped)

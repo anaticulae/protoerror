@@ -9,20 +9,20 @@
 
 import functools
 
-import utilatest
+import utilotest
 
 import protoerror.cli
 
 #pylint: disable=invalid-name
 run = functools.partial(
-    utilatest.run_command,
+    utilotest.run_command,
     main=protoerror.cli.main,
     process='findings',
     expect=True,
 )
 
 failure = functools.partial(
-    utilatest.run_command,
+    utilotest.run_command,
     main=protoerror.cli.main,
     process='findings',
     expect=False,

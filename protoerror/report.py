@@ -40,7 +40,7 @@ import os
 import sys
 import textwrap
 
-import utila
+import utilo
 
 import protoerror
 
@@ -70,7 +70,7 @@ def show_solution(root, features, choice, short: bool = False):
                 continue
             print_solution(check, solutions, short=short, single=True)
             return
-    utila.error(f'could not find solution: {choice}')
+    utilo.error(f'could not find solution: {choice}')
 
 
 def print_features(root, features, choice, short: bool = False):
@@ -82,13 +82,13 @@ def print_features(root, features, choice, short: bool = False):
         if choice and title != choice:
             continue
         hit = True
-        utila.log(f'<<{title}>>')
+        utilo.log(f'<<{title}>>')
         for check in sorted(checkers):
             print_solution(check, solutions, short=short)
-        utila.log()
+        utilo.log()
     if not hit:
-        utila.error(f'could not find feature: {choice}')
-        sys.exit(utila.FAILURE)
+        utilo.error(f'could not find feature: {choice}')
+        sys.exit(utilo.FAILURE)
 
 
 def print_solution(
@@ -102,18 +102,18 @@ def print_solution(
     try:
         title, description = solutions[check]
     except KeyError:
-        utila.log(f'{indent}~{check}:NO_SOLUTION~')
+        utilo.log(f'{indent}~{check}:NO_SOLUTION~')
         return
     if single:
-        utila.log(title)
+        utilo.log(title)
     else:
-        utila.log(f'{indent}~{check}:{title}~')
+        utilo.log(f'{indent}~{check}:{title}~')
     if single:
-        utila.log()
+        utilo.log()
     if not short:
         prefix = '\t' if not single else ''
-        utila.log(textwrap.indent(description.strip(), prefix))
-        utila.log()
+        utilo.log(textwrap.indent(description.strip(), prefix))
+        utilo.log()
 
 
 def run(args, root, features):
@@ -124,12 +124,12 @@ def run(args, root, features):
     short = args.get('short', False)
     if 'list' in choice:
         show_list(root, features, short=short)
-    elif utila.isnumber(choice):
+    elif utilo.isnumber(choice):
         choice = int(choice)
         show_solution(root, features, choice, short=short)
     else:
         show_feature(root, features, choice)
-    sys.exit(utila.SUCCESS)
+    sys.exit(utilo.SUCCESS)
 
 
 def integrate_cli(parser):

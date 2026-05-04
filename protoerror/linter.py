@@ -28,7 +28,7 @@ import threading
 
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 import protoerror.config
 import protoerror.control
@@ -107,7 +107,7 @@ class Linter:
                     only=only,
                     skip=skip,
             ):
-                utila.debug(f'skip finding in section: {msgid}, {location}')
+                utilo.debug(f'skip finding in section: {msgid}, {location}')
                 # do not add this finding
                 return
         # Determine a possible solution
@@ -137,7 +137,7 @@ class Linter:
 
     def count_findings(self, msgid: str):
         with self.lock:
-            counted = utila.counts(self.findings, lambda x: x.msgid == msgid)
+            counted = utilo.counts(self.findings, lambda x: x.msgid == msgid)
         return counted
 
     def check_findings(self, check: callable):
@@ -188,7 +188,7 @@ class Linter:
         with self.lock:
             result = self.findings[:]
         if unique:
-            result = utila.unique(result)
+            result = utilo.unique(result)
         return result
 
     def register_checker(self, checker):
@@ -200,7 +200,7 @@ def split_userdeveloper(items: list, checkers: list) -> tuple:
     if not checkers:
         checkers = []
     # move inactive findings to developer
-    user, developer = utila.partition(items=items, key=lambda item: item.active)
+    user, developer = utilo.partition(items=items, key=lambda item: item.active)
     perpage_disabled = perpage_disable(user, checkers)
     # move disabled findings to developer findings, do not show it to the
     # user.
@@ -262,7 +262,7 @@ def dump_result(
         Result with dumped user ander developer result in yaml format.
     """
     if unique:
-        items = utila.unique(items)
+        items = utilo.unique(items)
 
     user, developer = split_userdeveloper(items, checkers=checkers)
 
@@ -299,10 +299,10 @@ def write_result(
     dumped_user, dumped_developer = dump_result(result, unique=unique)
     if user_file:
         user_outpath = os.path.join(path, user_file)
-        utila.file_replace(user_outpath, dumped_user, private=private)
+        utilo.file_replace(user_outpath, dumped_user, private=private)
     if dev_file:
         developer_outpath = os.path.join(path, dev_file)
-        utila.file_replace(developer_outpath, dumped_developer, private=private)
+        utilo.file_replace(developer_outpath, dumped_developer, private=private)
 
 
 def from_file(path: str, document: iamraw.DocInfo = None) -> Linter:
@@ -321,7 +321,7 @@ def from_file(path: str, document: iamraw.DocInfo = None) -> Linter:
     try:
         status = module.STATUS
     except AttributeError:
-        utila.debug(f'no `STATUS` provided in {path}')
+        utilo.debug(f'no `STATUS` provided in {path}')
         status = []
     result = from_solution(
         solution,
@@ -363,7 +363,7 @@ def from_module(
 
 
 def from_modules(
-    modules: utila.Strings,
+    modules: utilo.Strings,
     tests: set = None,
     skips: set = None,
     document: iamraw.DocInfo = None,

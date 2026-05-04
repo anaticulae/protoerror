@@ -11,40 +11,40 @@ import os
 import sys
 
 import serializeraw
-import utila
+import utilo
 
 import protoerror
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     inpath, outpath, pages, action = evaluate()
     for path in inpath:
-        if not utila.exists(path):
-            utila.error(f'input does not exists: {path}')
-            return utila.FAILURE
-    if not utila.exists(outpath):
-        utila.error(f'output does not exists: {outpath}')
-        return utila.FAILURE
+        if not utilo.exists(path):
+            utilo.error(f'input does not exists: {path}')
+            return utilo.FAILURE
+    if not utilo.exists(outpath):
+        utilo.error(f'output does not exists: {outpath}')
+        return utilo.FAILURE
     if action == 'optimize':
         optimize(srcs=inpath, dest=outpath, pages=pages)
-        return utila.SUCCESS
-    return utila.INVALID_COMMAND
+        return utilo.SUCCESS
+    return utilo.INVALID_COMMAND
 
 
 def optimize(srcs: str, dest: str, pages: tuple = None, msgid: set = None):
     findings = []
     for src in srcs:
-        utila.log(f'load findings from: {src}', preserve_newlines=False)
+        utilo.log(f'load findings from: {src}', preserve_newlines=False)
     findings = serializeraw.findings_from_path(
         path=srcs,
         msgid=msgid,
         pages=pages,
     )
-    findings = utila.flatten_content(findings)
+    findings = utilo.flatten_content(findings)
     dest = os.path.join(dest, '__optimized__')
     os.makedirs(dest, exist_ok=True)
-    utila.log(
+    utilo.log(
         f'write optimized findings to: {dest}',
         preserve_newlines=False,
     )
@@ -52,14 +52,14 @@ def optimize(srcs: str, dest: str, pages: tuple = None, msgid: set = None):
 
 
 def evaluate() -> tuple:
-    parser = utila.cli.create_parser(
+    parser = utilo.cli.create_parser(
         todo=[
-            utila.cli.Flag(
+            utilo.cli.Flag(
                 longcut='optimize',
                 message='read findings and write to page dependent structure',
             ),
         ],
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             inputparameter=True,
             outputparameter=True,
             multiprocessed=False,
@@ -72,17 +72,17 @@ def evaluate() -> tuple:
         version=protoerror.__version__,
         prog='findings',
     )
-    args = utila.parse(parser)
+    args = utilo.parse(parser)
     action = ''
     if args['optimize']:
         action = 'optimize'
     if not action:
-        utila.error('nothing todo')
-        sys.exit(utila.INVALID_COMMAND)
+        utilo.error('nothing todo')
+        sys.exit(utilo.INVALID_COMMAND)
     choice = (
         args['input'],
         args['output'],
-        utila.parse_pages(','.join(args['pages'])),  # DIRTY
+        utilo.parse_pages(','.join(args['pages'])),  # DIRTY
         action,
     )
     return choice

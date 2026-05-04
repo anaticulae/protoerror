@@ -10,7 +10,7 @@
 import os
 
 import pytest
-import utilatest
+import utilotest
 
 import protoerror
 
@@ -21,7 +21,7 @@ def run_report(cmd: str, capsys):
     args = dict(show=cmd)
     with pytest.raises(SystemExit):
         run(args)
-    stdout = utilatest.stdout(capsys)
+    stdout = utilotest.stdout(capsys)
     return stdout
 
 
