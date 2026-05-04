@@ -83,12 +83,12 @@ different advice when using MSWord instead of Latex:
 
 import contextlib
 
-import configo
+import configos
 import iamraw
 import utilo
 
-MAX_SMALL_PAGE_LENGTH = configo.HV_INT_PLUS(default=35)
-MAX_MEDIUM_PAGE_LENGTH = configo.HV_INT_PLUS(default=35)
+MAX_SMALL_PAGE_LENGTH = configos.HV_INT_PLUS(default=35)
+MAX_MEDIUM_PAGE_LENGTH = configos.HV_INT_PLUS(default=35)
 
 DOCTYPES = [item.name.lower() for item in iamraw.DocumentType]
 
