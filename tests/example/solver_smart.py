@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import protocol
+import protoerror
 
 SOLUTION_1230 = """\
 Titleseite enthält keinen Prüfer
@@ -22,8 +22,8 @@ Message.
 """
 
 
-@protocol.disable_perpage(morethan=10)
-@protocol.confidence(0.9)
+@protoerror.disable_perpage(morethan=10)
+@protoerror.confidence(0.9)
 def check_1230_author_matrikel_existence(linter, titlepage):
     if titlepage is None:
         return

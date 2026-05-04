@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import protocol
+import protoerror
 import tests.example.solver_question
 
 
 def test_question_parser():
-    parsed = protocol.parse_questions(tests.example.solver_question)
+    parsed = protoerror.parse_questions(tests.example.solver_question)
     assert len(parsed) == 2
 
     assert parsed[0].msgid == '1337'
@@ -28,16 +28,16 @@ def test_question_parser():
 
 
 def test_question_str():
-    parsed = protocol.parse_questions(tests.example.solver_question)
-    from_str = protocol.parse_questions('tests.example.solver_question')
+    parsed = protoerror.parse_questions(tests.example.solver_question)
+    from_str = protoerror.parse_questions('tests.example.solver_question')
     assert from_str == parsed
 
 
 def test_answer(td, linter_withlocation):
     linter_withlocation.write(td.tmpdir)
-    questions = protocol.parse_questions(tests.example.solver_question)
+    questions = protoerror.parse_questions(tests.example.solver_question)
 
-    result = protocol.answer_questions(td.tmpdir, questions)
+    result = protoerror.answer_questions(td.tmpdir, questions)
     assert len(result) >= 1
 
-    protocol.write_result(result, td.tmpdir, user_file='answer.yaml')
+    protoerror.write_result(result, td.tmpdir, user_file='answer.yaml')

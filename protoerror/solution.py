@@ -64,9 +64,9 @@ import iamraw
 import jinja2
 import utila
 
-import protocol
-import protocol.messages
-import protocol.utils
+import protoerror
+import protoerror.messages
+import protoerror.utils
 
 Validators = list[callable]
 
@@ -78,15 +78,15 @@ class Solver:
 
     def add_solution(self, msgid: str, solution: iamraw.Solution):
         assert msgid, solution
-        msgid = protocol.messages.parse_msgid(msgid, idonly=True)
+        msgid = protoerror.messages.parse_msgid(msgid, idonly=True)
         self.solutions[msgid] = solution
 
     def append(self, item: iamraw.Solution):
-        msgid = protocol.messages.parse_msgid(item.msgid, idonly=True)
+        msgid = protoerror.messages.parse_msgid(item.msgid, idonly=True)
         self.solutions[msgid] = item
 
     def solution(self, msgid: str, **kwargs) -> iamraw.Solution:
-        msgid = protocol.messages.parse_msgid(msgid, idonly=True)
+        msgid = protoerror.messages.parse_msgid(msgid, idonly=True)
         try:
             result = copy.deepcopy(self.solutions[msgid])
         except KeyError:
@@ -139,7 +139,7 @@ def parse_solutions(  # pylint:disable=R1260
     skips: set = None,
 ) -> iamraw.Solutions:
     if isinstance(module, str):
-        module = protocol.utils.module_fromname(module)
+        module = protoerror.utils.module_fromname(module)
     result = []
     for name, value in vars(module).items():
         # try different pattern to find solution, presented to the user
@@ -154,10 +154,10 @@ def parse_solutions(  # pylint:disable=R1260
         if should_skip(number, tests, skips):
             continue
         try:
-            typ = matched['type'] or protocol.TYPE_DEFAULT
+            typ = matched['type'] or protoerror.TYPE_DEFAULT
         except IndexError:
             # TODO: ADD DEFAULT LEVEL TO IAMRAW?
-            typ = protocol.TYPE_DEFAULT
+            typ = protoerror.TYPE_DEFAULT
         try:
             title, message = value.split('\n\n', maxsplit=1)
         except ValueError:
@@ -195,7 +195,7 @@ def should_skip(number: int, tests: set = None, skips: set = None) -> bool:
 def parse_checkers(module, tests: set = None, skips: set = None) -> Validators:
     """Parse def check_{number}_{name} methods out of a module."""
     if isinstance(module, str):
-        module = protocol.utils.module_fromname(module)
+        module = protoerror.utils.module_fromname(module)
     result = []
     for name, value in vars(module).items():
         parsed = parse_msgid(name)

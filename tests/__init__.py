@@ -11,19 +11,19 @@ import functools
 
 import utilatest
 
-import protocol.cli
+import protoerror.cli
 
 #pylint: disable=invalid-name
 run = functools.partial(
     utilatest.run_command,
-    main=protocol.cli.main,
+    main=protoerror.cli.main,
     process='findings',
     expect=True,
 )
 
 failure = functools.partial(
     utilatest.run_command,
-    main=protocol.cli.main,
+    main=protoerror.cli.main,
     process='findings',
     expect=False,
 )

@@ -7,16 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import protocol
+import protoerror
 
 
 def test_group_bypage_empty():
-    assert protocol.bypage([]) == []
+    assert protoerror.bypage([]) == []
 
 
 def test_group_bypage(linter_withlocation):
     findings = linter_withlocation.result()
-    result = protocol.bypage(findings)
+    result = protoerror.bypage(findings)
     assert len(result) == 3
     assert len(result[2]) == 4
 
@@ -26,18 +26,18 @@ def test_group_bypage(linter_withlocation):
 
 def test_group_filter_words(linter_withlocation):
     todo = linter_withlocation.findings
-    words = protocol.words(todo)
+    words = protoerror.words(todo)
     assert len(words) == 1
 
 
 def test_group_filter_lines(linter_withlocation):
     todo = linter_withlocation.findings
-    words = protocol.lines(todo)
+    words = protoerror.lines(todo)
     assert len(words) == 3
 
 
 def test_group_select_page(linter_withlocation):
     findings = linter_withlocation.findings
-    assert len(protocol.select_pages(findings, pages={0, 5})) == 5
-    assert len(protocol.select_pages(findings, pages=2)) == 1
-    assert len(protocol.select_pages(findings, pages=None)) == 6
+    assert len(protoerror.select_pages(findings, pages={0, 5})) == 5
+    assert len(protoerror.select_pages(findings, pages=2)) == 1
+    assert len(protoerror.select_pages(findings, pages=None)) == 6

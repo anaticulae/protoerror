@@ -9,8 +9,8 @@
 
 import iamraw
 
-from protocol import Solver
-from protocol.solution import SOLUTION
+from protoerror import Solver
+from protoerror.solution import SOLUTION
 
 
 def test_solution_solver(solver: Solver):  # pylint:disable=W0621

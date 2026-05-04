@@ -13,7 +13,7 @@
     linter = protocol.from_file(__file__)
 """
 
-import protocol  # pylint:disable=W0611
+import protoerror  # pylint:disable=W0611
 
 SOLUTION = []
 STATUS = []

@@ -42,7 +42,7 @@ import textwrap
 
 import utila
 
-import protocol
+import protoerror
 
 
 def integrate(root: str, features: str):
@@ -187,9 +187,9 @@ def parse_python(root: str, feature: str) -> list:
 
 def parse_feature(path: str):
     # assert os.path.exists(path), str(path)
-    checkers = protocol.parse_checkers(path)
+    checkers = protoerror.parse_checkers(path)
     checkers = [item.msgid for item in checkers]
-    solutions = protocol.parse_solutions(path)
+    solutions = protoerror.parse_solutions(path)
     solutions = {
         msgid(item.msgid): (item.title, item.description) for item in solutions
     }

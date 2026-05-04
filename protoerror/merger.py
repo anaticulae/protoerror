@@ -9,7 +9,7 @@
 
 import utila
 
-import protocol
+import protoerror
 
 
 def merge_findings(findings):
@@ -24,9 +24,9 @@ def merge_findings(findings):
         items=findings,
     )
     result = list(notranged)
-    paged = protocol.bypage(ranged)
+    paged = protoerror.bypage(ranged)
     for page in paged:
-        msgid = protocol.byid(page)
+        msgid = protoerror.byid(page)
         for messagegroup in msgid.values():
             merged = merge_equal_findingid(messagegroup)
             result.extend(merged)
@@ -63,7 +63,7 @@ def merge_equal_findingid(findings):
         before.location.line_end = linebefore + 1
     # update finding number
     for finding in result:
-        finding.number = protocol.finding.hash_finding(finding)
+        finding.number = protoerror.finding.hash_finding(finding)
     # append no lines
     findings.extend(nolines)
     return result

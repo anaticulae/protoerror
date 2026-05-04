@@ -11,18 +11,18 @@ import iamraw
 import pytest
 import utila
 
-import protocol
+import protoerror
 
 
 def test_finding_from_path(linter_withlocation, td):
     root = td.tmpdir
-    protocol.write_result(
+    protoerror.write_result(
         linter_withlocation.result(),
         root,
         user_file='first_user.yaml',
         dev_file=None,
     )
-    loaded = protocol.findings_from_path(root)
+    loaded = protoerror.findings_from_path(root)
     assert len(loaded) == 3
 
 
@@ -33,15 +33,15 @@ def test_finding_number_unique(linter_withlocation, td):
         findings = linter_withlocation.result()
         for single in findings:
             single.number = negative_default
-        protocol.write_result(
+        protoerror.write_result(
             result=findings,
             path=root,
             user_file=item,
             dev_file=None,
         )
-    assert protocol.make_finding_number_unique(root)
+    assert protoerror.make_finding_number_unique(root)
 
-    loaded = protocol.findings_from_path(root)
+    loaded = protoerror.findings_from_path(root)
     assert len(loaded) == 3
 
     flat = utila.flat([item.content for item in loaded])
@@ -52,7 +52,7 @@ def test_finding_number_unique(linter_withlocation, td):
 def test_finding_update_status(linter_withlocation, td):
     root = td.tmpdir
     result = linter_withlocation.result()
-    protocol.write_result(
+    protoerror.write_result(
         result=result,
         path=root,
         user_file='first_user.yaml',
@@ -60,14 +60,14 @@ def test_finding_update_status(linter_withlocation, td):
     )
     # position zero may change when hashing or dataclass `Finding` changes.
     number = result[0].number
-    current = protocol.finding_status(root, number)
+    current = protoerror.finding_status(root, number)
     assert current != iamraw.ProblemStatus.SOLVED
-    assert protocol.finding_status_update(
+    assert protoerror.finding_status_update(
         root,
         number,
         iamraw.ProblemStatus.SOLVED,
     )
-    current = protocol.finding_status(root, number)
+    current = protoerror.finding_status(root, number)
     assert current == iamraw.ProblemStatus.SOLVED
 
 
@@ -80,4 +80,4 @@ def test_finding_assert_on_not_fully_replaced():
     ]
     # yapf:enable
     with pytest.raises(AssertionError):
-        protocol.dump_result(result)
+        protoerror.dump_result(result)

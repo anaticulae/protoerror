@@ -9,32 +9,32 @@
 
 import iamraw
 
-import protocol
+import protoerror
 
 
-@protocol.homework
-@protocol.bachelor
-@protocol.master
-@protocol.dissertation
-@protocol.book
+@protoerror.homework
+@protoerror.bachelor
+@protoerror.master
+@protoerror.dissertation
+@protoerror.book
 def check_1234_many_decorator(linter, _):  # pylint:disable=W0613
     linter()
 
 
-@protocol.nolarge
-@protocol.nomedium
-@protocol.nosmall
+@protoerror.nolarge
+@protoerror.nomedium
+@protoerror.nosmall
 def check_1235_more_decorators(linter, _):  # pylint:disable=W0613
     linter()
 
 
-@protocol.book
-@protocol.disable_perpage(morethan=10)
+@protoerror.book
+@protoerror.disable_perpage(morethan=10)
 def check_1236_book_only_check(linter, _):  # pylint:disable=W0613
     linter()
 
 
-@protocol.disable_perpage(morethan=10)
+@protoerror.disable_perpage(morethan=10)
 def check_1237_more_than(linter, _):  # pylint:disable=W0613
     for index in range(15):
         linter(location=iamraw.Location.from_sentence(

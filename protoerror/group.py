@@ -13,7 +13,7 @@ import contextlib
 import iamraw
 import utila
 
-import protocol
+import protoerror
 
 
 def bypage(items: iamraw.Findings) -> iamraw.PageFindings:
@@ -92,7 +92,7 @@ def sentences(items: iamraw.Findings) -> iamraw.Findings:
 
 
 def ranged(items: iamraw.Findings) -> iamraw.Findings:
-    return protocol.filter_mark(items, shortcut='r')
+    return protoerror.filter_mark(items, shortcut='r')
 
 
 def select_findings(

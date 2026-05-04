@@ -10,21 +10,21 @@
 import iamraw
 import pytest
 
-import protocol
-import protocol.solution
+import protoerror
+import protoerror.solution
 
 
 @pytest.fixture
-def solver() -> protocol.Solver:
-    result = protocol.Solver()
-    for key, value in protocol.solution.SOLUTION.items():
+def solver() -> protoerror.Solver:
+    result = protoerror.Solver()
+    for key, value in protoerror.solution.SOLUTION.items():
         result.add_solution(key, value)
     return result
 
 
 @pytest.fixture
-def template_solver() -> protocol.Solver:
-    result = protocol.Solver()
+def template_solver() -> protoerror.Solver:
+    result = protoerror.Solver()
     result.append(
         iamraw.Text(
             number=10,
@@ -36,8 +36,8 @@ def template_solver() -> protocol.Solver:
 
 
 @pytest.fixture
-def linter_withlocation(solver) -> protocol.Linter:  # pylint:disable=W0621
-    result = protocol.Linter(solver=solver)
+def linter_withlocation(solver) -> protoerror.Linter:  # pylint:disable=W0621
+    result = protoerror.Linter(solver=solver)
 
     result.add_finding(
         location=iamraw.Location(page=2),

@@ -12,12 +12,12 @@ import functools
 import iamraw
 import pytest
 
-import protocol
+import protoerror
 
 
 def test_linter_with_decorators():
     source = 'tests.example.solver_with_decorator'
-    linter_ = protocol.from_module(source)
+    linter_ = protoerror.from_module(source)
     assert linter_
     assert linter_.solver
     document = iamraw.DocInfo(
@@ -26,8 +26,8 @@ def test_linter_with_decorators():
         generator=iamraw.Generator.MSWORD,
     )
     # parse checkers
-    checkers = protocol.parse_checkers(source)
-    checkers = protocol.filter_checkers(checkers, document)
+    checkers = protoerror.parse_checkers(source)
+    checkers = protoerror.filter_checkers(checkers, document)
     for checker in checkers:
         call = functools.partial(
             linter_.add_finding,
@@ -55,7 +55,7 @@ def test_linter_section_only(finding_location, expected):
         return True
 
     document = iamraw.DocInfo(pages=122, sections=sections)
-    linters = protocol.from_module(source, document=document)
+    linters = protoerror.from_module(source, document=document)
     assert linters.solver
     checkers = linters.checkerlist
     assert len(checkers) == 2

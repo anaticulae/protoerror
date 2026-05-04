@@ -30,11 +30,11 @@ import iamraw
 import serializeraw
 import utila
 
-import protocol.config
-import protocol.control
-import protocol.finding
-import protocol.solution
-import protocol.utils
+import protoerror.config
+import protoerror.control
+import protoerror.finding
+import protoerror.solution
+import protoerror.utils
 
 USER_FILE = 'user_user.yaml'
 DEVELOPER_FILE = 'developer_developer.yaml'
@@ -63,8 +63,8 @@ class Linter:
 
     def __init__(
         self,
-        solver: protocol.solution.Solver = None,
-        active: protocol.config.MessageStatusList = None,
+        solver: protoerror.solution.Solver = None,
+        active: protoerror.config.MessageStatusList = None,
         checkers: list = None,
         document: iamraw.DocInfo = None,
     ):
@@ -130,7 +130,7 @@ class Linter:
             solution=solution,
             active=active,
         )
-        finding.number = protocol.finding.hash_finding(finding)
+        finding.number = protoerror.finding.hash_finding(finding)
         # store finding
         with self.lock:
             self.findings.append(finding)
@@ -149,7 +149,7 @@ class Linter:
     def checkers(self):
         result = self.checkerlist
         if self.document:
-            result = protocol.filter_checkers(result, self.document)
+            result = protoerror.filter_checkers(result, self.document)
         return result
 
     def isactive(self, msgid, confidence):
@@ -214,19 +214,19 @@ def perpage_disable(findings, checkers):
     """Determine list of findings which are disabled by
     @disable-decorator."""
     findings = [item for item in findings if item.location is not None]
-    grouped = protocol.bypage(findings)
+    grouped = protoerror.bypage(findings)
     # bypage
     result = []
-    perpage = protocol.control.get_perpage(checkers)
+    perpage = protoerror.control.get_perpage(checkers)
     for pageitem in grouped:
-        paged = protocol.byid(pageitem.content)
+        paged = protoerror.byid(pageitem.content)
         for method in perpage:
             msgid = method.msgid
             try:
                 findings = paged[msgid]
             except KeyError:
                 continue
-            if not protocol.is_disabled_perpage(findings, method):
+            if not protoerror.is_disabled_perpage(findings, method):
                 # content is not disabled
                 continue
             result.extend(findings)
@@ -238,7 +238,7 @@ def only_skip(checkers):
     skip = collections.defaultdict(set)
     for item in checkers:
         msgid = item.msgid
-        item_only, item_skip = protocol.control.only_skip(item)
+        item_only, item_skip = protoerror.control.only_skip(item)
         only[msgid] |= item_only
         skip[msgid] |= item_skip
     only: dict = dict(only)
@@ -333,11 +333,11 @@ def from_file(path: str, document: iamraw.DocInfo = None) -> Linter:
 
 def from_solution(
     solutions: iamraw.Solutions,
-    statuses: protocol.config.MessageStatusList,
+    statuses: protoerror.config.MessageStatusList,
     checkers: list = None,
     document: iamraw.DocInfo = None,
 ) -> Linter:
-    solver = protocol.solution.Solver.fromlist(solutions)
+    solver = protoerror.solution.Solver.fromlist(solutions)
     result = Linter(
         solver,
         active=statuses,
@@ -376,21 +376,21 @@ def from_modules(
         with contextlib.suppress(AttributeError):
             # support module type, ensure that module name is str
             name = name.__name__
-        module = protocol.utils.module_fromname(name)
+        module = protoerror.utils.module_fromname(name)
         solutions.extend(
-            protocol.solution.parse_solutions(
+            protoerror.solution.parse_solutions(
                 module,
                 tests=tests,
                 skips=skips,
             ))
         status.extend(parse_active(module))
         checkers.extend(
-            protocol.parse_checkers(
+            protoerror.parse_checkers(
                 module,
                 tests=tests,
                 skips=skips,
             ))
-    result = protocol.from_solution(
+    result = protoerror.from_solution(
         solutions,
         status,
         checkers=checkers,
@@ -412,10 +412,10 @@ def module_list(modulename: list) -> list:
 
 
 def parse_active(module):
-    checkers = protocol.solution.parse_checkers(module)
+    checkers = protoerror.solution.parse_checkers(module)
     result = [
-        protocol.MessageStatus(
-            msgid=protocol.solution.parse_msgid(item.__name__),
+        protoerror.MessageStatus(
+            msgid=protoerror.solution.parse_msgid(item.__name__),
             active=item.confidence > 0.0,
             confidence=item.confidence,
         ) for item in checkers

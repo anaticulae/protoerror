@@ -13,7 +13,7 @@ import sys
 import serializeraw
 import utila
 
-import protocol
+import protoerror
 
 
 @utila.saveme
@@ -69,7 +69,7 @@ def evaluate() -> tuple:
             waitingflag=False,
             cacheflag=False,
         ),
-        version=protocol.__version__,
+        version=protoerror.__version__,
         prog='findings',
     )
     args = utila.parse(parser)

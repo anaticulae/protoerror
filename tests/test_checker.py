@@ -9,10 +9,10 @@
 
 import pytest
 
-from protocol import Checker
-from protocol import Linter
-from protocol import MessageStatus
-from protocol import check_messages
+from protoerror import Checker
+from protoerror import Linter
+from protoerror import MessageStatus
+from protoerror import check_messages
 
 
 @pytest.fixture

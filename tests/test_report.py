@@ -12,12 +12,12 @@ import os
 import pytest
 import utilatest
 
-import protocol
+import protoerror
 
 
 def run_report(cmd: str, capsys):
-    root = os.path.join(protocol.ROOT)
-    run = protocol.integrate(root=root, features='tests.report')[1]
+    root = os.path.join(protoerror.ROOT)
+    run = protoerror.integrate(root=root, features='tests.report')[1]
     args = dict(show=cmd)
     with pytest.raises(SystemExit):
         run(args)

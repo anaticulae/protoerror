@@ -9,10 +9,10 @@
 
 import iamraw
 
-import protocol
+import protoerror
 
 
-@protocol.section_only(iamraw.sections.TitlePage)
+@protoerror.section_only(iamraw.sections.TitlePage)
 def check_1240_title_check(linter, _):  # pylint:disable=W0613
     linter()
 

@@ -9,7 +9,7 @@
 
 import pytest
 
-from protocol.messages import parse_msgid
+from protoerror.messages import parse_msgid
 
 
 def test_messages_parse_msgid():

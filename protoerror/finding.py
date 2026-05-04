@@ -14,7 +14,7 @@ import iamraw
 import serializeraw
 import utila
 
-import protocol
+import protoerror
 
 
 def findings_from_path(
@@ -50,8 +50,8 @@ def findings_from_path(
             findings.extend(data)
     if msgid:
         # select findings by msgid
-        findings = protocol.select_findings(findings, msgid=msgid)
-    result = protocol.bypage(findings)
+        findings = protoerror.select_findings(findings, msgid=msgid)
+    result = protoerror.bypage(findings)
     return result
 
 

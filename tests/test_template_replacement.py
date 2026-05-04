@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import protocol.solution
+import protoerror.solution
 
 TEMPLATE = """\
 {%if MSWORD %}
@@ -24,7 +24,7 @@ Hier spricht Helm
 
 
 def test_render_template():
-    latex = protocol.solution.render_template(
+    latex = protoerror.solution.render_template(
         TEMPLATE,
         LATEX=True,
     )

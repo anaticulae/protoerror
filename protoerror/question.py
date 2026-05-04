@@ -14,7 +14,7 @@ import re
 import iamraw
 import utila
 
-import protocol
+import protoerror
 
 QUESTION_PATTERN = r'^QUESTION_(?P<number>\d{2,5})$'
 
@@ -49,7 +49,7 @@ Questions = list[Question]
 
 def parse_questions(module) -> Questions:
     if isinstance(module, str):
-        module = protocol.utils.module_fromname(module)
+        module = protoerror.utils.module_fromname(module)
     enabler = parse_enabler(module)
     result = []
     for name, value in vars(module).items():
@@ -61,7 +61,7 @@ def parse_questions(module) -> Questions:
             title, message = value.split('\n\n', maxsplit=1)
         except ValueError:
             title, message = value.strip(), ''
-        item = protocol.Question(
+        item = protoerror.Question(
             title=title,
             msgid=number,
             description=message,
@@ -105,9 +105,9 @@ def documore(finding_count: int, yes: callable = None, no: callable = None):
 
 
 def answer_questions(path: str, questions: Questions) -> iamraw.Findings:
-    findings = [item.content for item in protocol.findings_from_path(path)]
+    findings = [item.content for item in protoerror.findings_from_path(path)]
     findings = utila.flat(findings)
-    grouped = protocol.byid(findings)
+    grouped = protoerror.byid(findings)
     result = []
     for question in questions:
         try:
@@ -116,7 +116,7 @@ def answer_questions(path: str, questions: Questions) -> iamraw.Findings:
             # no potential message available
             continue
         if question.action == Action.PAGE:
-            bypage = protocol.bypage(selected)
+            bypage = protoerror.bypage(selected)
             for paged in bypage:
                 if len(paged.content) < question.finding:
                     continue
@@ -130,7 +130,7 @@ def answer_questions(path: str, questions: Questions) -> iamraw.Findings:
             if len(selected) < question.finding:
                 continue
             solution = iamraw.Finding(
-                location=protocol.OVERVIEW,
+                location=protoerror.OVERVIEW,
                 msgid=question.msgid,
                 solution=question,
             )

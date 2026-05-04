@@ -9,7 +9,7 @@
 
 import pytest
 
-import protocol
+import protoerror
 
 
 @pytest.mark.parametrize(
@@ -21,11 +21,11 @@ import protocol
 )
 def test_create_group(private, td, linter_withlocation):
     findings = linter_withlocation.findings
-    written = protocol.write_grouped(findings, td.tmpdir, private=private)
+    written = protoerror.write_grouped(findings, td.tmpdir, private=private)
     assert len(written) == 3
 
-    loaded = protocol.load_grouped(td.tmpdir)
+    loaded = protoerror.load_grouped(td.tmpdir)
     assert len(loaded) == 3
 
-    loaded = protocol.load_grouped(td.tmpdir, pages=(0, 1, 2))
+    loaded = protoerror.load_grouped(td.tmpdir, pages=(0, 1, 2))
     assert len(loaded) == 2

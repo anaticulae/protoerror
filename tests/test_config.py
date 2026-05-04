@@ -9,9 +9,9 @@
 
 import os
 
-from protocol import MessageStatus
-from protocol import load
-from protocol import save
+from protoerror import MessageStatus
+from protoerror import load
+from protoerror import save
 
 
 def test_config_dump_and_load_config(td):

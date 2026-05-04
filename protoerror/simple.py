@@ -12,7 +12,7 @@ import functools
 import iamraw
 import utila
 
-import protocol
+import protoerror
 
 ResultType = tuple[str, str]
 ResultDefault = ('user', 'developer')  # pylint:disable=C0103
@@ -27,9 +27,9 @@ def run(
     before_dump: callable = None,
 ):
     if not location:
-        location = protocol.OVERVIEW
+        location = protoerror.OVERVIEW
     # create linter
-    linter = protocol.from_modules(
+    linter = protoerror.from_modules(
         modules=modulename,
         document=document,
     )
@@ -41,7 +41,7 @@ def run(
         location=location,
     )
     if findings_merge:
-        result = protocol.merge_findings(result)
+        result = protoerror.merge_findings(result)
     if before_dump:
         result = utila.pass_required(
             before_dump,
@@ -50,7 +50,7 @@ def run(
             linter=linter,
         )
     # dump results
-    user, developer = protocol.dump_result(
+    user, developer = protoerror.dump_result(
         result,
         checkers=linter.checkers,
     )
@@ -58,8 +58,8 @@ def run(
 
 
 def linting(
-    linter: protocol.Linter,
-    checkers: 'protocol.Validators',
+    linter: protoerror.Linter,
+    checkers: 'protoerror.Validators',
     driver,
     location: iamraw.Location,
 ):

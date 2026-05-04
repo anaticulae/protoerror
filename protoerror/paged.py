@@ -15,7 +15,7 @@ import iamraw
 import serializeraw
 import utila
 
-import protocol
+import protoerror
 
 
 def write_grouped(
@@ -25,7 +25,7 @@ def write_grouped(
     private: bool = False,
 ) -> list:
     result = []
-    grouped = protocol.bypage(findings)
+    grouped = protoerror.bypage(findings)
     writer = utila.file_replace if overwrite else utila.file_create
     for item in grouped:
         page = fname(item.page)

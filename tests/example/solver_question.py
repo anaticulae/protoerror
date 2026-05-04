@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import protocol
+import protoerror
 
 QUESTION_1337 = """Singe line question?"""
 
@@ -17,6 +17,6 @@ Do you want to remove this Item?
 Here comes a lot more description.
 """
 
-QUESTION_1337_ENABLE = protocol.documore(1)
+QUESTION_1337_ENABLE = protoerror.documore(1)
 
-QUESTION_1338_ENABLE = protocol.pagemore(5)
+QUESTION_1338_ENABLE = protoerror.pagemore(5)
