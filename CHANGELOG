@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v3.20.4 (2026-09-06)
+
+### Bug Fixes
+
+- **make**: Revert invalid docker image name
+  ([`90821d6`](https://github.com/anaticulae/protoerror/commit/90821d64d400735a234c9f128cb709f2fe861d99))
+
+
 ## v3.20.3 (2026-09-06)
 
 ### Chores
