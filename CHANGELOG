@@ -1,6 +1,28 @@
 # CHANGELOG
 
 
+## v3.20.3 (2026-09-06)
+
+### Chores
+
+- **make**: Do not release twice
+  ([`6165b10`](https://github.com/anaticulae/protoerror/commit/6165b10ffc26bf27eaccbccbfb81d9e0a6c25e2e))
+
+- **pyproject**: Add missing cli
+  ([`ac30135`](https://github.com/anaticulae/protoerror/commit/ac30135d628d4180d2fa98fde391a592bcdce029))
+
+- **pyproject**: Release on every change
+  ([`f8cdd68`](https://github.com/anaticulae/protoerror/commit/f8cdd68d8926485f27dc489ef3ec8c19c207505c))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`19583e5`](https://github.com/anaticulae/protoerror/commit/19583e5853e10717cf475afa1bf231b976ed39d4))
+
+### Code Style
+
+- **github**: Format code
+  ([`efbdbb7`](https://github.com/anaticulae/protoerror/commit/efbdbb7abfbf2b7b8206cf1f9e8825e34754c1cf))
+
+
 ## v3.20.2 (2026-05-04)
 
 ### Bug Fixes
