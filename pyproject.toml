@@ -42,8 +42,8 @@ Repository = "https://github.com/anaticulae/protoerro"
 
 [build-system]
 requires = [
-    "setuptools>=82.0.1",
-    "wheel>=0.47.0",
+    "setuptools>=84.0.0",
+    "wheel>=0.48.0",
 ]
 build-backend = "setuptools.build_meta"
 
